@@ -3,6 +3,9 @@
   email = axnnoindexr11@gmail.com
   signingkey = F99E035A79443E0D
 
+[core]
+  excludesfile = ~/.config/git/global.gitignore
+
 [color]
   ui          = auto
   status      = auto
