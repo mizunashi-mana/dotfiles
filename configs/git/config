@@ -77,8 +77,9 @@
   purge = ! git branch -vv | grep ': gone]' | awk '{ print $1 }' | xargs -n 1 git branch -d
   purge-force = ! git branch -vv | grep ': gone]' | awk '{ print $1 }' | xargs -n 1 git branch -D
 
-[filter 'lfs']
-  clean = git-lfs clean %f
-  smudge = git-lfs smudge %f
+[filter "lfs"]
+  process = git-lfs filter-process
   required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
 

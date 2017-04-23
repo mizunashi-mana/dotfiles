@@ -1,0 +1,14 @@
+{
+  "map": {
+    "git": {
+      "config": "~/.config/git/config",
+      "global.gitignore": "~/.config/git/global.gitignore"
+    },
+    "nvim": {
+      "init.vim": "~/.config/nvim/init.vim"
+    },
+    "tmux": {
+      "tmux.conf": "~/.tmux.conf"
+    }
+  }
+}
