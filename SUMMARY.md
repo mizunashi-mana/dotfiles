@@ -43,7 +43,7 @@
 
 ## Editors / IDEs
 
-* [(Neo)Vim](doc/editors_and_ides//vim.md)
+* [(Neo)Vim](doc/editors_and_ides/vim.md)
 * [VSCode](doc/editors_and_ides/vscode.md)
 
 ## GUI Utils
