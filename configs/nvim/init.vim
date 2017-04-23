@@ -1,5 +1,4 @@
 "general
-"set nocompatible
 set confirm
 set encoding=utf-8
 
@@ -21,9 +20,10 @@ set ruler
 set wrap
 set list
 set listchars=tab:▸\ ,trail:-
+set wrapscan
 
 "indent
-set backspace=2
+set backspace=indent,eol,start
 set autoindent
 set smartindent
 set tabstop=4

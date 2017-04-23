@@ -1,10 +1,84 @@
 [user]
-  name = Mizunashi Mana
+  name  = Mizunashi Mana
   email = axnnoindexr11@gmail.com
   signingkey = F99E035A79443E0D
 
 [color]
-  ui = true
-  status = auto
-  diff = auto
+  ui          = auto
+  status      = auto
+  diff        = auto
+  branch      = auto
+  interactive = auto
+  grep        = auto
+
+[diff]
+  algorithm = patience
+  compactionHeuristic = true
+
+[help]
+  autocorrect = -1
+
+[push]
+  default = simple
+
+[pull]
+  rebase = preserve
+
+[rebase]
+  autosquash = true
+
+[alias]
+  rh = reset --hard
+
+  co = checkout
+  cb = checkout -b
+
+  ca = commit -a
+  ce = commit -v --amend
+  ci = commit -a -m
+  cm = commit -m
+
+  cp = cherry-pick
+
+  st = status --branch --short
+  si = status --ignore --short
+
+  branches = branch -a
+  remotes  = remote -v
+  tracks   = branch -vv
+  tags     = tag -l
+
+  lg = log --graph --date=short --pretty=format:'%Cgreen%h %cd %Cblue%cn %Creset%s'
+  lgst = log --name-status -5
+  lgss = log --shortstat -5
+  graph = log --graph --all --decorate --addrev-commit --branches --date=short --pretty=format:\"%C(red)%h%C(reset) %C(green)[%ad]%C(reset) %s %C(cyan)\"
+
+  fp = fetch --prune
+
+  dm = diff master
+  dh = diff --histogram
+  dw = diff --word-diff
+  dc = diff --cached
+  d1 = diff HEAD~
+  d2 = diff HEAD~2
+  d3 = diff HEAD~3
+  d4 = diff HEAD~4
+  d5 = diff HEAD~5
+  d6 = diff HEAD~6
+  d7 = diff HEAD~7
+  d8 = diff HEAD~8
+  d9 = diff HEAD~9
+
+  wc = whatchanged
+
+  dclean = clean -ndx
+
+  fm = ! git fetch upstream master && git rebase upstream/master master && git push --set-upstream origin master
+  purge = ! git branch -vv | grep ': gone]' | awk '{ print $1 }' | xargs -n 1 git branch -d
+  purge-force = ! git branch -vv | grep ': gone]' | awk '{ print $1 }' | xargs -n 1 git branch -D
+
+[filter 'lfs']
+  clean = git-lfs clean %f
+  smudge = git-lfs smudge %f
+  required = true
 
