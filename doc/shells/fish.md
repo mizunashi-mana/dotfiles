@@ -8,9 +8,7 @@ An useful shell.
 2. Install plugins
 
     ```bash
-    fisher z
-    fisher segment # depends [powerline](../../style_utils/powerline)
-    fisher shark
+    fisher
     ```
 
 ## Installation
