@@ -57,4 +57,7 @@
 * [Firefox](doc/applications/firefox.md)
 * [1Password](doc/applications/1password.md)
 * [VLC](doc/applications/vlc.md)
+* [Skim](doc/applications/skim.md)
+* [evince](doc/applications/evince.md)
+* [TeX](doc/applications/tex.md)
 
