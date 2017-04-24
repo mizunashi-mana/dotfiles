@@ -43,8 +43,9 @@
 
   cp = cherry-pick
 
+  stat = status
   st = status --branch --short
-  si = status --ignore --short
+  si = status --ignored --short
 
   branches = branch -a
   remotes  = remote -v
