@@ -25,7 +25,7 @@ end
 set fish_theme yimmy
 
 # dircolor
-set -l dircolor_config ~/.config/dircolors/solarized.dark-256
+set -l dircolor_config ~/.config/dircolors/dark-256
 if test -f $dircolor_config
   eval (dircolors -c $dircolor_config | sed 's|>&/dev/null$||')
 end
@@ -36,6 +36,12 @@ function save_history --on-event fish_preexec
 end
 
 # aliases
-alias la='ls -a'
-alias vim='nvim'
+alias vim  'nvim'
+alias vi   'nvim'
+alias more 'less'
 
+alias la 'ls -a'
+alias ll 'ls -al'
+
+alias reload 'eval $SHELL'
+alias restart 'eval $SHELL --login'

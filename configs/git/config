@@ -43,7 +43,7 @@
 
   cp = cherry-pick
 
-  stat = status
+  stst = status
   st = status --branch --short
   si = status --ignored --short
 

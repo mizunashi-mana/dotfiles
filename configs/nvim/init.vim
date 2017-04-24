@@ -57,20 +57,21 @@ endif
 
 "dein Scripts-----------------------------
 " Required:
-set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
+set runtimepath+=~/.config/nvim/dein/repos/github.com/Shougo/dein.vim
 
 " Required:
-if dein#load_state('~/.vim/dein')
-  call dein#begin('~/.vim/dein')
+if dein#load_state('~/.config/nvim/dein')
+  call dein#begin('~/.config/nvim/dein')
 
   " Let dein manage dein
   " Required:
-  call dein#add('~/.vim/dein/repos/github.com/Shougo/dein.vim')
+  call dein#add('~/.config/nvim/dein/repos/github.com/Shougo/dein.vim')
 
   " editorconfig
   call dein#add('editorconfig/editorconfig-vim')
 
   " neosnippets
+  call dein#add('Shougo/neocomplete.vim')
   call dein#add('Shougo/neosnippet.vim')
   call dein#add('Shougo/neosnippet-snippets')
 
@@ -79,6 +80,9 @@ if dein#load_state('~/.vim/dein')
 
   " molokai theme
   call dein#add('tomasr/molokai')
+
+  " auto paste mode
+  call dein#add('ConradIrwin/vim-bracketed-paste')
 
   " Required:
   call dein#end()
