@@ -4,14 +4,13 @@ Include conf.d/*.conf
 
 #LogLevel DEBUG
 #LogLevel VERBOSE
-LogLevel INFO
 
 ServerAliveInterval 15
 ServerAliveCountMax 3
 
 ConnectionAttempts 3
 
-VisualHostKey yes
+#VisualHostKey yes
 
 ## Security
 ## See https://wiki.mozilla.org/Security/Guidelines/OpenSSH#OpenSSH_client
