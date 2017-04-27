@@ -24,6 +24,7 @@
 
 ## Common Utils
 
+* [SSH](doc/common_utils/ssh.md)
 * [Git](doc/common_utils/git.md)
 * [ghq](doc/common_utils/ghq.md)
 * [Homebrew](doc/common_utils/homebrew.md)
@@ -40,6 +41,7 @@
 * [ConEmu](doc/terminal_emus_and_prexers/conemu.md)
 * [iTerm2](doc/terminal_emus_and_prexers/iterm2.md)
 * [tmux](doc/terminal_emus_and_prexers/tmux.md)
+* [rxvt-unicode](doc/terminal_emus_and_prexers/urxvt.md)
 
 ## Editors / IDEs
 

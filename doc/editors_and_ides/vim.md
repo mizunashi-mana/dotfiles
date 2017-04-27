@@ -13,6 +13,20 @@ The editor.
 
 Then, alias `vim` to `nvim` on your shell config (e.g. `~/.config/fish/config.fish`)
 
+## Dotfiles
+
+| File | Description |
+| --- | --- |
+| [init.vim](../../configs/nvim/init.vim) | Initial loading config |
+
+### Post Install Dotfiles
+
+You should create backup/undo/swap directories.
+
+```bash
+mkdir -p ~/.config/nvim/{backup,undo,swap}s
+```
+
 ## Links
 
 * Home Page: https://neovim.io/
