@@ -1,5 +1,4 @@
 #!/usr/bin/env python
 
-print('not implemented')
+puts('not implemented!')
 exit(1)
-

@@ -12,8 +12,7 @@ ghq get mizunashi-mana/dotfiles # or git clone https://github.com/mizunashi-mana
 ghq look mizunashi-mana/dotfiles # or cd /path/to/install
 
 # setup to use dotfiles scripts
-export PATH="$(ghq root)/github.com/mizunashi-mana/dotfiles/bin:$PATH"
-dotfiles init >> your_profile
+export PATH="${PWD}/bin:$PATH" >> yourprofile
 exec $SHELL -l
 
 # bring dotfiles
@@ -29,9 +28,7 @@ dotfiles diff
 ## Fetch and pull latest
 
 ```bash
-dotfiles fetch
-ghq look mizunashi-mana/dotfiles
-git pull
+dotfiles fetch --update
 ```
 
 ## Take up and push latest
