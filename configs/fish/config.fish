@@ -46,5 +46,5 @@ alias more 'less'
 alias la 'ls -a'
 alias ll 'ls -al'
 
-alias reload 'eval $SHELL'
-alias restart 'eval $SHELL --login'
+alias reload 'exec fish'
+alias restart 'exec fish --login'
