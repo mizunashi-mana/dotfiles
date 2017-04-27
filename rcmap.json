@@ -9,6 +9,14 @@
     },
     "tmux": {
       "tmux.conf": "~/.tmux.conf"
+    },
+    "ssh": {
+      "config": "~/.ssh/config"
     }
+  },
+  "suggestion": {
+    "macosx": [
+      "tmux/tmux.conf.maclocal"
+    ]
   }
 }

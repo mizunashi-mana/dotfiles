@@ -1,6 +1,9 @@
 # disable greeting
 set fish_greeting
 
+# fisher install
+fisher
+
 # profiles
 if status --is-login
   set -gx EDITOR nvim
