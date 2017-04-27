@@ -55,6 +55,9 @@ if has('syntax')
   call ShowZenkakuSpace()
 endif
 
+"filetype associations
+au BufRead,BufNewFile */.ssh/conf.d/*.conf set filetype=sshconfig
+
 "dein Scripts-----------------------------
 " Required:
 set runtimepath+=~/.config/nvim/dein/repos/github.com/Shougo/dein.vim
