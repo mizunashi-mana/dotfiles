@@ -12,6 +12,15 @@
     },
     "ssh": {
       "config": "~/.ssh/config"
+    },
+    "i3": {
+      "config": "~/.config/i3/config"
+    },
+    "rofi": {
+      "config": "~/.config/rofi/config"
+    },
+    "compton": {
+      "config": "~/.config/compton/config"
     }
   },
   "suggestion": {
