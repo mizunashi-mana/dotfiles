@@ -81,6 +81,8 @@
   purge = ! git branch -vv | grep ': gone]' | awk '{ print $1 }' | xargs -n 1 git branch -d
   purge-force = ! git branch -vv | grep ': gone]' | awk '{ print $1 }' | xargs -n 1 git branch -D
 
+  pushuo = push --set-upstream origin
+
   addorigin = remote add origin
   modorigin = remote set-url origin
   addupstream = remote add upstream
