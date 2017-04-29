@@ -81,6 +81,11 @@
   purge = ! git branch -vv | grep ': gone]' | awk '{ print $1 }' | xargs -n 1 git branch -d
   purge-force = ! git branch -vv | grep ': gone]' | awk '{ print $1 }' | xargs -n 1 git branch -D
 
+  addorigin = remote add origin
+  modorigin = remote set-url origin
+  addupstream = remote add upstream
+  modupstream = remote set-url upstream
+
 [filter "lfs"]
   process = git-lfs filter-process
   required = true
