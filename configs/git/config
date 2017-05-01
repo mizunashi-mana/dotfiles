@@ -83,10 +83,10 @@
 
   pushuo = push --set-upstream origin
 
-  addorigin = remote add origin
-  modorigin = remote set-url origin
-  addupstream = remote add upstream
-  modupstream = remote set-url upstream
+  addorig = remote add origin
+  modorig = remote set-url origin
+  addupst = remote add upstream
+  modupst = remote set-url upstream
 
 [filter "lfs"]
   process = git-lfs filter-process

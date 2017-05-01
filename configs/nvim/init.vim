@@ -57,6 +57,7 @@ endif
 
 "filetype associations
 au BufRead,BufNewFile */.ssh/conf.d/*.conf set filetype=sshconfig
+au BufRead,BufNewFile */git/config* set filetype=gitconfig
 
 "dein Scripts-----------------------------
 " Required:
