@@ -78,8 +78,8 @@
   dclean = clean -ndx
 
   fm = ! git fetch upstream master && git rebase upstream/master master && git push --set-upstream origin master
-  purge = ! git branch -vv | grep ': gone]' | awk '{ print $1 }' | xargs -n 1 git branch -d
-  purge-force = ! git branch -vv | grep ': gone]' | awk '{ print $1 }' | xargs -n 1 git branch -D
+  purge = ! git branch -vv | grep -v '^\\*' | grep ': gone]' | awk '{ print $1 }' | xargs -n 1 git branch -d
+  purge-force = ! git branch -vv | grep -v '^\\*' | grep ': gone]' | awk '{ print $1 }' | xargs -n 1 git branch -D
 
   pushuo = push --set-upstream origin
 
