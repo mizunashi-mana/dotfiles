@@ -13,7 +13,6 @@
 # $ dotfiles diff ~/.tmux.conf
 # ```
 #
-#
 
 
 puts('not implemented!')
