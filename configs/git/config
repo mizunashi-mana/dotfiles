@@ -81,12 +81,14 @@
   purge = ! git branch -vv | grep -v '^\\*' | grep ': gone]' | awk '{ print $1 }' | xargs -n 1 git branch -d
   purge-force = ! git branch -vv | grep -v '^\\*' | grep ': gone]' | awk '{ print $1 }' | xargs -n 1 git branch -D
 
-  pushuo = push --set-upstream origin
+  pushuo = ! git push --set-upstream origin $(git current-branch)
 
   addorig = remote add origin
   modorig = remote set-url origin
   addupst = remote add upstream
   modupst = remote set-url upstream
+
+  current-branch = ! git branch | grep -e '^\\*' | cut -d ' ' -f2
 
 [filter "lfs"]
   process = git-lfs filter-process
