@@ -20,7 +20,7 @@ function fish_prompt --description "Write out prompt"
   if [ $status -eq 0 ]
     set status_face (set_color green)"(*'-')"(set_color normal)
   else
-    set status_face (set_color blue)"(;>_<)"(set_color normal)
+    set status_face (set_color brcyan)"(;>_<)"(set_color normal)
   end
 
   echo -n -s "($USER) $status_face $suffix "
