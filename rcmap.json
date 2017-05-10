@@ -1,26 +1,10 @@
 {
   "map": {
-    "git": {
-      "config": "~/.config/git/config",
-      "global.gitignore": "~/.config/git/global.gitignore"
-    },
-    "nvim": {
-      "init.vim": "~/.config/nvim/init.vim"
-    },
     "tmux": {
       "tmux.conf": "~/.tmux.conf"
     },
     "ssh": {
       "config": "~/.ssh/config"
-    },
-    "i3": {
-      "config": "~/.config/i3/config"
-    },
-    "rofi": {
-      "config": "~/.config/rofi/config"
-    },
-    "compton": {
-      "config": "~/.config/compton/config"
     }
   },
   "suggestion": {

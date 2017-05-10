@@ -54,6 +54,11 @@
 * [i3](doc/gui_utils/i3.md)
 * [uim](doc/gui_utils/uim.md)
 
+## Developments
+
+* [Simple Build Tools](doc/developments/sbt.md)
+* [haskell-stack](doc/developments/stack.md)
+
 ## Applications
 
 * [Firefox](doc/applications/firefox.md)
