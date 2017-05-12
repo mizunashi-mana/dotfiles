@@ -60,6 +60,7 @@
   fp = fetch --prune
 
   dm = diff master
+  du = ! git diff $(git upstream-remote)/$(git current-branch)
   dh = diff --histogram
   dw = diff --word-diff
   dc = diff --cached
@@ -89,6 +90,8 @@
   modupst = remote set-url upstream
 
   current-branch = ! git branch | grep -e '^\\*' | cut -d ' ' -f2
+  upstream-remote = remote show
+  stremote = ! git remote show $(git upstream-remote)
 
 [filter "lfs"]
   process = git-lfs filter-process
