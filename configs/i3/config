@@ -223,10 +223,12 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-exec_always compton --config ~/.config/compton/config
+exec --no-startup-id compton -cb --config ~/.config/compton/config
 
 exec --no-startup-id volumeicon
 exec --no-startup-id uim-toolbar
+
+exec --no-startup-id xmodmap ~/.config/xmodmap/config
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)

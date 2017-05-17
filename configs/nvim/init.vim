@@ -88,6 +88,9 @@ if dein#load_state('~/.config/nvim/dein')
   " auto paste mode
   call dein#add('ConradIrwin/vim-bracketed-paste')
 
+  " toml support
+  call dein#add('cespare/vim-toml')
+
   " Required:
   call dein#end()
   call dein#save_state()
