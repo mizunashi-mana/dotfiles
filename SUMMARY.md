@@ -29,6 +29,7 @@
 * [ghq](doc/common_utils/ghq.md)
 * [Homebrew](doc/common_utils/homebrew.md)
 * [anyenv](doc/common_utils/anyenv.md)
+* [direnv](doc/common_utils/direnv.md)
 
 ## Style Utils
 
@@ -47,6 +48,7 @@
 
 * [(Neo)Vim](doc/editors_and_ides/vim.md)
 * [VSCode](doc/editors_and_ides/vscode.md)
+* [Sublime Text](doc/editors_and_ides/sublime_text.md)
 
 ## GUI Utils
 
