@@ -1,6 +1,6 @@
 # TeX
 
-an document maker.
+An document maker.
 
 ## Constructions
 
