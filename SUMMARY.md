@@ -2,11 +2,11 @@
 
 * [About this documentations](README.md)
 
-# Constructions
+# Systems
 
-* [Mac OSX](doc/constructions/mac_osx.md)
-* [Arch Linux](doc/constructions/archlinux.md)
-* [Windows](doc/constructions/windows.md)
+* [Mac OSX](doc/systems/mac_osx.md)
+* [Arch Linux](doc/systems/archlinux.md)
+* [Windows](doc/systems/windows.md)
 
 # Configs
 
