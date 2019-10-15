@@ -14,6 +14,12 @@
   interactive = auto
   grep        = auto
 
+[commit]
+  gpgsign = true
+
+[gpg]
+  program = gpgen
+
 [diff]
   algorithm = patience
   compactionHeuristic = true
@@ -25,7 +31,7 @@
   default = simple
 
 [pull]
-  rebase = preserve
+  rebase = merges
 
 [rebase]
   autosquash = true
@@ -98,4 +104,3 @@
   required = true
   clean = git-lfs clean -- %f
   smudge = git-lfs smudge -- %f
-
