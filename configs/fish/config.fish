@@ -20,8 +20,8 @@ if status --is-login
   end
 
   # xdg support
-  if set -q XDG_CONFIG_HOME
-    set -g XDG_CONFIG_HOME $HOME/.config
+  if ! set -q XDG_CONFIG_HOME
+    set -gx XDG_CONFIG_HOME $HOME/.config
   end
 
   # gpg settings
@@ -33,7 +33,7 @@ if status --is-login
   # coreutils for Mac
   if type -q brew && test -d (brew --prefix coreutils)/libexec/gnubin
     set -g fish_user_paths (brew --prefix coreutils)/libexec/gnubin $fish_user_paths
-    set -g fish_user_paths $fish_usr_paths /usr/local/sbin
+    set -g fish_user_paths $fish_user_paths /usr/local/sbin
   end
 
   # user local bin
@@ -57,7 +57,7 @@ if status --is-login
   set -g fish_user_paths $fish_user_paths $HOME/.ghcup/bin
 
   # gnupg
-  set -g GNUPGHOME $XDG_CONFIG_HOME/gnupg
+  set -gx GNUPGHOME $XDG_CONFIG_HOME/gnupg
 
   # airport on macOS
   if test -e /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport
