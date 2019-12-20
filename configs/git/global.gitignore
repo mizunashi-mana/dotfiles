@@ -1,6 +1,9 @@
 # vim swap files
 *~
 
+# VSCode settings
+.vscode/
+
 # Mac ignores
 
 ## general mac temporary files
