@@ -23,7 +23,7 @@ An **envs manager.
 ## Installation
 
 ```bash
-git clone https://github.com/riywo/anyenv ~/.anyenv
+brew install anyenv
 ```
 
 Next, add `~/.anyenv/bin` to `PATH` env on your profile (e.g. `~/.bash_profile`):

@@ -2,3 +2,5 @@
 node_modules/
 _book/
 
+# for Homebrew
+Brewfile.lock.json

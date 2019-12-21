@@ -1,0 +1,54 @@
+tap "lampepfl/brew"
+tap "neovim/neovim"
+tap "sanemat/font"
+
+# common
+brew "fish"
+brew "coreutils"
+brew "arp-scan"
+brew "python"
+brew "gcc"
+brew "ghostscript"
+brew "git"
+brew "git-lfs"
+brew "gnupg"
+brew "nkf"
+brew "nmap"
+brew "neovim"
+brew "wget"
+brew "telnet"
+brew "tmux"
+
+# common casks
+cask "xquartz"
+#cask "adoptopenjdk"
+
+# useful tools
+brew "direnv"
+brew "gettext"
+brew "graphviz"
+brew "imagemagick"
+brew "gnuplot"
+brew "jq"
+brew "go"
+brew "w3m"
+brew "opam"
+brew "sbt"
+brew "scala"
+brew "sphinx"
+
+# advanced tools
+brew "ffmpeg"
+brew "bats"
+brew "llvm@6"
+
+# cask apps
+cask "mactex"
+
+# more advanced
+#brew "idris"
+#brew "elm"
+#brew "purescript"
+#brew "lampepfl/brew/dotty"
+#brew "subversion"
+#brew "reattach-to-user-namespace"

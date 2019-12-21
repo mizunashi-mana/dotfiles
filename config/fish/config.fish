@@ -43,8 +43,7 @@ if status --is-login
   eval (direnv hook fish)
 
   # anyenv
-  set -g fish_user_paths $HOME/.anyenv/bin $fish_user_paths
-  source (anyenv init -|psub)
+  eval (anyenv init - fish)
 
   # golang
   set -gx GOPATH $HOME/.go
@@ -89,4 +88,3 @@ end
 function save_history --on-event fish_preexec
   history --save
 end
-
