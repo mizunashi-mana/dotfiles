@@ -1,10 +1,11 @@
-tap "lampepfl/brew"
 tap "neovim/neovim"
 tap "sanemat/font"
 
 # common
 brew "fish"
 brew "coreutils"
+brew "gnu-sed"
+brew "gnu-getopt"
 brew "arp-scan"
 brew "python"
 brew "gcc"
@@ -24,6 +25,7 @@ cask "xquartz"
 #cask "adoptopenjdk"
 
 # useful tools
+brew "anyenv"
 brew "direnv"
 brew "gettext"
 brew "graphviz"
@@ -32,22 +34,23 @@ brew "gnuplot"
 brew "jq"
 brew "go"
 brew "w3m"
-brew "opam"
 brew "sbt"
-brew "scala"
-brew "sphinx"
+brew "poppler"
 
 # advanced tools
 brew "ffmpeg"
 brew "bats"
-brew "llvm@6"
 
 # cask apps
 cask "mactex"
 
 # more advanced
+#tap "lampepfl/brew"
+#brew "llvm@6"
 #brew "idris"
 #brew "elm"
+#brew "scala"
+#brew "opam"
 #brew "purescript"
 #brew "lampepfl/brew/dotty"
 #brew "subversion"

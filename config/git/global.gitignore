@@ -4,6 +4,13 @@
 # VSCode settings
 .vscode/
 
+# direnv
+.envrc
+
+# IDEA
+.idea
+*.iml
+
 # Mac ignores
 
 ## general mac temporary files

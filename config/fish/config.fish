@@ -5,7 +5,9 @@ set fish_greeting
 set fish_theme yimmy
 
 # profiles
-if status --is-login
+if status --is-login || ! set -q FISH_LOGINED
+  set -gx FISH_LOGINED true
+
   # basic environments
   set -gx EDITOR nvim
   set -gx VISUAL nvim
@@ -30,10 +32,24 @@ if status --is-login
   # higher priority
   set -g fish_user_paths /usr/local/bin $fish_user_paths
 
+  # for Mac
+  if type -q brew
+    if test -d (brew --prefix coreutils)/libexec/gnubin
+      set -g fish_user_paths (brew --prefix coreutils)/libexec/gnubin $fish_user_paths
+      set -g fish_user_paths $fish_user_paths /usr/local/sbin
+    end
+
+    if test -d (brew --prefix gnu-sed)/libexec/gnubin
+      set -g fish_user_paths (brew --prefix gnu-sed)/libexec/gnubin $fish_user_paths
+    end
+
+    if test -d (brew --prefix gnu-getopt)/bin
+      set -g fish_user_paths (brew --prefix gnu-getopt)/bin $fish_user_paths
+    end
+  end
+
   # coreutils for Mac
   if type -q brew && test -d (brew --prefix coreutils)/libexec/gnubin
-    set -g fish_user_paths (brew --prefix coreutils)/libexec/gnubin $fish_user_paths
-    set -g fish_user_paths $fish_user_paths /usr/local/sbin
   end
 
   # user local bin
@@ -43,7 +59,7 @@ if status --is-login
   eval (direnv hook fish)
 
   # anyenv
-  eval (anyenv init - fish)
+  source (anyenv init - |psub)
 
   # golang
   set -gx GOPATH $HOME/.go
