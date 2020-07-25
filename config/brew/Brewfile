@@ -1,24 +1,42 @@
-instance_eval(File.read("#{File.dirname(__FILE__)}/core.Brewfile"))
+tap "neovim/neovim"
+tap "sanemat/font"
+tap "adoptopenjdk/openjdk"
 
 # common
-brew "coreutils"
-brew "gnu-sed"
-brew "gnu-getopt"
-brew "telnet"
-
-# common casks
-cask "xquartz"
+brew "fish"
+brew "arp-scan"
+brew "python"
+brew "gcc"
+brew "ghostscript"
+brew "git"
+brew "git-lfs"
+brew "gnupg"
+brew "nkf"
+brew "nmap"
+brew "neovim"
+brew "wget"
+brew "tmux"
 
 # useful tools
-brew "graphviz"
-brew "imagemagick"
-brew "gnuplot"
+brew "anyenv"
+brew "direnv"
+brew "gettext"
+brew "jq"
+brew "go"
+brew "w3m"
+brew "sbt"
+brew "poppler"
 
 # advanced tools
-brew "ffmpeg"
-
-# cask apps
-cask "mactex"
+brew "bats"
 
 # more advanced
-#brew "reattach-to-user-namespace"
+#tap "lampepfl/brew"
+#brew "llvm@6"
+#brew "idris"
+#brew "elm"
+#brew "scala"
+#brew "opam"
+#brew "purescript"
+#brew "lampepfl/brew/dotty"
+#brew "subversion"
