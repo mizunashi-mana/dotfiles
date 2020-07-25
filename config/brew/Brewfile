@@ -20,12 +20,14 @@ brew "tmux"
 # useful tools
 brew "anyenv"
 brew "direnv"
+brew "ansible"
 brew "gettext"
 brew "jq"
 brew "go"
 brew "w3m"
 brew "sbt"
 brew "poppler"
+brew "helm"
 
 # advanced tools
 brew "bats"

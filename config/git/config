@@ -1,7 +1,6 @@
 [user]
   name  = Mizunashi Mana
   email = mizunashi-mana@noreply.git
-  signingkey = F99E035A79443E0D
 
 [core]
   excludesfile = ~/.config/git/global.gitignore
@@ -15,7 +14,7 @@
   grep        = auto
 
 [commit]
-  gpgsign = true
+  gpgsign = false
 
 [gpg]
   program = gpgen

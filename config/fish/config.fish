@@ -48,6 +48,8 @@ if status --is-login || ! set -q FISH_LOGINED
     end
   else if test -d $HOME/.linuxbrew
     eval ($HOME/.linuxbrew/bin/brew shellenv)
+  else if test -d /home/linuxbrew/.linuxbrew
+    eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
   end
 
   # user local bin
