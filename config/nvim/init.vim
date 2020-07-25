@@ -6,11 +6,11 @@ set encoding=utf-8
 set noerrorbells
 
 "directories
-mkdir($HOME . "/.config/nvim/swaps", "p")
+call mkdir($HOME . "/.config/nvim/swaps", "p")
 set directory=~/.config/nvim/swaps
-mkdir($HOME . "/.config/nvim/backups", "p")
+call mkdir($HOME . "/.config/nvim/backups", "p")
 set backupdir=~/.config/nvim/backups
-mkdir($HOME . "/.config/nvim/undos", "p")
+call mkdir($HOME . "/.config/nvim/undos", "p")
 set undodir=~/.config/nvim/undos
 set tags=./tags;,tags;
 set clipboard=unnamed,unnamedplus
