@@ -1,5 +1,6 @@
 tap "neovim/neovim"
 tap "sanemat/font"
+tap "adoptopenjdk/openjdk"
 
 # common
 brew "fish"
@@ -22,7 +23,6 @@ brew "tmux"
 
 # common casks
 cask "xquartz"
-#cask "adoptopenjdk"
 
 # useful tools
 brew "anyenv"

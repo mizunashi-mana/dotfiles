@@ -48,10 +48,6 @@ if status --is-login || ! set -q FISH_LOGINED
     end
   end
 
-  # coreutils for Mac
-  if type -q brew && test -d (brew --prefix coreutils)/libexec/gnubin
-  end
-
   # user local bin
   set -g fish_user_paths $HOME/.local/bin $fish_user_paths
 
@@ -59,6 +55,9 @@ if status --is-login || ! set -q FISH_LOGINED
   eval (direnv hook fish)
 
   # anyenv
+  if ! type -q anyenv && test -d $HOME/.anyenv/bin
+    set -g fish_user_paths $fish_user_paths $HOME/.anyenv/bin
+  end
   source (anyenv init - |psub)
 
   # golang
@@ -95,7 +94,7 @@ if status --is-login || ! set -q FISH_LOGINED
 end
 
 # dircolor
-set -l dircolor_config ~/.config/dircolors/dark-256
+set -l dircolor_config $HOME/.config/dircolors/dark-256
 if test -f $dircolor_config
   eval (dircolors -c $dircolor_config | sed 's|>&/dev/null$||')
 end

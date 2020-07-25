@@ -11,6 +11,9 @@
 .idea
 *.iml
 
+# java
+.classpath
+
 # Mac ignores
 
 ## general mac temporary files
