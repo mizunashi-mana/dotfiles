@@ -46,6 +46,8 @@ if status --is-login || ! set -q FISH_LOGINED
     if test -d (brew --prefix gnu-getopt)/bin
       set -g fish_user_paths (brew --prefix gnu-getopt)/bin $fish_user_paths
     end
+  else if test -d $HOME/.linuxbrew
+    eval ($HOME/.linuxbrew/bin/brew shellenv)
   end
 
   # user local bin
