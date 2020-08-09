@@ -1,4 +1,4 @@
-tap "neovim/neovim"
+tap "mizunashi-mana/my-tap"
 tap "sanemat/font"
 tap "adoptopenjdk/openjdk"
 
@@ -20,14 +20,17 @@ brew "tmux"
 # useful tools
 brew "anyenv"
 brew "direnv"
+brew "pipenv"
 brew "ansible"
 brew "gettext"
 brew "jq"
 brew "go"
 brew "w3m"
+brew "gradle"
 brew "sbt"
 brew "poppler"
 brew "helm"
+brew "ghcup"
 
 # advanced tools
 brew "bats"
