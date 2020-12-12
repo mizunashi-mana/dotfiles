@@ -34,17 +34,22 @@ if status --is-login || ! set -q FISH_LOGINED
 
   # for Mac
   if type -q brew
-    if test -d (brew --prefix coreutils)/libexec/gnubin
-      set -g fish_user_paths (brew --prefix coreutils)/libexec/gnubin $fish_user_paths
+    set brew_prefix (brew --prefix)
+
+    set brew_coreutils_prefix $brew_prefix/opt/coreutils
+    if test -d $brew_coreutils_prefix/libexec/gnubin
+      set -g fish_user_paths $brew_coreutils_prefix/libexec/gnubin $fish_user_paths
       set -g fish_user_paths $fish_user_paths /usr/local/sbin
     end
 
-    if test -d (brew --prefix gnu-sed)/libexec/gnubin
-      set -g fish_user_paths (brew --prefix gnu-sed)/libexec/gnubin $fish_user_paths
+    set brew_gnused_prefix $brew_prefix/opt/gnu-sed
+    if test -d $brew_gnused_prefix/libexec/gnubin
+      set -g fish_user_paths $brew_gnused_prefix/libexec/gnubin $fish_user_paths
     end
 
-    if test -d (brew --prefix gnu-getopt)/bin
-      set -g fish_user_paths (brew --prefix gnu-getopt)/bin $fish_user_paths
+    set brew_gnugetopt_prefix $brew_prefix/opt/gnu-getopt
+    if test -d $brew_gnugetopt_prefix/bin
+      set -g fish_user_paths $brew_gnugetopt_prefix/bin $fish_user_paths
     end
   else if test -d $HOME/.linuxbrew
     eval ($HOME/.linuxbrew/bin/brew shellenv)
