@@ -4,7 +4,6 @@ instance_eval(File.read("#{File.dirname(__FILE__)}/Brewfile"))
 brew "coreutils"
 brew "gnu-sed"
 brew "gnu-getopt"
-brew "telnet"
 
 # common casks
 cask "xquartz"
