@@ -78,6 +78,7 @@ if status --is-login || ! set -q FISH_LOGINED
 
   # haskell
   set -g fish_user_paths $fish_user_paths $HOME/.ghcup/bin
+  set -g fish_user_paths $fish_user_paths $HOME/.cabal/bin
 
   # gnupg
   set -gx GNUPGHOME $XDG_CONFIG_HOME/gnupg
