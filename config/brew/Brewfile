@@ -1,9 +1,9 @@
-tap "mizunashi-mana/my-tap"
 tap "sanemat/font"
 tap "adoptopenjdk/openjdk"
 
 # common
 brew "fish"
+brew "neovim"
 brew "arp-scan"
 brew "python"
 brew "gcc"
@@ -14,14 +14,12 @@ brew "gnupg"
 brew "inetutils"
 brew "nkf"
 brew "nmap"
-brew "neovim"
 brew "wget"
 brew "tmux"
 
 # useful tools
-brew "anyenv"
+brew "asdf"
 brew "direnv"
-brew "pipenv"
 brew "ansible"
 brew "gettext"
 brew "jq"
@@ -32,6 +30,7 @@ brew "sbt"
 brew "poppler"
 brew "helm"
 brew "ghcup"
+brew "poetry"
 
 # advanced tools
 brew "bats"

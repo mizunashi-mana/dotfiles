@@ -51,6 +51,11 @@ if status --is-login || ! set -q FISH_LOGINED
     if test -d $brew_gnugetopt_prefix/bin
       set -g fish_user_paths $brew_gnugetopt_prefix/bin $fish_user_paths
     end
+
+    set brew_asdf_prefix $brew_prefix/opt/asdf
+    if test -e $brew_asdf_prefix/asdf.fish
+      source $brew_asdf_prefix/asdf.fish
+    end
   else if test -d $HOME/.linuxbrew
     eval ($HOME/.linuxbrew/bin/brew shellenv)
   else if test -d /home/linuxbrew/.linuxbrew
@@ -63,22 +68,19 @@ if status --is-login || ! set -q FISH_LOGINED
   # direnv
   eval (direnv hook fish)
 
-  # anyenv
-  if ! type -q anyenv && test -d $HOME/.anyenv/bin
-    set -g fish_user_paths $fish_user_paths $HOME/.anyenv/bin
-  end
-  source (anyenv init - |psub)
-
   # golang
   set -gx GOPATH $HOME/.go
-  set -g fish_user_paths $fish_user_paths $GOPATH/bin
+  set -g fish_user_paths $GOPATH/bin $fish_user_paths
 
   # rust
-  set -g fish_user_paths $fish_user_paths $HOME/.cargo/bin
+  set -g fish_user_paths $HOME/.cargo/bin $fish_user_paths
 
   # haskell
-  set -g fish_user_paths $fish_user_paths $HOME/.ghcup/bin
-  set -g fish_user_paths $fish_user_paths $HOME/.cabal/bin
+  set -g fish_user_paths $HOME/.ghcup/bin $fish_user_paths
+  set -g fish_user_paths $HOME/.cabal/bin $fish_user_paths
+
+  # poetry
+  set -g fish_user_paths $HOME/.poetry/bin $fish_user_paths
 
   # gnupg
   set -gx GNUPGHOME $XDG_CONFIG_HOME/gnupg

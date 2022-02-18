@@ -19,6 +19,7 @@ brew "ffmpeg"
 # cask apps
 cask "mactex"
 cask "docker"
+cask "vagrant"
 
 # more advanced
 #brew "reattach-to-user-namespace"
