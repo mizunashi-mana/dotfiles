@@ -4,6 +4,9 @@ set fish_greeting
 # theme
 set fish_theme yimmy
 
+# for debug
+#set fish_trace 1
+
 # profiles
 if status --is-login || ! set -q FISH_LOGINED
   set -gx FISH_LOGINED true
@@ -50,6 +53,11 @@ if status --is-login || ! set -q FISH_LOGINED
     set brew_gnugetopt_prefix $brew_prefix/opt/gnu-getopt
     if test -d $brew_gnugetopt_prefix/bin
       set -g fish_user_paths $brew_gnugetopt_prefix/bin $fish_user_paths
+    end
+
+    set brew_makeopt_prefix $brew_prefix/opt/make
+    if test -d $brew_makeopt_prefix/libexec/gnubin
+      set -g fish_user_paths $brew_makeopt_prefix/libexec/gnubin $fish_user_paths
     end
 
     set brew_asdf_prefix $brew_prefix/opt/asdf

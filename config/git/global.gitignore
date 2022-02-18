@@ -14,6 +14,12 @@
 # java
 .classpath
 
+# Vagrant
+.vagrant
+
+# virtualenv
+.venv
+
 # Mac ignores
 
 ## general mac temporary files

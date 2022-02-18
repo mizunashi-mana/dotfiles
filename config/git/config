@@ -1,9 +1,8 @@
 [init]
   defaultBranch = main
 
-[user]
-  name  = Mizunashi Mana
-  email = mizunashi-mana@noreply.git
+[include]
+  path = ~/.config/git/config.local
 
 [core]
   excludesfile = ~/.config/git/global.gitignore
@@ -15,9 +14,6 @@
   branch      = auto
   interactive = auto
   grep        = auto
-
-[commit]
-  gpgsign = false
 
 [gpg]
   program = gpgen
