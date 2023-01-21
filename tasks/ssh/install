@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+[ "${TRACE:-false}" = "true" ] && set -x
+
+SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+FILES_DIR="$SCRIPT_DIR/files"
+
+source "$SCRIPT_DIR/../../utils/all.bash"
+
+
+mkdir -p "$HOME/.ssh"
+mkdir -p "$HOME/.ssh/conf.d"
+mkdir -p "$HOME/.ssh/ppkey"
+chmod 700 "$HOME/.ssh/ppkey"
+
+copy_with_backup "$FILES_DIR/config" "$HOME/.ssh/config"
+for SSH_CONF_FILE in "$FILES_DIR/conf.d"/*; do
+  copy_with_backup "$SSH_CONF_FILE" "$HOME/.ssh/conf.d/$(basename "$SSH_CONF_FILE")"
+done

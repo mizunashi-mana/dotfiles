@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+[ "${TRACE:-false}" = "true" ] && set -x
+
+SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+FILES_DIR="$SCRIPT_DIR/files"
+
+source "$SCRIPT_DIR/../../utils/all.bash"
+
+
+if ! type nvim >/dev/null; then
+  brew install neovim
+fi
+
+mkdir -p "$HOME/.config/nvim"
+mkdir -p "$HOME/.local/var/nvim"
+
+if ! [ -d "$HOME/.local/share/dein" ]; then
+  sh -c "$(curl -fsSL 'https://raw.githubusercontent.com/Shougo/dein-installer.vim/master/installer.sh')"
+fi
+
+copy_with_backup "$FILES_DIR/init.vim" "$HOME/.config/nvim/init.vim"

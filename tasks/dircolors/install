@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+[ "${TRACE:-false}" = "true" ] && set -x
+
+SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+FILES_DIR="$SCRIPT_DIR/files"
+
+source "$SCRIPT_DIR/../../utils/all.bash"
+
+
+mkdir -p "$HOME/.config/dircolors"
+
+copy_with_backup "$FILES_DIR/dark-256" "$HOME/.config/dircolors/dark-256"

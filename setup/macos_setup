@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+[ "${TRACE:-false}" = "true" ] && set -x
+
+SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+TASKS_DIR="$SCRIPT_DIR/../tasks"
+
+echo "---- Install homebrew ----"
+"$TASKS_DIR/homebrew/install"
+
+echo "---- Install git ---------"
+"$TASKS_DIR/git/install"
+
+echo "---- Install ssh ---------"
+"$TASKS_DIR/ssh/install"
+
+echo "---- Install fish --------"
+"$TASKS_DIR/fish/install"
+
+echo "---- Install dircolors ---"
+"$TASKS_DIR/dircolors/install"
+
+echo "---- Install neovim ------"
+"$TASKS_DIR/neovim/install"
