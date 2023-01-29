@@ -21,3 +21,5 @@ if ! [ -d "$HOME/.local/share/dein" ]; then
 fi
 
 copy_with_backup "$FILES_DIR/init.vim" "$HOME/.config/nvim/init.vim"
+
+nvim -e -s -c 'call dein#install()'

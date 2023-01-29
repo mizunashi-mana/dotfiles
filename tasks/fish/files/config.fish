@@ -35,6 +35,14 @@ if status --is-login || ! set -q FISH_LOGINED
   # higher priority
   set -g fish_user_paths /usr/local/bin $fish_user_paths
 
+  if test -d /opt/homebrew
+    eval (/opt/homebrew/bin/brew shellenv)
+  else if test -d $HOME/.linuxbrew
+    eval ($HOME/.linuxbrew/bin/brew shellenv)
+  else if test -d /home/linuxbrew/.linuxbrew
+    eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+  end
+
   # for Mac
   if type -q brew
     set brew_prefix (brew --prefix)
@@ -65,10 +73,6 @@ if status --is-login || ! set -q FISH_LOGINED
       set -e ASDF_DIR
       source $brew_asdf_prefix/libexec/asdf.fish
     end
-  else if test -d $HOME/.linuxbrew
-    eval ($HOME/.linuxbrew/bin/brew shellenv)
-  else if test -d /home/linuxbrew/.linuxbrew
-    eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
   end
 
   # user local bin
