@@ -45,6 +45,7 @@ cask "mactex"
 cask "docker"
 cask "vagrant"
 cask "ipe"
+cask "zotero"
 
 # more advanced
 #tap "lampepfl/brew"
