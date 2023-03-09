@@ -25,6 +25,12 @@ done
 if ! grep "$(which fish)" /etc/shells >/dev/null; then
   sudo echo "$(which fish)" >> /etc/shells
 fi
-if ! (finger "$USER" | grep "Shell: $(which fish)" >/dev/null); then
-  chsh -s "$(which fish)"
+if type finger >/dev/null 2>&1; then
+  if ! (finger "$USER" | grep "Shell: $(which fish)" >/dev/null); then
+    chsh -s "$(which fish)"
+  fi
+elif type getent >/dev/null 2>&1; then
+  if ! (getent passwd | grep "$USER" | grep ":$(which fish)" >/dev/null); then
+    chsh -s "$(which fish)"
+  fi
 fi
