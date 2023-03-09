@@ -1,5 +1,5 @@
 function detect_os() {
-  if type sw_vers >/dev/null; then
+  if type sw_vers >/dev/null 2>&1; then
     DETECT_RESULT="$(sw_vers)"
 
     case "$(echo "$DETECT_RESULT" | grep 'ProductName:' | awk '{print $2}')" in
@@ -13,6 +13,12 @@ function detect_os() {
         return 1
         ;;
     esac
+  fi
+
+  if [ -e /etc/debian_version ]; then
+    export OS_ID='Debian'
+    export OS_VERSION="$(cat /etc/debian_version)"
+    return 0
   fi
 
   echo "Unsupported OS" >&2
