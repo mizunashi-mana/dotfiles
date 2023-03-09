@@ -43,7 +43,6 @@ if status --is-login || ! set -q FISH_LOGINED
     eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
   end
 
-  # for Mac
   if type -q brew
     set brew_prefix (brew --prefix)
 

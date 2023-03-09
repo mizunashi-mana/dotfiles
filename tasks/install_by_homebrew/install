@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+[ "${TRACE:-false}" = "true" ] && set -x
+
+SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+
+brew bundle --file "$SCRIPT_DIR/Brewfiles/core.Brewfile"
+
+case "$OS_ID" in
+  'macOS' )
+    brew bundle --file "$SCRIPT_DIR/Brewfiles/mac.Brewfile"
+    ;;
+  * )
+    # nothing
+    ;;
+esac

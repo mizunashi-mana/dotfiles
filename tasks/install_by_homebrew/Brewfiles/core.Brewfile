@@ -1,9 +1,9 @@
 tap "sanemat/font"
 
 # common
+brew "gcc"
 brew "arp-scan"
 brew "python"
-brew "gcc"
 brew "ghostscript"
 brew "gnupg"
 brew "inetutils"
@@ -39,14 +39,6 @@ brew "rustup-init"
 # advanced tools
 brew "ffmpeg"
 
-# cask apps
-cask "xquartz"
-cask "mactex"
-cask "docker"
-cask "vagrant"
-cask "ipe"
-cask "zotero"
-
 # more advanced
 #tap "lampepfl/brew"
 #brew "llvm@6"
@@ -58,4 +50,3 @@ cask "zotero"
 #brew "lampepfl/brew/dotty"
 #brew "subversion"
 #brew "haskell-stack"
-#brew "reattach-to-user-namespace"

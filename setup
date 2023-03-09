@@ -4,9 +4,11 @@ set -euo pipefail
 [ "${TRACE:-false}" = "true" ] && set -x
 
 SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
-TASKS_DIR="$SCRIPT_DIR/../tasks"
+TASKS_DIR="$SCRIPT_DIR/tasks"
+UTILS_DIR="$SCRIPT_DIR/utils"
 
-export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
+source "$UTILS_DIR/detect_os.bash"
+detect_os
 
 echo "---- Install homebrew ----"
 "$TASKS_DIR/homebrew/install"

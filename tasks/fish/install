@@ -22,9 +22,9 @@ for FISH_FUNCTION_FILE in "$FILES_DIR/functions"/*; do
   copy_with_backup "$FISH_FUNCTION_FILE" "$HOME/.config/fish/functions/$(basename "$FISH_FUNCTION_FILE")"
 done
 
-if ! grep "$(which fish)" /etc/shells; then
+if ! grep "$(which fish)" /etc/shells >/dev/null; then
   sudo echo "$(which fish)" >> /etc/shells
 fi
-if ! (finger "$USER" | grep "Shell: $(which fish)"); then
+if ! (finger "$USER" | grep "Shell: $(which fish)" >/dev/null); then
   chsh -s "$(which fish)"
 fi

@@ -5,12 +5,30 @@ set -euo pipefail
 
 SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
+if [ -d /opt/homebrew ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [ -d "$HOME/.linuxbrew" ]; then
+  eval "$("$HOME/.linuxbrew/bin/brew" shellenv)"
+elif [ -d /home/linuxbrew/.linuxbrew ]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+
 if ! type brew >/dev/null; then
   # ref: https://brew.sh/index
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
+case "$OS_ID" in
+  Debian )
+    sudo apt-get install -y build-essential
+    ;;
+  *)
+    # nothing
+    ;;
+esac
+
 if [ -e /opt/homebrew/bin/brew ]; then
-  eval "$(/opt/homebrew/bin/brew shellenv)"  
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [ -e /home/linuxbrew/.linuxbrew/bin/brew ]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
-brew bundle --file "$SCRIPT_DIR/Brewfile"
