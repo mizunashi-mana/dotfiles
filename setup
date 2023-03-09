@@ -13,6 +13,9 @@ detect_os
 echo "---- Install homebrew ----"
 "$TASKS_DIR/homebrew/install"
 
+echo "---- Install apps by homebrew ----"
+"$TASKS_DIR/install_by_homebrew/install"
+
 echo "---- Install git ---------"
 "$TASKS_DIR/git/install"
 
