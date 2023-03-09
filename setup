@@ -10,8 +10,14 @@ UTILS_DIR="$SCRIPT_DIR/utils"
 source "$UTILS_DIR/detect_os.bash"
 detect_os
 
+echo "---- Setup base ----"
+"$TASKS_DIR/base/install"
+
 echo "---- Install homebrew ----"
 "$TASKS_DIR/homebrew/install"
+
+source "$TASKS_DIR/homebrew/shellenv.bash"
+shellenv
 
 echo "---- Install apps by homebrew ----"
 "$TASKS_DIR/install_by_homebrew/install"

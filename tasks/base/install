@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+[ "${TRACE:-false}" = "true" ] && set -x
+
+SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+
+case "$OS_ID" in
+  Debian )
+    if ! type curl >/dev/null; then
+      sudo apt-get install -y curl
+    fi
+    ;;
+  *)
+    # nothing
+    ;;
+esac

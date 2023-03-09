@@ -5,13 +5,8 @@ set -euo pipefail
 
 SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
-if [ -d /opt/homebrew ]; then
-  eval "$(/opt/homebrew/bin/brew shellenv)"
-elif [ -d "$HOME/.linuxbrew" ]; then
-  eval "$("$HOME/.linuxbrew/bin/brew" shellenv)"
-elif [ -d /home/linuxbrew/.linuxbrew ]; then
-  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-fi
+source "$SCRIPT_DIR/shellenv.bash"
+shellenv
 
 if ! type brew >/dev/null; then
   # ref: https://brew.sh/index
@@ -20,7 +15,7 @@ fi
 
 case "$OS_ID" in
   Debian )
-    if ! type gcc >/dev/null 2>&1; then
+    if ! type gcc >/dev/null; then
       sudo apt-get install -y build-essential
     fi
     ;;
@@ -28,9 +23,3 @@ case "$OS_ID" in
     # nothing
     ;;
 esac
-
-if [ -e /opt/homebrew/bin/brew ]; then
-  eval "$(/opt/homebrew/bin/brew shellenv)"
-elif [ -e /home/linuxbrew/.linuxbrew/bin/brew ]; then
-  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-fi
