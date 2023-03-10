@@ -1,0 +1,5 @@
+---
+- name: Copy dircolors config
+  ansible.builtin.copy:
+    src: home/user/.config/dircolors/dark-256
+    dest: '{{ ansible_env.HOME }}/.config/dircolors/dark-256'

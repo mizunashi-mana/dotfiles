@@ -1,0 +1,5 @@
+---
+- name: Install vagrant
+  ansible.builtin.apt:
+    name: vagrant
+    state: present

@@ -1,0 +1,15 @@
+---
+- name: Install useful softwares
+  hosts: all
+
+  roles:
+    - ssh_conf
+    - dircolors
+    - git
+    - fish
+    - neovim
+    - vagrant
+    - docker
+    - direnv
+    - tex
+    - devtools

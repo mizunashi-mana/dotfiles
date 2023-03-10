@@ -16,7 +16,7 @@ fi
 case "$OS_ID" in
   Debian )
     if ! type gcc >/dev/null; then
-      sudo apt-get install -y build-essential
+      sudo apt install -y build-essential
     fi
     ;;
   *)

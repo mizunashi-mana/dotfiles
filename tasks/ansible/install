@@ -5,13 +5,6 @@ set -euo pipefail
 
 SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
-case "$OS_ID" in
-  Debian )
-    if ! type curl >/dev/null; then
-      sudo apt install -y curl
-    fi
-    ;;
-  *)
-    # nothing
-    ;;
-esac
+if ! type ansible-playbook >/dev/null; then
+  brew install ansible
+fi

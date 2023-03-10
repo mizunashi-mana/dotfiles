@@ -1,0 +1,47 @@
+---
+- name: Install fish
+  community.general.homebrew:
+    name: fish
+    state: present
+
+- name: Directory of fish config is available
+  ansible.builtin.file:
+    path: '{{ ansible_env.HOME }}/.config/fish'
+    state: directory
+    recurse: true
+
+- name: Directory of fish functions is available
+  ansible.builtin.file:
+    path: '{{ ansible_env.HOME }}/.config/fish/functions'
+    state: directory
+
+- name: Copy fish config
+  ansible.builtin.copy:
+    src: home/user/.config/fish/config.fish
+    dest: '{{ ansible_env.HOME }}/.config/fish/config.fish'
+
+- name: Copy fish_prompt function config
+  ansible.builtin.copy:
+    src: home/user/.config/fish/functions/fish_prompt.fish
+    dest: '{{ ansible_env.HOME }}/.config/fish/functions/fish_prompt.fish'
+
+- name: Copy fish_right_prompt function config
+  ansible.builtin.copy:
+    src: home/user/.config/fish/functions/fish_right_prompt.fish
+    dest: '{{ ansible_env.HOME }}/.config/fish/functions/fish_right_prompt.fish'
+
+- name: Copy fish_right_prompt function config
+  ansible.builtin.copy:
+    src: home/user/.config/fish/functions/fish_right_prompt.fish
+    dest: '{{ ansible_env.HOME }}/.config/fish/functions/fish_right_prompt.fish'
+
+- name: Get fish path
+  ansible.builtin.command:
+    cmd: which fish
+  register: fish_path_command_output
+  changed_when: false
+
+- name: Set default shell to fish
+  ansible.builtin.user:
+    name: '{{ ansible_env.USER }}'
+    shell: '{{ fish_path_command_output.stdout }}'
