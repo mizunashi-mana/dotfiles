@@ -19,7 +19,6 @@ brew "openjdk"
 
 # useful tools
 brew "asdf"
-brew "direnv"
 brew "ansible"
 brew "gettext"
 brew "jq"

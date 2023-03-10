@@ -1,3 +1,6 @@
+# useful apps
+brew "direnv"
+
 # cask apps
 cask "xquartz"
 cask "mactex"

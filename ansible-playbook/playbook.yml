@@ -1,0 +1,6 @@
+- name: Install useful softwares
+  hosts: all
+
+  tasks:
+    - name: Test
+      command: echo test

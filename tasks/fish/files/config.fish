@@ -78,7 +78,9 @@ if status --is-login || ! set -q FISH_LOGINED
   set -g fish_user_paths $HOME/.local/bin $fish_user_paths
 
   # direnv
-  eval (direnv hook fish)
+  if type direnv >/dev/null 2>&1
+    eval (direnv hook fish)
+  end
 
   # golang
   set -gx GOPATH $HOME/.go
