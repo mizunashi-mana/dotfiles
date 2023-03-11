@@ -3,3 +3,4 @@
   ansible.builtin.apt:
     name: direnv
     state: present
+  become: true

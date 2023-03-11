@@ -3,3 +3,4 @@
   ansible.builtin.apt:
     name: vagrant
     state: present
+  become: true

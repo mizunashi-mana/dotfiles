@@ -3,3 +3,4 @@
   ansible.builtin.apt:
     name: texlive
     state: present
+  become: true

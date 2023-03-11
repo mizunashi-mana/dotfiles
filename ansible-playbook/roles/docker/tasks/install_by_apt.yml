@@ -3,3 +3,4 @@
   ansible.builtin.apt:
     name: docker
     state: present
+  become: true
