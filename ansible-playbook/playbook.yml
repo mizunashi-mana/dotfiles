@@ -13,3 +13,4 @@
     - direnv
     - tex
     - devtools
+    - extra_apps

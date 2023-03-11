@@ -1,0 +1,4 @@
+---
+- name: Install by Homebrew
+  include_tasks: install_by_homebrew.yml
+  when: ansible_env.OS_ID == 'macOS'

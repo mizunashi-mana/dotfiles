@@ -1,0 +1,8 @@
+---
+- name: Install extra apps by Homebrew
+  community.general.homebrew_cask:
+    name:
+      - xquartz
+      - ipe
+      - zotero
+    state: present

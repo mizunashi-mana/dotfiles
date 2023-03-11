@@ -6,7 +6,7 @@ set -euo pipefail
 SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 FILES_DIR="$SCRIPT_DIR/files"
 
-
+# TODO: rewrite by ansible
 if ! [ -d "$HOME/.local/share/dein" ]; then
   sh -c "$(curl -fsSL 'https://raw.githubusercontent.com/Shougo/dein-installer.vim/master/installer.sh')"
 fi

@@ -34,6 +34,3 @@ ansible-playbook \
 
 echo "---- Install neovim additional ----"
 "$TASKS_DIR/neovim/install"
-
-echo "---- Install by homebrew ----"
-"$TASKS_DIR/install_by_homebrew/install"
