@@ -101,6 +101,7 @@ if status --is-login || ! set -q FISH_LOGINED
 
   # VirtualBox for WSL
   if test -d '/mnt/c/Program Files/Oracle/VirtualBox'
+    set -gx VAGRANT_WSL_ENABLE_WINDOWS_ACCESS 1
     set -g fish_user_paths $fish_user_paths '/mnt/c/Program Files/Oracle/VirtualBox'
   end
 
