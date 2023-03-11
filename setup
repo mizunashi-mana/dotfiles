@@ -25,7 +25,12 @@ echo "---- Install Ansible ----"
 
 echo "---- Play Ansible ----"
 ansible-galaxy collection install -r "$PLAYBOOK_DIR/collections/requirements.yml"
-ansible-playbook -vv --diff --inventory "$PLAYBOOK_DIR/inventories/local.yml" "$PLAYBOOK_DIR/playbook.yml"
+ansible-playbook \
+  --verbose \
+  --diff \
+  --ask-become-pass \
+  --inventory "$PLAYBOOK_DIR/inventories/local.yml" \
+  "$PLAYBOOK_DIR/playbook.yml"
 
 echo "---- Install neovim additional ----"
 "$TASKS_DIR/neovim/install"
