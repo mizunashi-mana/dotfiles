@@ -99,6 +99,11 @@ if status --is-login || ! set -q FISH_LOGINED
   # gnupg
   set -gx GNUPGHOME $XDG_CONFIG_HOME/gnupg
 
+  # VirtualBox for WSL
+  if test -d '/mnt/c/Program Files/Oracle/VirtualBox'
+    set -g fish_user_paths $fish_user_paths '/mnt/c/Program Files/Oracle/VirtualBox'
+  end
+
   # airport on macOS
   if test -e /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport
     alias airport '/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport'
