@@ -41,6 +41,12 @@
   register: fish_path_command_output
   changed_when: false
 
+- name: fish is available in shells
+  ansible.builtin.lineinfile:
+    path: /etc/shells
+    line: '{{ fish_path_command_output.stdout }}'
+  become: true
+
 - name: Set default shell to fish
   ansible.builtin.user:
     name: '{{ ansible_env.USER }}'
