@@ -11,6 +11,10 @@
     - vagrant
     - docker
     - direnv
-    - tex
     - devtools
     - extra_apps
+
+  tasks:
+    - ansible.builtin.include_role:
+        name: tex
+      when: install_tex

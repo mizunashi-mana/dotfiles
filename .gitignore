@@ -1,3 +1,5 @@
+ansible-playbook/group_vars/custom.yml
+
 # for Gitbook
 node_modules/
 _book/

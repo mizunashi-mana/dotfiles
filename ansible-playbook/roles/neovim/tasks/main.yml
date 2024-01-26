@@ -16,7 +16,8 @@
     state: directory
     recurse: true
 
-- name: Copy neovim config
-  ansible.builtin.copy:
-    src: home/user/.config/nvim/init.vim
-    dest: '{{ ansible_env.HOME }}/.config/nvim/init.vim'
+- name: Install AstroNvim
+  ansible.builtin.git:
+    repo: 'https://github.com/AstroNvim/AstroNvim'
+    dest: '{{ ansible_env.HOME }}/.config/nvim'
+    version: v3.42.0

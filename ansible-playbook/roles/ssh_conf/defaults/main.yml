@@ -1,9 +1,0 @@
----
-ssh_conf_hosts:
-  gitlab.com:
-    host_name: gitlab.com
-    user: git
-
-  github.com:
-    host_name: github.com
-    user: git

@@ -31,6 +31,3 @@ ansible-playbook \
   --ask-become-pass \
   --inventory "$PLAYBOOK_DIR/inventories/local.yml" \
   "$PLAYBOOK_DIR/playbook.yml"
-
-echo "---- Install neovim additional ----"
-"$TASKS_DIR/neovim/install"
