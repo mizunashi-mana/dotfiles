@@ -20,6 +20,9 @@
 # virtualenv
 .venv
 
+# asdf
+.tool-versions
+
 # Mac ignores
 
 ## general mac temporary files
