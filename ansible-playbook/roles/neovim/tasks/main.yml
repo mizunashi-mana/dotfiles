@@ -4,18 +4,6 @@
     name: neovim
     state: present
 
-- name: Directory of neovim config is available
-  ansible.builtin.file:
-    path: '{{ ansible_env.HOME }}/.config/nvim'
-    state: directory
-    recurse: true
-
-- name: Directory of neovim var is available
-  ansible.builtin.file:
-    path: '{{ ansible_env.HOME }}/.local/var/nvim'
-    state: directory
-    recurse: true
-
 - name: Install AstroNvim
   ansible.builtin.git:
     repo: 'https://github.com/AstroNvim/AstroNvim'

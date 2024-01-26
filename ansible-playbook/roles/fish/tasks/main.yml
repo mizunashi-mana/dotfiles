@@ -51,3 +51,11 @@
   ansible.builtin.user:
     name: '{{ ansible_env.USER }}'
     shell: '{{ fish_path_command_output.stdout }}'
+  failed_when: false
+  register: fish_result_of_default_shell_settings
+
+- name: Set default shell to fish (fallback)
+  ansible.builtin.command:
+    cmd: 'chsh -s {{ fish_path_command_output.stdout }} {{ ansible_env.USER }}'
+  when: fish_result_of_default_shell_settings.rc != 0
+  become: true
