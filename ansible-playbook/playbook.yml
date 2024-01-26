@@ -12,6 +12,7 @@
     - docker
     - direnv
     - devtools
+    - awscli
     - extra_apps
 
   tasks:

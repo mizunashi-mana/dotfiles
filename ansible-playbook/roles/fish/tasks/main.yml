@@ -57,5 +57,7 @@
 - name: Set default shell to fish (fallback)
   ansible.builtin.command:
     cmd: 'chsh -s {{ fish_path_command_output.stdout }} {{ ansible_env.USER }}'
-  when: fish_result_of_default_shell_settings.rc != 0
+  when: |
+    fish_result_of_default_shell_settings.rc is defined
+    and fish_result_of_default_shell_settings.rc != 0
   become: true
