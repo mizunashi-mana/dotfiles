@@ -6,9 +6,17 @@ set -euo pipefail
 SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
 case "$OS_ID" in
-  Debian )
-    if ! type curl >/dev/null; then
-      sudo apt install -y curl
+  Debian|Ubuntu )
+    if ! type curl >/dev/null 2>&1; then
+      sudo apt-get install -y curl
+    fi
+    if [ "$OS_ID" = 'Ubuntu' ] && ! type add-apt-repository >/dev/null 2>&1; then
+      sudo apt-get install -y software-properties-common
+    fi
+    ;;
+  macOS )
+    if ! xcode-select --print-path >/dev/null 2>&1; then
+      xcode-select --install
     fi
     ;;
   *)

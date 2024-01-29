@@ -1,4 +1,4 @@
-function shellenv() {
+function homebrew_shellenv() {
   if [ -d /opt/homebrew ]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
   elif [ -d "$HOME/.linuxbrew" ]; then

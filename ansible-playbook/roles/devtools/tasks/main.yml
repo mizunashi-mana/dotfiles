@@ -1,32 +1,4 @@
 ---
-- name: Install common utilities
-  community.general.homebrew:
-    name:
-      - arp-scan
-      - ghostscript
-      - nmap
-      - tmux
-      - openjdk
-    state: present
-
-- name: Install useful utilities
-  community.general.homebrew:
-    name:
-      - asdf
-      - gettext
-      - nkf
-      - jq
-      - go
-      - w3m
-      - gradle
-      - sbt
-      - poppler
-      - helm
-      - ghcup
-      - poetry
-      - graphviz
-      - imagemagick
-      - gnuplot
-      - rustup-init
-      - ffmpeg
-    state: present
+- name: Install by Homebrew
+  include_tasks: install_by_homebrew.yml
+  when: ansible_env.USE_HOMEBREW == 'true'

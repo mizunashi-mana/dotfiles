@@ -1,8 +1,22 @@
 ---
-- name: Install fish
-  community.general.homebrew:
-    name: fish
-    state: present
+- name: Check install by Homebrew
+  set_fact:
+    fish_install_by: install_by_homebrew.yml
+  when: ansible_env.USE_HOMEBREW == 'true' and ansible_env.OS_ID == 'macOS'
+
+- name: Check install by apt
+  set_fact:
+    fish_install_by: install_by_apt.yml
+  when: |
+    fish_install_by is not defined
+    and (
+      ansible_env.OS_ID == 'Debian'
+      or ansible_env.OS_ID == 'Ubuntu'
+    )
+
+- name: Install
+  include_tasks: '{{ fish_install_by }}'
+  when: fish_install_by is defined
 
 - name: Directory of fish config is available
   ansible.builtin.file:

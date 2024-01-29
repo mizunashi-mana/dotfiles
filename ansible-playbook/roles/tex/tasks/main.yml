@@ -1,8 +1,19 @@
 ---
-- name: Install by Homebrew
-  include_tasks: install_by_homebrew.yml
-  when: ansible_env.OS_ID == 'macOS'
+- name: Check install by Homebrew
+  set_fact:
+    tex_install_by: install_by_homebrew.yml
+  when: ansible_env.USE_HOMEBREW == 'true' and ansible_env.OS_ID == 'macOS'
 
-- name: Install by Debian
-  include_tasks: install_by_apt.yml
-  when: ansible_env.OS_ID == 'Debian'
+- name: Check install by apt
+  set_fact:
+    tex_install_by: install_by_apt.yml
+  when: |
+    tex_install_by is not defined
+    and (
+      ansible_env.OS_ID == 'Debian'
+      or ansible_env.OS_ID == 'Ubuntu'
+    )
+
+- name: Install
+  include_tasks: '{{ tex_install_by }}'
+  when: tex_install_by is defined

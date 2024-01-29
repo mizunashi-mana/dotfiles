@@ -1,0 +1,13 @@
+---
+- name: Install base utilities
+  community.general.homebrew:
+    name:
+      - coreutils
+      - inetutils
+      - gnu-sed
+      - gnu-getopt
+      - gnupg
+      - make
+      - gcc
+      - wget
+    state: present

@@ -1,0 +1,18 @@
+---
+- name: Copy gpg key
+  ansible.builtin.copy:
+    src: usr/share/keyrings/fish-ppa-keyring.gpg
+    dest: /usr/share/keyrings/fish-ppa-keyring.gpg
+  become: true
+
+- name: Install fish repository
+  ansible.builtin.apt_repository:
+    repo: 'deb [signed-by=/usr/share/keyrings/fish-ppa-keyring.gpg] https://ppa.launchpadcontent.net/fish-shell/release-3/ubuntu {{ ansible_env.COMPATIBLE_UBUNTU_CODENAME }} main'
+    state: present
+  become: true
+
+- name: Install
+  ansible.builtin.apt:
+    name: fish
+    state: present
+  become: true

@@ -1,0 +1,11 @@
+---
+- name: Install aws-cli
+  community.general.homebrew:
+    name:
+      - awscli
+    state: present
+
+- name: Install session-manager-plugin
+  community.general.homebrew_cask:
+    name: session-manager-plugin
+    state: present

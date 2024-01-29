@@ -1,10 +1,7 @@
 ---
-- name: Install git
-  community.general.homebrew:
-    name:
-      - git
-      - git-lfs
-    state: present
+- name: Install by Homebrew
+  include_tasks: install_by_homebrew.yml
+  when: ansible_env.USE_HOMEBREW == 'true'
 
 - name: Directory of git config is available
   ansible.builtin.file:

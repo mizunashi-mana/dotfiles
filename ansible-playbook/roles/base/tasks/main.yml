@@ -1,13 +1,4 @@
 ---
-- name: Install base utilities
-  community.general.homebrew:
-    name:
-      - coreutils
-      - inetutils
-      - gnu-sed
-      - gnu-getopt
-      - gnupg
-      - make
-      - gcc
-      - wget
-    state: present
+- name: Install by Homebrew
+  include_tasks: install_by_homebrew.yml
+  when: ansible_env.USE_HOMEBREW == 'true'
