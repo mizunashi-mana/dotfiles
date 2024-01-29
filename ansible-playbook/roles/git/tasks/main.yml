@@ -2,7 +2,7 @@
 - name: Check install by Homebrew
   set_fact:
     git_install_by: install_by_homebrew.yml
-  when: ansible_env.USE_HOMEBREW == 'true' and ansible_env.OS_ID == 'macOS'
+  when: ansible_env.USE_HOMEBREW == 'true'
 
 - name: Check install by apt
   set_fact:

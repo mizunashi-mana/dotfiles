@@ -1,0 +1,10 @@
+---
+- name: Install base utilities
+  ansible.builtin.apt:
+    name:
+    - build-essential
+    - make
+    - wget
+    - gnupg
+    state: present
+  become: true
