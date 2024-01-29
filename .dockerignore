@@ -2,3 +2,6 @@
 .editorconfig
 .git
 .gitignore
+storage
+docker-compose.yml
+Dockerfile

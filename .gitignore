@@ -1,4 +1,6 @@
-ansible-playbook/group_vars/custom.yml
+/ansible-playbook/group_vars/custom.yml
+/storage/*
+!/storage/.keep
 
 # for Gitbook
 node_modules/

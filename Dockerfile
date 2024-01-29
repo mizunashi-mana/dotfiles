@@ -45,4 +45,5 @@ RUN <<EOT
         /usr/share/dotfiles/setup
 EOT
 
-CMD ["/usr/bin/env", "fish", "-l"]
+ENTRYPOINT [ "/usr/bin/env" ]
+CMD ["fish", "-l"]
