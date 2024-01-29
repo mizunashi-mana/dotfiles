@@ -6,6 +6,9 @@ set -euo pipefail
 SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
 FILES_DIR="$SCRIPT_DIR/files"
+UTILS_DIR="$SCRIPT_DIR/../../utils"
+
+source "$UTILS_DIR/apt.bash"
 
 if ! type ansible-playbook >/dev/null; then
   if [ "$USE_HOMEBREW" = 'true' ]; then
@@ -17,11 +20,11 @@ if ! type ansible-playbook >/dev/null; then
         sudo cp "$FILES_DIR/usr/share/keyrings/ansible-ppa-keyring.gpg" /usr/share/keyrings/ansible-ppa-keyring.gpg
         echo "deb [signed-by=/usr/share/keyrings/ansible-ppa-keyring.gpg] http://ppa.launchpad.net/ansible/ansible/ubuntu $COMPATIBLE_UBUNTU_CODENAME main" \
           | sudo tee /etc/apt/sources.list.d/ansible.list
-        sudo apt update && sudo apt install -y ansible
+        apt_update && apt_install ansible
         ;;
       Ubuntu )
-        sudo add-apt-repository --yes --update ppa:ansible/ansible
-        sudo apt install -y ansible
+        apt_add_repository ppa:ansible/ansible
+        apt_install ansible
         ;;
       *)
         echo "Unsupported OS: $OS_ID" >&2
