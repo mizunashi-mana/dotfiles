@@ -1,0 +1,18 @@
+---
+- name: Copy gpg key
+  ansible.builtin.copy:
+    src: usr/share/keyrings/git-ppa-keyring.gpg
+    dest: /usr/share/keyrings/git-ppa-keyring.gpg
+  become: true
+
+- name: Install git repository
+  ansible.builtin.apt_repository:
+    repo: 'deb [signed-by=/usr/share/keyrings/git-ppa-keyring.gpg] https://ppa.launchpadcontent.net/git-core/ppa/ubuntu {{ ansible_env.COMPATIBLE_UBUNTU_CODENAME }} main'
+    state: present
+  become: true
+
+- name: Install
+  ansible.builtin.apt:
+    name: git
+    state: present
+  become: true
