@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+[ "${TRACE:-}" = 'true' ] && set -x
+
+RUNNING_SHELL="${RUNNING_SHELL:-"$(which bash)"}"
+OUTPUT_FILE="${OUTPUT_FILE:-"running-history-$(date +%Y%m%d%H%M%S).log"}"
+
+exec env SHELL=$RUNNING_SHELL script "$OUTPUT_FILE"

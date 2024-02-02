@@ -1,0 +1,24 @@
+#!/usr/bin/env python3
+
+import unicodedata
+import argparse
+
+def show(input_string):
+    for index, ch in enumerate(input_string):
+        print('{index:4d} 0x{codepoint:06x} {category} `{char}` {name}'.format(
+            index=index,
+            codepoint=ord(ch),
+            char=ch,
+            name=unicodedata.name(ch),
+            category=unicodedata.category(ch),
+        ))
+
+def main():
+    parser = argparse.ArgumentParser(
+        description='Show details of unicode string'
+    )
+    parser.add_argument('string', help='string to check')
+    args = parser.parse_args()
+    show(args.string)
+
+main()
