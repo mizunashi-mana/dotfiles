@@ -83,7 +83,7 @@
 
   dclean = clean -ndx
 
-  fm = ! git fetch upstream "${1:-main}" && git rebase "upstream/${1:-main}" "${1:-main}" && git push --set-upstream origin "${1:-main}"
+  fm = ! git fetch "$(git rev-parse --abbrev-ref upstream/HEAD | sed 's|upstream/||')" && git rebase "$(git rev-parse --abbrev-ref upstream/HEAD)" "$(git rev-parse --abbrev-ref origin/HEAD)" && git push --set-upstream origin "$(git rev-parse --abbrev-ref origin/HEAD | sed 's|origin/||')"
   purge = ! git branch -vv | grep -v '^\\*' | grep ': gone]' | awk '{ print $1 }' | xargs -n 1 git branch -d
   purge-force = ! git branch -vv | grep -v '^\\*' | grep ': gone]' | awk '{ print $1 }' | xargs -n 1 git branch -D
 

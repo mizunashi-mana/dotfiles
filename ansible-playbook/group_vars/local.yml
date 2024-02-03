@@ -16,3 +16,7 @@ ssh_conf_hosts:
   github.com:
     host_name: github.com
     user: git
+
+  codeberg.org:
+    host_name: codeberg.org
+    user: git
