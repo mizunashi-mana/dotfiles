@@ -30,6 +30,8 @@ if [ "$USE_HOMEBREW" = 'true' ]; then
   homebrew_shellenv
 fi
 
+"$TASKS_DIR/nix/install"
+
 echo "---- Install Ansible ----"
 "$TASKS_DIR/ansible/install"
 

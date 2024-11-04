@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+[ "${TRACE:-false}" = "true" ] && set -x
+
+SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+
+if ! type nix >/dev/null; then
+  # ref: https://nixos.org/download/
+  /bin/bash -c "$(curl -fsSL https://nixos.org/nix/install)"
+fi
