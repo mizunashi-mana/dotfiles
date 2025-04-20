@@ -68,12 +68,12 @@
             };
           };
 
-          users = {
-            users.${username}.home = homedir;
-          };
-
           environment = {
             systemPackages = [
+              pkgs.fish
+            ];
+
+            shells = [
               pkgs.fish
             ];
           };
@@ -94,6 +94,14 @@
               "vagrant"
               "zotero"
             ];
+          };
+
+          users = {
+            users.${username} = {
+              home = homedir;
+              shell = pkgs.fish;
+              ignoreShellProgramCheck = true;
+            };
           };
         }
         home-manager.darwinModules.home-manager
@@ -120,16 +128,25 @@
                 # theme
                 set fish_theme yimmy
 
-                # load nix profile
-                if test -d /etc/profiles/per-user/(whoami)/bin
-                  fish_add_path /etc/profiles/per-user/(whoami)/bin
+                # load global profile
+                for line in (bash -c 'source /etc/bashrc && env')
+                  set -l kv (string split "=" $line)
+                  if contains $kv[1] PATH XDG_CONFIG_HOME XDG_DATA_DIRS XDG_CONFIG_DIRS TERMINFO_DIRS
+                    set -gx $kv[1] $kv[2]
+                  end
                 end
 
-                # dircolor
-                set -l dircolor_config $HOME/.config/dircolors/dark-256
-                if test -f $dircolor_config
-                  eval (dircolors -c $dircolor_config | sed 's|>&/dev/null$||')
+                # load homebrew
+                if test -d /opt/homebrew
+                  eval (/opt/homebrew/bin/brew shellenv)
+                else if test -d $HOME/.linuxbrew
+                  eval ($HOME/.linuxbrew/bin/brew shellenv)
+                else if test -d /home/linuxbrew/.linuxbrew
+                  eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
                 end
+
+                # add local path
+                set -g fish_user_paths $HOME/.local/bin $fish_user_paths
               '';
             };
 
@@ -139,6 +156,16 @@
               #  source = ./fish_functions;
               #  recursive = true;
               #};
+            };
+
+            programs.fish = {
+              interactiveShellInit = ''
+                # dircolor
+                set -l dircolor_config $HOME/.config/dircolors/dark-256
+                if test -f $dircolor_config
+                  eval (dircolors -c $dircolor_config | sed 's|>&/dev/null$||')
+                end
+              '';
             };
 
             programs.awscli = {
