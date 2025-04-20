@@ -1,5 +1,0 @@
----
-- name: Install direnv
-  community.general.homebrew:
-    name: direnv
-    state: present

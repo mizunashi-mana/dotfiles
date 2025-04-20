@@ -25,4 +25,3 @@ function fish_prompt --description "Write out prompt"
 
   echo -n -s "($USER) $status_face $suffix "
 end
-

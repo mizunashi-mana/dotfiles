@@ -5,7 +5,7 @@ set -euo pipefail
 
 SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
-if ! type nix >/dev/null; then
+if ! type nix >/dev/null 2>&1; then
   # ref: https://nixos.org/download/
   /bin/bash -c "$(curl -fsSL https://nixos.org/nix/install)"
 fi

@@ -1,5 +1,0 @@
----
-- name: Install MacTeX
-  community.general.homebrew_cask:
-    name: mactex
-    state: present
