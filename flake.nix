@@ -85,12 +85,6 @@
               autoUpdate = true;
             };
 
-            brews = [
-              "neovim"
-              "git"
-              "git-lfs"
-            ];
-
             casks = [
               "aerospace"
               "docker"
@@ -220,6 +214,11 @@
               pkgs.wget
               pkgs.w3m
               pkgs.z3
+
+              # TODO: Move to home-manager configs
+              pkgs.git
+              pkgs.git-lfs
+              pkgs.neovim
             ];
           };
         }
