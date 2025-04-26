@@ -54,5 +54,8 @@
     (import ./emacs {
       inherit pkgs;
     })
+    (import ./ruby {
+      inherit pkgs;
+    })
   ];
 }

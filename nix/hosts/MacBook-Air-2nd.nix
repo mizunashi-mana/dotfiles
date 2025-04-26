@@ -41,6 +41,11 @@ in {
             enable = true;
           };
 
+          programs.git = {
+            userName = "Mizunashi Mana";
+            userEmail = "contact@mizunashi.work";
+          };
+
           imports = let
             basicPrograms = import ../home-manager/programs {
               inherit pkgs;

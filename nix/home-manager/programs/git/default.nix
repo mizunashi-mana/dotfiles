@@ -1,5 +1,4 @@
 { pkgs }: {
-  /*
   programs.git = {
     enable = true;
     lfs.enable = true;
@@ -14,10 +13,18 @@
         side-by-side = true;
       };
     };
-  };
-  */
 
-  home.packages = [
-    pkgs.git
-  ];
+    includes = [
+      {
+        path = "./conf.d/gitconfig";
+      }
+    ];
+  };
+
+  xdg.configFile = {
+    "git/conf.d/" = {
+      source = ./conf.d;
+      recursive = true;
+    };
+  };
 }
