@@ -6,6 +6,7 @@
 
 # direnv
 .envrc
+.direnv/
 
 # IDEA
 .idea
