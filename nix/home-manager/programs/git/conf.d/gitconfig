@@ -79,3 +79,6 @@
   purge-force = ! git branch -vv | grep -v '^\\*' | grep ': gone]' | awk '{ print $1 }' | xargs -n 1 git branch -D
 
   pushuo = ! git push --set-upstream origin $(git current-branch)
+
+  current-branch = ! git branch | grep -e '^\\*' | cut -d ' ' -f2
+  upstream-remote = remote show
