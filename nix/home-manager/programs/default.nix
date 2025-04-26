@@ -15,6 +15,9 @@
     (import ./dircolors {
       inherit pkgs;
     })
+    (import ./bash {
+      inherit pkgs;
+    })
     (import ./fish {
       inherit pkgs;
     })

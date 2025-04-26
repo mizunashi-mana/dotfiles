@@ -47,20 +47,32 @@ in {
           };
 
           imports = let
+            basicOptions = import ../home-manager/options {
+              inherit pkgs;
+            };
             basicPrograms = import ../home-manager/programs {
               inherit pkgs;
             };
-          in (basicPrograms.imports ++ [
-            (import ../home-manager/programs/aerospace {
-              inherit pkgs;
-            })
-            (import ../home-manager/programs/texlive {
-              inherit pkgs;
-            })
-            (import ../home-manager/programs/vscode {
-              inherit pkgs;
-            })
-          ]);
+
+            options = (basicOptions.imports ++ [
+              {
+                home.sessionVariables = {
+                  EDITOR = "nvim";
+                };
+              }
+            ]);
+            programs = (basicPrograms.imports ++ [
+              (import ../home-manager/programs/aerospace {
+                inherit pkgs;
+              })
+              (import ../home-manager/programs/texlive {
+                inherit pkgs;
+              })
+              (import ../home-manager/programs/vscode {
+                inherit pkgs;
+              })
+            ]);
+          in (programs ++ options);
         };
       }
     ];
