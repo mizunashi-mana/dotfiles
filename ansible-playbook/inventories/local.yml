@@ -1,9 +1,0 @@
----
-all:
-  children:
-    local:
-      children:
-        custom:
-          hosts:
-            locahost:
-              ansible_connection: local

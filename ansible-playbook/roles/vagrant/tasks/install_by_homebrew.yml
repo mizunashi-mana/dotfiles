@@ -1,5 +1,0 @@
----
-- name: Install vagrant
-  community.general.homebrew_cask:
-    name: vagrant
-    state: present

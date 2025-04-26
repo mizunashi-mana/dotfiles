@@ -1,6 +1,0 @@
----
-- name: Install TeXlive
-  ansible.builtin.apt:
-    name: texlive
-    state: present
-  become: true

@@ -1,0 +1,84 @@
+[init]
+  defaultBranch = main
+
+[core]
+  excludesfile = ~/.config/git/conf.d/global.gitignore
+
+[color]
+  ui          = auto
+  status      = auto
+  diff        = auto
+  branch      = auto
+  interactive = auto
+  grep        = auto
+
+[diff]
+  algorithm = patience
+  compactionHeuristic = true
+
+[help]
+  autocorrect = -1
+
+[push]
+  default = simple
+
+[pull]
+  rebase = merges
+
+[rebase]
+  autosquash = true
+
+[alias]
+  rh = reset --hard
+
+  co = checkout
+  cb = checkout -b
+
+  ca = commit -a
+  ce = commit -v --amend
+  ci = commit -a -m
+  cm = commit -m
+
+  cp = cherry-pick
+
+  stat = status
+  st = status --branch --short
+  si = status --ignored --short
+
+  branches = branch -a
+  remotes  = remote -v
+  tracks   = branch -vv
+  tags     = tag -l
+
+  lg = log --graph --date=short --pretty=format:'%Cgreen%h %cd %Cblue%cn %Creset%s'
+  lgst = log --name-status -5
+  lgss = log --shortstat -5
+  graph = log --graph --all --decorate --abbrev-commit --branches --date=relative --pretty=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)— %an%C(reset)%C(bold yellow)%d%C(reset)'
+
+  fp = fetch --prune
+
+  dm = diff master
+  du = ! git diff $(git upstream-remote)/$(git current-branch)
+  dh = diff --histogram
+  dw = diff --word-diff
+  dc = diff --cached
+  d1 = diff HEAD~
+  d2 = diff HEAD~2
+  d3 = diff HEAD~3
+  d4 = diff HEAD~4
+  d5 = diff HEAD~5
+  d6 = diff HEAD~6
+  d7 = diff HEAD~7
+  d8 = diff HEAD~8
+  d9 = diff HEAD~9
+
+  wc = whatchanged
+
+  fm = ! git fetch "$(git rev-parse --abbrev-ref upstream/HEAD | sed 's|upstream/||')" && git rebase "$(git rev-parse --abbrev-ref upstream/HEAD)" "$(git rev-parse --abbrev-ref origin/HEAD)" && git push --set-upstream origin "$(git rev-parse --abbrev-ref origin/HEAD | sed 's|origin/||')"
+  purge = ! git branch -vv | grep -v '^\\*' | grep ': gone]' | awk '{ print $1 }' | xargs -n 1 git branch -d
+  purge-force = ! git branch -vv | grep -v '^\\*' | grep ': gone]' | awk '{ print $1 }' | xargs -n 1 git branch -D
+
+  pushuo = ! git push --set-upstream origin $(git current-branch)
+
+  current-branch = ! git branch | grep -e '^\\*' | cut -d ' ' -f2
+  upstream-remote = remote show

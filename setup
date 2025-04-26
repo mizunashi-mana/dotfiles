@@ -5,45 +5,19 @@ set -euo pipefail
 
 SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 TASKS_DIR="$SCRIPT_DIR/tasks"
-UTILS_DIR="$SCRIPT_DIR/utils"
-PLAYBOOK_DIR="$SCRIPT_DIR/ansible-playbook"
 
-source "$UTILS_DIR/detect_os.bash"
-detect_os
-echo "Detected OS: $OS_ID ($OS_VERSION)"
+"$TASKS_DIR/nix/install"
 
-source "$UTILS_DIR/detect_arch.bash"
-detect_arch
-echo "Detected ARCH: $ARCH"
+HOSTNAME_SHORT="$(hostname --short)"
 
-echo "---- Setup base ----"
-"$TASKS_DIR/base/install"
-
-echo "---- Install homebrew ----"
-source "$TASKS_DIR/homebrew/supported.bash"
-homebrew_supported
-
-if [ "$USE_HOMEBREW" = 'true' ]; then
-  "$TASKS_DIR/homebrew/install"
-
-  source "$TASKS_DIR/homebrew/shellenv.bash"
-  homebrew_shellenv
-fi
-
-echo "---- Install Ansible ----"
-"$TASKS_DIR/ansible/install"
-
-echo "---- Play Ansible ----"
-ansible-galaxy collection install -r "$PLAYBOOK_DIR/collections/requirements.yml"
-
-ANSIBLE_ARGS=(
-  --verbose
-  --diff
-  --inventory "$PLAYBOOK_DIR/inventories/local.yml"
-)
-if [ -z "${NONINTERACIVE:-}" ]; then
-  ANSIBLE_ARGS+=(--ask-become-pass)
-fi
-ansible-playbook \
-  "${ANSIBLE_ARGS[@]}" \
-  "$PLAYBOOK_DIR/playbook.yml"
+case "$HOSTNAME_SHORT" in
+  "macbook-air-2nd")
+    nix run nix-darwin \
+      --extra-experimental-features 'flakes nix-command' \
+      -- switch --flake ".#$HOSTNAME_SHORT" --show-trace
+    ;;
+  *)
+    echo "Unknown host."
+    exit 1
+    ;;
+esac

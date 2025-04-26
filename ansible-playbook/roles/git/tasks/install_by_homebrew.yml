@@ -1,7 +1,0 @@
----
-- name: Install git
-  community.general.homebrew:
-    name:
-      - git
-      - git-lfs
-    state: present
