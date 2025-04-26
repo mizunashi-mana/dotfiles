@@ -3,9 +3,9 @@
   home-manager,
   nix-darwin,
 }: let
-  hostname = "macbook-air-2nd";
+  hostname = "opl2401-013";
   system = "aarch64-darwin";
-  username = "workuser";
+  username = "nishiyama_shun";
   homedir = "/Users/${username}";
 
   pkgs = import nixpkgs {
@@ -23,9 +23,7 @@ in {
         inherit pkgs username homedir;
       })
       (import ../nix-darwin/homebrew-pkgs.nix {
-        extraCasks = [
-          "discord"
-        ];
+        extraCasks = [];
       })
       home-manager.darwinModules.home-manager
       {
@@ -38,8 +36,8 @@ in {
           home.homeDirectory = homedir;
 
           programs.git = {
-            userName = "Mizunashi Mana";
-            userEmail = "contact@mizunashi.work";
+            userName = "Nishiyama Shun";
+            userEmail = "nishiyama_shun@openlogi.com";
           };
 
           imports = let
@@ -53,9 +51,6 @@ in {
             options = basicOptions.imports;
             programs = (basicPrograms.imports ++ [
               (import ../home-manager/programs/aerospace {
-                inherit pkgs;
-              })
-              (import ../home-manager/programs/texlive {
                 inherit pkgs;
               })
               (import ../home-manager/programs/vscode {

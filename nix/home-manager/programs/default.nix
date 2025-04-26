@@ -1,5 +1,10 @@
 { pkgs }: {
   imports = [
+    ({
+      programs.home-manager = {
+        enable = true;
+      };
+    })
     (import ./coreutils {
       inherit pkgs;
     })

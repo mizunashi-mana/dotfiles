@@ -21,5 +21,14 @@ for line in (bash -c 'source /etc/bashrc && env')
   end
 end
 
+# brew setup
+if test -d /opt/homebrew
+  eval (/opt/homebrew/bin/brew shellenv)
+else if test -d $HOME/.linuxbrew
+  eval ($HOME/.linuxbrew/bin/brew shellenv)
+else if test -d /home/linuxbrew/.linuxbrew
+  eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+end
+
 # add local path
 set -g fish_user_paths $HOME/.local/bin $fish_user_paths

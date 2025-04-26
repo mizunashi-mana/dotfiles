@@ -8,10 +8,14 @@ TASKS_DIR="$SCRIPT_DIR/tasks"
 
 "$TASKS_DIR/nix/install"
 
-HOSTNAME_SHORT="$(hostname --short)"
+if hostname --short &> /dev/null; then
+  HOSTNAME_SHORT="$(hostname --short)"
+else
+  HOSTNAME_SHORT="$(hostname -s | tr '[:upper:]' '[:lower:]')"
+fi
 
 case "$HOSTNAME_SHORT" in
-  "macbook-air-2nd")
+  'macbook-air-2nd' | 'opl2401-013')
     nix run nix-darwin \
       --extra-experimental-features 'flakes nix-command' \
       -- switch --flake ".#$HOSTNAME_SHORT" --show-trace
