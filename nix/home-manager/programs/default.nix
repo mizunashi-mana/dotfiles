@@ -45,13 +45,13 @@
     (import ./tmux {
       inherit pkgs;
     })
+    (import ./neovim {
+      inherit pkgs;
+    })
     (import ./zoxide {
       inherit pkgs;
     })
     (import ./awscli {
-      inherit pkgs;
-    })
-    (import ./emacs {
       inherit pkgs;
     })
     (import ./ruby {
