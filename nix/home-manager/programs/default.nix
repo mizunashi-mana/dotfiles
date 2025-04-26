@@ -65,5 +65,8 @@
     (import ./ruby {
       inherit pkgs;
     })
+    (import ./password-store {
+      inherit pkgs;
+    })
   ];
 }
