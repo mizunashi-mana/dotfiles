@@ -1,4 +1,4 @@
-{ extraCasks }: {
+{ extraBrews, extraCasks }: {
   homebrew = {
     enable = true;
 
@@ -6,6 +6,8 @@
       autoUpdate = true;
       upgrade = true;
     };
+
+    brews = extraBrews;
 
     casks = [
       "chatgpt"

@@ -23,6 +23,9 @@ in {
         inherit pkgs username homedir;
       })
       (import ../nix-darwin/homebrew-pkgs.nix {
+        extraBrews = [
+          "git-flow-avh"
+        ];
         extraCasks = [];
       })
       home-manager.darwinModules.home-manager

@@ -23,6 +23,7 @@ in {
         inherit pkgs username homedir;
       })
       (import ../nix-darwin/homebrew-pkgs.nix {
+        extraBrews = [];
         extraCasks = [
           "discord"
         ];
