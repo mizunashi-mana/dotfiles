@@ -65,6 +65,12 @@
     (import ./ruby {
       inherit pkgs;
     })
+    (import ./python {
+      inherit pkgs;
+    })
+    (import ./rust {
+      inherit pkgs;
+    })
     (import ./password-store {
       inherit pkgs;
     })
