@@ -4,6 +4,7 @@
 
     profiles.default = {
       extensions = [
+        pkgs.vscode-extensions.dbaeumer.vscode-eslint
         pkgs.vscode-extensions.editorconfig.editorconfig
         pkgs.vscode-extensions.github.copilot
         pkgs.vscode-extensions.github.copilot-chat
@@ -15,6 +16,8 @@
         pkgs.vscode-extensions.ms-toolsai.jupyter
         pkgs.vscode-extensions.ms-python.python
         pkgs.vscode-extensions.ms-kubernetes-tools.vscode-kubernetes-tools
+        pkgs.vscode-extensions.ms-vscode.makefile-tools
+        pkgs.vscode-extensions.redhat.vscode-yaml
       ];
     };
   };
