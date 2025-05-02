@@ -77,5 +77,8 @@
     (import ./password-store {
       inherit pkgs;
     })
+    (import ./android-tools {
+      inherit pkgs;
+    })
   ];
 }
