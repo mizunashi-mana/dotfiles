@@ -59,6 +59,9 @@
     (import ./zoxide {
       inherit pkgs;
     })
+    (import ./fzf {
+      inherit pkgs;
+    })
     (import ./awscli {
       inherit pkgs;
     })
