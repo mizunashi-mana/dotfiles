@@ -16,6 +16,7 @@
       "google-chrome"
       "ipe"
       "sequel-ace"
+      "skim"
       "vagrant"
       "zotero"
     ] ++ extraCasks;
