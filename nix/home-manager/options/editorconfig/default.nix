@@ -1,4 +1,4 @@
-{ pkgs }: {
+{ pkgs, ... }: {
   editorconfig = {
     enable = true;
     settings = {

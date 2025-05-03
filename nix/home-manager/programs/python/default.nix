@@ -1,4 +1,4 @@
-{ pkgs }: {
+{ pkgs, ... }: {
   programs.poetry = {
     enable = true;
     settings = {

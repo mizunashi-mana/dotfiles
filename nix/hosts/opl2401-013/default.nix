@@ -49,13 +49,13 @@ in {
 
           imports = let
             basicOptions = import "${nix-root-dir}/home-manager/options" {
-              inherit pkgs;
+              inherit pkgs system;
             };
             basicPrograms = import "${nix-root-dir}/home-manager/programs" {
-              inherit pkgs;
+              inherit pkgs system;
             };
             extraGuiPrograms = import "${nix-root-dir}/home-manager/programs/extra-gui.nix" {
-              inherit pkgs;
+              inherit pkgs system;
             };
 
             options = basicOptions.imports;

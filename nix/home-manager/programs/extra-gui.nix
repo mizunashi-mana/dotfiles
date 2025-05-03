@@ -1,10 +1,10 @@
-{ pkgs }: {
+{ pkgs, system }: {
   imports = [
     (import ./aerospace {
-      inherit pkgs;
+      inherit pkgs system;
     })
     (import ./vscode {
-      inherit pkgs;
+      inherit pkgs system;
     })
   ];
 }

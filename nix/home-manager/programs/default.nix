@@ -1,4 +1,4 @@
-{ pkgs }: {
+{ pkgs, system }: {
   imports = [
     ({
       programs.home-manager = {
@@ -6,82 +6,82 @@
       };
     })
     (import ./coreutils {
-      inherit pkgs;
+      inherit pkgs system;
     })
     (import ./netutils {
-      inherit pkgs;
+      inherit pkgs system;
     })
     (import ./calcutils {
-      inherit pkgs;
+      inherit pkgs system;
     })
     (import ./mediautils {
-      inherit pkgs;
+      inherit pkgs system;
     })
     (import ./dircolors {
-      inherit pkgs;
+      inherit pkgs system;
     })
     (import ./bash {
-      inherit pkgs;
+      inherit pkgs system;
     })
     (import ./fish {
-      inherit pkgs;
+      inherit pkgs system;
     })
     (import ./man {
-      inherit pkgs;
+      inherit pkgs system;
     })
     (import ./less {
-      inherit pkgs;
+      inherit pkgs system;
     })
     (import ./jq {
-      inherit pkgs;
+      inherit pkgs system;
     })
     (import ./gpg {
-      inherit pkgs;
+      inherit pkgs system;
     })
     (import ./git {
-      inherit pkgs;
+      inherit pkgs system;
     })
     (import ./gh {
-      inherit pkgs;
+      inherit pkgs system;
     })
     (import ./direnv {
-      inherit pkgs;
+      inherit pkgs system;
     })
     (import ./ssh {
-      inherit pkgs;
+      inherit pkgs system;
     })
     (import ./tmux {
-      inherit pkgs;
+      inherit pkgs system;
     })
     (import ./emacs {
-      inherit pkgs;
+      inherit pkgs system;
     })
     (import ./zoxide {
-      inherit pkgs;
+      inherit pkgs system;
     })
     (import ./fzf {
-      inherit pkgs;
+      inherit pkgs system;
     })
     (import ./awscli {
-      inherit pkgs;
+      inherit pkgs system;
     })
     (import ./ruby {
-      inherit pkgs;
+      inherit pkgs system;
     })
     (import ./python {
-      inherit pkgs;
+      inherit pkgs system;
     })
     (import ./rust {
-      inherit pkgs;
+      inherit pkgs system;
     })
     (import ./password-store {
-      inherit pkgs;
+      inherit pkgs system;
     })
     (import ./android-tools {
-      inherit pkgs;
+      inherit pkgs system;
     })
     (import ./lnav {
-      inherit pkgs;
+      inherit pkgs system;
     })
   ];
 }

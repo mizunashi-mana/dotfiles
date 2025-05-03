@@ -1,9 +1,9 @@
-{ pkgs }: {
+{ pkgs, system, ... }: {
   programs.gpg = {
     enable = true;
   };
 
   home.packages = [
-    pkgs.pinentry-gtk2
+    (if system == "aarch64-darwin" then pkgs.pinentry_mac else pkgs.pinentry)
   ];
 }
