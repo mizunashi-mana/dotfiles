@@ -32,3 +32,5 @@ end
 
 # add local path
 set -g fish_user_paths $HOME/.local/bin $fish_user_paths
+
+alias editor "$EDITOR"

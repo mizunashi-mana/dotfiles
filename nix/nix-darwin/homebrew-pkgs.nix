@@ -10,10 +10,12 @@
     brews = extraBrews;
 
     casks = [
+      "aquaskk"
       "chatgpt"
       "docker"
       "google-chrome"
       "ipe"
+      "sequel-ace"
       "session-manager-plugin"
       "vagrant"
       "zotero"

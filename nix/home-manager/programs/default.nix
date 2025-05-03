@@ -53,9 +53,6 @@
     (import ./tmux {
       inherit pkgs;
     })
-    (import ./neovim {
-      inherit pkgs;
-    })
     (import ./emacs {
       inherit pkgs;
     })

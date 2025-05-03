@@ -1,7 +1,7 @@
 { pkgs }: {
   home = {
     sessionVariables = {
-      EDITOR = "nvim";
+      EDITOR = "emacsclient -nw";
     };
   };
 }

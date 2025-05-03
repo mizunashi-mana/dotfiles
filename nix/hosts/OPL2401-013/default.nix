@@ -3,6 +3,8 @@
   home-manager,
   nix-darwin,
 }: let
+  nix-root-dir = ../..;
+
   hostname = "opl2401-013";
   system = "aarch64-darwin";
   username = "nishiyama_shun";
@@ -19,14 +21,16 @@ in {
     inherit system pkgs;
 
     modules = [
-      (import ../nix-darwin {
+      (import "${nix-root-dir}/nix-darwin" {
         inherit pkgs username homedir;
       })
-      (import ../nix-darwin/homebrew-pkgs.nix {
+      (import "${nix-root-dir}/nix-darwin/homebrew-pkgs.nix" {
         extraBrews = [
           "git-flow-avh"
         ];
-        extraCasks = [];
+        extraCasks = [
+          "slack"
+        ];
       })
       home-manager.darwinModules.home-manager
       {
@@ -44,22 +48,18 @@ in {
           };
 
           imports = let
-            basicOptions = import ../home-manager/options {
+            basicOptions = import "${nix-root-dir}/home-manager/options" {
               inherit pkgs;
             };
-            basicPrograms = import ../home-manager/programs {
+            basicPrograms = import "${nix-root-dir}/home-manager/programs" {
+              inherit pkgs;
+            };
+            extraGuiPrograms = import "${nix-root-dir}/home-manager/programs/extra-gui.nix" {
               inherit pkgs;
             };
 
             options = basicOptions.imports;
-            programs = (basicPrograms.imports ++ [
-              (import ../home-manager/programs/aerospace {
-                inherit pkgs;
-              })
-              (import ../home-manager/programs/vscode {
-                inherit pkgs;
-              })
-            ]);
+            programs = (basicPrograms.imports ++ extraGuiPrograms.imports);
           in (programs ++ options);
         };
       }

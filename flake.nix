@@ -34,10 +34,10 @@
     home-manager,
     nix-darwin,
   }: let
-    macbookAir2nd = import ./nix/hosts/MacBook-Air-2nd.nix {
+    macbookAir2nd = import ./nix/hosts/MacBook-Air-2nd {
       inherit nixpkgs home-manager nix-darwin;
     };
-    opl2401013 = import ./nix/hosts/OPL2401-013.nix {
+    opl2401013 = import ./nix/hosts/OPL2401-013 {
       inherit nixpkgs home-manager nix-darwin;
     };
   in flake-parts.lib.mkFlake { inherit inputs; } {
