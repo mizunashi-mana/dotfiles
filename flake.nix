@@ -34,24 +34,24 @@
     home-manager,
     nix-darwin,
   }: let
-    macbookAir2nd = import ./nix/hosts/MacBook-Air-2nd {
+    macbook-air-2nd = import ./nix/hosts/macbook-air-2nd {
       inherit nixpkgs home-manager nix-darwin;
     };
-    opl2401013 = import ./nix/hosts/OPL2401-013 {
+    opl2401-013 = import ./nix/hosts/opl2401-013 {
       inherit nixpkgs home-manager nix-darwin;
     };
   in flake-parts.lib.mkFlake { inherit inputs; } {
     systems = [
-      macbookAir2nd.system
-      opl2401013.system
+      macbook-air-2nd.system
+      opl2401-013.system
     ];
 
     imports = [ treefmt-nix.flakeModule ];
 
     flake = {
       darwinConfigurations = {
-        ${macbookAir2nd.hostname} = macbookAir2nd.darwinConfiguration;
-        ${opl2401013.hostname} = opl2401013.darwinConfiguration;
+        ${macbook-air-2nd.hostname} = macbook-air-2nd.darwinConfiguration;
+        ${opl2401-013.hostname} = opl2401-013.darwinConfiguration;
       };
     };
 
