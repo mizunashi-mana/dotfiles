@@ -16,7 +16,6 @@
       "google-chrome"
       "ipe"
       "sequel-ace"
-      "session-manager-plugin"
       "vagrant"
       "zotero"
     ] ++ extraCasks;
