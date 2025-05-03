@@ -3,5 +3,9 @@
     sessionVariables = {
       EDITOR = "emacsclient -nw";
     };
+
+    shellAliases = {
+      editor = "emacsclient -nw";
+    };
   };
 }

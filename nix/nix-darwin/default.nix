@@ -18,6 +18,10 @@
         show-recents = false;
         orientation = "left";
       };
+
+      controlcenter = {
+        BatteryShowPercentage = true;
+      };
     };
 
     keyboard = {
