@@ -80,5 +80,8 @@
     (import ./android-tools {
       inherit pkgs;
     })
+    (import ./lnav {
+      inherit pkgs;
+    })
   ];
 }
