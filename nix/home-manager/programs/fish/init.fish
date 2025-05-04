@@ -5,7 +5,7 @@ set fish_greeting
 set fish_theme yimmy
 
 # load global profile
-set -l integratedEnvNames \
+set -l nixIntegratedEnvNames \
   PATH \
   XDG_CONFIG_HOME \
   XDG_DATA_DIRS \
@@ -16,7 +16,7 @@ set -l integratedEnvNames \
   NIX_SSL_CERT_FILE
 for line in (bash -c 'source /etc/bashrc && env')
   set -l kv (string split "=" $line)
-  if contains $kv[1] $integratedEnvNames
+  if contains $kv[1] $nixIntegratedEnvNames
     set -gx $kv[1] $kv[2]
   end
 end
