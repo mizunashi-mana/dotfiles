@@ -1,24 +1,19 @@
-{ extraBrews, extraCasks }: {
-  homebrew = {
-    enable = true;
-
-    onActivation = {
-      autoUpdate = true;
-      upgrade = true;
-    };
-
-    brews = extraBrews;
-
-    casks = [
-      "aquaskk"
-      "chatgpt"
-      "docker"
-      "google-chrome"
-      "ipe"
-      "sequel-ace"
-      "skim"
-      "vagrant"
-      "zotero"
-    ] ++ extraCasks;
-  };
+{ pkgs, username, homedir, extraBrews, extraCasks }: {
+  modules = [
+    (import ./homebrew {
+      inherit pkgs username homedir;
+      brews = extraBrews;
+      casks = [
+        "aquaskk"
+        "chatgpt"
+        "docker"
+        "google-chrome"
+        "ipe"
+        "sequel-ace"
+        "skim"
+        "vagrant"
+        "zotero"
+      ] ++ extraCasks;
+    })
+  ];
 }

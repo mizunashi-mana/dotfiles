@@ -20,18 +20,20 @@ in {
   darwinConfiguration = nix-darwin.lib.darwinSystem {
     inherit system pkgs;
 
-    modules = [
-      (import "${nix-root-dir}/nix-darwin" {
+    modules = let
+      nixDarwinModules = import "${nix-root-dir}/nix-darwin" {
         inherit pkgs username homedir;
-      })
-      (import "${nix-root-dir}/nix-darwin/homebrew-pkgs.nix" {
+      };
+      homebrewPkgsModules = import "${nix-root-dir}/nix-darwin/homebrew-pkgs.nix" {
+        inherit pkgs username homedir;
         extraBrews = [
           "git-flow-avh"
         ];
         extraCasks = [
           "slack"
         ];
-      })
+      };
+    in (nixDarwinModules ++ homebrewPkgsModules ++ [
       home-manager.darwinModules.home-manager
       {
         home-manager.useGlobalPkgs = true;
@@ -63,6 +65,6 @@ in {
           in (programs ++ options);
         };
       }
-    ];
+    ]);
   };
 }
