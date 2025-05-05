@@ -17,6 +17,9 @@
     (import ./mediautils {
       inherit pkgs system;
     })
+    (import ./compressutils {
+      inherit pkgs system;
+    })
     (import ./dircolors {
       inherit pkgs system;
     })

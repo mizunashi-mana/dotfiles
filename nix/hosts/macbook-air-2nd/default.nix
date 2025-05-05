@@ -29,6 +29,7 @@ in {
         extraBrews = [];
         extraCasks = [
           "discord"
+          "steam"
         ];
       };
     in (nixDarwinModules.modules ++ homebrewPkgsModules.modules ++ [

@@ -1,5 +1,9 @@
 { pkgs, ... }: {
   home = {
+    sessionPath = [
+      "$HOME/.local/bin"
+    ];
+
     sessionVariables = {
       EDITOR = "emacsclient -nw";
     };
