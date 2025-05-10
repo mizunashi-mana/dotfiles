@@ -39,7 +39,7 @@ in {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.users.${username} = {
-          home.stateVersion = "24.11";
+          home.stateVersion = "25.05";
 
           home.username = username;
           home.homeDirectory = homedir;
