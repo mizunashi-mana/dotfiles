@@ -86,5 +86,11 @@
     (import ./lnav {
       inherit pkgs system;
     })
+    (import ./bat {
+      inherit pkgs system;
+    })
+    (import ./eza {
+      inherit pkgs system;
+    })
   ];
 }

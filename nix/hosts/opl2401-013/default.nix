@@ -33,7 +33,7 @@ in {
           "slack"
         ];
       };
-    in (nixDarwinModules ++ homebrewPkgsModules ++ [
+    in (nixDarwinModules.modules ++ homebrewPkgsModules.modules ++ [
       home-manager.darwinModules.home-manager
       {
         home-manager.useGlobalPkgs = true;
