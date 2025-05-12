@@ -3,6 +3,7 @@
     enable = true;
     extraPackages = epkgs: [
       epkgs.evil
+      epkgs.evil-collection
       epkgs.magit
     ];
     extraConfig = builtins.readFile ./init.el;

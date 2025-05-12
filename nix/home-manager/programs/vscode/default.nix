@@ -6,6 +6,7 @@
       extensions = [
         pkgs.vscode-extensions.dbaeumer.vscode-eslint
         pkgs.vscode-extensions.editorconfig.editorconfig
+        pkgs.vscode-extensions.eamodio.gitlens
         pkgs.vscode-extensions.github.copilot
         pkgs.vscode-extensions.github.copilot-chat
         pkgs.vscode-extensions.github.vscode-github-actions

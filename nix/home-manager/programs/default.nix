@@ -59,6 +59,9 @@
     (import ./emacs {
       inherit pkgs system;
     })
+    (import ./neovim {
+      inherit pkgs system;
+    })
     (import ./zoxide {
       inherit pkgs system;
     })

@@ -5,7 +5,7 @@
     ];
 
     sessionVariables = {
-      EDITOR = "emacsclient -nw";
+      EDITOR = "nvim";
     };
 
     shellAliases = {
