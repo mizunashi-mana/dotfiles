@@ -11,8 +11,9 @@ TASKS_DIR="$SCRIPT_DIR/tasks"
 if hostname --short &> /dev/null; then
   HOSTNAME_SHORT="$(hostname --short)"
 else
-  HOSTNAME_SHORT="$(hostname -s | tr '[:upper:]' '[:lower:]')"
+  HOSTNAME_SHORT="$(hostname -s)"
 fi
+HOSTNAME_SHORT="$(echo "$HOSTNAME_SHORT" | tr '[:upper:]' '[:lower:]')"
 
 case "$HOSTNAME_SHORT" in
   'macbook-air-2nd' | 'opl2401-013')
