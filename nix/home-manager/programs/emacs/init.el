@@ -4,4 +4,4 @@
 
 (setq evil-want-keybinding nil)
 (evil-mode 1)
-(evil-collection-init)
+(evil-collection-init '(magit))
