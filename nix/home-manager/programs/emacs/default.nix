@@ -4,7 +4,6 @@
     extraPackages = epkgs: [
       epkgs.evil
       epkgs.evil-collection
-      epkgs.magit
     ];
     extraConfig = ''(load-file "~/.emacs.d/init.el")'';
   };
