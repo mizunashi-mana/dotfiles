@@ -59,7 +59,7 @@ in {
               inherit pkgs system;
             };
 
-            options = basicOptions.imports;
+            options = basicOptions.imports ++ [];
             programs = (basicPrograms.imports ++ extraGuiPrograms.imports ++ [
               (import "${nix-root-dir}/home-manager/programs/texlive" {
                 inherit pkgs system;

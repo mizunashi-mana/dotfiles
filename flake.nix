@@ -33,6 +33,7 @@
     nixpkgs,
     home-manager,
     nix-darwin,
+    ...
   }: let
     macbook-air-2nd = import ./nix/hosts/macbook-air-2nd {
       inherit nixpkgs home-manager nix-darwin;
@@ -46,7 +47,9 @@
       opl2401-013.system
     ];
 
-    imports = [ treefmt-nix.flakeModule ];
+    imports = [
+      treefmt-nix.flakeModule
+    ];
 
     flake = {
       darwinConfigurations = {

@@ -6,7 +6,13 @@
       epkgs.evil-collection
       epkgs.magit
     ];
-    extraConfig = builtins.readFile ./init.el;
+    extraConfig = ''(load-file "~/.emacs.d/init.el")'';
+  };
+
+  home.file = {
+    ".emacs.d/init.el" = {
+      text = builtins.readFile ./init.el;
+    };
   };
 
   services.emacs = {
