@@ -1,7 +1,10 @@
-{ pkgs, username, homedir }: {
+{ pkgs, username, homedir, home-manager }: {
   modules = let
     programs = import ./programs {
       inherit pkgs username homedir;
+    };
+    homeManager = import ./home-manager {
+      inherit pkgs username homedir home-manager;
     };
   in [
     (import ./nix {
@@ -16,5 +19,5 @@
     (import ./users {
       inherit pkgs username homedir;
     })
-  ] ++ programs.modules;
+  ] ++ programs.modules ++ homeManager.modules;
 }

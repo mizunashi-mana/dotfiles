@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs = {
-      url = "github:nixos/nixpkgs?ref=nixpkgs-unstable";
+      url = "github:nixos/nixpkgs?ref=nixpkgs-25.05-darwin";
     };
 
     home-manager = {

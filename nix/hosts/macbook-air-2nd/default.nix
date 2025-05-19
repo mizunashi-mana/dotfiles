@@ -22,7 +22,7 @@ in {
 
     modules = let
       nixDarwinModules = import "${nix-root-dir}/nix-darwin" {
-        inherit pkgs username homedir;
+        inherit pkgs username homedir home-manager;
       };
       homebrewPkgsModules = import "${nix-root-dir}/nix-darwin/homebrew-pkgs.nix" {
         inherit pkgs username homedir;
@@ -33,16 +33,8 @@ in {
         ];
       };
     in (nixDarwinModules.modules ++ homebrewPkgsModules.modules ++ [
-      home-manager.darwinModules.home-manager
       {
-        home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = true;
         home-manager.users.${username} = {
-          home.stateVersion = "25.05";
-
-          home.username = username;
-          home.homeDirectory = homedir;
-
           programs.git = {
             userName = "Mizunashi Mana";
             userEmail = "contact@mizunashi.work";
