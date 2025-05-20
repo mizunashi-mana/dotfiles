@@ -5,7 +5,7 @@
 }: let
   nix-root-dir = ../..;
 
-  hostname = "nishiyama-shunnomacbook-pro";
+  hostname = "opl2401-013";
   system = "aarch64-darwin";
   username = "nishiyama_shun";
   homedir = "/Users/${username}";

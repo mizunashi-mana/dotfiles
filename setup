@@ -16,7 +16,7 @@ fi
 HOSTNAME_SHORT="$(echo "$HOSTNAME_SHORT" | tr '[:upper:]' '[:lower:]')"
 
 case "$HOSTNAME_SHORT" in
-  'macbook-air-2nd' | 'nishiyama-shunnomacbook-pro')
+  'macbook-air-2nd' | 'opl2401-013')
     "$TASKS_DIR/homebrew/install"
     sudo nix run nix-darwin \
       --extra-experimental-features 'flakes nix-command' \

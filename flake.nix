@@ -38,13 +38,13 @@
     macbook-air-2nd = import ./nix/hosts/macbook-air-2nd {
       inherit nixpkgs home-manager nix-darwin;
     };
-    nishiyama-shunnomacbook-pro = import ./nix/hosts/nishiyama-shunnomacbook-pro {
+    opl2401-013 = import ./nix/hosts/opl2401-013 {
       inherit nixpkgs home-manager nix-darwin;
     };
   in flake-parts.lib.mkFlake { inherit inputs; } {
     systems = [
       macbook-air-2nd.system
-      nishiyama-shunnomacbook-pro.system
+      opl2401-013.system
     ];
 
     imports = [
@@ -54,7 +54,7 @@
     flake = {
       darwinConfigurations = {
         ${macbook-air-2nd.hostname} = macbook-air-2nd.darwinConfiguration;
-        ${nishiyama-shunnomacbook-pro.hostname} = nishiyama-shunnomacbook-pro.darwinConfiguration;
+        ${opl2401-013.hostname} = opl2401-013.darwinConfiguration;
       };
     };
 
