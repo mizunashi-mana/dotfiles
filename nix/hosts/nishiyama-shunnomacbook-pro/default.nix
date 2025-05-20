@@ -5,7 +5,7 @@
 }: let
   nix-root-dir = ../..;
 
-  hostname = "opl2401-013";
+  hostname = "nishiyama-shunnomacbook-pro";
   system = "aarch64-darwin";
   username = "nishiyama_shun";
   homedir = "/Users/${username}";
@@ -31,6 +31,7 @@ in {
         ];
         extraCasks = [
           "slack"
+          "phpstorm"
         ];
       };
     in (nixDarwinModules.modules ++ homebrewPkgsModules.modules ++ [
