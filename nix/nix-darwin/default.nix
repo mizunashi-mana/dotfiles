@@ -1,4 +1,12 @@
-{ pkgs, username, homedir, home-manager }: {
+{
+  pkgs,
+  username,
+  homedir,
+  home-manager,
+  extra-dock-persistent-apps,
+  extra-brews,
+  extra-casks,
+}: {
   modules = let
     programs = import ./programs {
       inherit pkgs username homedir;
@@ -14,10 +22,25 @@
       inherit pkgs username homedir;
     })
     (import ./system {
-      inherit pkgs username homedir;
+      inherit pkgs username homedir extra-dock-persistent-apps;
     })
     (import ./users {
       inherit pkgs username homedir;
+    })
+    (import ./homebrew {
+      inherit pkgs username homedir;
+      brews = extra-brews;
+      casks = [
+        "aquaskk"
+        "chatgpt"
+        "docker"
+        "google-chrome"
+        "ipe"
+        "sequel-ace"
+        "skim"
+        "vagrant"
+        "zotero"
+      ] ++ extra-casks;
     })
   ] ++ programs.modules ++ homeManager.modules;
 }

@@ -23,16 +23,17 @@ in {
     modules = let
       nixDarwinModules = import "${nix-root-dir}/nix-darwin" {
         inherit pkgs username homedir home-manager;
-      };
-      homebrewPkgsModules = import "${nix-root-dir}/nix-darwin/homebrew-pkgs.nix" {
-        inherit pkgs username homedir;
-        extraBrews = [];
-        extraCasks = [
+
+        extra-dock-persistent-apps = [];
+
+        extra-brews = [];
+
+        extra-casks = [
           "discord"
           "steam"
         ];
       };
-    in (nixDarwinModules.modules ++ homebrewPkgsModules.modules ++ [
+    in (nixDarwinModules.modules ++ [
       {
         home-manager.users.${username} = {
           programs.git = {

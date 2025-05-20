@@ -23,18 +23,26 @@ in {
     modules = let
       nixDarwinModules = import "${nix-root-dir}/nix-darwin" {
         inherit pkgs username homedir home-manager;
-      };
-      homebrewPkgsModules = import "${nix-root-dir}/nix-darwin/homebrew-pkgs.nix" {
-        inherit pkgs username homedir;
-        extraBrews = [
+
+        extra-dock-persistent-apps = [
+          {
+            app = "/Applications/Slack.app";
+          }
+          {
+            app = "/Applications/PhpStorm.app";
+          }
+        ];
+
+        extra-brews = [
           "git-flow-avh"
         ];
-        extraCasks = [
+
+        extra-casks = [
           "slack"
           "phpstorm"
         ];
       };
-    in (nixDarwinModules.modules ++ homebrewPkgsModules.modules ++ [
+    in (nixDarwinModules.modules ++ [
       {
         home-manager.users.${username} = {
           programs.git = {

@@ -1,4 +1,4 @@
-{ pkgs, username, homedir }: {
+{ pkgs, username, homedir, extra-dock-persistent-apps }: {
   system = {
     stateVersion = 6;
 
@@ -19,6 +19,26 @@
         autohide = true;
         show-recents = false;
         orientation = "left";
+        persistent-apps = [
+          {
+            app = "/System/Applications/System Settings.app";
+          }
+          {
+            app = "/System/Applications/Utilities/Activity Monitor.app";
+          }
+          {
+            app = "/System/Applications/Utilities/Terminal.app";
+          }
+          {
+            app = "/System/Applications/App Store.app";
+          }
+          {
+            app = "/Applications/Google Chrome.app";
+          }
+          {
+            app = "${pkgs.vscode}/Applications/Visual Studio Code.app";
+          }
+        ] ++ extra-dock-persistent-apps;
       };
 
       controlcenter = {
