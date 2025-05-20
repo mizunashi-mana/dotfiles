@@ -24,7 +24,11 @@ in {
       nixDarwinModules = import "${nix-root-dir}/nix-darwin" {
         inherit pkgs username homedir home-manager;
 
-        extra-dock-persistent-apps = [];
+        extra-dock-persistent-apps = [
+          {
+            app = "/System/Applications/Music.app";
+          }
+        ];
 
         extra-brews = [];
 

@@ -38,6 +38,12 @@
           {
             app = "${pkgs.vscode}/Applications/Visual Studio Code.app";
           }
+          {
+            app = "${pkgs.skimpdf}/Applications/Skim.app";
+          }
+          {
+            app = "${pkgs.zotero}/Applications/Zotero.app";
+          }
         ] ++ extra-dock-persistent-apps;
       };
 

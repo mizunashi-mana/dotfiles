@@ -37,9 +37,7 @@
         "google-chrome"
         "ipe"
         "sequel-ace"
-        "skim"
         "vagrant"
-        "zotero"
       ] ++ extra-casks;
     })
   ] ++ programs.modules ++ homeManager.modules;
