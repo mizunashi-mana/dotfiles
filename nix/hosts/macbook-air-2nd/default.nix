@@ -13,10 +13,6 @@ let
     inherit system;
     config.allowUnfree = true;
   };
-  pkgs-unstable = import inputs.nixpkgs-unstable {
-    inherit system;
-    config.allowUnfree = true;
-  };
 in
 {
   inherit system hostname;
@@ -52,6 +48,10 @@ in
         nixDarwinModules.modules
         ++ [
           {
+            homebrew.masApps = {
+              Kindle = 302584613;
+            };
+
             home-manager.users.${username} = {
               programs.git = {
                 userName = "Mizunashi Mana";
@@ -64,7 +64,7 @@ in
                     inherit pkgs system;
                   };
                   basicPrograms = import "${nix-root-dir}/home-manager/programs" {
-                    inherit pkgs system pkgs-unstable;
+                    inherit pkgs system;
                   };
                   extraGuiPrograms = import "${nix-root-dir}/home-manager/programs/extra-gui.nix" {
                     inherit pkgs system;

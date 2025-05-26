@@ -3,10 +3,6 @@
 
   inputs = {
     nixpkgs = {
-      url = "github:nixos/nixpkgs?ref=nixpkgs-25.05-darwin";
-    };
-
-    nixpkgs-unstable = {
       url = "github:nixos/nixpkgs?ref=nixpkgs-unstable";
     };
 
@@ -38,7 +34,6 @@
       nixpkgs,
       home-manager,
       nix-darwin,
-      nixpkgs-unstable,
       ...
     }:
     let

@@ -59,6 +59,14 @@
         BatteryShowPercentage = true;
         Sound = true;
       };
+
+      loginwindow = {
+        GuestEnabled = false;
+      };
+
+      screencapture = {
+        show-thumbnail = false;
+      };
     };
 
     keyboard = {

@@ -12,5 +12,9 @@
     shellAliases = {
       editor = "emacsclient -nw";
     };
+
+    file = {
+      "Workspace/MyWork/.keep".text = "";
+    };
   };
 }
