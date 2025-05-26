@@ -1,6 +1,13 @@
-{ pkgs, username, homedir, home-manager, ... }: {
+{
+  pkgs,
+  username,
+  homedir,
+  inputs,
+  ...
+}:
+{
   modules = [
-    home-manager.darwinModules.home-manager
+    inputs.home-manager.darwinModules.home-manager
     {
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;

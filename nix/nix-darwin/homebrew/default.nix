@@ -1,4 +1,11 @@
-{ pkgs, username, homedir, brews, casks }: {
+{
+  pkgs,
+  username,
+  homedir,
+  brews,
+  casks,
+}:
+{
   homebrew = {
     enable = true;
 

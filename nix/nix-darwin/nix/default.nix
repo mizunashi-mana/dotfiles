@@ -1,4 +1,9 @@
-{ pkgs, username, homedir }: {
+{
+  pkgs,
+  username,
+  homedir,
+}:
+{
   nix = {
     optimise.automatic = true;
 

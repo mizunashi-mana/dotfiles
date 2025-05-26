@@ -1,4 +1,9 @@
-{ pkgs, username, homedir }: {
+{
+  pkgs,
+  username,
+  homedir,
+}:
+{
   environment = {
     systemPackages = [
       pkgs.fish

@@ -1,5 +1,5 @@
 function ghcs
-    set -l TARGET "shell"
+    set -l TARGET shell
     set GH_DEBUG $GH_DEBUG
 
     set -l __USAGE "Wrapper around 'gh copilot suggest' to suggest a command based on a natural language description of the desired output effort.

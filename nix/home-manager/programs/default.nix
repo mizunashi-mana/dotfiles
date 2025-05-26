@@ -1,4 +1,9 @@
-{ pkgs, system }: {
+{
+  pkgs,
+  system,
+  pkgs-unstable,
+}:
+{
   imports = [
     ({
       programs.home-manager = {

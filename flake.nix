@@ -6,6 +6,10 @@
       url = "github:nixos/nixpkgs?ref=nixpkgs-25.05-darwin";
     };
 
+    nixpkgs-unstable = {
+      url = "github:nixos/nixpkgs?ref=nixpkgs-unstable";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -26,55 +30,59 @@
     };
   };
 
-  outputs = inputs@{
-    self,
-    flake-parts,
-    treefmt-nix,
-    nixpkgs,
-    home-manager,
-    nix-darwin,
-    ...
-  }: let
-    macbook-air-2nd = import ./nix/hosts/macbook-air-2nd {
-      inherit nixpkgs home-manager nix-darwin;
-    };
-    opl2401-013 = import ./nix/hosts/opl2401-013 {
-      inherit nixpkgs home-manager nix-darwin;
-    };
-  in flake-parts.lib.mkFlake { inherit inputs; } {
-    systems = [
-      macbook-air-2nd.system
-      opl2401-013.system
-    ];
-
-    imports = [
-      treefmt-nix.flakeModule
-    ];
-
-    flake = {
-      darwinConfigurations = {
-        ${macbook-air-2nd.hostname} = macbook-air-2nd.darwinConfiguration;
-        ${opl2401-013.hostname} = opl2401-013.darwinConfiguration;
+  outputs =
+    inputs@{
+      self,
+      flake-parts,
+      treefmt-nix,
+      nixpkgs,
+      home-manager,
+      nix-darwin,
+      nixpkgs-unstable,
+      ...
+    }:
+    let
+      macbook-air-2nd = import ./nix/hosts/macbook-air-2nd {
+        inherit inputs;
       };
-    };
+      opl2401-013 = import ./nix/hosts/opl2401-013 {
+        inherit inputs;
+      };
+    in
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = [
+        macbook-air-2nd.system
+        opl2401-013.system
+      ];
 
-    perSystem =
-      { ... }:
-      {
-        treefmt = {
-          projectRootFile = "flake.nix";
-          programs = {
-            actionlint.enable = true;
-            nixfmt.enable = true;
-            taplo.enable = true;
-            jsonfmt.enable = true;
-            yamlfmt.enable = true;
-            fish_indent.enable = true;
-            stylua.enable = true;
-            shfmt.enable = true;
-            prettier.enable = true;
-          };
+      imports = [
+        treefmt-nix.flakeModule
+      ];
+
+      flake = {
+        darwinConfigurations = {
+          ${macbook-air-2nd.hostname} = macbook-air-2nd.darwinConfiguration;
+          ${opl2401-013.hostname} = opl2401-013.darwinConfiguration;
         };
       };
-  };
+
+      perSystem =
+        { ... }:
+        {
+          treefmt = {
+            projectRootFile = "flake.nix";
+            programs = {
+              actionlint.enable = true;
+              nixfmt.enable = true;
+              taplo.enable = true;
+              jsonfmt.enable = true;
+              yamlfmt.enable = true;
+              fish_indent.enable = true;
+              stylua.enable = true;
+              shfmt.enable = true;
+              prettier.enable = true;
+            };
+          };
+        };
+    };
 }

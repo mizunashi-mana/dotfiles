@@ -1,4 +1,10 @@
-{ pkgs, username, homedir, extra-dock-persistent-apps }: {
+{
+  pkgs,
+  username,
+  homedir,
+  extra-dock-persistent-apps,
+}:
+{
   system = {
     stateVersion = 6;
 
@@ -51,6 +57,7 @@
         AirDrop = false;
         Bluetooth = false;
         BatteryShowPercentage = true;
+        Sound = true;
       };
     };
 

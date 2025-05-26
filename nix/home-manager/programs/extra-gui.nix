@@ -1,4 +1,5 @@
-{ pkgs, system }: {
+{ pkgs, system, ... }:
+{
   imports = [
     (import ./aerospace {
       inherit pkgs system;
