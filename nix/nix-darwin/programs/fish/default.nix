@@ -1,7 +1,6 @@
 {
   pkgs,
-  username,
-  homedir,
+  ...
 }:
 {
   programs.fish = {

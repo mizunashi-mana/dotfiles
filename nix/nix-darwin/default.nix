@@ -44,7 +44,6 @@
         inherit pkgs username homedir;
         brews = extra-brews;
         casks = [
-          "1password"
           "aquaskk"
           "chatgpt"
           "docker"
