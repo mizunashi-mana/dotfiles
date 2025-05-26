@@ -16,6 +16,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    _1password-shell-plugins = {
+      url = "github:1Password/shell-plugins";
+    };
+
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
     };
@@ -31,7 +35,6 @@
       self,
       flake-parts,
       treefmt-nix,
-      nixpkgs,
       home-manager,
       nix-darwin,
       ...

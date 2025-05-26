@@ -64,7 +64,7 @@ in
                     inherit pkgs system;
                   };
                   basicPrograms = import "${nix-root-dir}/home-manager/programs" {
-                    inherit pkgs system;
+                    inherit pkgs system inputs;
                   };
                   extraGuiPrograms = import "${nix-root-dir}/home-manager/programs/extra-gui.nix" {
                     inherit pkgs system;
