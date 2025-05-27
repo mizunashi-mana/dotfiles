@@ -67,6 +67,12 @@
       screencapture = {
         show-thumbnail = false;
       };
+
+      CustomUserPreferences = {
+        "com.apple.inputmethod.Kotoeri" = {
+          JIMPrefLiveConversionKey = 0;
+        };
+      };
     };
 
     keyboard = {
