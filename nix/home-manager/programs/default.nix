@@ -101,6 +101,9 @@
     (import ./eza {
       inherit pkgs system;
     })
+    (import ./pigz {
+      inherit pkgs system;
+    })
     (import ./1password {
       inherit pkgs system inputs;
     })
