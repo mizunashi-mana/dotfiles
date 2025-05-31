@@ -21,6 +21,7 @@
         pkgs.vscode-extensions.ms-kubernetes-tools.vscode-kubernetes-tools
         pkgs.vscode-extensions.ms-vscode.makefile-tools
         pkgs.vscode-extensions.redhat.vscode-yaml
+        pkgs.vscode-extensions.stylelint.vscode-stylelint
       ];
     };
   };
