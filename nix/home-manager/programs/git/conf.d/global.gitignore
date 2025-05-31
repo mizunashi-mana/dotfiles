@@ -8,6 +8,13 @@
 .envrc
 .direnv/
 
+# Devenv
+.devenv*
+devenv.local.nix
+
+# pre-commit
+.pre-commit-config.yaml
+
 # IDEA
 .idea
 *.iml

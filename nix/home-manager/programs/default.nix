@@ -104,7 +104,7 @@
     (import ./pigz {
       inherit pkgs system;
     })
-    (import ./devbox {
+    (import ./devenv {
       inherit pkgs system;
     })
     (import ./1password {

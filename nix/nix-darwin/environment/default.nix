@@ -7,6 +7,7 @@
   environment = {
     systemPackages = [
       pkgs.fish
+      pkgs.devenv
     ];
 
     shells = [
