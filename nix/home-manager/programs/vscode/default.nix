@@ -5,6 +5,7 @@
 
     profiles.default = {
       extensions = [
+        pkgs.vscode-extensions.charliermarsh.ruff
         pkgs.vscode-extensions.dbaeumer.vscode-eslint
         pkgs.vscode-extensions.editorconfig.editorconfig
         pkgs.vscode-extensions.eamodio.gitlens
