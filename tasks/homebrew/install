@@ -3,8 +3,6 @@
 set -euo pipefail
 [ "${TRACE:-false}" = "true" ] && set -x
 
-SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
-
 if ! type brew >/dev/null 2>&1; then
   # ref: https://brew.sh/
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"

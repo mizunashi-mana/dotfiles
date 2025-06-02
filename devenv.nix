@@ -17,8 +17,12 @@
 
   # https://devenv.sh/git-hooks/
   git-hooks.hooks = {
+    actionlint.enable = true;
     nixfmt-rfc-style.enable = true;
+    prettier.enable = true;
     shellcheck.enable = true;
+    shfmt.enable = true;
+    taplo.enable = true;
     yamlfmt.enable = true;
   };
 

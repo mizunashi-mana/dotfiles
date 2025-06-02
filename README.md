@@ -12,7 +12,7 @@ My dotfiles and construction documentations.
 
 Requirements:
 
-* [devenv](https://devenv.sh/)
+- [devenv](https://devenv.sh/)
 
 Run the below to develop:
 
