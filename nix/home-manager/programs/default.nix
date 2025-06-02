@@ -110,5 +110,11 @@
     (import ./1password {
       inherit pkgs system inputs;
     })
+    (import ./colima {
+      inherit pkgs system;
+    })
+    (import ./docker {
+      inherit pkgs system;
+    })
   ];
 }

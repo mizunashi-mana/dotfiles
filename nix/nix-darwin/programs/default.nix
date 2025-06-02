@@ -11,5 +11,8 @@
     (import ./1password {
       inherit pkgs username homedir;
     })
+    (import ./colima {
+      inherit pkgs username homedir;
+    })
   ];
 }
