@@ -29,9 +29,6 @@
     (import ./dircolors {
       inherit pkgs system;
     })
-    (import ./man {
-      inherit pkgs system;
-    })
     (import ./gpg {
       inherit pkgs system;
     })
@@ -75,12 +72,6 @@
       inherit pkgs system;
     })
     (import ./lnav {
-      inherit pkgs system;
-    })
-    (import ./bat {
-      inherit pkgs system;
-    })
-    (import ./eza {
       inherit pkgs system;
     })
     (import ./pigz {

@@ -53,7 +53,6 @@
           "aquaskk"
           "chatgpt"
           "google-chrome"
-          "ipe"
           "sequel-ace"
         ] ++ extra-casks;
       })
