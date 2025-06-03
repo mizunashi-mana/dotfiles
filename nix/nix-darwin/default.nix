@@ -52,7 +52,6 @@
         casks = [
           "aquaskk"
           "chatgpt"
-          "google-chrome"
           "sequel-ace"
         ] ++ extra-casks;
       })

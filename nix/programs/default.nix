@@ -25,6 +25,7 @@ let
     (import ./man { inherit pkgs; })
     (import ./eza { inherit pkgs; })
     (import ./bat { inherit pkgs; })
+    (import ./fzf { inherit pkgs; })
     (import ./devenv { inherit pkgs; })
     (import ./awscli { inherit pkgs; })
     (import ./colima { inherit pkgs; })
@@ -32,7 +33,11 @@ let
     (import ./1password { inherit pkgs inputs; })
     (import ./vagrant { inherit pkgs; })
     (import ./aerospace { inherit pkgs; })
+    (import ./vscode { inherit pkgs; })
+    (import ./google-chrome { inherit pkgs; })
     (import ./ipe { inherit pkgs; })
+    (import ./skimpdf { inherit pkgs; })
+    (import ./zotero { inherit pkgs; })
   ];
 in
 {

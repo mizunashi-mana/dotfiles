@@ -64,11 +64,8 @@ in
                   basicPrograms = import "${nix-root-dir}/home-manager/programs" {
                     inherit pkgs system inputs;
                   };
-                  extraGuiPrograms = import "${nix-root-dir}/home-manager/programs/extra-gui.nix" {
-                    inherit pkgs system;
-                  };
 
-                  programs = (basicPrograms.imports ++ extraGuiPrograms.imports);
+                  programs = basicPrograms.imports;
                 in
                 programs;
             };

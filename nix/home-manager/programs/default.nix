@@ -53,9 +53,6 @@
     (import ./neovim {
       inherit pkgs system;
     })
-    (import ./fzf {
-      inherit pkgs system;
-    })
     (import ./ruby {
       inherit pkgs system;
     })
