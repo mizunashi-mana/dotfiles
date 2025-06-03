@@ -32,13 +32,7 @@
     (import ./git {
       inherit pkgs system;
     })
-    (import ./gh {
-      inherit pkgs system;
-    })
     (import ./ssh {
-      inherit pkgs system;
-    })
-    (import ./tmux {
       inherit pkgs system;
     })
     (import ./emacs {

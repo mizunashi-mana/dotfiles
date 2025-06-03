@@ -1,4 +1,4 @@
-{ pkgs, programs, ... }:
+{ pkgs, ... }:
 {
   imports = [
     (import ./editorconfig {
@@ -7,5 +7,5 @@
     (import ./home {
       inherit pkgs;
     })
-  ] ++ programs.homeManagerImports;
+  ];
 }

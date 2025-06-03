@@ -4,8 +4,9 @@
   homedir,
   inputs,
   extra-dock-persistent-apps,
-  extra-brews,
-  extra-casks,
+  extra-brews ? [ ],
+  extra-casks ? [ ],
+  extra-programs ? [ ],
 }:
 {
   modules =
@@ -18,14 +19,20 @@
           inputs
           ;
       };
-      homeManager = import ./home-manager {
+      extra-programs-hm-imports = programs.mkHomeManagerImports {
+        programs = extra-programs;
+      };
+      extra-programs-nix-darwin-modules = programs.mkNixDarwinModules {
+        programs = extra-programs;
+      };
+      home-manager = import ./home-manager {
         inherit
           pkgs
           username
           homedir
           inputs
-          programs
           ;
+        extra-imports = programs.homeManagerImports ++ extra-programs-hm-imports;
       };
     in
     [
@@ -49,13 +56,10 @@
       (import ./homebrew {
         inherit pkgs username homedir;
         brews = extra-brews;
-        casks = [
-          "aquaskk"
-          "chatgpt"
-          "sequel-ace"
-        ] ++ extra-casks;
+        casks = extra-casks;
       })
     ]
-    ++ homeManager.modules
-    ++ programs.nixDarwinModules;
+    ++ home-manager.modules
+    ++ programs.nixDarwinModules
+    ++ extra-programs-nix-darwin-modules;
 }

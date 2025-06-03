@@ -40,7 +40,10 @@ in
 
           extra-casks = [
             "discord"
-            "steam"
+          ];
+
+          extra-programs = [
+            (import "${nix-root-dir}/programs/steam" { inherit pkgs; })
           ];
         };
       in

@@ -31,7 +31,9 @@ let
     (import ./pigz { inherit pkgs; })
     (import ./direnv { inherit pkgs; })
     (import ./devenv { inherit pkgs; })
+    (import ./tmux { inherit pkgs; })
     (import ./awscli { inherit pkgs; })
+    (import ./gh { inherit pkgs; })
     (import ./colima { inherit pkgs; })
     (import ./docker { inherit pkgs; })
     (import ./1password { inherit pkgs inputs; })
@@ -39,9 +41,12 @@ let
     (import ./aerospace { inherit pkgs; })
     (import ./vscode { inherit pkgs; })
     (import ./google-chrome { inherit pkgs; })
+    (import ./aquaskk { inherit pkgs; })
     (import ./ipe { inherit pkgs; })
     (import ./skimpdf { inherit pkgs; })
     (import ./zotero { inherit pkgs; })
+    (import ./chatgpt { inherit pkgs; })
+    (import ./sequel-ace { inherit pkgs; })
   ];
 in
 {

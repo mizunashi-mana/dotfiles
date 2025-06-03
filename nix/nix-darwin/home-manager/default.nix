@@ -3,7 +3,7 @@
   username,
   homedir,
   inputs,
-  programs,
+  extra-imports ? [ ],
   ...
 }:
 {
@@ -20,8 +20,9 @@
 
         imports =
           (import ../../home-manager {
-            inherit pkgs programs;
-          }).imports;
+            inherit pkgs;
+          }).imports
+          ++ extra-imports;
       };
     }
   ];
