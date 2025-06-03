@@ -10,10 +10,7 @@
 {
   modules =
     let
-      programsLegacy = import ./programs {
-        inherit pkgs username homedir;
-      };
-      homeManager = import ./home-manager {
+      programs = import ../programs {
         inherit
           pkgs
           username
@@ -21,8 +18,14 @@
           inputs
           ;
       };
-      programs = import ../programs {
-        inherit pkgs username homedir;
+      homeManager = import ./home-manager {
+        inherit
+          pkgs
+          username
+          homedir
+          inputs
+          programs
+          ;
       };
     in
     [
@@ -47,17 +50,14 @@
         inherit pkgs username homedir;
         brews = extra-brews;
         casks = [
-          "1password"
           "aquaskk"
           "chatgpt"
           "google-chrome"
           "ipe"
           "sequel-ace"
-          "vagrant"
         ] ++ extra-casks;
       })
     ]
-    ++ programsLegacy.modules
     ++ homeManager.modules
     ++ programs.nixDarwinModules;
 }

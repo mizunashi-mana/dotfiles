@@ -60,9 +60,6 @@ in
 
               imports =
                 let
-                  basicOptions = import "${nix-root-dir}/home-manager/options" {
-                    inherit pkgs system;
-                  };
                   basicPrograms = import "${nix-root-dir}/home-manager/programs" {
                     inherit pkgs system inputs;
                   };
@@ -70,7 +67,6 @@ in
                     inherit pkgs system;
                   };
 
-                  options = basicOptions.imports ++ [ ];
                   programs = (
                     basicPrograms.imports
                     ++ extraGuiPrograms.imports
@@ -81,7 +77,7 @@ in
                     ]
                   );
                 in
-                (programs ++ options);
+                programs;
             };
           }
         ]

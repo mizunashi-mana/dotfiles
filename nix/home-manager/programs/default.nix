@@ -65,9 +65,6 @@
     (import ./neovim {
       inherit pkgs system;
     })
-    (import ./zoxide {
-      inherit pkgs system;
-    })
     (import ./fzf {
       inherit pkgs system;
     })
@@ -103,9 +100,6 @@
     })
     (import ./devenv {
       inherit pkgs system;
-    })
-    (import ./1password {
-      inherit pkgs system inputs;
     })
     (import ./docker {
       inherit pkgs system;

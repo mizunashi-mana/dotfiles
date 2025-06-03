@@ -3,6 +3,7 @@
   username,
   homedir,
   inputs,
+  programs,
   ...
 }:
 {
@@ -16,6 +17,11 @@
 
         home.username = username;
         home.homeDirectory = homedir;
+
+        imports =
+          (import ../../home-manager {
+            inherit pkgs programs;
+          }).imports;
       };
     }
   ];

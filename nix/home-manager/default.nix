@@ -1,9 +1,5 @@
-{ pkgs, ... }:
-let
-  programs = import ../../programs {
-    inherit pkgs;
-  };
-in {
+{ pkgs, programs, ... }:
+{
   imports = [
     (import ./editorconfig {
       inherit pkgs;
