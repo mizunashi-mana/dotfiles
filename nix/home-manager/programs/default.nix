@@ -32,9 +32,6 @@
     (import ./bash {
       inherit pkgs system;
     })
-    (import ./fish {
-      inherit pkgs system;
-    })
     (import ./man {
       inherit pkgs system;
     })
@@ -109,9 +106,6 @@
     })
     (import ./1password {
       inherit pkgs system inputs;
-    })
-    (import ./colima {
-      inherit pkgs system;
     })
     (import ./docker {
       inherit pkgs system;

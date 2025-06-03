@@ -10,7 +10,7 @@
 {
   modules =
     let
-      programs = import ./programs {
+      programsLegacy = import ./programs {
         inherit pkgs username homedir;
       };
       homeManager = import ./home-manager {
@@ -20,6 +20,9 @@
           homedir
           inputs
           ;
+      };
+      programs = import ../programs {
+        inherit pkgs username homedir;
       };
     in
     [
@@ -54,6 +57,7 @@
         ] ++ extra-casks;
       })
     ]
-    ++ programs.modules
-    ++ homeManager.modules;
+    ++ programsLegacy.modules
+    ++ homeManager.modules
+    ++ programs.nixDarwinModules;
 }
