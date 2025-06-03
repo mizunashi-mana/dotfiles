@@ -29,16 +29,7 @@
     (import ./dircolors {
       inherit pkgs system;
     })
-    (import ./bash {
-      inherit pkgs system;
-    })
     (import ./man {
-      inherit pkgs system;
-    })
-    (import ./less {
-      inherit pkgs system;
-    })
-    (import ./jq {
       inherit pkgs system;
     })
     (import ./gpg {
@@ -68,9 +59,6 @@
     (import ./fzf {
       inherit pkgs system;
     })
-    (import ./awscli {
-      inherit pkgs system;
-    })
     (import ./ruby {
       inherit pkgs system;
     })
@@ -96,12 +84,6 @@
       inherit pkgs system;
     })
     (import ./pigz {
-      inherit pkgs system;
-    })
-    (import ./devenv {
-      inherit pkgs system;
-    })
-    (import ./docker {
       inherit pkgs system;
     })
   ];
