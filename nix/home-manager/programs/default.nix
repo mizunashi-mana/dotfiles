@@ -26,9 +26,6 @@
     (import ./compressutils {
       inherit pkgs system;
     })
-    (import ./dircolors {
-      inherit pkgs system;
-    })
     (import ./gpg {
       inherit pkgs system;
     })
@@ -36,9 +33,6 @@
       inherit pkgs system;
     })
     (import ./gh {
-      inherit pkgs system;
-    })
-    (import ./direnv {
       inherit pkgs system;
     })
     (import ./ssh {
@@ -66,12 +60,6 @@
       inherit pkgs system;
     })
     (import ./android-tools {
-      inherit pkgs system;
-    })
-    (import ./lnav {
-      inherit pkgs system;
-    })
-    (import ./pigz {
       inherit pkgs system;
     })
   ];
