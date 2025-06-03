@@ -32,12 +32,6 @@
     (import ./git {
       inherit pkgs system;
     })
-    (import ./ssh {
-      inherit pkgs system;
-    })
-    (import ./emacs {
-      inherit pkgs system;
-    })
     (import ./neovim {
       inherit pkgs system;
     })
@@ -48,9 +42,6 @@
       inherit pkgs system;
     })
     (import ./rust {
-      inherit pkgs system;
-    })
-    (import ./password-store {
       inherit pkgs system;
     })
     (import ./android-tools {

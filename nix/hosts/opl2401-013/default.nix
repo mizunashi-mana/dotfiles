@@ -43,9 +43,9 @@ in
             "git-flow-avh"
           ];
 
-          extra-casks = [
-            "slack"
-            "phpstorm"
+          extra-programs = [
+            (import "${nix-root-dir}/programs/phpstorm" { inherit pkgs; })
+            (import "${nix-root-dir}/programs/slack" { inherit pkgs; })
           ];
         };
       in

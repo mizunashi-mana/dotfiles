@@ -44,6 +44,8 @@ in
 
           extra-programs = [
             (import "${nix-root-dir}/programs/steam" { inherit pkgs; })
+            (import "${nix-root-dir}/programs/texlive" { inherit pkgs; })
+            (import "${nix-root-dir}/programs/kindle" { inherit pkgs; })
           ];
         };
       in
@@ -51,10 +53,6 @@ in
         nixDarwinModules.modules
         ++ [
           {
-            homebrew.masApps = {
-              Kindle = 302584613;
-            };
-
             home-manager.users.${username} = {
               programs.git = {
                 userName = "Mizunashi Mana";
@@ -67,14 +65,7 @@ in
                     inherit pkgs system inputs;
                   };
 
-                  programs = (
-                    basicPrograms.imports
-                    ++ [
-                      (import "${nix-root-dir}/home-manager/programs/texlive" {
-                        inherit pkgs system;
-                      })
-                    ]
-                  );
+                  programs = (basicPrograms.imports);
                 in
                 programs;
             };
