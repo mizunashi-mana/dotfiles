@@ -7,7 +7,6 @@
     pkgs.poppler
 
     pkgs.ghostscript
-    pkgs.gnuplot
     pkgs.graphviz
   ];
 }

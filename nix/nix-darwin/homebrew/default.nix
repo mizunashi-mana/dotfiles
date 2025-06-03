@@ -2,8 +2,6 @@
   pkgs,
   username,
   homedir,
-  brews,
-  casks,
 }:
 {
   homebrew = {
@@ -13,9 +11,5 @@
       autoUpdate = true;
       upgrade = true;
     };
-
-    brews = brews;
-
-    casks = casks;
   };
 }

@@ -5,8 +5,6 @@
   homedir,
   inputs,
   extra-dock-persistent-apps,
-  extra-brews ? [ ],
-  extra-casks ? [ ],
   extra-programs ? [ ],
 }:
 {
@@ -41,9 +39,6 @@
       (import ./nix {
         inherit pkgs username homedir;
       })
-      (import ./environment {
-        inherit pkgs username homedir;
-      })
       (import ./system {
         inherit
           pkgs
@@ -57,8 +52,6 @@
       })
       (import ./homebrew {
         inherit pkgs username homedir;
-        brews = extra-brews;
-        casks = extra-casks;
       })
     ]
     ++ home-manager.modules

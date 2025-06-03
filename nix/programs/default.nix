@@ -47,6 +47,8 @@ let
     (import ./z3 { inherit pkgs; })
     (import ./lha { inherit pkgs; })
     (import ./poetry { inherit pkgs; })
+    (import ./rustup { inherit pkgs; })
+    (import ./gnuplot { inherit pkgs; })
     (import ./vagrant { inherit pkgs; })
     (import ./android-tools { inherit pkgs; })
     (import ./aerospace { inherit pkgs; })

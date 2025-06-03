@@ -23,8 +23,5 @@
     (import ./ruby {
       inherit pkgs system;
     })
-    (import ./rust {
-      inherit pkgs system;
-    })
   ];
 }

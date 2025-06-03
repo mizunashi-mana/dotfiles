@@ -40,10 +40,6 @@ in
             }
           ];
 
-          extra-brews = [
-            "git-flow-avh"
-          ];
-
           extra-programs = [
             (import "${nix-root-dir}/programs/phpstorm" { inherit pkgs; })
             (import "${nix-root-dir}/programs/slack" { inherit pkgs; })
@@ -54,6 +50,10 @@ in
         nixDarwinModules.modules
         ++ [
           {
+            homebrew.brews = [
+              "git-flow-avh"
+            ];
+
             home-manager.users.${username} = {
               programs.git = {
                 userName = "Nishiyama Shun";
