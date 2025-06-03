@@ -1,5 +1,6 @@
 {
   pkgs,
+  system,
   username,
   homedir,
   inputs,
@@ -14,6 +15,7 @@
       programs = import ../programs {
         inherit
           pkgs
+          system
           username
           homedir
           inputs

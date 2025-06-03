@@ -1,5 +1,6 @@
 {
   pkgs,
+  system,
   inputs,
   ...
 }:
@@ -32,15 +33,22 @@ let
     (import ./direnv { inherit pkgs; })
     (import ./devenv { inherit pkgs; })
     (import ./ssh { inherit pkgs; })
+    (import ./git { inherit pkgs; })
     (import ./emacs { inherit pkgs; })
     (import ./tmux { inherit pkgs; })
+    (import ./gpg { inherit pkgs system; })
     (import ./password-store { inherit pkgs; })
     (import ./awscli { inherit pkgs; })
     (import ./gh { inherit pkgs; })
     (import ./colima { inherit pkgs; })
     (import ./docker { inherit pkgs; })
     (import ./1password { inherit pkgs inputs; })
+    (import ./neovim { inherit pkgs; })
+    (import ./z3 { inherit pkgs; })
+    (import ./lha { inherit pkgs; })
+    (import ./poetry { inherit pkgs; })
     (import ./vagrant { inherit pkgs; })
+    (import ./android-tools { inherit pkgs; })
     (import ./aerospace { inherit pkgs; })
     (import ./vscode { inherit pkgs; })
     (import ./google-chrome { inherit pkgs; })

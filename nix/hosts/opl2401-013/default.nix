@@ -25,6 +25,7 @@ in
         nixDarwinModules = import "${nix-root-dir}/nix-darwin" {
           inherit
             pkgs
+            system
             username
             homedir
             inputs
