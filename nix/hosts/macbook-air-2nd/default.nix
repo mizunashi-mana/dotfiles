@@ -37,16 +37,11 @@ in
             }
           ];
 
-          extra-brews = [ ];
-
-          extra-casks = [
-            "discord"
-          ];
-
           extra-programs = [
             (import "${nix-root-dir}/programs/steam" { inherit pkgs; })
             (import "${nix-root-dir}/programs/texlive" { inherit pkgs; })
             (import "${nix-root-dir}/programs/kindle" { inherit pkgs; })
+            (import "${nix-root-dir}/programs/discord" { inherit pkgs; })
           ];
         };
       in
