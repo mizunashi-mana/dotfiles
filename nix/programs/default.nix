@@ -71,6 +71,7 @@ let
     (import ./vagrant { inherit pkgs; })
     (import ./android-tools { inherit pkgs; })
     (import ./bc { inherit pkgs; })
+    (import ./rsync { inherit pkgs; })
     (import ./w3m { inherit pkgs; })
     (import ./aerospace { inherit pkgs; })
     (import ./vscode { inherit pkgs; })
