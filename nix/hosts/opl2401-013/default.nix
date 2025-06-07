@@ -59,16 +59,6 @@ in
                 userName = "Nishiyama Shun";
                 userEmail = "nishiyama_shun@openlogi.com";
               };
-
-              imports =
-                let
-                  basicPrograms = import "${nix-root-dir}/home-manager/programs" {
-                    inherit pkgs system inputs;
-                  };
-
-                  programs = basicPrograms.imports;
-                in
-                programs;
             };
           }
         ]

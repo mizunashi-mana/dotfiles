@@ -18,6 +18,7 @@ let
     );
 
   programs = [
+    (import ./coreutils { inherit pkgs; })
     (import ./bash { inherit pkgs; })
     (import ./fish { inherit pkgs; })
     (import ./dircolors { inherit pkgs; })
@@ -32,6 +33,7 @@ let
     (import ./pigz { inherit pkgs; })
     (import ./nkf { inherit pkgs; })
     (import ./curl { inherit pkgs; })
+    (import ./inetutils { inherit pkgs; })
     (import ./make { inherit pkgs; })
     (import ./sed { inherit pkgs; })
     (import ./direnv { inherit pkgs; })

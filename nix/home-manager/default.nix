@@ -7,5 +7,8 @@
     (import ./home {
       inherit pkgs;
     })
+    (import ./programs {
+      inherit pkgs;
+    })
   ];
 }

@@ -54,16 +54,6 @@ in
                 userName = "Mizunashi Mana";
                 userEmail = "contact@mizunashi.work";
               };
-
-              imports =
-                let
-                  basicPrograms = import "${nix-root-dir}/home-manager/programs" {
-                    inherit pkgs system inputs;
-                  };
-
-                  programs = (basicPrograms.imports);
-                in
-                programs;
             };
           }
         ]

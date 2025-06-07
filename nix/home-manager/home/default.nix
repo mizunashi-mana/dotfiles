@@ -16,5 +16,9 @@
     file = {
       "Workspace/MyWork/.keep".text = "";
     };
+
+    packages = [
+      pkgs.cacert
+    ];
   };
 }
