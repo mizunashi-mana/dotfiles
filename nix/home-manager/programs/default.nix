@@ -17,9 +17,6 @@
     (import ./netutils {
       inherit pkgs system;
     })
-    (import ./mediautils {
-      inherit pkgs system;
-    })
     (import ./ruby {
       inherit pkgs system;
     })
