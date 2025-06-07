@@ -17,8 +17,5 @@
     (import ./netutils {
       inherit pkgs system;
     })
-    (import ./ruby {
-      inherit pkgs system;
-    })
   ];
 }
