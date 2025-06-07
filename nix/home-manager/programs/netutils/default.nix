@@ -7,7 +7,6 @@
     pkgs.arp-scan
     pkgs.curl
     pkgs.nmap
-    pkgs.wget
     pkgs.w3m
   ];
 }
