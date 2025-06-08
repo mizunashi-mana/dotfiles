@@ -31,6 +31,9 @@ devenv.local.nix
 # asdf
 .tool-versions
 
+# jupyter
+.ipynb_checkpoints
+
 # Mac ignores
 
 ## general mac temporary files
@@ -40,7 +43,6 @@ devenv.local.nix
 
 ## Icon must end with two \r
 Icon
-
 
 ## Thumbnails
 ._*
