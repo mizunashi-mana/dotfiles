@@ -11,6 +11,17 @@
     pkgs.nodePackages.node2nix
   ];
 
+  # https://devenv.sh/tasks/
+  tasks = {
+    "pkgs:update" = {
+      exec = ''
+        set -xe
+        nix flake update
+        ./script/node2nix-update.sh
+      '';
+    };
+  };
+
   # https://devenv.sh/languages/
   languages = {
     nix.enable = true;

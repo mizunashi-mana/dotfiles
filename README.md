@@ -8,12 +8,6 @@ My dotfiles and construction documentations.
 ./setup
 ```
 
-## Update packages
-
-```bash
-nix flake update
-```
-
 ## How to Contribute
 
 Requirements:
@@ -24,4 +18,16 @@ Run the below to develop:
 
 ```bash
 devenv shell
+```
+
+### Update packages
+
+```bash
+devenv tasks run pkgs:update
+```
+
+### Formatting
+
+```bash
+devenv test
 ```

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 set -euo pipefail
-[ "${TRACE:-false}" = "true" ] && set -x
+[ -n "${TRACE:-}" ] && set -x
 
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
 TASKS_DIR="$SCRIPT_DIR/tasks"

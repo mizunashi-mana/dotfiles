@@ -14,7 +14,7 @@ let
   sources = { };
 in
 {
-  "@anthropic-ai/claude-code" = nodeEnv.buildNodePackage {
+  "@anthropic-ai/claude-code-" = nodeEnv.buildNodePackage {
     name = "_at_anthropic-ai_slash_claude-code";
     packageName = "@anthropic-ai/claude-code";
     version = "1.0.17";
