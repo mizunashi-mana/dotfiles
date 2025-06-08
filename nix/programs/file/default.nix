@@ -1,12 +1,12 @@
 {
-  pkgs,
+  packages,
   ...
 }:
 {
   homeManagerImports = [
     {
       home.packages = [
-        pkgs.file
+        packages.pkgs.file
       ];
     }
   ];

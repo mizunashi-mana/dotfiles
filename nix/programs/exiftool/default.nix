@@ -1,12 +1,12 @@
 {
-  pkgs,
+  packages,
   ...
 }:
 {
   homeManagerImports = [
     {
       home.packages = [
-        pkgs.exiftool
+        packages.pkgs.exiftool
       ];
     }
   ];

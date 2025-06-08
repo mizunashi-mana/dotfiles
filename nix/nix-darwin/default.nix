@@ -1,5 +1,5 @@
 {
-  pkgs,
+  packages,
   system,
   username,
   homedir,
@@ -12,7 +12,7 @@
     let
       programs = import ../programs {
         inherit
-          pkgs
+          packages
           system
           username
           homedir
@@ -27,7 +27,7 @@
       };
       home-manager = import ./home-manager {
         inherit
-          pkgs
+          packages
           username
           homedir
           inputs
@@ -37,21 +37,21 @@
     in
     [
       (import ./nix {
-        inherit pkgs username homedir;
+        inherit packages username homedir;
       })
       (import ./system {
         inherit
-          pkgs
+          packages
           username
           homedir
           extra-dock-persistent-apps
           ;
       })
       (import ./users {
-        inherit pkgs username homedir;
+        inherit packages username homedir;
       })
       (import ./homebrew {
-        inherit pkgs username homedir;
+        inherit packages username homedir;
       })
     ]
     ++ home-manager.modules

@@ -6,8 +6,7 @@
   homeManagerImports = [
     {
       home.packages = [
-        packages.pkgs.docker
-        packages.pkgs.docker-credential-helpers
+        packages.node-packages."@anthropic-ai/claude-code"
       ];
     }
   ];

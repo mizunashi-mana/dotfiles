@@ -7,7 +7,9 @@
 }:
 {
   # https://devenv.sh/packages/
-  packages = [ ];
+  packages = [
+    pkgs.nodePackages.node2nix
+  ];
 
   # https://devenv.sh/languages/
   languages = {
@@ -20,7 +22,12 @@
     actionlint.enable = true;
     nixfmt-rfc-style.enable = true;
     prettier.enable = true;
-    pretty-format-json.enable = true;
+    pretty-format-json = {
+      enable = true;
+      settings = {
+        autofix = true;
+      };
+    };
     shellcheck.enable = true;
     shfmt.enable = true;
     taplo.enable = true;

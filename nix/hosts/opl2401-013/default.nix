@@ -9,22 +9,22 @@ let
   username = "nishiyama_shun";
   homedir = "/Users/${username}";
 
-  pkgs = import inputs.nixpkgs {
-    inherit system;
-    config.allowUnfree = true;
+  packages = import "${nix-root-dir}/nix/packages" {
+    inherit inputs system;
   };
 in
 {
   inherit system hostname;
 
   darwinConfiguration = inputs.nix-darwin.lib.darwinSystem {
-    inherit system pkgs;
+    inherit system;
+    inherit (packages) pkgs;
 
     modules =
       let
         nixDarwinModules = import "${nix-root-dir}/nix-darwin" {
           inherit
-            pkgs
+            packages
             system
             username
             homedir
@@ -41,8 +41,8 @@ in
           ];
 
           extra-programs = [
-            (import "${nix-root-dir}/programs/phpstorm" { inherit pkgs; })
-            (import "${nix-root-dir}/programs/slack" { inherit pkgs; })
+            (import "${nix-root-dir}/programs/phpstorm" { inherit packages; })
+            (import "${nix-root-dir}/programs/slack" { inherit packages; })
           ];
         };
       in

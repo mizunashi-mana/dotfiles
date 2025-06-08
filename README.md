@@ -8,6 +8,12 @@ My dotfiles and construction documentations.
 ./setup
 ```
 
+## Update packages
+
+```bash
+nix flake update
+```
+
 ## How to Contribute
 
 Requirements:

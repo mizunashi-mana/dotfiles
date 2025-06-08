@@ -1,12 +1,12 @@
 {
-  pkgs,
+  packages,
   ...
 }:
 {
   homeManagerImports = [
     {
       home.packages = [
-        pkgs.arp-scan
+        packages.pkgs.arp-scan
       ];
     }
   ];

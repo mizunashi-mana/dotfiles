@@ -1,12 +1,12 @@
 {
-  pkgs,
+  packages,
   ...
 }:
 {
   homeManagerImports = [
     {
       home.packages = [
-        (pkgs.ruby.withPackages (rubypkgs: [
+        (packages.pkgs.ruby.withPackages (rubypkgs: [
           rubypkgs.pry
         ]))
       ];

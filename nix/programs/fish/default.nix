@@ -1,5 +1,5 @@
 {
-  pkgs,
+  packages,
   ...
 }:
 {
@@ -26,7 +26,7 @@
       };
 
       environment.shells = [
-        pkgs.fish
+        packages.pkgs.fish
       ];
     }
   ];

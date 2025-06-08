@@ -1,5 +1,5 @@
 {
-  pkgs,
+  packages,
   inputs,
   ...
 }:
@@ -10,8 +10,8 @@
       programs._1password-shell-plugins = {
         enable = true;
         plugins = [
-          pkgs.gh
-          pkgs.cachix
+          packages.pkgs.gh
+          packages.pkgs.cachix
         ];
       };
     }

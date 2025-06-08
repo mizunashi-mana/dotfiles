@@ -1,13 +1,14 @@
 {
-  pkgs,
+  packages,
   username,
   homedir,
+  ...
 }:
 {
   users = {
     users.${username} = {
       home = homedir;
-      shell = pkgs.fish;
+      shell = packages.pkgs.fish;
       ignoreShellProgramCheck = true;
     };
   };

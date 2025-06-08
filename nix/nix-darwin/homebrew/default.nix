@@ -1,7 +1,5 @@
 {
-  pkgs,
-  username,
-  homedir,
+  ...
 }:
 {
   homebrew = {

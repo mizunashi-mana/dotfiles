@@ -1,12 +1,12 @@
 {
-  pkgs,
+  packages,
   ...
 }:
 {
   homeManagerImports = [
     {
       home.packages = [
-        pkgs.colima
+        packages.pkgs.colima
       ];
     }
   ];
@@ -15,11 +15,11 @@
     {
       launchd.user.agents.colima = {
         environment = {
-          PATH = "/bin:/usr/bin:${pkgs.docker}/bin";
+          PATH = "/bin:/usr/bin:${packages.pkgs.docker}/bin";
         };
         serviceConfig = {
           ProgramArguments = [
-            "${pkgs.colima}/bin/colima"
+            "${packages.pkgs.colima}/bin/colima"
             "start"
             "--foreground"
             "--vm-type"

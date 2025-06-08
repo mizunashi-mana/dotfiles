@@ -1,5 +1,5 @@
 {
-  pkgs,
+  packages,
   ...
 }:
 {
@@ -10,7 +10,7 @@
       };
 
       home.packages = [
-        pkgs.ssm-session-manager-plugin
+        packages.pkgs.ssm-session-manager-plugin
       ];
     }
   ];

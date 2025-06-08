@@ -1,14 +1,14 @@
-{ pkgs, ... }:
+{ packages, ... }:
 {
   imports = [
     (import ./editorconfig {
-      inherit pkgs;
+      inherit packages;
     })
     (import ./home {
-      inherit pkgs;
+      inherit packages;
     })
     (import ./programs {
-      inherit pkgs;
+      inherit packages;
     })
   ];
 }

@@ -1,5 +1,5 @@
 {
-  pkgs,
+  packages,
   system,
   ...
 }:
@@ -11,7 +11,7 @@
       };
 
       home.packages = [
-        (if system == "aarch64-darwin" then pkgs.pinentry_mac else pkgs.pinentry)
+        (if system == "aarch64-darwin" then packages.pkgs.pinentry_mac else packages.pkgs.pinentry)
       ];
     }
   ];

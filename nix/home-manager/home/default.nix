@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ packages, ... }:
 {
   home = {
     sessionPath = [
@@ -18,7 +18,7 @@
     };
 
     packages = [
-      pkgs.cacert
+      packages.pkgs.cacert
     ];
   };
 }

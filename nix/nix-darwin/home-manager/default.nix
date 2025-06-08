@@ -1,5 +1,5 @@
 {
-  pkgs,
+  packages,
   username,
   homedir,
   inputs,
@@ -20,7 +20,7 @@
 
         imports =
           (import ../../home-manager {
-            inherit pkgs;
+            inherit packages;
           }).imports
           ++ extra-imports;
       };

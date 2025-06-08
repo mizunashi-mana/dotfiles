@@ -1,8 +1,9 @@
 {
-  pkgs,
+  packages,
   username,
   homedir,
   extra-dock-persistent-apps,
+  ...
 }:
 {
   system = {
@@ -42,13 +43,13 @@
             app = "/Applications/Google Chrome.app";
           }
           {
-            app = "${pkgs.vscode}/Applications/Visual Studio Code.app";
+            app = "${packages.pkgs.vscode}/Applications/Visual Studio Code.app";
           }
           {
-            app = "${pkgs.skimpdf}/Applications/Skim.app";
+            app = "${packages.pkgs.skimpdf}/Applications/Skim.app";
           }
           {
-            app = "${pkgs.zotero}/Applications/Zotero.app";
+            app = "${packages.pkgs.zotero}/Applications/Zotero.app";
           }
         ] ++ extra-dock-persistent-apps;
       };
