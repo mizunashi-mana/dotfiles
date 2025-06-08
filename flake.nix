@@ -6,6 +6,10 @@
       url = "github:nixos/nixpkgs?ref=nixpkgs-unstable";
     };
 
+    nixpkgs-stable = {
+      url = "github:nixos/nixpkgs?ref=nixos-25.05";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -34,6 +38,7 @@
     inputs@{
       self,
       nixpkgs,
+      nixpkgs-stable,
       flake-parts,
       treefmt-nix,
       home-manager,
