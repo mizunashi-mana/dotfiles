@@ -70,7 +70,6 @@
           treefmt = {
             projectRootFile = "flake.nix";
             programs = {
-              jsonfmt.enable = true;
               fish_indent.enable = true;
             };
           };

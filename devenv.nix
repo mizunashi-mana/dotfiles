@@ -20,6 +20,7 @@
     actionlint.enable = true;
     nixfmt-rfc-style.enable = true;
     prettier.enable = true;
+    pretty-format-json.enable = true;
     shellcheck.enable = true;
     shfmt.enable = true;
     taplo.enable = true;
