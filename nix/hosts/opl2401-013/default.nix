@@ -9,7 +9,7 @@ let
   username = "nishiyama_shun";
   homedir = "/Users/${username}";
 
-  packages = import "${nix-root-dir}/nix/packages" {
+  packages = import "${nix-root-dir}/packages" {
     inherit inputs system;
   };
 in
