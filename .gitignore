@@ -1,10 +1,9 @@
-/ansible-playbook/group_vars/custom.yml
-/storage/*
-!/storage/.keep
+# Devenv
+.devenv*
+devenv.local.nix
 
-# for Gitbook
-node_modules/
-_book/
+# direnv
+.direnv
 
-# for Homebrew
-*Brewfile.lock.json
+# pre-commit
+.pre-commit-config.yaml
