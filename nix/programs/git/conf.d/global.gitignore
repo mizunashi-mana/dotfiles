@@ -4,6 +4,9 @@
 # VSCode settings
 .vscode/
 
+# claude-code
+.claude/*.local.json
+
 # direnv
 .envrc
 .direnv/
