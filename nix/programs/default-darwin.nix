@@ -8,7 +8,6 @@ let
   default = import ./default.nix { inherit system inputs packages; };
 
   programs = [
-    (import ./neovim { inherit packages; })
     (import ./z3 { inherit packages; })
     (import ./gcc { inherit packages; })
     (import ./lnav { inherit packages; })
