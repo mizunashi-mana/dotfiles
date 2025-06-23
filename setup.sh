@@ -74,8 +74,9 @@ case "$HOSTNAME_SHORT" in
   ;;
 'devcontainer')
   nix run home-manager \
+    -- switch \
     --extra-experimental-features 'flakes nix-command' \
-    -- switch --flake ".#$HOSTNAME_SHORT" --show-trace
+    --flake ".#$HOSTNAME_SHORT" --show-trace --impure
   ;;
 *)
   echo "Unknown host: $HOSTNAME_SHORT" >&2

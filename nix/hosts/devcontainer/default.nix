@@ -1,4 +1,5 @@
 {
+  current-system,
   inputs,
   ...
 }:
@@ -6,7 +7,7 @@ let
   nix-root-dir = ../..;
 
   hostname = "devcontainer";
-  system = "aarch64-linux";
+  system = current-system;
   username = "workuser";
   homedir = "/home/${username}";
 

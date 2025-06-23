@@ -46,6 +46,7 @@
       ...
     }:
     let
+      current-system = (if builtins ? currentSystem then builtins.currentSystem else "aarch64-linux");
       macbook-air-2nd = import ./nix/hosts/macbook-air-2nd {
         inherit inputs;
       };
@@ -53,7 +54,7 @@
         inherit inputs;
       };
       devcontainer = import ./nix/hosts/devcontainer {
-        inherit inputs;
+        inherit current-system inputs;
       };
     in
     flake-parts.lib.mkFlake { inherit inputs; } {
