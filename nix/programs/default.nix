@@ -51,7 +51,6 @@ let
     (import ./claude-code { inherit packages; })
     (import ./wget { inherit packages; })
     (import ./nmap { inherit packages; })
-    (import ./m4 { inherit packages; })
     (import ./getopt { inherit packages; })
     (import ./file { inherit packages; })
     (import ./bc { inherit packages; })

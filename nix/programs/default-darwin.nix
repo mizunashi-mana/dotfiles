@@ -12,6 +12,7 @@ let
     (import ./z3 { inherit packages; })
     (import ./gcc { inherit packages; })
     (import ./lnav { inherit packages; })
+    (import ./m4 { inherit packages; })
     (import ./arp-scan { inherit packages; })
     (import ./tmux { inherit packages; })
     (import ./awscli { inherit packages; })
