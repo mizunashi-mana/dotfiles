@@ -19,6 +19,15 @@
           inputs
           ;
       };
+      programs-darwin = import ../programs/default-darwin.nix {
+        inherit
+          packages
+          system
+          username
+          homedir
+          inputs
+          ;
+      };
       extra-programs-hm-imports = programs.mkHomeManagerImports {
         programs = extra-programs;
       };
@@ -56,5 +65,6 @@
     ]
     ++ home-manager.modules
     ++ programs.nixDarwinModules
+    ++ programs-darwin.nixDarwinModules
     ++ extra-programs-nix-darwin-modules;
 }

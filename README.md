@@ -8,6 +8,12 @@ My dotfiles and construction documentations.
 ./setup
 ```
 
+### Docker Image
+
+```bash
+docker build -t mizunashi-mana/dotfiles-devcontainer .
+```
+
 ## How to Contribute
 
 Requirements:

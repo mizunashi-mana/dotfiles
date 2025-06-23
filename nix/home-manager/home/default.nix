@@ -1,7 +1,10 @@
 { packages, ... }:
 {
   home = {
+    stateVersion = "25.05";
+
     sessionPath = [
+      "$HOME/.nix-profile/bin"
       "$HOME/.local/bin"
     ];
 

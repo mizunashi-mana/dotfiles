@@ -42,7 +42,7 @@
     shellcheck.enable = true;
     shfmt.enable = true;
     taplo.enable = true;
-    yamlfmt.enable = true;
+    hadolint.enable = true;
   };
 
   # See full reference at https://devenv.sh/reference/options/

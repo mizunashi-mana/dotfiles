@@ -52,9 +52,13 @@
       opl2401-013 = import ./nix/hosts/opl2401-013 {
         inherit inputs;
       };
+      devcontainer = import ./nix/hosts/devcontainer {
+        inherit inputs;
+      };
     in
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [
+        devcontainer.system
         macbook-air-2nd.system
         opl2401-013.system
       ];
@@ -67,6 +71,10 @@
         darwinConfigurations = {
           ${macbook-air-2nd.hostname} = macbook-air-2nd.darwinConfiguration;
           ${opl2401-013.hostname} = opl2401-013.darwinConfiguration;
+        };
+
+        homeConfigurations = {
+          ${devcontainer.hostname} = devcontainer.homeConfiguration;
         };
       };
 
