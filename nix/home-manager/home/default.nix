@@ -9,11 +9,11 @@
     ];
 
     sessionVariables = {
-      EDITOR = "emacsclient -nw";
+      EDITOR = "emacsclient -nw --alternate-editor 'nvim'";
     };
 
     shellAliases = {
-      editor = "emacsclient -nw";
+      editor = "emacsclient -nw --alternate-editor 'nvim'";
     };
 
     file = {

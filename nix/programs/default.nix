@@ -45,17 +45,17 @@ let
     (import ./devenv { inherit packages; })
     (import ./ssh { inherit packages; })
     (import ./git { inherit packages; })
-    (import ./emacs { inherit packages; })
     (import ./gpg { inherit packages system; })
     (import ./gh { inherit packages; })
     (import ./claude-code { inherit packages; })
     (import ./wget { inherit packages; })
     (import ./nmap { inherit packages; })
-    (import ./m4 { inherit packages; })
     (import ./getopt { inherit packages; })
     (import ./file { inherit packages; })
     (import ./bc { inherit packages; })
     (import ./rsync { inherit packages; })
+    (import ./emacs { inherit packages; })
+    (import ./neovim { inherit packages; })
   ];
 in
 {
