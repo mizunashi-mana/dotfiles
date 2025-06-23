@@ -6,6 +6,11 @@
   extra-imports ? [ ],
   ...
 }:
+let
+  home-manager = import ../../home-manager {
+    inherit packages;
+  };
+in
 {
   modules = [
     inputs.home-manager.darwinModules.home-manager
@@ -16,11 +21,7 @@
         home.username = username;
         home.homeDirectory = homedir;
 
-        imports =
-          (import ../../home-manager {
-            inherit packages;
-          }).imports
-          ++ extra-imports;
+        imports = home-manager.imports ++ extra-imports;
       };
     }
   ];

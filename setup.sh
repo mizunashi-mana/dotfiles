@@ -68,15 +68,14 @@ esac
 
 case "$HOSTNAME_SHORT" in
 'macbook-air-2nd' | 'opl2401-013')
-  sudo nix run nix-darwin \
-    --extra-experimental-features 'flakes nix-command' \
+  sudo nix --extra-experimental-features 'flakes nix-command' \
+    run nix-darwin \
     -- switch --flake ".#$HOSTNAME_SHORT" --show-trace
   ;;
 'devcontainer')
-  nix run home-manager \
-    -- switch \
-    --extra-experimental-features 'flakes nix-command' \
-    --flake ".#$HOSTNAME_SHORT" --show-trace --impure
+  nix --extra-experimental-features 'flakes nix-command' \
+    run home-manager \
+    -- switch --flake ".#$HOSTNAME_SHORT" --show-trace --impure
   ;;
 *)
   echo "Unknown host: $HOSTNAME_SHORT" >&2
