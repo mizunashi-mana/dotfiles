@@ -20,6 +20,8 @@ mkdir -p /home/workuser
 chown workuser:workuser /home/workuser
 
 mkdir -p /var/dotfiles
+mkdir -m 0755 /nix
+chown workuser /nix
 EOS
 
 COPY ./nix /var/dotfiles/nix
@@ -35,13 +37,13 @@ ENV \
   PATH=/usr/local/bin:/usr/bin:/bin:/home/workuser/.nix-profile/bin
 
 RUN <<EOS
-./tasks/nix/install
+bash -c "$(curl -fsSL https://nixos.org/nix/install)" -s --no-daemon
 EOS
 
 COPY ./docker/nix.conf /etc/nix/nix.conf
 
 RUN <<EOS
-./setup.sh --hostname devcontainer
+TRACE=1 ./setup.sh --hostname devcontainer
 nix store gc
 EOS
 
