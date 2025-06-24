@@ -41,6 +41,11 @@ in
         home.homeDirectory = homedir;
 
         imports = home-manager.imports ++ programs.homeManagerImports;
+
+        programs.git = {
+          userName = "Mizunashi Mana";
+          userEmail = "contact@mizunashi.work";
+        };
       }
     ];
   };
