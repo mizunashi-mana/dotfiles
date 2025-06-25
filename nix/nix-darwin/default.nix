@@ -41,7 +41,7 @@
           homedir
           inputs
           ;
-        extra-imports = programs.homeManagerImports ++ extra-programs-hm-imports;
+        extra-imports = programs-darwin.homeManagerImports ++ extra-programs-hm-imports;
       };
     in
     [
@@ -64,7 +64,6 @@
       })
     ]
     ++ home-manager.modules
-    ++ programs.nixDarwinModules
     ++ programs-darwin.nixDarwinModules
     ++ extra-programs-nix-darwin-modules;
 }

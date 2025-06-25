@@ -56,10 +56,14 @@
       devcontainer = import ./nix/hosts/devcontainer {
         inherit current-system inputs;
       };
+      devcontainer-claude = import ./nix/hosts/devcontainer-claude {
+        inherit current-system inputs;
+      };
     in
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [
         devcontainer.system
+        devcontainer-claude.system
         macbook-air-2nd.system
         opl2401-013.system
       ];
@@ -76,6 +80,7 @@
 
         homeConfigurations = {
           ${devcontainer.hostname} = devcontainer.homeConfiguration;
+          ${devcontainer-claude.hostname} = devcontainer-claude.homeConfiguration;
         };
       };
 

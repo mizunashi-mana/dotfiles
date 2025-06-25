@@ -72,7 +72,7 @@ case "$HOSTNAME_SHORT" in
     run nix-darwin \
     -- switch --flake ".#$HOSTNAME_SHORT" --show-trace
   ;;
-'devcontainer')
+'devcontainer' | 'devcontainer-claude')
   nix --extra-experimental-features 'flakes nix-command' \
     run home-manager \
     -- switch --flake ".#$HOSTNAME_SHORT" --show-trace --impure

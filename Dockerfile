@@ -1,6 +1,7 @@
 #syntax=docker/dockerfile:1.4
 
 FROM debian:bookworm-slim
+ARG SETUP_HOST=devcontainer
 
 SHELL ["/bin/bash", "-euo", "pipefail", "-c"]
 
@@ -31,7 +32,6 @@ COPY ./flake.lock /var/dotfiles/flake.lock
 COPY ./setup.sh /var/dotfiles/setup.sh
 
 USER workuser
-WORKDIR /var/dotfiles
 ENV \
   USER=workuser \
   PATH=/usr/local/bin:/usr/bin:/bin:/home/workuser/.nix-profile/bin
@@ -42,12 +42,14 @@ EOS
 
 COPY ./docker/nix.conf /etc/nix/nix.conf
 
+WORKDIR /var/dotfiles
 RUN <<EOS
-TRACE=1 ./setup.sh --hostname devcontainer
+TRACE=1 ./setup.sh --hostname "$SETUP_HOST"
 nix store gc
 EOS
 
 USER root
+WORKDIR /home/workuser
 RUN <<EOS
 /sbin/usermod --shell /home/workuser/.nix-profile/bin/fish workuser
 DEBIAN_FRONTEND=noninteractive apt-get remove -y \
@@ -55,6 +57,7 @@ DEBIAN_FRONTEND=noninteractive apt-get remove -y \
   xz-utils
 DEBIAN_FRONTEND=noninteractive apt-get autoremove -y --purge
 rm -rf /var/lib/apt/lists/*
+rm -rf /var/dotfiles
 EOS
 
 USER workuser
