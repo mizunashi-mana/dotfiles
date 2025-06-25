@@ -6,7 +6,7 @@
 let
   nix-root-dir = ../..;
 
-  hostname = "devcontainer";
+  hostname = "devcontainer-claude";
   system = current-system;
   username = "workuser";
   homedir = "/home/${username}";
@@ -29,9 +29,10 @@ let
       ;
   };
 
-  programs-common = import "${nix-root-dir}/default-common.nix" {
-    inherit packages system inputs;
-  };
+  extra-programs = [
+    (import "${nix-root-dir}/programs/gh" { inherit packages; })
+    (import "${nix-root-dir}/programs/claude-code" { inherit packages; })
+  ];
 in
 {
   inherit system hostname;
@@ -44,7 +45,10 @@ in
         home.username = username;
         home.homeDirectory = homedir;
 
-        imports = home-manager.imports ++ programs.homeManagerImports ++ programs-common.homeManagerImports;
+        imports =
+          home-manager.imports
+          ++ programs.homeManagerImports
+          ++ (programs.mkHomeManagerImports { programs = extra-programs; });
 
         programs.git = {
           userName = "Mizunashi Mana";

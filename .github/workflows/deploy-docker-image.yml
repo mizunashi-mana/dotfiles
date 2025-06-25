@@ -8,7 +8,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
+  IMAGE_NAME: ${{ github.repository }}/devcontainer-claude
 
 jobs:
   build:
@@ -55,6 +55,8 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
           platforms: ${{ github.event_name == 'pull_request' && 'linux/amd64' || 'linux/amd64,linux/arm64' }}
+          build-args: |
+            SETUP_HOST=devcontainer-claude
 
       - name: Sign the published Docker image
         if: ${{ github.event_name != 'pull_request' }}
