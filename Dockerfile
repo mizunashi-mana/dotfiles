@@ -43,8 +43,11 @@ EOS
 COPY ./docker/nix.conf /etc/nix/nix.conf
 
 WORKDIR /var/dotfiles
-RUN <<EOS
-TRACE=1 ./setup.sh --hostname "$SETUP_HOST"
+RUN --mount=type=secret,id=github-token \
+<<EOS
+env \
+  "NIX_GITHUB_TOKEN=$(cat /run/secrets/github-token)" \
+  TRACE=1 ./setup.sh --hostname "$SETUP_HOST"
 nix store gc
 EOS
 

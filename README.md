@@ -17,7 +17,11 @@ docker build -t mizunashi-mana/dotfiles-devcontainer .
 Claude version:
 
 ```bash
-docker build --build-arg devcontainer-claude --tag mizunashi-mana/dotfiles/devcontainer-claude .
+env "GITHUB_TOKEN=$(gh auth token)" docker buildx build \
+  --build-arg devcontainer-claude \
+  --tag mizunashi-mana/dotfiles/devcontainer-claude \
+  --secret id=github-token,env=GITHUB_TOKEN \
+  .
 ```
 
 ## How to Contribute
