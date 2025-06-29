@@ -17,6 +17,7 @@ let
 
   home-manager = import "${nix-root-dir}/home-manager" {
     inherit packages;
+    default-editor = "nvim";
   };
 
   programs = import "${nix-root-dir}/programs" {

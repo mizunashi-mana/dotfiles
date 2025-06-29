@@ -1,4 +1,4 @@
-name: CI Lint
+name: Lint
 on:
   push:
     branches:
@@ -7,7 +7,7 @@ on:
     branches:
       - master
 jobs:
-  build:
+  lint:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4

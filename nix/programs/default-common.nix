@@ -8,6 +8,7 @@ let
   default = import ./default.nix { inherit system inputs packages; };
 
   programs = [
+    default
     (import ./zoxide { inherit packages; })
     (import ./jq { inherit packages; })
     (import ./eza { inherit packages; })

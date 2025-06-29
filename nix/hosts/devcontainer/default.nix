@@ -19,7 +19,7 @@ let
     inherit packages;
   };
 
-  programs = import "${nix-root-dir}/programs" {
+  programs-common = import "${nix-root-dir}/programs/default-common.nix" {
     inherit
       packages
       system
@@ -27,10 +27,6 @@ let
       homedir
       inputs
       ;
-  };
-
-  programs-common = import "${nix-root-dir}/default-common.nix" {
-    inherit packages system inputs;
   };
 in
 {
@@ -44,7 +40,7 @@ in
         home.username = username;
         home.homeDirectory = homedir;
 
-        imports = home-manager.imports ++ programs.homeManagerImports ++ programs-common.homeManagerImports;
+        imports = home-manager.imports ++ programs-common.homeManagerImports;
 
         programs.git = {
           userName = "Mizunashi Mana";
