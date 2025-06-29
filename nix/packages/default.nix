@@ -24,5 +24,6 @@ in
 
   node-packages = node2nix-pkgs // {
     "@anthropic-ai/claude-code" = node2nix-pkgs."@anthropic-ai/claude-code-";
+    "ccusage" = node2nix-pkgs."ccusage-";
   };
 }
