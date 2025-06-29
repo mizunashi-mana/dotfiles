@@ -1,5 +1,6 @@
 [
   {
-    "@anthropic-ai/claude-code": ""
+    "@anthropic-ai/claude-code": "",
+    "ccusage": ""
   }
 ]

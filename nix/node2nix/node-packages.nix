@@ -17,16 +17,34 @@ in
   "@anthropic-ai/claude-code-" = nodeEnv.buildNodePackage {
     name = "_at_anthropic-ai_slash_claude-code";
     packageName = "@anthropic-ai/claude-code";
-    version = "1.0.34";
+    version = "1.0.37";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-1.0.34.tgz";
-      sha512 = "9mQd8hodE5/RxZnsWUCdLzqGUKuCzBczrfc2QfxrNSlvUFpOgTzjT1Zlww2vW9v0K1e5K9g1o08apqPl/QPmpw==";
+      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-1.0.37.tgz";
+      sha512 = "QRuw8700pzRxGxmq2LPmy/YH6eNcdKGmfncVj2nAg/6VG8PFDQfxzOcYOp4YDAFjYAfcWLrNTxiLm5sT3PxUEA==";
     };
     buildInputs = globalBuildInputs;
     meta = {
       description = "Use Claude, Anthropic's AI assistant, right from your terminal. Claude can understand your codebase, edit files, run terminal commands, and handle entire workflows for you.";
       homepage = "https://github.com/anthropics/claude-code";
       license = "SEE LICENSE IN README.md";
+    };
+    production = true;
+    bypassCache = true;
+    reconstructLock = true;
+  };
+  ccusage- = nodeEnv.buildNodePackage {
+    name = "ccusage";
+    packageName = "ccusage";
+    version = "15.2.0";
+    src = fetchurl {
+      url = "https://registry.npmjs.org/ccusage/-/ccusage-15.2.0.tgz";
+      sha512 = "DpUI61fDTHYIjSjjU9flTkCRA44THyy0C0fIQi1f69HLn9U7b1rMSHBJdOQ3eNNWY0LMbn15CXWXmbAAEvCLbA==";
+    };
+    buildInputs = globalBuildInputs;
+    meta = {
+      description = "Usage analysis tool for Claude Code";
+      homepage = "https://github.com/ryoppippi/ccusage#readme";
+      license = "MIT";
     };
     production = true;
     bypassCache = true;
