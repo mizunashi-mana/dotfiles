@@ -12,6 +12,8 @@ env:
 jobs:
   define-matrix:
     runs-on: ubuntu-latest
+    permissions: {}
+
     outputs:
       matrix_image: ${{ steps.set.outputs.matrix_image }}
 
