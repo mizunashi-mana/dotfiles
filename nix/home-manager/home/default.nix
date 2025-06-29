@@ -1,4 +1,4 @@
-{ packages, ... }:
+{ packages, default-editor, ... }:
 {
   home = {
     stateVersion = "25.05";
@@ -9,11 +9,11 @@
     ];
 
     sessionVariables = {
-      EDITOR = "emacsclient -nw --alternate-editor 'nvim'";
+      EDITOR = default-editor;
     };
 
     shellAliases = {
-      editor = "emacsclient -nw --alternate-editor 'nvim'";
+      editor = default-editor;
     };
 
     file = {
