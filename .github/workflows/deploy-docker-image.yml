@@ -10,32 +10,40 @@ env:
   REGISTRY: ghcr.io
 
 jobs:
+  define-matrix:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix_image: ${{ steps.set.outputs.matrix_image }}
+
+    steps:
+      - name: Set variables
+        id: set
+        run: |
+          echo "matrix_image=$(echo '
+          [
+            {
+              "target_host": "devcontainer-claude",
+              "image_name": "${{ github.repository }}/devcontainer-claude",
+              "full_platforms": "linux/amd64,linux/arm64"
+            },
+            {
+              "target_host": "devcontainer",
+              "image_name": "${{ github.repository }}/devcontainer",
+              "full_platforms": "linux/amd64"
+            }
+          ]
+          ' | jq -c)" >> "$GITHUB_OUTPUT"
+
   build:
+    needs: define-matrix
+
     runs-on: ubuntu-latest
     permissions:
       contents: read
 
     strategy:
       matrix:
-        image:
-          [
-            {
-              target_host: "devcontainer-claude",
-              image_name: "${{ github.repository }}/devcontainer-claude",
-              full_platforms: "linux/amd64,linux/arm64",
-            },
-            {
-              target_host: "devcontainer",
-              image_name: "${{ github.repository }}/devcontainer",
-              full_platforms: "linux/amd64",
-            },
-          ]
-
-    outputs:
-      image-tags: ${{ steps.meta.outputs.tags }}
-      image-labels: ${{ steps.meta.outputs.labels }}
-      image-id: ${{ steps.build.outputs.imageid }}
-      image-digest: ${{ steps.build.outputs.digest }}
+        image: ${{ fromJson(needs.define-matrix.outputs.matrix_image) }}
 
     steps:
       - name: Checkout repository
@@ -44,20 +52,11 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@e468171a9de216ec08956ac3ada2f0791b6bd435 # v3.11.1
 
-      - name: Extract Docker metadata
-        id: meta
-        uses: docker/metadata-action@902fa8ec7d6ecbf8d84d538b9b233a880e428804 # v5.7.0
-        with:
-          images: ${{ env.REGISTRY }}/${{ matrix.image.image_name }}
-
       - name: Build Docker image
-        id: build
         uses: docker/build-push-action@263435318d21b8e681c14492fe198d362a7d2c83 # v6.18.0
         with:
           context: .
           push: false
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
           platforms: ${{ github.event_name == 'pull_request' && 'linux/amd64' || matrix.image.full_platforms }}
@@ -75,9 +74,10 @@ jobs:
           retention-days: 1
 
   push:
-    runs-on: ubuntu-latest
-    needs: build
+    needs: ["define-matrix", "build"]
     if: github.event_name != 'pull_request'
+
+    runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
@@ -85,11 +85,7 @@ jobs:
 
     strategy:
       matrix:
-        image:
-          [
-            { target_host: "devcontainer-claude" },
-            { target_host: "devcontainer" },
-          ]
+        image: ${{ fromJson(needs.define-matrix.outputs.matrix_image) }}
 
     steps:
       # https://github.com/sigstore/cosign-installer
@@ -109,18 +105,26 @@ jobs:
           name: ${{ matrix.image.target_host }}-image
           path: /tmp
 
+      - name: Extract Docker metadata
+        id: meta
+        uses: docker/metadata-action@902fa8ec7d6ecbf8d84d538b9b233a880e428804 # v5.7.0
+        with:
+          images: ${{ env.REGISTRY }}/${{ matrix.image.image_name }}
+
       - name: Push Docker image
+        id: push
         run: |
-          for tag in ${{ needs.build.outputs.image-tags }}; do
-            skopeo copy \
+          for tag in ${{ steps.meta.outputs.tags }}; do
+            skopeo copy --digestfile digest.txt \
               'oci-archive:/tmp/${{ matrix.image.target_host }}-image.oci' \
               "docker://$tag"
           done
+          echo "digest=$(cat digest.txt)" >> "$GITHUB_OUTPUT"
 
       - name: Sign the published Docker image
         env:
           # https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions#using-an-intermediate-environment-variable
-          TAGS: ${{ needs.build.outputs.image-tags }}
-          DIGEST: ${{ needs.build.outputs.image-digest }}
+          TAGS: ${{ steps.meta.outputs.tags }}
+          DIGEST: ${{ steps.push.outputs.digest }}
         run: |
           echo "${TAGS}" | xargs -I {} cosign sign --yes "{}@${DIGEST}"
