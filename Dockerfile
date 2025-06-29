@@ -1,4 +1,4 @@
-#syntax=docker/dockerfile:1.4
+#syntax=docker/dockerfile:1.16.0
 
 FROM debian:bookworm-slim
 ARG SETUP_HOST=devcontainer
@@ -43,11 +43,9 @@ EOS
 COPY ./docker/nix.conf /etc/nix/nix.conf
 
 WORKDIR /var/dotfiles
-RUN --mount=type=secret,id=github-token \
+RUN --mount=type=secret,id=github-token,env=NIX_GITHUB_TOKEN \
 <<EOS
-env \
-  "NIX_GITHUB_TOKEN=$(cat /run/secrets/github-token)" \
-  TRACE=1 ./setup.sh --hostname "$SETUP_HOST"
+env TRACE=1 ./setup.sh --hostname "$SETUP_HOST"
 nix store gc
 EOS
 

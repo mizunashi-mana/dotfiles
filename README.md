@@ -18,7 +18,7 @@ Claude version:
 
 ```bash
 env "GITHUB_TOKEN=$(gh auth token)" docker buildx build \
-  --build-arg devcontainer-claude \
+  --build-arg SETUP_HOST=devcontainer-claude \
   --tag mizunashi-mana/dotfiles/devcontainer-claude \
   --secret id=github-token,env=GITHUB_TOKEN \
   .
