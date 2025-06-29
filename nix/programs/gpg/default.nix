@@ -11,7 +11,7 @@
       };
 
       home.packages = [
-        (if system == "aarch64-darwin" then packages.pkgs.pinentry_mac else packages.pkgs.pinentry)
+        (if system == "aarch64-darwin" then packages.pkgs.pinentry_mac else packages.pkgs.pinentry-curses)
       ];
     }
   ];
