@@ -70,6 +70,8 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
           platforms: ${{ github.event_name == 'pull_request' && 'linux/amd64' || matrix.image.full_platforms }}
+          secrets: |
+            github-token=${{ secrets.GITHUB_TOKEN }}
           build-args: |
             SETUP_HOST=${{ matrix.image.target_host }}
 
