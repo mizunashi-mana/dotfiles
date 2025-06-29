@@ -8,7 +8,6 @@ let
   default = import ./default.nix { inherit system inputs packages; };
 
   programs = [
-    default
     (import ./default-common.nix { inherit system inputs packages; })
     (import ./z3 { inherit packages; })
     (import ./gcc { inherit packages; })
