@@ -4,6 +4,9 @@
 # VSCode settings
 .vscode/
 
+# devcontainer
+.devcontainer/
+
 # claude-code
 .claude/*.local.json
 
