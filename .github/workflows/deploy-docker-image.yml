@@ -15,44 +15,52 @@ jobs:
     permissions: {}
 
     outputs:
-      matrix_image: ${{ steps.set.outputs.matrix_image }}
+      matrix_build_unit: ${{ steps.set.outputs.matrix_build_unit }}
 
     steps:
       - name: Set variables
         id: set
         run: |
-          echo "matrix_image=$(echo '
+          echo "matrix_build_unit=$(echo '
           [
             {
               "target_host": "devcontainer-claude",
-              "image_name": "${{ github.repository }}/devcontainer-claude",
-              "full_platforms": "linux/amd64,linux/arm64"
+              "image_name": "devcontainer-claude-amd64",
+              "os": "ubuntu-24.04",
+              "platform": "linux/amd64",
+              "build": ${{ github.event_name != 'pull_request' }}
+            },
+            {
+              "target_host": "devcontainer-claude",
+              "image_name": "devcontainer-claude-arm64",
+              "os": "ubuntu-24.04-arm",
+              "platform": "linux/arm64",
+              "build": true
             },
             {
               "target_host": "devcontainer",
-              "image_name": "${{ github.repository }}/devcontainer",
-              "full_platforms": "linux/amd64"
+              "image_name": "devcontainer-amd64",
+              "os": "ubuntu-24.04",
+              "platform": "linux/amd64",
+              "build": true
             }
           ]
-          ' | jq -c)" >> "$GITHUB_OUTPUT"
+          ' | jq -c '[.[] | select(.build)]')" >> "$GITHUB_OUTPUT"
 
   build:
     needs: define-matrix
 
-    runs-on: ubuntu-latest
     permissions:
       contents: read
 
     strategy:
       matrix:
-        image: ${{ fromJson(needs.define-matrix.outputs.matrix_image) }}
+        build_unit: ${{ fromJson(needs.define-matrix.outputs.matrix_build_unit) }}
 
+    runs-on: ${{ matrix.build_unit.os }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-
-      - name: Set up QEMU for multi-arch builds
-        uses: docker/setup-qemu-action@29109295f81e9208d7d86ff1c6c12d2833863392 # v3.6.0
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@e468171a9de216ec08956ac3ada2f0791b6bd435 # v3.11.1
@@ -61,35 +69,41 @@ jobs:
         id: meta
         uses: docker/metadata-action@902fa8ec7d6ecbf8d84d538b9b233a880e428804 # v5.7.0
         with:
-          images: ${{ env.REGISTRY }}/${{ matrix.image.image_name }}
+          images: ${{ env.REGISTRY }}/${{ github.repository }}/${{ matrix.build_unit.image_name }}
 
       - name: Build Docker image
         uses: docker/build-push-action@263435318d21b8e681c14492fe198d362a7d2c83 # v6.18.0
+        id: build_image
         with:
           context: .
           push: false
           labels: ${{ steps.meta.outputs.labels }}
+          tags: ${{ steps.meta.outputs.tags }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
-          platforms: ${{ github.event_name == 'pull_request' && 'linux/amd64' || matrix.image.full_platforms }}
-          outputs: type=oci,dest=/tmp/${{ matrix.image.target_host }}-image.oci
+          platforms: ${{ matrix.build_unit.platform }}
+          outputs: type=docker,dest=/tmp/image-${{ matrix.build_unit.image_name }}.tar
           secrets: |
             github-token=${{ secrets.GITHUB_TOKEN }}
           build-args: |
-            SETUP_HOST=${{ matrix.image.target_host }}
+            SETUP_HOST=${{ matrix.build_unit.target_host }}
+
+      - name: Output digest
+        run: echo '${{ steps.build_image.outputs.digest }}' > /tmp/image-digest-${{ matrix.build_unit.image_name }}.txt
 
       - name: Upload image artifact
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
-          name: ${{ matrix.image.target_host }}-image
-          path: /tmp/${{ matrix.image.target_host }}-image.oci
+          name: image-${{ matrix.build_unit.image_name }}
+          path: |
+            /tmp/image-${{ matrix.build_unit.image_name }}.tar
+            /tmp/image-digest-${{ matrix.build_unit.image_name }}.txt
           retention-days: 1
 
-  push:
+  push-build-unit:
     needs: ["define-matrix", "build"]
     if: github.event_name != 'pull_request'
 
-    runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
@@ -97,8 +111,9 @@ jobs:
 
     strategy:
       matrix:
-        image: ${{ fromJson(needs.define-matrix.outputs.matrix_image) }}
+        build_unit: ${{ fromJson(needs.define-matrix.outputs.matrix_build_unit) }}
 
+    runs-on: ${{ matrix.build_unit.os }}
     steps:
       # https://github.com/sigstore/cosign-installer
       - name: Install cosign
@@ -114,24 +129,23 @@ jobs:
       - name: Download image artifact
         uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
         with:
-          name: ${{ matrix.image.target_host }}-image
+          name: image-${{ matrix.build_unit.image_name }}
           path: /tmp
 
       - name: Extract Docker metadata
         id: meta
         uses: docker/metadata-action@902fa8ec7d6ecbf8d84d538b9b233a880e428804 # v5.7.0
         with:
-          images: ${{ env.REGISTRY }}/${{ matrix.image.image_name }}
+          images: ${{ env.REGISTRY }}/${{ github.repository }}/${{ matrix.build_unit.image_name }}
 
       - name: Push Docker image
         id: push
         run: |
+          docker load --input /tmp/image-${{ matrix.build_unit.image_name }}.tar
           for tag in ${{ steps.meta.outputs.tags }}; do
-            skopeo copy --digestfile digest.txt \
-              'oci-archive:/tmp/${{ matrix.image.target_host }}-image.oci' \
-              "docker://$tag"
+            docker push "${tag}"
           done
-          echo "digest=$(cat digest.txt)" >> "$GITHUB_OUTPUT"
+          echo "digest=$(cat /tmp/image-digest-${{ matrix.build_unit.image_name }}.txt)" >> "$GITHUB_OUTPUT"
 
       - name: Sign the published Docker image
         env:
