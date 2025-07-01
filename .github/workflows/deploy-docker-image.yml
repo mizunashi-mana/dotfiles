@@ -154,3 +154,65 @@ jobs:
           DIGEST: ${{ steps.push.outputs.digest }}
         run: |
           echo "${TAGS}" | xargs -I {} cosign sign --yes "{}@${DIGEST}"
+
+  push-manifest:
+    needs: push-build-unit
+    if: github.event_name != 'pull_request'
+
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+
+    strategy:
+      matrix:
+        image:
+          - image_name: devcontainer-claude
+            image_name_amd64: devcontainer-claude-amd64
+            image_name_arm64: devcontainer-claude-arm64
+          - image_name: devcontainer
+            image_name_amd64: devcontainer-amd64
+            image_name_arm64: ""
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Log into registry ${{ env.REGISTRY }}
+        uses: docker/login-action@74a5d142397b4f367a81961eba4e8cd7edddf772 # v3.4.0
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract Docker metadata
+        id: meta
+        uses: docker/metadata-action@902fa8ec7d6ecbf8d84d538b9b233a880e428804 # v5.7.0
+        with:
+          images: ${{ env.REGISTRY }}/${{ github.repository }}/${{ matrix.image.image_name }}
+
+      - name: Download image artifact for amd64
+        if: matrix.image.image_name_amd64 != ''
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        with:
+          name: image-${{ matrix.image.image_name_amd64 }}
+
+      - name: Download image artifact for arm64
+        if: matrix.image.image_name_arm64 != ''
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        with:
+          name: image-${{ matrix.image.image_name_arm64 }}
+
+      - name: Create and push manifest
+        run: |
+          MANIFEST_CREATE_ARGS=( '${{ steps.meta.outputs.tags }}' )
+
+          if [ -n '${{ matrix.image.image_name_amd64 }}' ]; then
+            MANIFEST_CREATE_ARGS+=( "${{ env.REGISTRY }}/${{ github.repository }}/${{ matrix.image.image_name_amd64 }}@$(cat /tmp/image-digest-${{ matrix.image.image_name_amd64 }}.txt)" )
+          fi
+
+          if [ -n '${{ matrix.image.image_name_arm64 }}' ]; then
+            MANIFEST_CREATE_ARGS+=( "${{ env.REGISTRY }}/${{ github.repository }}/${{ matrix.image.image_name_arm64 }}@$(cat /tmp/image-digest-${{ matrix.image.image_name_arm64 }}.txt)" )
+          fi
+
+          docker manifest create \
+            "${MANIFEST_CREATE_ARGS[@]}"
+          docker manifest push '${{ steps.meta.outputs.tags }}'
