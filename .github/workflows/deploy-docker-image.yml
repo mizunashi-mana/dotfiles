@@ -139,10 +139,12 @@ jobs:
         id: push
         run: |
           set -ex
+
           docker load --input /tmp/image-${{ matrix.build_unit.image_name }}.tar
           docker push '${{ steps.meta.outputs.tags }}'
           docker inspect --format='{{index .RepoDigests 0}}' '${{ steps.meta.outputs.tags }}' \
             > '/tmp/image-digest-${{ matrix.build_unit.image_name }}.txt'
+          echo "digest=$(sed 's/.*@//' < '/tmp/image-digest-${{ matrix.build_unit.image_name }}.txt')" >> "$GITHUB_OUTPUT"
 
       - name: Sign the published Docker image
         env:
@@ -182,6 +184,10 @@ jobs:
 
     runs-on: ubuntu-latest
     steps:
+      # https://github.com/sigstore/cosign-installer
+      - name: Install cosign
+        uses: sigstore/cosign-installer@398d4b0eeef1380460a10c8013a76f728fb906ac #v3.9.1
+
       - name: Log into registry ${{ env.REGISTRY }}
         uses: docker/login-action@74a5d142397b4f367a81961eba4e8cd7edddf772 # v3.4.0
         with:
@@ -210,6 +216,7 @@ jobs:
           path: /tmp
 
       - name: Create and push manifest
+        id: push
         run: |
           set -ex
 
@@ -223,3 +230,13 @@ jobs:
 
           docker manifest create "${MANIFEST_CREATE_ARGS[@]}"
           docker manifest push '${{ steps.meta.outputs.tags }}'
+
+          echo "digest=$(docker manifest inspect '${{ steps.meta.outputs.tags }}' | jq -r '.config.digest')" >> "$GITHUB_OUTPUT"
+
+      - name: Sign the manifest
+        env:
+          # https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions#using-an-intermediate-environment-variable
+          TAGS: ${{ steps.meta.outputs.tags }}
+          DIGEST: ${{ steps.push.outputs.digest }}
+        run: |
+          echo "${TAGS}" | xargs -I {} cosign sign --yes "{}@${DIGEST}"
