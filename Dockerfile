@@ -1,9 +1,10 @@
 #syntax=docker/dockerfile:1.16.0
 
-FROM debian:bookworm-slim
+FROM mcr.microsoft.com/devcontainers/base:debian
 ARG SETUP_HOST=devcontainer
+ARG WORKUSER=vscode
 
-SHELL ["/bin/bash", "-euo", "pipefail", "-c"]
+SHELL ["/bin/bash", "-euxo", "pipefail", "-c"]
 
 RUN <<EOS
 apt-get update
@@ -16,43 +17,43 @@ rm -rf /var/lib/apt/lists/*
 EOS
 
 RUN <<EOS
-useradd --no-create-home --user-group --groups sudo --password '' workuser
-mkdir -p /home/workuser
-chown workuser:workuser /home/workuser
-
 mkdir -p /var/dotfiles
+
 mkdir -m 0755 /nix
-chown workuser /nix
+chown "${WORKUSER}:${WORKUSER}" /nix
+
+mkdir -p /workspaces
+chown "${WORKUSER}:${WORKUSER}" /workspaces
 EOS
 
-COPY ./nix /var/dotfiles/nix
-COPY ./tasks /var/dotfiles/tasks
-COPY ./flake.nix /var/dotfiles/flake.nix
-COPY ./flake.lock /var/dotfiles/flake.lock
-COPY ./setup.sh /var/dotfiles/setup.sh
-
-USER workuser
+USER ${WORKUSER}
 ENV \
-  USER=workuser \
-  PATH=/usr/local/bin:/usr/bin:/bin:/home/workuser/.nix-profile/bin
+  USER=${WORKUSER} \
+  PATH=/usr/local/bin:/usr/bin:/bin:/home/${WORKUSER}/.nix-profile/bin
 
 RUN <<EOS
 bash -c "$(curl -fsSL https://nixos.org/nix/install)" -s --no-daemon
 EOS
 
 COPY ./docker/nix.conf /etc/nix/nix.conf
+COPY ./nix /var/dotfiles/nix
+COPY ./tasks /var/dotfiles/tasks
+COPY ./flake.nix /var/dotfiles/flake.nix
+COPY ./flake.lock /var/dotfiles/flake.lock
+COPY ./setup.sh /var/dotfiles/setup.sh
 
 WORKDIR /var/dotfiles
 RUN --mount=type=secret,id=github-token,env=NIX_GITHUB_TOKEN \
 <<EOS
+rm -rf /home/${WORKUSER}/{.bashrc,.profile}
 env TRACE=1 ./setup.sh --hostname "$SETUP_HOST"
 nix store gc
 EOS
 
 USER root
-WORKDIR /home/workuser
+WORKDIR /home/${WORKUSER}
 RUN <<EOS
-/sbin/usermod --shell /home/workuser/.nix-profile/bin/fish workuser
+/sbin/usermod --shell "/home/${WORKUSER}/.nix-profile/bin/fish" "${WORKUSER}"
 DEBIAN_FRONTEND=noninteractive apt-get remove -y \
   curl \
   xz-utils
@@ -61,6 +62,6 @@ rm -rf /var/lib/apt/lists/*
 rm -rf /var/dotfiles
 EOS
 
-USER workuser
+USER ${WORKUSER}
 
-CMD ["/home/workuser/.nix-profile/bin/fish", "--login"]
+CMD ["/home/${WORKUSER}/.nix-profile/bin/fish", "--login"]
