@@ -8,7 +8,7 @@ let
 
   hostname = "devcontainer-claude";
   system = current-system;
-  username = "workuser";
+  username = "vscode";
   homedir = "/home/${username}";
 
   packages = import "${nix-root-dir}/packages" {
