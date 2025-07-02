@@ -192,14 +192,14 @@ jobs:
         uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
         with:
           name: image-${{ matrix.image.image_name_amd64 }}
-          path: /tmp/image-digest-${{ matrix.image.image_name_amd64 }}.txt
+          path: /tmp
 
       - name: Download image artifact for arm64
         if: matrix.image.image_name_arm64 != ''
         uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
         with:
           name: image-${{ matrix.image.image_name_arm64 }}
-          path: /tmp/image-digest-${{ matrix.image.image_name_arm64 }}.txt
+          path: /tmp
 
       - name: Create and push manifest
         run: |
