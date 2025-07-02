@@ -72,6 +72,8 @@
   d8 = diff HEAD~8
   d9 = diff HEAD~9
 
+  cont = rebase --continue
+
   wc = whatchanged
 
   fm = ! git fetch "$(git rev-parse --abbrev-ref upstream/HEAD | sed 's|upstream/||')" && git rebase "$(git rev-parse --abbrev-ref upstream/HEAD)" "$(git rev-parse --abbrev-ref origin/HEAD)" && git push --set-upstream origin "$(git rev-parse --abbrev-ref origin/HEAD | sed 's|origin/||')"
