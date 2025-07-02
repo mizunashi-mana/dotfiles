@@ -142,9 +142,7 @@ jobs:
         id: push
         run: |
           docker load --input /tmp/image-${{ matrix.build_unit.image_name }}.tar
-          for tag in ${{ steps.meta.outputs.tags }}; do
-            docker push "${tag}"
-          done
+          docker push '${{ steps.meta.outputs.tags }}'
           echo "digest=$(cat /tmp/image-digest-${{ matrix.build_unit.image_name }}.txt)" >> "$GITHUB_OUTPUT"
 
       - name: Sign the published Docker image
@@ -156,7 +154,7 @@ jobs:
           echo "${TAGS}" | xargs -I {} cosign sign --yes "{}@${DIGEST}"
 
   push-manifest:
-    needs: push-build-unit
+    needs: ["build", "push-build-unit"]
     if: github.event_name != 'pull_request'
 
     permissions:
@@ -194,25 +192,26 @@ jobs:
         uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
         with:
           name: image-${{ matrix.image.image_name_amd64 }}
+          path: /tmp/image-digest-${{ matrix.image.image_name_amd64 }}.txt
 
       - name: Download image artifact for arm64
         if: matrix.image.image_name_arm64 != ''
         uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
         with:
           name: image-${{ matrix.image.image_name_arm64 }}
+          path: /tmp/image-digest-${{ matrix.image.image_name_arm64 }}.txt
 
       - name: Create and push manifest
         run: |
           MANIFEST_CREATE_ARGS=( '${{ steps.meta.outputs.tags }}' )
 
           if [ -n '${{ matrix.image.image_name_amd64 }}' ]; then
-            MANIFEST_CREATE_ARGS+=( "${{ env.REGISTRY }}/${{ github.repository }}/${{ matrix.image.image_name_amd64 }}@$(cat /tmp/image-digest-${{ matrix.image.image_name_amd64 }}.txt)" )
+            MANIFEST_CREATE_ARGS+=( "${{ env.REGISTRY }}/${{ github.repository }}/${{ matrix.image.image_name_amd64 }}@$(cat '/tmp/image-digest-${{ matrix.image.image_name_amd64 }}.txt')" )
           fi
 
           if [ -n '${{ matrix.image.image_name_arm64 }}' ]; then
-            MANIFEST_CREATE_ARGS+=( "${{ env.REGISTRY }}/${{ github.repository }}/${{ matrix.image.image_name_arm64 }}@$(cat /tmp/image-digest-${{ matrix.image.image_name_arm64 }}.txt)" )
+            MANIFEST_CREATE_ARGS+=( "${{ env.REGISTRY }}/${{ github.repository }}/${{ matrix.image.image_name_arm64 }}@$(cat '/tmp/image-digest-${{ matrix.image.image_name_arm64 }}.txt')" )
           fi
 
-          docker manifest create \
-            "${MANIFEST_CREATE_ARGS[@]}"
+          docker manifest create "${MANIFEST_CREATE_ARGS[@]}"
           docker manifest push '${{ steps.meta.outputs.tags }}'
