@@ -92,6 +92,7 @@ jobs:
         run: echo '${{ steps.build_image.outputs.digest }}' > /tmp/image-digest-${{ matrix.build_unit.image_name }}.txt
 
       - name: Upload image artifact
+        if: github.event_name != 'pull_request'
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           name: image-${{ matrix.build_unit.image_name }}
@@ -141,6 +142,7 @@ jobs:
       - name: Push Docker image
         id: push
         run: |
+          set -ex
           docker load --input /tmp/image-${{ matrix.build_unit.image_name }}.tar
           docker push '${{ steps.meta.outputs.tags }}'
           echo "digest=$(cat /tmp/image-digest-${{ matrix.build_unit.image_name }}.txt)" >> "$GITHUB_OUTPUT"
@@ -203,6 +205,7 @@ jobs:
 
       - name: Create and push manifest
         run: |
+          set -ex
           MANIFEST_CREATE_ARGS=( '${{ steps.meta.outputs.tags }}' )
 
           if [ -n '${{ matrix.image.image_name_amd64 }}' ]; then
