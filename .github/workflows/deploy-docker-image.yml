@@ -88,9 +88,6 @@ jobs:
           build-args: |
             SETUP_HOST=${{ matrix.build_unit.target_host }}
 
-      - name: Output digest
-        run: echo '${{ steps.build_image.outputs.digest }}' > /tmp/image-digest-${{ matrix.build_unit.image_name }}.txt
-
       - name: Upload image artifact
         if: github.event_name != 'pull_request'
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
@@ -98,7 +95,6 @@ jobs:
           name: image-${{ matrix.build_unit.image_name }}
           path: |
             /tmp/image-${{ matrix.build_unit.image_name }}.tar
-            /tmp/image-digest-${{ matrix.build_unit.image_name }}.txt
           retention-days: 1
 
   push-build-unit:
@@ -145,7 +141,8 @@ jobs:
           set -ex
           docker load --input /tmp/image-${{ matrix.build_unit.image_name }}.tar
           docker push '${{ steps.meta.outputs.tags }}'
-          echo "digest=$(cat /tmp/image-digest-${{ matrix.build_unit.image_name }}.txt)" >> "$GITHUB_OUTPUT"
+          docker inspect --format='{{index .RepoDigests 0}}' '${{ steps.meta.outputs.tags }}' \
+            > '/tmp/image-digest-${{ matrix.build_unit.image_name }}.txt'
 
       - name: Sign the published Docker image
         env:
@@ -154,6 +151,15 @@ jobs:
           DIGEST: ${{ steps.push.outputs.digest }}
         run: |
           echo "${TAGS}" | xargs -I {} cosign sign --yes "{}@${DIGEST}"
+
+      - name: Upload image digest artifact
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: image-digest-${{ matrix.build_unit.image_name }}
+          path: |
+            /tmp/image-digest-${{ matrix.build_unit.image_name }}.txt
+          retention-days: 1
 
   push-manifest:
     needs: ["build", "push-build-unit"]
@@ -189,31 +195,30 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ github.repository }}/${{ matrix.image.image_name }}
 
-      - name: Download image artifact for amd64
+      - name: Download image digest artifact for amd64
         if: matrix.image.image_name_amd64 != ''
         uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
         with:
-          name: image-${{ matrix.image.image_name_amd64 }}
+          name: image-digest-${{ matrix.image.image_name_amd64 }}
           path: /tmp
 
-      - name: Download image artifact for arm64
+      - name: Download image digest artifact for arm64
         if: matrix.image.image_name_arm64 != ''
         uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
         with:
-          name: image-${{ matrix.image.image_name_arm64 }}
+          name: image-digest-${{ matrix.image.image_name_arm64 }}
           path: /tmp
 
       - name: Create and push manifest
         run: |
           set -ex
+
           MANIFEST_CREATE_ARGS=( '${{ steps.meta.outputs.tags }}' )
-
           if [ -n '${{ matrix.image.image_name_amd64 }}' ]; then
-            MANIFEST_CREATE_ARGS+=( "${{ env.REGISTRY }}/${{ github.repository }}/${{ matrix.image.image_name_amd64 }}@$(cat '/tmp/image-digest-${{ matrix.image.image_name_amd64 }}.txt')" )
+            MANIFEST_CREATE_ARGS+=( "$(cat '/tmp/image-digest-${{ matrix.image.image_name_amd64 }}.txt')" )
           fi
-
           if [ -n '${{ matrix.image.image_name_arm64 }}' ]; then
-            MANIFEST_CREATE_ARGS+=( "${{ env.REGISTRY }}/${{ github.repository }}/${{ matrix.image.image_name_arm64 }}@$(cat '/tmp/image-digest-${{ matrix.image.image_name_arm64 }}.txt')" )
+            MANIFEST_CREATE_ARGS+=( "$(cat '/tmp/image-digest-${{ matrix.image.image_name_arm64 }}.txt')" )
           fi
 
           docker manifest create "${MANIFEST_CREATE_ARGS[@]}"
