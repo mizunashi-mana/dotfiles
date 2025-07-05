@@ -24,8 +24,6 @@ chown "${WORKUSER}:${WORKUSER}" /nix
 
 mkdir -p /workspaces
 chown "${WORKUSER}:${WORKUSER}" /workspaces
-
-groupmod -g 71 "$(getent group 20 | cut -d: -f1)"
 EOS
 
 USER ${WORKUSER}
@@ -62,6 +60,8 @@ DEBIAN_FRONTEND=noninteractive apt-get remove -y \
 DEBIAN_FRONTEND=noninteractive apt-get autoremove -y --purge
 rm -rf /var/lib/apt/lists/*
 rm -rf /var/dotfiles
+
+/sbin/groupmod -g 71 "$(getent group 20 | cut -d: -f1)"
 EOS
 
 USER ${WORKUSER}
