@@ -71,11 +71,13 @@ case "$HOSTNAME_SHORT" in
   sudo nix --extra-experimental-features 'flakes nix-command' \
     run nix-darwin \
     -- switch --flake ".#$HOSTNAME_SHORT" --show-trace
+  BUILD_DOCKER_IMAGE=true
   ;;
 'devcontainer' | 'devcontainer-claude')
   nix --extra-experimental-features 'flakes nix-command' \
     run home-manager \
     -- switch --flake ".#$HOSTNAME_SHORT" --show-trace --impure
+  BUILD_DOCKER_IMAGE=""
   ;;
 *)
   echo "Unknown host: $HOSTNAME_SHORT" >&2
@@ -83,3 +85,20 @@ case "$HOSTNAME_SHORT" in
   exit 1
   ;;
 esac
+
+if [[ -n $BUILD_DOCKER_IMAGE ]]; then
+  WAIT_DOCKER_LIMIT="${WAIT_DOCKER_LIMIT:-60}"
+  for _i in $(seq 1 "$WAIT_DOCKER_LIMIT"); do
+    if [[ -e ~/.colima/docker.sock ]]; then
+      break
+    fi
+    sleep 1
+  done
+
+  docker buildx build \
+    --file devcontainer/Dockerfile.host \
+    --tag mizunashi-mana/dotfiles/devcontainer-claude-host \
+    --build-arg "UID=$(id -u)" \
+    --build-arg "GID=$(id -g)" \
+    .
+fi

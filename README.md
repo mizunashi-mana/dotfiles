@@ -11,16 +11,22 @@ My dotfiles and construction documentations.
 ### Docker Image
 
 ```bash
-docker build -t mizunashi-mana/dotfiles-devcontainer .
+env "GITHUB_TOKEN=$(gh auth token)" docker buildx build \
+  --file devcontainer/Dockerfile \
+  --build-arg SETUP_HOST=devcontainer \
+  --secret id=github-token,env=GITHUB_TOKEN \
+  --tag ghcr.io/mizunashi-mana/dotfiles/devcontainer \
+  .
 ```
 
-Claude version:
+Base image (Claude):
 
 ```bash
 env "GITHUB_TOKEN=$(gh auth token)" docker buildx build \
+  --file devcontainer/Dockerfile \
   --build-arg SETUP_HOST=devcontainer-claude \
-  --tag mizunashi-mana/dotfiles/devcontainer-claude \
   --secret id=github-token,env=GITHUB_TOKEN \
+  --tag ghcr.io/mizunashi-mana/dotfiles/devcontainer-claude \
   .
 ```
 

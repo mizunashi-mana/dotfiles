@@ -76,6 +76,7 @@ jobs:
         id: build_image
         with:
           context: .
+          file: devcontainer/Dockerfile
           push: false
           labels: ${{ steps.meta.outputs.labels }}
           tags: ${{ steps.meta.outputs.tags }}
