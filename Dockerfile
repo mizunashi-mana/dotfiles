@@ -7,16 +7,6 @@ ARG WORKUSER=vscode
 SHELL ["/bin/bash", "-euxo", "pipefail", "-c"]
 
 RUN <<EOS
-apt-get update
-DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-  'sudo=1.9*' \
-  'curl=7.88.*' \
-  'xz-utils=5.4.*' \
-  'ca-certificates=20230311*'
-rm -rf /var/lib/apt/lists/*
-EOS
-
-RUN <<EOS
 mkdir -p /var/dotfiles
 
 mkdir -m 0755 /nix
@@ -27,9 +17,7 @@ chown "${WORKUSER}:${WORKUSER}" /workspaces
 EOS
 
 USER ${WORKUSER}
-ENV \
-  USER=${WORKUSER} \
-  PATH=/usr/local/bin:/usr/bin:/bin:/home/${WORKUSER}/.nix-profile/bin
+ENV PATH=/home/${WORKUSER}/.nix-profile/bin:/usr/local/bin:/usr/bin:/bin
 
 RUN <<EOS
 bash -c "$(curl -fsSL https://nixos.org/nix/install)" -s --no-daemon
@@ -45,25 +33,22 @@ COPY ./setup.sh /var/dotfiles/setup.sh
 WORKDIR /var/dotfiles
 RUN --mount=type=secret,id=github-token,env=NIX_GITHUB_TOKEN \
 <<EOS
-rm -rf /home/${WORKUSER}/{.bashrc,.profile}
-env TRACE=1 ./setup.sh --hostname "$SETUP_HOST"
+rm -rf "/home/${WORKUSER}"/{.bashrc,.profile}
+env TRACE=1 "USER=$WORKUSER" ./setup.sh --hostname "$SETUP_HOST"
 nix store gc
 EOS
 
+COPY ./docker/updateUID.sh /var/docker-dotfiles/updateUID.sh
+
 USER root
-WORKDIR /home/${WORKUSER}
 RUN <<EOS
 /sbin/usermod --shell "/home/${WORKUSER}/.nix-profile/bin/fish" "${WORKUSER}"
-DEBIAN_FRONTEND=noninteractive apt-get remove -y \
-  curl \
-  xz-utils
-DEBIAN_FRONTEND=noninteractive apt-get autoremove -y --purge
-rm -rf /var/lib/apt/lists/*
 rm -rf /var/dotfiles
 
-/sbin/groupmod -g 71 "$(getent group 20 | cut -d: -f1)"
+/sbin/groupmod --gid 71 "$(getent group 20 | cut -d: -f1)"
 EOS
 
 USER ${WORKUSER}
+WORKDIR /home/${WORKUSER}
 
-CMD ["/home/${WORKUSER}/.nix-profile/bin/fish", "--login"]
+CMD ["fish", "--login"]
