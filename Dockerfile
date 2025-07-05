@@ -25,7 +25,7 @@ chown "${WORKUSER}:${WORKUSER}" /nix
 mkdir -p /workspaces
 chown "${WORKUSER}:${WORKUSER}" /workspaces
 
-groupmod -g 71 "$(getent group 20 | sed 's/:.*$//g')"
+groupmod -g 71 "$(getent group 20 | cut -d: -f1)"
 EOS
 
 USER ${WORKUSER}
