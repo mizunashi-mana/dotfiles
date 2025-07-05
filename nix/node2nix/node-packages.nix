@@ -17,10 +17,10 @@ in
   "@anthropic-ai/claude-code-" = nodeEnv.buildNodePackage {
     name = "_at_anthropic-ai_slash_claude-code";
     packageName = "@anthropic-ai/claude-code";
-    version = "1.0.40";
+    version = "1.0.43";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-1.0.40.tgz";
-      sha512 = "qC2SFowyHWvvik2ZbNCuE9V6+VXIsk2XB/liFMJxZBk0C8y2Hc6LEqGltKTjaFwkq2+NPcrImE4RZwBPfh2N3A==";
+      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-1.0.43.tgz";
+      sha512 = "VnuRK4s/R9ZRTkwH4gUjsp4SiBQXq7Y0B47OtgeXIZYVQYkhTW8m+E0IisFzXXFIyTQrE0SodGCpvgLhAYzGCg==";
     };
     buildInputs = globalBuildInputs;
     meta = {
@@ -35,10 +35,10 @@ in
   ccusage- = nodeEnv.buildNodePackage {
     name = "ccusage";
     packageName = "ccusage";
-    version = "15.2.0";
+    version = "15.3.0";
     src = fetchurl {
-      url = "https://registry.npmjs.org/ccusage/-/ccusage-15.2.0.tgz";
-      sha512 = "DpUI61fDTHYIjSjjU9flTkCRA44THyy0C0fIQi1f69HLn9U7b1rMSHBJdOQ3eNNWY0LMbn15CXWXmbAAEvCLbA==";
+      url = "https://registry.npmjs.org/ccusage/-/ccusage-15.3.0.tgz";
+      sha512 = "ruexSafmXH6HeC4hSoisPizBHZqpJCdUDeiMh4YnDH4bZ92wobwlot9a8ihxE9GK8bdJErYRz63lFDfxAMbjaQ==";
     };
     buildInputs = globalBuildInputs;
     meta = {

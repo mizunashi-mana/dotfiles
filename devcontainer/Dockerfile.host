@@ -1,0 +1,10 @@
+ARG BASE_IMAGE=ghcr.io/mizunashi-mana/dotfiles/devcontainer-claude:master
+FROM ${BASE_IMAGE}
+
+ARG UID
+ARG GID
+
+USER root
+RUN /var/docker-dotfiles/updateUID.sh --user vscode --uid "$UID" --gid "$GID"
+
+USER vscode

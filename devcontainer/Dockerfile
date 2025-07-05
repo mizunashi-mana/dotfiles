@@ -23,7 +23,7 @@ RUN <<EOS
 bash -c "$(curl -fsSL https://nixos.org/nix/install)" -s --no-daemon
 EOS
 
-COPY ./docker/nix.conf /etc/nix/nix.conf
+COPY ./devcontainer/nix.conf /etc/nix/nix.conf
 COPY ./nix /var/dotfiles/nix
 COPY ./tasks /var/dotfiles/tasks
 COPY ./flake.nix /var/dotfiles/flake.nix
@@ -38,7 +38,7 @@ env TRACE=1 "USER=$WORKUSER" ./setup.sh --hostname "$SETUP_HOST"
 nix store gc
 EOS
 
-COPY ./docker/updateUID.sh /var/docker-dotfiles/updateUID.sh
+COPY ./devcontainer/updateUID.sh /var/docker-dotfiles/updateUID.sh
 
 USER root
 RUN <<EOS
