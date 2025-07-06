@@ -24,7 +24,6 @@ let
     (import ./imagemagick { inherit packages; })
     (import ./ghostscript { inherit packages; })
     (import ./ruby { inherit packages; })
-    (import ./poetry { inherit packages; })
     (import ./rustup { inherit packages; })
     (import ./docker { inherit packages; })
     (import ./android-tools { inherit packages; })
