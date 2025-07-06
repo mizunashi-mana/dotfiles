@@ -96,6 +96,7 @@ if [[ -n $BUILD_DOCKER_IMAGE ]]; then
   done
 
   docker buildx build \
+    --pull \
     --file devcontainer/Dockerfile.host \
     --tag mizunashi-mana/dotfiles/devcontainer-claude-host \
     --build-arg "UID=$(id -u)" \
