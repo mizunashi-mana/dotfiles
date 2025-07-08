@@ -29,6 +29,24 @@
             packages.pkgs.vscode-extensions.redhat.vscode-yaml
             packages.pkgs.vscode-extensions.stylelint.vscode-stylelint
           ];
+
+          userSettings = {
+            "workbench.startupEditor" = "none";
+            "editor.wordWrap" = "on";
+            "github.copilot.chat.localeOverride" = "ja";
+            "ruff.interpreter" = [
+              "ruff"
+              "\${workspaceFolder}/.venv/bin/ruff"
+              "\${workspaceFolder}/.devenv/state/venv/bin/ruff"
+            ];
+            "javascript.preferences.importModuleSpecifier" = "non-relative";
+            "typescript.preferences.importModuleSpecifier" = "non-relative";
+            "python.venvFolders" = [
+              "\${workspaceFolder}/.devenv/state"
+              "\${workspaceFolder}/.venv"
+            ];
+            "remote.autoForwardPortsSource" = "hybrid";
+          };
         };
       };
     }
