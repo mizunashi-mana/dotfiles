@@ -32,6 +32,8 @@
 
           userSettings = {
             "workbench.startupEditor" = "none";
+            "terminal.integrated.defaultProfile.osx" = "fish";
+            "terminal.integrated.defaultProfile.linux" = "fish";
             "editor.wordWrap" = "on";
             "github.copilot.chat.localeOverride" = "ja";
             "ruff.interpreter" = [
