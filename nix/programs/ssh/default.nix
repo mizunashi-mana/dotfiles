@@ -13,6 +13,9 @@
         ".ssh/conf.d/common-hosts.conf" = {
           text = builtins.readFile ./conf.d/common-hosts.conf;
         };
+        ".ssh/ppkey/.keep" = {
+          text = "";
+        };
       };
     }
   ];
