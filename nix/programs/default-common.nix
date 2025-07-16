@@ -26,6 +26,7 @@ let
     (import ./neovim { inherit packages; })
     (import ./gh { inherit packages; })
     (import ./claude-code { inherit packages; })
+    (import ./docker-client { inherit packages; })
   ];
 in
 {
