@@ -31,6 +31,7 @@
           ];
 
           userSettings = {
+            "update.mode" = "none";
             "workbench.startupEditor" = "none";
             "terminal.integrated.defaultProfile.osx" = "fish";
             "terminal.integrated.defaultProfile.linux" = "fish";
