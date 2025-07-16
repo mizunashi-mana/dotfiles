@@ -25,7 +25,6 @@ let
     (import ./ghostscript { inherit packages; })
     (import ./ruby { inherit packages; })
     (import ./rustup { inherit packages; })
-    (import ./docker { inherit packages; })
     (import ./android-tools { inherit packages; })
     (import ./password-store { inherit packages; })
     (import ./w3m { inherit packages; })
