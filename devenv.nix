@@ -11,14 +11,13 @@
     pkgs.nodePackages.node2nix
   ];
 
-  # https://devenv.sh/tasks/
-  tasks = {
-    "pkgs:update" = {
-      exec = ''
-        set -xe
-        nix flake update
-        ./script/node2nix-update.sh
-      '';
+  # https://devenv.sh/scripts/
+  scripts = {
+    "lint-all" = {
+      exec = "pre-commit run --all-files && nix flake check --all-systems";
+    };
+    "update-pkgs" = {
+      exec = "nix flake update && ./script/node2nix-update.sh";
     };
   };
 

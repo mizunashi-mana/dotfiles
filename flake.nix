@@ -59,6 +59,9 @@
       devcontainer-claude = import ./nix/hosts/devcontainer-claude {
         inherit current-system inputs;
       };
+      desktop-62r22ok = import ./nix/hosts/desktop-62r22ok {
+        inherit inputs;
+      };
     in
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [
@@ -66,6 +69,7 @@
         devcontainer-claude.system
         macbook-air-2nd.system
         opl2401-013.system
+        desktop-62r22ok.system
       ];
 
       imports = [
@@ -81,6 +85,7 @@
         homeConfigurations = {
           ${devcontainer.hostname} = devcontainer.homeConfiguration;
           ${devcontainer-claude.hostname} = devcontainer-claude.homeConfiguration;
+          ${desktop-62r22ok.hostname} = desktop-62r22ok.homeConfiguration;
         };
       };
 

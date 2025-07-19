@@ -90,19 +90,28 @@ if [ -z "$TARGET_GID" ]; then
   exit 1
 fi
 
-if getent passwd "$TARGET_UID" >/dev/null; then
+OLD_UID="$(id -u "$TARGET_USER")"
+OLD_GID="$(id -g "$TARGET_USER")"
+
+if [ "$OLD_UID" = "$TARGET_UID" ] && [ "$OLD_GID" = "$TARGET_GID" ]; then
+  echo "No changes needed for user '$TARGET_USER' (UID: $TARGET_UID, GID: $TARGET_GID)."
+  exit 0
+fi
+
+if [ "$OLD_UID" != "$TARGET_UID" ] && getent passwd "$TARGET_UID" >/dev/null; then
   echo "Error: UID '$TARGET_UID' already exists." >&2
   exit 1
 fi
 
-if getent group "$TARGET_GID" >/dev/null; then
+if [ "$OLD_GID" != "$TARGET_GID" ] && getent group "$TARGET_GID" >/dev/null; then
   echo "Error: GID '$TARGET_GID' already exists." >&2
   exit 1
 fi
 
-OLD_GID="$(id -g "$TARGET_USER")"
+if [ "$OLD_UID" != "$TARGET_UID" ] || [ "$OLD_GID" != "$TARGET_GID" ]; then
+  sed -i -e "s/\(${TARGET_USER}:[^:]*:\)[^:]*:[^:]*/\1${TARGET_UID}:${TARGET_GID}/" /etc/passwd
+fi
 
-sed -i -e "s/\(${TARGET_USER}:[^:]*:\)[^:]*:[^:]*/\1${TARGET_UID}:${TARGET_GID}/" /etc/passwd
 if [ "$OLD_GID" != "$TARGET_GID" ]; then
   sed -i -e "s/\([^:]*:[^:]*:\)${OLD_GID}:/\1${TARGET_GID}:/" /etc/group
 fi
