@@ -49,6 +49,7 @@
               "\${workspaceFolder}/.venv"
             ];
             "remote.autoForwardPortsSource" = "hybrid";
+            "docker.extension.enableComposeLanguageServer" = false;
           };
         };
       };

@@ -1,0 +1,32 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(chmod +x:*)",
+      "Bash(cp:*)",
+      "Bash(echo:*)",
+      "Bash(find:*)",
+      "Bash(grep:*)",
+      "Bash(ls:*)",
+      "Bash(mkdir:*)",
+      "Bash(mv:*)",
+      "Bash(npm install)",
+      "Bash(npm run)",
+      "Bash(npm test)",
+      "Bash(od:*)",
+      "Bash(pwd:*)",
+      "Bash(rg:*)",
+      "Bash(sed:*)",
+      "Bash(shellcheck:*)",
+      "Bash(tar:*)",
+      "Bash(touch:*)",
+      "Bash(true)",
+      "Bash(uv sync)",
+      "Bash(which:*)"
+    ],
+    "deny": [
+      "Bash(rm:-rf ..*)",
+      "Bash(rm:-rf .git*)",
+      "Bash(rm:-rf /*)"
+    ]
+  }
+}
