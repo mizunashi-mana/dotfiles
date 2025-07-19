@@ -58,13 +58,13 @@ if [[ -z $HOSTNAME_SHORT ]]; then
 fi
 HOSTNAME_SHORT="$(echo "$HOSTNAME_SHORT" | tr '[:upper:]' '[:lower:]')"
 
-"$TASKS_DIR/base/install"
+"$TASKS_DIR/base/install.sh"
 
-"$TASKS_DIR/nix/install"
+"$TASKS_DIR/nix/install.sh"
 
 case "$HOSTNAME_SHORT" in
 'macbook-air-2nd' | 'opl2401-013')
-  "$TASKS_DIR/homebrew/install"
+  "$TASKS_DIR/homebrew/install.sh"
   ;;
 esac
 
@@ -82,12 +82,14 @@ case "$HOSTNAME_SHORT" in
     run home-manager \
     -- switch --flake ".#$HOSTNAME_SHORT" --show-trace --impure --extra-experimental-features 'flakes nix-command'
   BUILD_DOCKER_IMAGE=true
+  "$TASKS_DIR/post-linux-setup/setup.sh"
   ;;
 'devcontainer' | 'devcontainer-claude')
   nix --extra-experimental-features 'flakes nix-command' \
     run home-manager \
     -- switch --flake ".#$HOSTNAME_SHORT" --show-trace --impure --extra-experimental-features 'flakes nix-command'
   BUILD_DOCKER_IMAGE=''
+  "$TASKS_DIR/post-linux-setup/setup.sh"
   ;;
 *)
   echo "Unknown host: $HOSTNAME_SHORT" >&2
