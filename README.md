@@ -45,13 +45,13 @@ devenv shell
 ### Update packages
 
 ```bash
-devenv tasks run pkgs:update
+devenv shell update-pkgs
 ```
 
 ### Formatting
 
 ```bash
-devenv test
+devenv shell lint-all
 ```
 
 ## License Notice
