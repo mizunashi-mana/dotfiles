@@ -17,7 +17,7 @@ dotfiles/
 ├── flake.nix                 # Main Nix flake configuration
 ├── devenv.nix               # devenv configuration
 ├── setup.sh                 # Setup script
-├── docker/                  # Docker configuration
+├── devcontainer/            # Development container configuration
 ├── nix/                     # Nix configuration modules
 │   ├── home-manager/        # Home Manager configurations
 │   ├── hosts/               # Host-specific configurations
@@ -30,8 +30,7 @@ dotfiles/
 │       └── [other programs] # Individual program configs
 ├── script/                  # Utility scripts
 └── tasks/                   # Task runners
-    ├── homebrew/            # Homebrew tasks
-    └── nix/                 # Nix tasks
+    └── base/                # Base system tasks
 ```
 
 ## Common Tasks
@@ -42,8 +41,14 @@ dotfiles/
 ./setup.sh
 ```
 
-### Updating flake lock
+### Updating packages and flake lock
 
 ```bash
-devenv tasks run pkgs:update
+devenv shell update-pkgs
+```
+
+### Running linting and checks
+
+```bash
+devenv shell lint-all
 ```

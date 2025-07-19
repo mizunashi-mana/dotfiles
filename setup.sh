@@ -58,6 +58,8 @@ if [[ -z $HOSTNAME_SHORT ]]; then
 fi
 HOSTNAME_SHORT="$(echo "$HOSTNAME_SHORT" | tr '[:upper:]' '[:lower:]')"
 
+"$TASKS_DIR/base/install"
+
 "$TASKS_DIR/nix/install"
 
 case "$HOSTNAME_SHORT" in
@@ -66,6 +68,8 @@ case "$HOSTNAME_SHORT" in
   ;;
 esac
 
+export PATH="$HOME/.nix-profile/bin:$PATH"
+
 case "$HOSTNAME_SHORT" in
 'macbook-air-2nd' | 'opl2401-013')
   sudo nix --extra-experimental-features 'flakes nix-command' \
@@ -73,11 +77,17 @@ case "$HOSTNAME_SHORT" in
     -- switch --flake ".#$HOSTNAME_SHORT" --show-trace
   BUILD_DOCKER_IMAGE=true
   ;;
+'desktop-62r22ok')
+  nix --extra-experimental-features 'flakes nix-command' \
+    run home-manager \
+    -- switch --flake ".#$HOSTNAME_SHORT" --show-trace --impure --extra-experimental-features 'flakes nix-command'
+  BUILD_DOCKER_IMAGE=true
+  ;;
 'devcontainer' | 'devcontainer-claude')
   nix --extra-experimental-features 'flakes nix-command' \
     run home-manager \
-    -- switch --flake ".#$HOSTNAME_SHORT" --show-trace --impure
-  BUILD_DOCKER_IMAGE=""
+    -- switch --flake ".#$HOSTNAME_SHORT" --show-trace --impure --extra-experimental-features 'flakes nix-command'
+  BUILD_DOCKER_IMAGE=''
   ;;
 *)
   echo "Unknown host: $HOSTNAME_SHORT" >&2
@@ -89,7 +99,7 @@ esac
 if [[ -n $BUILD_DOCKER_IMAGE ]]; then
   WAIT_DOCKER_LIMIT="${WAIT_DOCKER_LIMIT:-60}"
   for _i in $(seq 1 "$WAIT_DOCKER_LIMIT"); do
-    if [[ -e ~/.colima/docker.sock ]]; then
+    if [[ -e ~/.colima/docker.sock ]] || [[ -e /var/run/docker.sock ]]; then
       break
     fi
     sleep 1

@@ -27,6 +27,7 @@ let
     (import ./gh { inherit packages; })
     (import ./claude-code { inherit packages; })
     (import ./docker-client { inherit packages; })
+    (import ./gemini-cli { inherit packages; })
   ];
 in
 {

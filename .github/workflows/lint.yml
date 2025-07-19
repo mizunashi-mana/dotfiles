@@ -23,7 +23,7 @@ jobs:
         run: |
           nix profile install nixpkgs#devenv
           devenv shell echo
-      - name: Run test
-        run: devenv test
+      - name: Run lint
+        run: devenv shell pre-commit run --all-files
       - name: Flake check
         run: nix flake check --all-systems
