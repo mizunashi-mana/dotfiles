@@ -24,9 +24,9 @@
       "Bash(which:*)"
     ],
     "deny": [
-      "Bash(rm:-rf ..*)",
-      "Bash(rm:-rf .git*)",
-      "Bash(rm:-rf /*)"
+      "Bash(rm:* ..*)",
+      "Bash(rm:* .git* *)",
+      "Bash(rm:* /*)"
     ]
   }
 }
