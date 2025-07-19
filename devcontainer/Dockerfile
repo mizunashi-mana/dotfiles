@@ -42,7 +42,6 @@ COPY ./devcontainer/updateUID.sh /var/docker-dotfiles/updateUID.sh
 
 USER root
 RUN <<EOS
-/sbin/usermod --shell "/home/${WORKUSER}/.nix-profile/bin/fish" "${WORKUSER}"
 rm -rf /var/dotfiles
 
 /sbin/groupmod --gid 71 "$(getent group 20 | cut -d: -f1)"
