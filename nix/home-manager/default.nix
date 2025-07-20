@@ -1,4 +1,5 @@
 {
+  inputs,
   packages,
   default-editor ? "emacsclient -nw --alternate-editor 'nvim'",
   ...

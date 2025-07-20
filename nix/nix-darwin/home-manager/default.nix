@@ -8,7 +8,7 @@
 }:
 let
   home-manager = import ../../home-manager {
-    inherit packages;
+    inherit inputs packages;
   };
 in
 {
