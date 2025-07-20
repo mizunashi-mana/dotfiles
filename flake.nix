@@ -10,6 +10,15 @@
       url = "github:nixos/nixpkgs?ref=nixos-25.05";
     };
 
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+    };
+
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -24,13 +33,8 @@
       url = "github:1Password/shell-plugins";
     };
 
-    flake-parts = {
-      url = "github:hercules-ci/flake-parts";
-    };
-
-    treefmt-nix = {
-      url = "github:numtide/treefmt-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
+    nix-vscode-extensions = {
+      url = "github:nix-community/nix-vscode-extensions";
     };
   };
 
