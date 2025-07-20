@@ -16,7 +16,7 @@ let
   };
 
   home-manager = import "${nix-root-dir}/home-manager" {
-    inherit packages;
+    inherit inputs packages;
     default-editor = "nvim";
   };
 

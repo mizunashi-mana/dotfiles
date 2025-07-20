@@ -15,7 +15,7 @@ let
   };
 
   home-manager = import "${nix-root-dir}/home-manager" {
-    inherit packages;
+    inherit inputs packages;
   };
 
   programs-common = import "${nix-root-dir}/programs/default-common.nix" {
