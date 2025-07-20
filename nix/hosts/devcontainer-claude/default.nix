@@ -33,6 +33,7 @@ let
   extra-programs = [
     (import "${nix-root-dir}/programs/gh" { inherit packages; })
     (import "${nix-root-dir}/programs/claude-code" { inherit packages; })
+    (import "${nix-root-dir}/programs/gemini-cli" { inherit packages; })
     (import "${nix-root-dir}/programs/neovim" { inherit packages; })
     (import "${nix-root-dir}/programs/docker-client" { inherit packages; })
   ];
