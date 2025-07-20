@@ -5,6 +5,9 @@
 }:
 {
   imports = [
+    (import ./nix {
+      inherit packages;
+    })
     (import ./editorconfig {
       inherit packages;
     })
