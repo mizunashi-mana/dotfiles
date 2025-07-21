@@ -13,10 +13,10 @@
 
   # https://devenv.sh/scripts/
   scripts = {
-    "lint-all" = {
+    lint-all = {
       exec = "pre-commit run --all-files && nix flake check --all-systems";
     };
-    "update-pkgs" = {
+    update-pkgs = {
       exec = "nix flake update && ./script/node2nix-update.sh";
     };
   };

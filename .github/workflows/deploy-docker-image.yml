@@ -85,7 +85,7 @@ jobs:
           platforms: ${{ matrix.build_unit.platform }}
           outputs: type=docker,dest=/tmp/image-${{ matrix.build_unit.image_name }}.tar
           secrets: |
-            github-token=${{ secrets.GITHUB_TOKEN }}
+            nix-config=access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
           build-args: |
             SETUP_HOST=${{ matrix.build_unit.target_host }}
 

@@ -30,7 +30,7 @@ COPY ./flake.lock /var/dotfiles/flake.lock
 COPY ./setup.sh /var/dotfiles/setup.sh
 
 WORKDIR /var/dotfiles
-RUN --mount=type=secret,id=github-token,env=NIX_GITHUB_TOKEN \
+RUN --mount=type=secret,id=nix-config,env=NIX_CONFIG \
 <<EOS
 rm -rf "/home/${WORKUSER}"/{.bashrc,.profile}
 env TRACE=1 "USER=$WORKUSER" ./setup.sh --hostname "$SETUP_HOST"

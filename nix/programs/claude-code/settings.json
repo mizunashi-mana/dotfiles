@@ -5,6 +5,7 @@
       "Bash(cat:*)",
       "Bash(chmod +x:*)",
       "Bash(cp:*)",
+      "Bash(curl:* http://localhost* *)",
       "Bash(devenv test)",
       "Bash(diff:*)",
       "Bash(echo:*)",
@@ -37,7 +38,13 @@
       "Bash(uv sync)",
       "Bash(wc:*)",
       "Bash(which:*)",
-      "mcp__eslint__lint-files"
+      "mcp__eslint__lint-files",
+      "mcp__playwright__browser_evaluate",
+      "mcp__playwright__browser_install",
+      "mcp__playwright__browser_navigate",
+      "mcp__playwright__browser_network_requests",
+      "mcp__playwright__browser_take_screenshot",
+      "mcp__playwright__browser_wait_for"
     ],
     "deny": [
       "Bash(rm:* ..*)",
