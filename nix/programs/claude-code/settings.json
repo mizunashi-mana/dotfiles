@@ -6,6 +6,7 @@
       "Bash(chmod +x:*)",
       "Bash(cp:*)",
       "Bash(devenv test)",
+      "Bash(diff:*)",
       "Bash(echo:*)",
       "Bash(find:*)",
       "Bash(file:*)",
@@ -16,6 +17,7 @@
       "Bash(make)",
       "Bash(mkdir:*)",
       "Bash(mv:*)",
+      "Bash(npm ci)",
       "Bash(npm install)",
       "Bash(npm run)",
       "Bash(npm test)",
@@ -34,12 +36,12 @@
       "Bash(uniq:*)",
       "Bash(uv sync)",
       "Bash(wc:*)",
-      "Bash(which:*)"
+      "Bash(which:*)",
+      "mcp__eslint__lint-files"
     ],
     "deny": [
       "Bash(rm:* ..*)",
-      "Bash(rm:* .git* *)",
-      "Bash(rm:* /*)"
+      "Bash(rm:* *.git*)"
     ]
   }
 }
