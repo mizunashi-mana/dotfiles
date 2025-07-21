@@ -1,7 +1,9 @@
 [
   {
     "@anthropic-ai/claude-code": "",
+    "@eslint/mcp": "",
     "@google/gemini-cli": "",
+    "@playwright/mcp": "",
     "ccusage": ""
   }
 ]
