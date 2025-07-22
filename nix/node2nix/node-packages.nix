@@ -111,13 +111,13 @@ let
         sha512 = "RBMg5FRL0I0gs51M/guSAj5/e14VQ4tpZnQNWwuDT66P14I43ItmPfIZRhO9fUVIPOAQXU47atlywZ/czoqFPA==";
       };
     };
-    "@eslint/plugin-kit-0.3.3" = {
+    "@eslint/plugin-kit-0.3.4" = {
       name = "_at_eslint_slash_plugin-kit";
       packageName = "@eslint/plugin-kit";
-      version = "0.3.3";
+      version = "0.3.4";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@eslint/plugin-kit/-/plugin-kit-0.3.3.tgz";
-        sha512 = "1+WqvgNMhmlAambTvT3KPtCl/Ibr68VldY2XY40SL1CE0ZXiakFR/cbTspaF5HsnpDMvcYYoJHfl4980NBjGag==";
+        url = "https://registry.npmjs.org/@eslint/plugin-kit/-/plugin-kit-0.3.4.tgz";
+        sha512 = "Ul5l+lHEcw3L5+k8POx6r74mxEYKG5kOb6Xpy2gCRW6zweT6TEhAf8vhxGgjhqrd/VO/Dirhsb+1hNpD1ue9hw==";
       };
     };
     "@google/gemini-cli-core-0.1.13" = {
@@ -199,6 +199,24 @@ let
       src = fetchurl {
         url = "https://registry.npmjs.org/@humanwhocodes/retry/-/retry-0.4.3.tgz";
         sha512 = "bV0Tgo9K4hfPCek+aMAn81RppFKv2ySDQeMoSZuvTASywNTnVJCArCZE2FWqpvIatKu7VMRLWlR1EazvVhDyhQ==";
+      };
+    };
+    "@isaacs/balanced-match-4.0.1" = {
+      name = "_at_isaacs_slash_balanced-match";
+      packageName = "@isaacs/balanced-match";
+      version = "4.0.1";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/@isaacs/balanced-match/-/balanced-match-4.0.1.tgz";
+        sha512 = "yzMTt9lEb8Gv7zRioUilSglI0c0smZ9k5D65677DLWLtWJaXIS3CqcGyUFByYKlnUj6TkjLVs54fBl6+TiGQDQ==";
+      };
+    };
+    "@isaacs/brace-expansion-5.0.0" = {
+      name = "_at_isaacs_slash_brace-expansion";
+      packageName = "@isaacs/brace-expansion";
+      version = "5.0.0";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/@isaacs/brace-expansion/-/brace-expansion-5.0.0.tgz";
+        sha512 = "ZT55BDLV0yv0RBm2czMiZ+SqCGO7AvmOM3G/w2xhVPH+te0aKgFjmBvGlL1dH+ql2tgGO3MVrbb3jCKyvpgnxA==";
       };
     };
     "@isaacs/cliui-8.0.2" = {
@@ -669,13 +687,13 @@ let
         sha512 = "K0VQKziLUWkVKiRVrx4a40iPaxTUefQmjtkQofBkYRcoaaL/8rhwDWww9qWbrgicNOgnpIsMxyNIUM4+n6dUIA==";
       };
     };
-    "@types/node-24.0.15" = {
+    "@types/node-24.1.0" = {
       name = "_at_types_slash_node";
       packageName = "@types/node";
-      version = "24.0.15";
+      version = "24.1.0";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@types/node/-/node-24.0.15.tgz";
-        sha512 = "oaeTSbCef7U/z7rDeJA138xpG3NuKc64/rZ2qmUFkFJmnMsAPaluIifqyWd8hSSMxyP9oie3dLAqYPblag9KgA==";
+        url = "https://registry.npmjs.org/@types/node/-/node-24.1.0.tgz";
+        sha512 = "ut5FthK5moxFKH2T1CUOC6ctR67rQRvvHdFLCD2Ql6KXmMuCrjsSsRI9UsLCm9M18BMwClv4pn327UvB7eeO1w==";
       };
     };
     "@types/normalize-package-data-2.4.4" = {
@@ -1369,6 +1387,15 @@ let
       src = fetchurl {
         url = "https://registry.npmjs.org/devlop/-/devlop-1.1.0.tgz";
         sha512 = "RWmIqhcFf1lRYBvNmr7qTNuyCt/7/ns2jbpp1+PalgE/rDQcBT0fioSMUpJ93irlUhC5hrg4cYqe6U+0ImW0rA==";
+      };
+    };
+    "diff-5.2.0" = {
+      name = "diff";
+      packageName = "diff";
+      version = "5.2.0";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/diff/-/diff-5.2.0.tgz";
+        sha512 = "uIFDxqpRZGZ6ThOk84hEfqWoHx2devRFvpTZcTHur85vImfaxUbTW9Ryh4CpCuDnToOP1CEtXKIgytHBPVff5A==";
       };
     };
     "diff-7.0.0" = {
@@ -2784,6 +2811,15 @@ let
         sha512 = "OqbOk5oEQeAZ8WXWydlu9HJjz9WVdEIvamMCcXmuqUYjTknH/sqsWvhQ3vgwKFRR1HpjvNBKQ37nbJgYzGqGcg==";
       };
     };
+    "minimatch-10.0.3" = {
+      name = "minimatch";
+      packageName = "minimatch";
+      version = "10.0.3";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/minimatch/-/minimatch-10.0.3.tgz";
+        sha512 = "IPZ167aShDZZUMdRk66cyQAW3qr0WzbHkPdMYa8bzZhlHhO3jALbKdxcaak7W9FfT2rZNpQuUu4Od7ILEpXSaw==";
+      };
+    };
     "minimatch-3.1.2" = {
       name = "minimatch";
       packageName = "minimatch";
@@ -4185,16 +4221,215 @@ in
   "@anthropic-ai/claude-code-" = nodeEnv.buildNodePackage {
     name = "_at_anthropic-ai_slash_claude-code";
     packageName = "@anthropic-ai/claude-code";
-    version = "1.0.56";
+    version = "1.0.57";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-1.0.56.tgz";
-      sha512 = "LYOlv9uXtLrJcJqSLvQlhy7shhC6MHEXuSGZ/+BazM4LY36ng3cmKjTCDny0kZQxa+u/+MYOXUrkmkJm2qR75Q==";
+      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-1.0.57.tgz";
+      sha512 = "zMymGZzjG+JO9iKC5N5pAy8AxyHIMPCL6U3HYCR3vCj5M+Y0s3GAMma6GkvCXWFixRN6KSZItKw3HbQiaIBYlw==";
     };
     buildInputs = globalBuildInputs;
     meta = {
       description = "Use Claude, Anthropic's AI assistant, right from your terminal. Claude can understand your codebase, edit files, run terminal commands, and handle entire workflows for you.";
       homepage = "https://github.com/anthropics/claude-code";
       license = "SEE LICENSE IN README.md";
+    };
+    production = true;
+    bypassCache = true;
+    reconstructLock = true;
+  };
+  "@eslint/mcp-" = nodeEnv.buildNodePackage {
+    name = "_at_eslint_slash_mcp";
+    packageName = "@eslint/mcp";
+    version = "0.1.0";
+    src = fetchurl {
+      url = "https://registry.npmjs.org/@eslint/mcp/-/mcp-0.1.0.tgz";
+      sha512 = "sb35GaLW9Y6DmCkpF9MJJPDjjp3iyi5jts6IRpMJP0g1Xrg70yz2eaGPvFHg/QuNOB1YEzJiEvI4h0KZkwdStw==";
+    };
+    dependencies = [
+      (
+        sources."@eslint-community/eslint-utils-4.7.0"
+        // {
+          dependencies = [
+            sources."eslint-visitor-keys-3.4.3"
+          ];
+        }
+      )
+      sources."@eslint-community/regexpp-4.12.1"
+      sources."@eslint/config-array-0.21.0"
+      sources."@eslint/config-helpers-0.3.0"
+      sources."@eslint/core-0.15.1"
+      sources."@eslint/eslintrc-3.3.1"
+      sources."@eslint/js-9.31.0"
+      sources."@eslint/object-schema-2.1.6"
+      sources."@eslint/plugin-kit-0.3.4"
+      sources."@humanfs/core-0.19.1"
+      (
+        sources."@humanfs/node-0.16.6"
+        // {
+          dependencies = [
+            sources."@humanwhocodes/retry-0.3.1"
+          ];
+        }
+      )
+      sources."@humanwhocodes/module-importer-1.0.1"
+      sources."@humanwhocodes/retry-0.4.3"
+      sources."@modelcontextprotocol/sdk-1.16.0"
+      sources."@types/estree-1.0.8"
+      sources."@types/json-schema-7.0.15"
+      sources."accepts-2.0.0"
+      sources."acorn-8.15.0"
+      sources."acorn-jsx-5.3.2"
+      sources."ajv-6.12.6"
+      sources."ansi-styles-4.3.0"
+      sources."argparse-2.0.1"
+      sources."balanced-match-1.0.2"
+      sources."body-parser-2.2.0"
+      sources."brace-expansion-1.1.12"
+      sources."bytes-3.1.2"
+      sources."call-bind-apply-helpers-1.0.2"
+      sources."call-bound-1.0.4"
+      sources."callsites-3.1.0"
+      sources."chalk-4.1.2"
+      sources."color-convert-2.0.1"
+      sources."color-name-1.1.4"
+      sources."concat-map-0.0.1"
+      sources."content-disposition-1.0.0"
+      sources."content-type-1.0.5"
+      sources."cookie-0.7.2"
+      sources."cookie-signature-1.2.2"
+      sources."cors-2.8.5"
+      sources."cross-spawn-7.0.6"
+      sources."debug-4.4.1"
+      sources."deep-is-0.1.4"
+      sources."depd-2.0.0"
+      sources."dunder-proto-1.0.1"
+      sources."ee-first-1.1.1"
+      sources."encodeurl-2.0.0"
+      sources."es-define-property-1.0.1"
+      sources."es-errors-1.3.0"
+      sources."es-object-atoms-1.1.1"
+      sources."escape-html-1.0.3"
+      sources."escape-string-regexp-4.0.0"
+      sources."eslint-9.31.0"
+      sources."eslint-scope-8.4.0"
+      sources."eslint-visitor-keys-4.2.1"
+      sources."espree-10.4.0"
+      sources."esquery-1.6.0"
+      sources."esrecurse-4.3.0"
+      sources."estraverse-5.3.0"
+      sources."esutils-2.0.3"
+      sources."etag-1.8.1"
+      sources."eventsource-3.0.7"
+      sources."eventsource-parser-3.0.3"
+      sources."express-5.1.0"
+      sources."express-rate-limit-7.5.1"
+      sources."fast-deep-equal-3.1.3"
+      sources."fast-json-stable-stringify-2.1.0"
+      sources."fast-levenshtein-2.0.6"
+      sources."file-entry-cache-8.0.0"
+      sources."finalhandler-2.1.0"
+      sources."find-up-5.0.0"
+      sources."flat-cache-4.0.1"
+      sources."flatted-3.3.3"
+      sources."forwarded-0.2.0"
+      sources."fresh-2.0.0"
+      sources."function-bind-1.1.2"
+      sources."get-intrinsic-1.3.0"
+      sources."get-proto-1.0.1"
+      sources."glob-parent-6.0.2"
+      sources."globals-14.0.0"
+      sources."gopd-1.2.0"
+      sources."has-flag-4.0.0"
+      sources."has-symbols-1.1.0"
+      sources."hasown-2.0.2"
+      (
+        sources."http-errors-2.0.0"
+        // {
+          dependencies = [
+            sources."statuses-2.0.1"
+          ];
+        }
+      )
+      sources."iconv-lite-0.6.3"
+      sources."ignore-5.3.2"
+      sources."import-fresh-3.3.1"
+      sources."imurmurhash-0.1.4"
+      sources."inherits-2.0.4"
+      sources."ipaddr.js-1.9.1"
+      sources."is-extglob-2.1.1"
+      sources."is-glob-4.0.3"
+      sources."is-promise-4.0.0"
+      sources."isexe-2.0.0"
+      sources."jiti-2.4.2"
+      sources."js-yaml-4.1.0"
+      sources."json-buffer-3.0.1"
+      sources."json-schema-traverse-0.4.1"
+      sources."json-stable-stringify-without-jsonify-1.0.1"
+      sources."keyv-4.5.4"
+      sources."levn-0.4.1"
+      sources."locate-path-6.0.0"
+      sources."lodash.merge-4.6.2"
+      sources."math-intrinsics-1.1.0"
+      sources."media-typer-1.1.0"
+      sources."merge-descriptors-2.0.0"
+      sources."mime-db-1.54.0"
+      sources."mime-types-3.0.1"
+      sources."minimatch-3.1.2"
+      sources."ms-2.1.3"
+      sources."natural-compare-1.4.0"
+      sources."negotiator-1.0.0"
+      sources."object-assign-4.1.1"
+      sources."object-inspect-1.13.4"
+      sources."on-finished-2.4.1"
+      sources."once-1.4.0"
+      sources."optionator-0.9.4"
+      sources."p-limit-3.1.0"
+      sources."p-locate-5.0.0"
+      sources."parent-module-1.0.1"
+      sources."parseurl-1.3.3"
+      sources."path-exists-4.0.0"
+      sources."path-key-3.1.1"
+      sources."path-to-regexp-8.2.0"
+      sources."pkce-challenge-5.0.0"
+      sources."prelude-ls-1.2.1"
+      sources."proxy-addr-2.0.7"
+      sources."punycode-2.3.1"
+      sources."qs-6.14.0"
+      sources."range-parser-1.2.1"
+      sources."raw-body-3.0.0"
+      sources."resolve-from-4.0.0"
+      sources."router-2.2.0"
+      sources."safe-buffer-5.2.1"
+      sources."safer-buffer-2.1.2"
+      sources."send-1.2.0"
+      sources."serve-static-2.2.0"
+      sources."setprototypeof-1.2.0"
+      sources."shebang-command-2.0.0"
+      sources."shebang-regex-3.0.0"
+      sources."side-channel-1.1.0"
+      sources."side-channel-list-1.0.0"
+      sources."side-channel-map-1.0.1"
+      sources."side-channel-weakmap-1.0.2"
+      sources."statuses-2.0.2"
+      sources."strip-json-comments-3.1.1"
+      sources."supports-color-7.2.0"
+      sources."toidentifier-1.0.1"
+      sources."type-check-0.4.0"
+      sources."type-is-2.0.1"
+      sources."unpipe-1.0.0"
+      sources."uri-js-4.4.1"
+      sources."vary-1.1.2"
+      sources."which-2.0.2"
+      sources."word-wrap-1.2.5"
+      sources."wrappy-1.0.2"
+      sources."yocto-queue-0.1.0"
+      sources."zod-3.25.76"
+      sources."zod-to-json-schema-3.24.6"
+    ];
+    buildInputs = globalBuildInputs;
+    meta = {
+      description = "MCP server for ESLint";
+      homepage = "https://github.com/eslint/rewrite/tree/main/packages/mcp#readme";
+      license = "Apache-2.0";
     };
     production = true;
     bypassCache = true;
@@ -4294,7 +4529,7 @@ in
       sources."@types/hast-3.0.4"
       sources."@types/html-to-text-9.0.4"
       sources."@types/minimatch-5.1.2"
-      sources."@types/node-24.0.15"
+      sources."@types/node-24.1.0"
       sources."@types/normalize-package-data-2.4.4"
       sources."@types/react-19.1.8"
       sources."@types/shimmer-1.2.0"
@@ -4839,18 +5074,174 @@ in
     bypassCache = true;
     reconstructLock = true;
   };
-  ccusage- = nodeEnv.buildNodePackage {
-    name = "ccusage";
-    packageName = "ccusage";
-    version = "15.5.0";
+  "@modelcontextprotocol/server-filesystem-" = nodeEnv.buildNodePackage {
+    name = "_at_modelcontextprotocol_slash_server-filesystem";
+    packageName = "@modelcontextprotocol/server-filesystem";
+    version = "2025.7.1";
     src = fetchurl {
-      url = "https://registry.npmjs.org/ccusage/-/ccusage-15.5.0.tgz";
-      sha512 = "Cdyayhh0vuF6sutvguTmSyAjkLyFfXmInkovtWW1zbcna1LcwqFn+uJ+N+504zI/Vl7pHEwOa6hFQ0fiOu7TEg==";
+      url = "https://registry.npmjs.org/@modelcontextprotocol/server-filesystem/-/server-filesystem-2025.7.1.tgz";
+      sha512 = "mGXxYX8l4EWQPgh/1pLZI2baKifPy4+WUx1jJ572TsCbe/Bs7S8f7z0Dp9aRlpcLEMr/Qp+Rp1m3NXNsgdKUmg==";
     };
+    dependencies = [
+      sources."@isaacs/balanced-match-4.0.1"
+      sources."@isaacs/brace-expansion-5.0.0"
+      sources."@isaacs/cliui-8.0.2"
+      sources."@modelcontextprotocol/sdk-1.16.0"
+      sources."accepts-2.0.0"
+      sources."ajv-6.12.6"
+      sources."ansi-regex-5.0.1"
+      sources."ansi-styles-6.2.1"
+      sources."balanced-match-1.0.2"
+      sources."body-parser-2.2.0"
+      sources."brace-expansion-2.0.2"
+      sources."bytes-3.1.2"
+      sources."call-bind-apply-helpers-1.0.2"
+      sources."call-bound-1.0.4"
+      sources."color-convert-2.0.1"
+      sources."color-name-1.1.4"
+      sources."content-disposition-1.0.0"
+      sources."content-type-1.0.5"
+      sources."cookie-0.7.2"
+      sources."cookie-signature-1.2.2"
+      sources."cors-2.8.5"
+      sources."cross-spawn-7.0.6"
+      sources."debug-4.4.1"
+      sources."depd-2.0.0"
+      sources."diff-5.2.0"
+      sources."dunder-proto-1.0.1"
+      sources."eastasianwidth-0.2.0"
+      sources."ee-first-1.1.1"
+      sources."emoji-regex-9.2.2"
+      sources."encodeurl-2.0.0"
+      sources."es-define-property-1.0.1"
+      sources."es-errors-1.3.0"
+      sources."es-object-atoms-1.1.1"
+      sources."escape-html-1.0.3"
+      sources."etag-1.8.1"
+      sources."eventsource-3.0.7"
+      sources."eventsource-parser-3.0.3"
+      sources."express-5.1.0"
+      sources."express-rate-limit-7.5.1"
+      sources."fast-deep-equal-3.1.3"
+      sources."fast-json-stable-stringify-2.1.0"
+      sources."finalhandler-2.1.0"
+      sources."foreground-child-3.3.1"
+      sources."forwarded-0.2.0"
+      sources."fresh-2.0.0"
+      sources."function-bind-1.1.2"
+      sources."get-intrinsic-1.3.0"
+      sources."get-proto-1.0.1"
+      (
+        sources."glob-10.4.5"
+        // {
+          dependencies = [
+            sources."minimatch-9.0.5"
+          ];
+        }
+      )
+      sources."gopd-1.2.0"
+      sources."has-symbols-1.1.0"
+      sources."hasown-2.0.2"
+      (
+        sources."http-errors-2.0.0"
+        // {
+          dependencies = [
+            sources."statuses-2.0.1"
+          ];
+        }
+      )
+      sources."iconv-lite-0.6.3"
+      sources."inherits-2.0.4"
+      sources."ipaddr.js-1.9.1"
+      sources."is-fullwidth-code-point-3.0.0"
+      sources."is-promise-4.0.0"
+      sources."isexe-2.0.0"
+      sources."jackspeak-3.4.3"
+      sources."json-schema-traverse-0.4.1"
+      sources."lru-cache-10.4.3"
+      sources."math-intrinsics-1.1.0"
+      sources."media-typer-1.1.0"
+      sources."merge-descriptors-2.0.0"
+      sources."mime-db-1.54.0"
+      sources."mime-types-3.0.1"
+      sources."minimatch-10.0.3"
+      sources."minipass-7.1.2"
+      sources."ms-2.1.3"
+      sources."negotiator-1.0.0"
+      sources."object-assign-4.1.1"
+      sources."object-inspect-1.13.4"
+      sources."on-finished-2.4.1"
+      sources."once-1.4.0"
+      sources."package-json-from-dist-1.0.1"
+      sources."parseurl-1.3.3"
+      sources."path-key-3.1.1"
+      sources."path-scurry-1.11.1"
+      sources."path-to-regexp-8.2.0"
+      sources."pkce-challenge-5.0.0"
+      sources."proxy-addr-2.0.7"
+      sources."punycode-2.3.1"
+      sources."qs-6.14.0"
+      sources."range-parser-1.2.1"
+      sources."raw-body-3.0.0"
+      sources."router-2.2.0"
+      sources."safe-buffer-5.2.1"
+      sources."safer-buffer-2.1.2"
+      sources."send-1.2.0"
+      sources."serve-static-2.2.0"
+      sources."setprototypeof-1.2.0"
+      sources."shebang-command-2.0.0"
+      sources."shebang-regex-3.0.0"
+      sources."side-channel-1.1.0"
+      sources."side-channel-list-1.0.0"
+      sources."side-channel-map-1.0.1"
+      sources."side-channel-weakmap-1.0.2"
+      sources."signal-exit-4.1.0"
+      sources."statuses-2.0.2"
+      sources."string-width-5.1.2"
+      (
+        sources."string-width-cjs-4.2.3"
+        // {
+          dependencies = [
+            sources."emoji-regex-8.0.0"
+            sources."strip-ansi-6.0.1"
+          ];
+        }
+      )
+      (
+        sources."strip-ansi-7.1.0"
+        // {
+          dependencies = [
+            sources."ansi-regex-6.1.0"
+          ];
+        }
+      )
+      sources."strip-ansi-cjs-6.0.1"
+      sources."toidentifier-1.0.1"
+      sources."type-is-2.0.1"
+      sources."unpipe-1.0.0"
+      sources."uri-js-4.4.1"
+      sources."vary-1.1.2"
+      sources."which-2.0.2"
+      sources."wrap-ansi-8.1.0"
+      (
+        sources."wrap-ansi-cjs-7.0.0"
+        // {
+          dependencies = [
+            sources."ansi-styles-4.3.0"
+            sources."emoji-regex-8.0.0"
+            sources."string-width-4.2.3"
+            sources."strip-ansi-6.0.1"
+          ];
+        }
+      )
+      sources."wrappy-1.0.2"
+      sources."zod-3.25.76"
+      sources."zod-to-json-schema-3.24.6"
+    ];
     buildInputs = globalBuildInputs;
     meta = {
-      description = "Usage analysis tool for Claude Code";
-      homepage = "https://github.com/ryoppippi/ccusage#readme";
+      description = "MCP server for filesystem access";
+      homepage = "https://modelcontextprotocol.io";
       license = "MIT";
     };
     production = true;
@@ -4979,200 +5370,19 @@ in
     bypassCache = true;
     reconstructLock = true;
   };
-  "@eslint/mcp-" = nodeEnv.buildNodePackage {
-    name = "_at_eslint_slash_mcp";
-    packageName = "@eslint/mcp";
-    version = "0.1.0";
+  ccusage- = nodeEnv.buildNodePackage {
+    name = "ccusage";
+    packageName = "ccusage";
+    version = "15.5.0";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@eslint/mcp/-/mcp-0.1.0.tgz";
-      sha512 = "sb35GaLW9Y6DmCkpF9MJJPDjjp3iyi5jts6IRpMJP0g1Xrg70yz2eaGPvFHg/QuNOB1YEzJiEvI4h0KZkwdStw==";
+      url = "https://registry.npmjs.org/ccusage/-/ccusage-15.5.0.tgz";
+      sha512 = "Cdyayhh0vuF6sutvguTmSyAjkLyFfXmInkovtWW1zbcna1LcwqFn+uJ+N+504zI/Vl7pHEwOa6hFQ0fiOu7TEg==";
     };
-    dependencies = [
-      (
-        sources."@eslint-community/eslint-utils-4.7.0"
-        // {
-          dependencies = [
-            sources."eslint-visitor-keys-3.4.3"
-          ];
-        }
-      )
-      sources."@eslint-community/regexpp-4.12.1"
-      sources."@eslint/config-array-0.21.0"
-      sources."@eslint/config-helpers-0.3.0"
-      sources."@eslint/core-0.15.1"
-      sources."@eslint/eslintrc-3.3.1"
-      sources."@eslint/js-9.31.0"
-      sources."@eslint/object-schema-2.1.6"
-      sources."@eslint/plugin-kit-0.3.3"
-      sources."@humanfs/core-0.19.1"
-      (
-        sources."@humanfs/node-0.16.6"
-        // {
-          dependencies = [
-            sources."@humanwhocodes/retry-0.3.1"
-          ];
-        }
-      )
-      sources."@humanwhocodes/module-importer-1.0.1"
-      sources."@humanwhocodes/retry-0.4.3"
-      sources."@modelcontextprotocol/sdk-1.16.0"
-      sources."@types/estree-1.0.8"
-      sources."@types/json-schema-7.0.15"
-      sources."accepts-2.0.0"
-      sources."acorn-8.15.0"
-      sources."acorn-jsx-5.3.2"
-      sources."ajv-6.12.6"
-      sources."ansi-styles-4.3.0"
-      sources."argparse-2.0.1"
-      sources."balanced-match-1.0.2"
-      sources."body-parser-2.2.0"
-      sources."brace-expansion-1.1.12"
-      sources."bytes-3.1.2"
-      sources."call-bind-apply-helpers-1.0.2"
-      sources."call-bound-1.0.4"
-      sources."callsites-3.1.0"
-      sources."chalk-4.1.2"
-      sources."color-convert-2.0.1"
-      sources."color-name-1.1.4"
-      sources."concat-map-0.0.1"
-      sources."content-disposition-1.0.0"
-      sources."content-type-1.0.5"
-      sources."cookie-0.7.2"
-      sources."cookie-signature-1.2.2"
-      sources."cors-2.8.5"
-      sources."cross-spawn-7.0.6"
-      sources."debug-4.4.1"
-      sources."deep-is-0.1.4"
-      sources."depd-2.0.0"
-      sources."dunder-proto-1.0.1"
-      sources."ee-first-1.1.1"
-      sources."encodeurl-2.0.0"
-      sources."es-define-property-1.0.1"
-      sources."es-errors-1.3.0"
-      sources."es-object-atoms-1.1.1"
-      sources."escape-html-1.0.3"
-      sources."escape-string-regexp-4.0.0"
-      sources."eslint-9.31.0"
-      sources."eslint-scope-8.4.0"
-      sources."eslint-visitor-keys-4.2.1"
-      sources."espree-10.4.0"
-      sources."esquery-1.6.0"
-      sources."esrecurse-4.3.0"
-      sources."estraverse-5.3.0"
-      sources."esutils-2.0.3"
-      sources."etag-1.8.1"
-      sources."eventsource-3.0.7"
-      sources."eventsource-parser-3.0.3"
-      sources."express-5.1.0"
-      sources."express-rate-limit-7.5.1"
-      sources."fast-deep-equal-3.1.3"
-      sources."fast-json-stable-stringify-2.1.0"
-      sources."fast-levenshtein-2.0.6"
-      sources."file-entry-cache-8.0.0"
-      sources."finalhandler-2.1.0"
-      sources."find-up-5.0.0"
-      sources."flat-cache-4.0.1"
-      sources."flatted-3.3.3"
-      sources."forwarded-0.2.0"
-      sources."fresh-2.0.0"
-      sources."function-bind-1.1.2"
-      sources."get-intrinsic-1.3.0"
-      sources."get-proto-1.0.1"
-      sources."glob-parent-6.0.2"
-      sources."globals-14.0.0"
-      sources."gopd-1.2.0"
-      sources."has-flag-4.0.0"
-      sources."has-symbols-1.1.0"
-      sources."hasown-2.0.2"
-      (
-        sources."http-errors-2.0.0"
-        // {
-          dependencies = [
-            sources."statuses-2.0.1"
-          ];
-        }
-      )
-      sources."iconv-lite-0.6.3"
-      sources."ignore-5.3.2"
-      sources."import-fresh-3.3.1"
-      sources."imurmurhash-0.1.4"
-      sources."inherits-2.0.4"
-      sources."ipaddr.js-1.9.1"
-      sources."is-extglob-2.1.1"
-      sources."is-glob-4.0.3"
-      sources."is-promise-4.0.0"
-      sources."isexe-2.0.0"
-      sources."jiti-2.4.2"
-      sources."js-yaml-4.1.0"
-      sources."json-buffer-3.0.1"
-      sources."json-schema-traverse-0.4.1"
-      sources."json-stable-stringify-without-jsonify-1.0.1"
-      sources."keyv-4.5.4"
-      sources."levn-0.4.1"
-      sources."locate-path-6.0.0"
-      sources."lodash.merge-4.6.2"
-      sources."math-intrinsics-1.1.0"
-      sources."media-typer-1.1.0"
-      sources."merge-descriptors-2.0.0"
-      sources."mime-db-1.54.0"
-      sources."mime-types-3.0.1"
-      sources."minimatch-3.1.2"
-      sources."ms-2.1.3"
-      sources."natural-compare-1.4.0"
-      sources."negotiator-1.0.0"
-      sources."object-assign-4.1.1"
-      sources."object-inspect-1.13.4"
-      sources."on-finished-2.4.1"
-      sources."once-1.4.0"
-      sources."optionator-0.9.4"
-      sources."p-limit-3.1.0"
-      sources."p-locate-5.0.0"
-      sources."parent-module-1.0.1"
-      sources."parseurl-1.3.3"
-      sources."path-exists-4.0.0"
-      sources."path-key-3.1.1"
-      sources."path-to-regexp-8.2.0"
-      sources."pkce-challenge-5.0.0"
-      sources."prelude-ls-1.2.1"
-      sources."proxy-addr-2.0.7"
-      sources."punycode-2.3.1"
-      sources."qs-6.14.0"
-      sources."range-parser-1.2.1"
-      sources."raw-body-3.0.0"
-      sources."resolve-from-4.0.0"
-      sources."router-2.2.0"
-      sources."safe-buffer-5.2.1"
-      sources."safer-buffer-2.1.2"
-      sources."send-1.2.0"
-      sources."serve-static-2.2.0"
-      sources."setprototypeof-1.2.0"
-      sources."shebang-command-2.0.0"
-      sources."shebang-regex-3.0.0"
-      sources."side-channel-1.1.0"
-      sources."side-channel-list-1.0.0"
-      sources."side-channel-map-1.0.1"
-      sources."side-channel-weakmap-1.0.2"
-      sources."statuses-2.0.2"
-      sources."strip-json-comments-3.1.1"
-      sources."supports-color-7.2.0"
-      sources."toidentifier-1.0.1"
-      sources."type-check-0.4.0"
-      sources."type-is-2.0.1"
-      sources."unpipe-1.0.0"
-      sources."uri-js-4.4.1"
-      sources."vary-1.1.2"
-      sources."which-2.0.2"
-      sources."word-wrap-1.2.5"
-      sources."wrappy-1.0.2"
-      sources."yocto-queue-0.1.0"
-      sources."zod-3.25.76"
-      sources."zod-to-json-schema-3.24.6"
-    ];
     buildInputs = globalBuildInputs;
     meta = {
-      description = "MCP server for ESLint";
-      homepage = "https://github.com/eslint/rewrite/tree/main/packages/mcp#readme";
-      license = "Apache-2.0";
+      description = "Usage analysis tool for Claude Code";
+      homepage = "https://github.com/ryoppippi/ccusage#readme";
+      license = "MIT";
     };
     production = true;
     bypassCache = true;
