@@ -47,6 +47,7 @@
 
           userSettings = {
             "update.mode" = "none";
+            "extensions.autoUpdate" = false;
             "workbench.startupEditor" = "none";
             "terminal.integrated.defaultProfile.osx" = "fish";
             "terminal.integrated.defaultProfile.linux" = "fish";
