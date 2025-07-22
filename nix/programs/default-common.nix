@@ -28,6 +28,7 @@ let
     (import ./claude-code { inherit packages; })
     (import ./docker-client { inherit packages; })
     (import ./gemini-cli { inherit packages; })
+    (import ./playwright-mcp { inherit packages; })
   ];
 in
 {

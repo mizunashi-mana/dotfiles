@@ -5,7 +5,6 @@
       "Bash(cat:*)",
       "Bash(chmod +x:*)",
       "Bash(cp:*)",
-      "Bash(curl:* http://localhost* *)",
       "Bash(devenv test)",
       "Bash(diff:*)",
       "Bash(echo:*)",
@@ -22,6 +21,7 @@
       "Bash(npm install)",
       "Bash(npm run)",
       "Bash(npm test)",
+      "Bash(npm uninstall:*)",
       "Bash(od:*)",
       "Bash(pwd:*)",
       "Bash(pre-commit run:*)",
@@ -46,6 +46,7 @@
       "mcp__playwright__browser_take_screenshot",
       "mcp__playwright__browser_wait_for"
     ],
+    "defaultMode": "acceptEdits",
     "deny": [
       "Bash(rm:* ..*)",
       "Bash(rm:* *.git*)"
