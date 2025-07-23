@@ -1,4 +1,9 @@
 {
+  "env": {
+    "CLAUDE_CODE_ENABLE_TELEMETRY": "1",
+    "DISABLE_AUTOUPDATER": "1",
+    "OTEL_LOGS_EXPORTER": "console"
+  },
   "permissions": {
     "allow": [
       "Bash(basename:*)",
@@ -39,12 +44,17 @@
       "Bash(wc:*)",
       "Bash(which:*)",
       "mcp__eslint__lint-files",
+      "mcp__playwright__browser_click",
       "mcp__playwright__browser_evaluate",
+      "mcp__playwright__browser_handle_dialog",
       "mcp__playwright__browser_install",
-      "mcp__playwright__browser_navigate",
+      "mcp__playwright__browser_navigate(url:http://localhost*)",
       "mcp__playwright__browser_network_requests",
       "mcp__playwright__browser_take_screenshot",
-      "mcp__playwright__browser_wait_for"
+      "mcp__playwright__browser_wait_for",
+      "mcp__playwright__browser_snapshot",
+      "mcp__playwright__browser_type",
+      "WebFetch(domain:localhost)"
     ],
     "defaultMode": "acceptEdits",
     "deny": [
