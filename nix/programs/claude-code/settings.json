@@ -1,8 +1,6 @@
 {
   "env": {
-    "CLAUDE_CODE_ENABLE_TELEMETRY": "1",
-    "DISABLE_AUTOUPDATER": "1",
-    "OTEL_LOGS_EXPORTER": "console"
+    "DISABLE_AUTOUPDATER": "1"
   },
   "permissions": {
     "allow": [
@@ -40,11 +38,15 @@
       "Bash(true)",
       "Bash(type:*)",
       "Bash(uniq:*)",
+      "Bash(unzip:*)",
+      "Bash(uv remove:*)",
       "Bash(uv sync)",
       "Bash(wc:*)",
       "Bash(which:*)",
       "mcp__eslint__lint-files",
+      "mcp__fetch__fetch(url:http://localhost*)",
       "mcp__playwright__browser_click",
+      "mcp__playwright__browser_close",
       "mcp__playwright__browser_evaluate",
       "mcp__playwright__browser_handle_dialog",
       "mcp__playwright__browser_install",
