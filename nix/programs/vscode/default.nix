@@ -53,6 +53,7 @@
             "terminal.integrated.defaultProfile.linux" = "fish";
             "editor.wordWrap" = "on";
             "github.copilot.chat.localeOverride" = "ja";
+            "github.copilot.nextEditSuggestions.enabled" = true;
             "ruff.interpreter" = [
               "ruff"
               "\${workspaceFolder}/.venv/bin/ruff"
