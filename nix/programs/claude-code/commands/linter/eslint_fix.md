@@ -1,5 +1,5 @@
 ---
-description: Fix Errors by ESLint
+description: Analyze ESLint errors in TypeScript/JavaScript files and fix them automatically
 allowed-tools: Bash(npx eslint:*), Read, Write, Glob
 ---
 

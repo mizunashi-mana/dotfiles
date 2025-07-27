@@ -14,6 +14,7 @@
       "Bash(echo:*)",
       "Bash(find:*)",
       "Bash(file:*)",
+      "Bash(gemini:*)",
       "Bash(grep:*)",
       "Bash(head:*)",
       "Bash(jq:*)",
