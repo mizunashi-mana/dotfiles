@@ -18,6 +18,10 @@
           source = ./commands;
           recursive = true;
         };
+        ".claude/agents" = {
+          source = ./agents;
+          recursive = true;
+        };
       };
     }
   ];
