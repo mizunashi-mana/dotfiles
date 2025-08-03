@@ -38,7 +38,6 @@ let
     (import ./ipe { inherit packages; })
     (import ./skimpdf { inherit packages; })
     (import ./zotero { inherit packages; })
-    (import ./chatgpt { inherit packages; })
     (import ./sequel-ace { inherit packages; })
   ];
 in
