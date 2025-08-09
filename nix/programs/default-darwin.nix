@@ -39,6 +39,7 @@ let
     (import ./skimpdf { inherit packages; })
     (import ./zotero { inherit packages; })
     (import ./sequel-ace { inherit packages; })
+    (import ./postman { inherit packages; })
   ];
 in
 {
