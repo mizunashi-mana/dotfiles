@@ -156,7 +156,7 @@ allowed-tools: Bash, Read, Write, Edit, MultiEdit, Update, WebSearch, WebFetch
 
 2. **対処手順**
    - タスクを一時中断する
-   - ユーザに修正方針を確認し、設計文書を更新してもらいましょう
+   - ユーザに修正方針を確認し、設計文書を更新してもらう
 
 ### 4. 進捗報告とコミュニケーション
 
