@@ -50,6 +50,7 @@
       "Bash(unzip:*)",
       "Bash(uv remove:*)",
       "Bash(uv sync)",
+      "Bash(uv run ruff:*)",
       "Bash(wc:*)",
       "Bash(which:*)",
       "Bash(xargs npx eslint:*)",
@@ -69,10 +70,6 @@
       "mcp__playwright__browser_type",
       "WebFetch(domain:localhost)"
     ],
-    "defaultMode": "acceptEdits",
-    "deny": [
-      "Bash(rm:* ..*)",
-      "Bash(rm:* *.git*)"
-    ]
+    "defaultMode": "acceptEdits"
   }
 }
