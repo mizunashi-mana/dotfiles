@@ -54,7 +54,8 @@
           {
             app = "/Applications/Postman.app";
           }
-        ] ++ extra-dock-persistent-apps;
+        ]
+        ++ extra-dock-persistent-apps;
       };
 
       controlcenter = {

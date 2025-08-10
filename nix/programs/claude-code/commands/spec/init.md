@@ -43,7 +43,7 @@ allowed-tools: Bash, Read, Write, Glob
 
 ### 3. 仕様ディレクトリの作成
 
-`spec/specs/{生成された機能名}/` ディレクトリをテンプレートファイルとともに作成：
+`spec/specs/{YYYYMMDD形式での日付}_{生成された機能名}/` ディレクトリをテンプレートファイルとともに作成：
 
 - `requirements.md` - ユーザーストーリー用の空のテンプレート
 - `design.md` - 技術設計用の空のテンプレート
