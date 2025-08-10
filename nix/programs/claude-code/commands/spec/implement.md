@@ -155,7 +155,7 @@ allowed-tools: Bash, Read, Write, Edit, MultiEdit, Update, WebSearch, WebFetch
    - 環境の問題: 開発環境の再設定が必要
 
 2. **対処手順**
-   - タスクを一時中断しましょう
+   - タスクを一時中断する
    - ユーザに修正方針を確認し、設計文書を更新してもらいましょう
 
 ### 4. 進捗報告とコミュニケーション
