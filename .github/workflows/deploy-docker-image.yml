@@ -125,7 +125,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Download image artifact
-        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0 # v5.0.0
         with:
           name: image-${{ matrix.build_unit.image_name }}
           path: /tmp
@@ -200,14 +200,14 @@ jobs:
 
       - name: Download image digest artifact for amd64
         if: matrix.image.image_name_amd64 != ''
-        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0 # v5.0.0
         with:
           name: image-digest-${{ matrix.image.image_name_amd64 }}
           path: /tmp
 
       - name: Download image digest artifact for arm64
         if: matrix.image.image_name_arm64 != ''
-        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0 # v5.0.0
         with:
           name: image-digest-${{ matrix.image.image_name_arm64 }}
           path: /tmp
