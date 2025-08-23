@@ -1,11 +1,7 @@
 [
   {
     "@anthropic-ai/claude-code": "",
-    "@eslint/mcp": "",
     "@google/gemini-cli": "",
-    "@modelcontextprotocol/server-filesystem": "",
-    "@playwright/mcp": "",
-    "@upstash/context7-mcp": "",
     "ccusage": ""
   }
 ]
