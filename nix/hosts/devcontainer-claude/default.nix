@@ -36,7 +36,6 @@ let
     (import "${nix-root-dir}/programs/gemini-cli" { inherit packages; })
     (import "${nix-root-dir}/programs/neovim" { inherit packages; })
     (import "${nix-root-dir}/programs/docker-client" { inherit packages; })
-    (import "${nix-root-dir}/programs/playwright-mcp" { inherit packages; })
   ];
 in
 {

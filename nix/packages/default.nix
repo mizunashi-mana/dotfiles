@@ -33,6 +33,5 @@ in
     "@anthropic-ai/claude-code" = node2nix-pkgs."@anthropic-ai/claude-code-";
     "ccusage" = node2nix-pkgs."ccusage-";
     "@google/gemini-cli" = node2nix-pkgs."@google/gemini-cli-";
-    "@playwright/mcp" = node2nix-pkgs."@playwright/mcp-";
   };
 }
