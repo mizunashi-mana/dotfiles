@@ -15,6 +15,7 @@ let
     (import ./bat { inherit packages; })
     (import ./fzf { inherit packages; })
     (import ./pigz { inherit packages; })
+    (import ./ripgrep { inherit packages; })
     (import ./nkf { inherit packages; })
     (import ./inetutils { inherit packages; })
     (import ./nmap { inherit packages; })
