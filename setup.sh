@@ -72,7 +72,7 @@ export PATH="$HOME/.nix-profile/bin:$PATH"
 
 case "$HOSTNAME_SHORT" in
 'macbook-air-2nd' | 'opl2401-013')
-	sudo nix --extra-experimental-features 'flakes nix-command' \
+	sudo --preserve-env=NIX_CONFIG nix --extra-experimental-features 'flakes nix-command' \
 		run nix-darwin \
 		-- switch --flake ".#$HOSTNAME_SHORT" --show-trace
 	BUILD_DOCKER_IMAGE=true
