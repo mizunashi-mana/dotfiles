@@ -14,8 +14,6 @@
 
           extensions = [
             packages.pkgs.vscode-extensions.jnoortheen.nix-ide
-            packages.pkgs.vscode-extensions.ms-azuretools.vscode-docker
-            packages.pkgs.vscode-extensions.ms-toolsai.jupyter
             packages.pkgs.vscode-extensions.ms-vscode.hexeditor
             packages.pkgs.vscode-extensions.ms-vscode.makefile-tools
             packages.vscode-extensions.vscode-marketplace.anthropic.claude-code
@@ -31,8 +29,10 @@
             packages.vscode-extensions.vscode-marketplace.github.vscode-github-actions
             packages.vscode-extensions.vscode-marketplace.graphql.vscode-graphql-syntax
             packages.vscode-extensions.vscode-marketplace.htmlhint.vscode-htmlhint
+            packages.vscode-extensions.vscode-marketplace.ms-azuretools.vscode-docker
             packages.vscode-extensions.vscode-marketplace.ms-kubernetes-tools.vscode-kubernetes-tools
             packages.vscode-extensions.vscode-marketplace.ms-playwright.playwright
+            packages.vscode-extensions.vscode-marketplace.ms-toolsai.jupyter
             packages.vscode-extensions.vscode-marketplace.ms-python.python
             packages.vscode-extensions.vscode-marketplace.ms-vscode-remote.remote-containers
             packages.vscode-extensions.vscode-marketplace.pbkit.vscode-pbkit

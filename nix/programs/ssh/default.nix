@@ -6,6 +6,10 @@
     {
       programs.ssh = {
         enable = true;
+        enableDefaultConfig = false;
+        matchBlocks = {
+          "*" = { };
+        };
         extraConfig = builtins.readFile ./ssh.conf;
       };
 
