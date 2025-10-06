@@ -52,6 +52,9 @@
             "terminal.integrated.defaultProfile.osx" = "fish";
             "terminal.integrated.defaultProfile.linux" = "fish";
             "editor.wordWrap" = "on";
+            "github.copilot.enable" = {
+              markdown = true;
+            };
             "github.copilot.chat.localeOverride" = "ja";
             "github.copilot.nextEditSuggestions.enabled" = true;
             "ruff.interpreter" = [
