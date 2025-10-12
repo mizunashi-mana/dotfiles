@@ -98,7 +98,7 @@ case "$HOSTNAME_SHORT" in
 	;;
 esac
 
-if [[ -n $BUILD_DOCKER_IMAGE ]]; then
+if [ -n "${BUILD_DOCKER_IMAGE:-}" ]; then
 	WAIT_DOCKER_LIMIT="${WAIT_DOCKER_LIMIT:-60}"
 	for _i in $(seq 1 "$WAIT_DOCKER_LIMIT"); do
 		if [[ -e /var/run/docker.sock ]] || [[ -e ~/.colima/docker.sock ]]; then
@@ -114,4 +114,11 @@ if [[ -n $BUILD_DOCKER_IMAGE ]]; then
 		--build-arg "UID=$(id -u)" \
 		--build-arg "GID=$(id -g)" \
 		.
+fi
+
+if [ -z "${SKIP_CLEAN:-}" ]; then
+	nix store gc
+	if [ -n "${BUILD_DOCKER_IMAGE:-}" ]; then
+		docker system prune -f
+	fi
 fi
