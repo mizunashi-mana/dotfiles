@@ -101,10 +101,10 @@ esac
 if [ -n "${BUILD_DOCKER_IMAGE:-}" ]; then
 	WAIT_DOCKER_LIMIT="${WAIT_DOCKER_LIMIT:-60}"
 	for _i in $(seq 1 "$WAIT_DOCKER_LIMIT"); do
+		sleep 1
 		if [[ -e /var/run/docker.sock ]] || [[ -e ~/.colima/docker.sock ]]; then
 			break
 		fi
-		sleep 1
 	done
 
 	docker buildx build \
