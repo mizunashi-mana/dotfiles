@@ -55,9 +55,9 @@ in
           ++ programs.homeManagerImports
           ++ (programs.mkHomeManagerImports { programs = extra-programs; });
 
-        programs.git = {
-          userName = "Mizunashi Mana";
-          userEmail = "contact@mizunashi.work";
+        programs.git.settings = {
+          user.name = "Mizunashi Mana";
+          user.email = "contact@mizunashi.work";
         };
       }
     ];

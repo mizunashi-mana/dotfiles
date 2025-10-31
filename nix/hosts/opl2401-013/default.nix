@@ -55,9 +55,9 @@ in
             ];
 
             home-manager.users.${username} = {
-              programs.git = {
-                userName = "Nishiyama Shun";
-                userEmail = "nishiyama_shun@openlogi.com";
+              programs.git.settings = {
+                user.name = "Nishiyama Shun";
+                user.email = "nishiyama_shun@openlogi.com";
               };
             };
           }

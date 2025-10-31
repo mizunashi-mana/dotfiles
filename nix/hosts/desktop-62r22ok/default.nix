@@ -41,9 +41,9 @@ in
 
         imports = home-manager.imports ++ programs-common.homeManagerImports;
 
-        programs.git = {
-          userName = "Mizunashi Mana";
-          userEmail = "contact@mizunashi.work";
+        programs.git.settings = {
+          user.name = "Mizunashi Mana";
+          user.email = "contact@mizunashi.work";
         };
       }
     ];

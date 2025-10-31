@@ -9,6 +9,7 @@ let
 
   programs = [
     default
+    (import ./delta { inherit packages; })
     (import ./zoxide { inherit packages; })
     (import ./jq { inherit packages; })
     (import ./eza { inherit packages; })
