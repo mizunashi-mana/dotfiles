@@ -1,6 +1,6 @@
 ---
 description: Do tasks and build product by a specification
-allowed-tools: Bash, Read, Write, Edit, MultiEdit, Update, WebSearch, WebFetch
+allowed-tools: Read, Write, Edit, MultiEdit, Update, WebSearch, WebFetch
 ---
 
 # 実装
