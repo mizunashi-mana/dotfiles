@@ -19,6 +19,8 @@
       "Bash(gh pr list:*)",
       "Bash(gh run view:*)",
       "Bash(gh run download:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
       "Bash(git diff:*)",
       "Bash(git ls-files:*)",
       "Bash(git log:*)",
