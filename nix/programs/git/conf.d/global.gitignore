@@ -40,6 +40,9 @@ devenv.local.nix
 # jupyter
 .ipynb_checkpoints
 
+# Playwright
+.playwright-mcp
+
 # Mac ignores
 
 ## general mac temporary files
