@@ -14,7 +14,6 @@ allowed-tools: Bash, Read, Write, Edit, MultiEdit, Glob, Grep, LS
 - プロダクト概要: !`[ -f "spec/steering/product.md" ] && echo "✅ 存在 - カスタムコンテンツを保持して更新されます" || echo "📝 見つかりません - 作成されます"`
 - 技術スタック: !`[ -f "spec/steering/tech.md" ] && echo "✅ 存在 - カスタムコンテンツを保持して更新されます" || echo "📝 見つかりません - 作成されます"`
 - プロジェクト構造: !`[ -f "spec/steering/structure.md" ] && echo "✅ 存在 - カスタムコンテンツを保持して更新されます" || echo "📝 見つかりません - 作成されます"`
-- カスタムステアリングファイル: !`if [ -d "spec/steering" ]; then count=$(find spec/steering -maxdepth 1 -type f -name '*.md' ! -name 'product.md' ! -name 'tech.md' ! -name 'structure.md' | grep -c .); if [ "$count" -gt 0 ]; then echo "🔧 $count個のカスタムファイルが見つかりました - 保持されます"; else echo "📋 カスタムファイルなし"; fi; else echo "📋 ステアリングディレクトリはまだありません"; fi`
 
 ## プロジェクト分析
 
