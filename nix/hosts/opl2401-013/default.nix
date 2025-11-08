@@ -38,11 +38,15 @@ in
             {
               app = "/Applications/PhpStorm.app";
             }
+            {
+              app = "/Applications/Figma.app";
+            }
           ];
 
           extra-programs = [
             (import "${nix-root-dir}/programs/phpstorm" { inherit packages; })
             (import "${nix-root-dir}/programs/slack" { inherit packages; })
+            (import "${nix-root-dir}/programs/figma" { inherit packages; })
           ];
         };
       in
