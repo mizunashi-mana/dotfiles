@@ -50,6 +50,7 @@
       "Bash(sort:*)",
       "Bash(tail:*)",
       "Bash(tar:*)",
+      "Bash(test:*)",
       "Bash(touch:*)",
       "Bash(tree:*)",
       "Bash(true)",
