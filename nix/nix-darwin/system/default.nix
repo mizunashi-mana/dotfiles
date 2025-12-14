@@ -51,9 +51,6 @@
           {
             app = "${packages.pkgs.zotero}/Applications/Zotero.app";
           }
-          {
-            app = "/Applications/Postman.app";
-          }
         ]
         ++ extra-dock-persistent-apps;
       };
