@@ -19,6 +19,7 @@
         AppleShowAllFiles = true;
         AppleShowAllExtensions = true;
         ShowPathbar = true;
+        ShowStatusBar = true;
         _FXShowPosixPathInTitle = true;
       };
 
