@@ -58,33 +58,44 @@ if [[ -z $HOSTNAME_SHORT ]]; then
 fi
 HOSTNAME_SHORT="$(echo "$HOSTNAME_SHORT" | tr '[:upper:]' '[:lower:]')"
 
+SETUP_TYPE=default
+USE_HOMEBREW=false
+case "$HOSTNAME_SHORT" in
+'nishiyamanomacbook-air' | 'opl2401-013')
+	SETUP_TYPE=darwin
+	USE_HOMEBREW=true
+	;;
+'devcontainer' | 'devcontainer-claude')
+	SETUP_TYPE=linux-container
+	;;
+esac
+
 "$TASKS_DIR/base/install.sh"
 
 "$TASKS_DIR/nix/install.sh"
 
-case "$HOSTNAME_SHORT" in
-'macbook-air-2nd' | 'opl2401-013')
+if [ "$USE_HOMEBREW" = 'true' ]; then
 	"$TASKS_DIR/homebrew/install.sh"
-	;;
-esac
+fi
 
-export PATH="$HOME/.nix-profile/bin:$PATH"
+export PATH="$HOME/.nix-profile/bin:/nix/var/nix/profiles/default/bin:$PATH"
 
-case "$HOSTNAME_SHORT" in
-'macbook-air-2nd' | 'opl2401-013')
+case "$SETUP_TYPE" in
+'darwin')
 	sudo --preserve-env=NIX_CONFIG nix --extra-experimental-features 'flakes nix-command' \
 		run nix-darwin \
 		-- switch --flake ".#$HOSTNAME_SHORT" --show-trace
 	BUILD_DOCKER_IMAGE=true
+	"$TASKS_DIR/post-darwin-setup/setup.sh"
 	;;
-'desktop-62r22ok')
+'default')
 	nix --extra-experimental-features 'flakes nix-command' \
 		run home-manager \
 		-- switch --flake ".#$HOSTNAME_SHORT" --show-trace --impure --extra-experimental-features 'flakes nix-command'
 	BUILD_DOCKER_IMAGE=true
 	"$TASKS_DIR/post-linux-setup/setup.sh"
 	;;
-'devcontainer' | 'devcontainer-claude')
+'linux-container')
 	nix --extra-experimental-features 'flakes nix-command' \
 		run home-manager \
 		-- switch --flake ".#$HOSTNAME_SHORT" --show-trace --impure --extra-experimental-features 'flakes nix-command'

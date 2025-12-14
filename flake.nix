@@ -51,7 +51,7 @@
     }:
     let
       current-system = (if builtins ? currentSystem then builtins.currentSystem else "aarch64-linux");
-      macbook-air-2nd = import ./nix/hosts/macbook-air-2nd {
+      nishiyamanomacbook-air = import ./nix/hosts/nishiyamanomacbook-air {
         inherit inputs;
       };
       opl2401-013 = import ./nix/hosts/opl2401-013 {
@@ -71,7 +71,7 @@
       systems = [
         devcontainer.system
         devcontainer-claude.system
-        macbook-air-2nd.system
+        nishiyamanomacbook-air.system
         opl2401-013.system
         desktop-62r22ok.system
       ];
@@ -82,7 +82,7 @@
 
       flake = {
         darwinConfigurations = {
-          ${macbook-air-2nd.hostname} = macbook-air-2nd.darwinConfiguration;
+          ${nishiyamanomacbook-air.hostname} = nishiyamanomacbook-air.darwinConfiguration;
           ${opl2401-013.hostname} = opl2401-013.darwinConfiguration;
         };
 
