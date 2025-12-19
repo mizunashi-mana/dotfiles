@@ -61,7 +61,7 @@ HOSTNAME_SHORT="$(echo "$HOSTNAME_SHORT" | tr '[:upper:]' '[:lower:]')"
 SETUP_TYPE=default
 USE_HOMEBREW=false
 case "$HOSTNAME_SHORT" in
-'nishiyamanomacbook-air' | 'opl2401-013')
+'nishiyamanomacbook-air' | 'nishiyamanomacbook-pro')
 	SETUP_TYPE=darwin
 	USE_HOMEBREW=true
 	;;

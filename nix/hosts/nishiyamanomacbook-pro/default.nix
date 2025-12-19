@@ -4,9 +4,9 @@
 let
   nix-root-dir = ../..;
 
-  hostname = "opl2401-013";
+  hostname = "nishiyamanomacbook-pro";
   system = "aarch64-darwin";
-  username = "nishiyama_shun";
+  username = "nishiyama-shun";
   homedir = "/Users/${username}";
 
   packages = import "${nix-root-dir}/packages" {

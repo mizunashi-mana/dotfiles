@@ -90,6 +90,7 @@
               "stylelint.vscode-stylelint"
               "tamasfe.even-better-toml"
             ];
+            "terminal.integrated.suggest.enabled" = false;
           };
         };
       };
