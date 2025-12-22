@@ -47,6 +47,7 @@ in
             (import "${nix-root-dir}/programs/phpstorm" { inherit packages; })
             (import "${nix-root-dir}/programs/slack" { inherit packages; })
             (import "${nix-root-dir}/programs/figma" { inherit packages; })
+            (import "${nix-root-dir}/programs/docker-desktop" { inherit packages; })
           ];
         };
       in
