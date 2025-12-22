@@ -28,7 +28,6 @@ let
     (import ./android-tools { inherit packages; })
     (import ./password-store { inherit packages; })
     (import ./w3m { inherit packages; })
-    (import ./colima { inherit packages; })
     (import ./1password { inherit packages inputs; })
     (import ./vagrant { inherit packages; })
     (import ./aerospace { inherit packages; })

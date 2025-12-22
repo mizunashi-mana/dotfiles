@@ -42,6 +42,7 @@ in
             (import "${nix-root-dir}/programs/texlive" { inherit packages; })
             (import "${nix-root-dir}/programs/kindle" { inherit packages; })
             (import "${nix-root-dir}/programs/discord" { inherit packages; })
+            (import "${nix-root-dir}/programs/colima" { inherit packages; })
           ];
         };
       in
