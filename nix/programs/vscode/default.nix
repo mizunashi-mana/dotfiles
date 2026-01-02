@@ -70,7 +70,6 @@
             "remote.autoForwardPortsSource" = "hybrid";
             "docker.extension.enableComposeLanguageServer" = false;
             "dev.containers.defaultExtensions" = [
-              "anthropic.claude-code"
               "astro-build.astro-vscode"
               "bradlc.vscode-tailwindcss"
               "charliermarsh.ruff"
@@ -78,7 +77,6 @@
               "eamodio.gitlens"
               "editorconfig.editorconfig"
               "esbenp.prettier-vscode"
-              "github.copilot"
               "github.copilot-chat"
               "github.vscode-github-actions"
               "htmlhint.vscode-htmlhint"
