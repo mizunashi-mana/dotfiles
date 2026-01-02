@@ -16,15 +16,14 @@
             packages.pkgs.vscode-extensions.jnoortheen.nix-ide
             packages.pkgs.vscode-extensions.ms-vscode.hexeditor
             packages.pkgs.vscode-extensions.ms-vscode.makefile-tools
-            packages.vscode-extensions.vscode-marketplace.anthropic.claude-code
             packages.vscode-extensions.vscode-marketplace.astro-build.astro-vscode
             packages.vscode-extensions.vscode-marketplace.bradlc.vscode-tailwindcss
             packages.vscode-extensions.vscode-marketplace.charliermarsh.ruff
+            packages.vscode-extensions.vscode-marketplace.cweijan.dbclient-jdbc
             packages.vscode-extensions.vscode-marketplace.dbaeumer.vscode-eslint
             packages.vscode-extensions.vscode-marketplace.eamodio.gitlens
             packages.vscode-extensions.vscode-marketplace.editorconfig.editorconfig
             packages.vscode-extensions.vscode-marketplace.esbenp.prettier-vscode
-            packages.vscode-extensions.vscode-marketplace.github.copilot
             packages.vscode-extensions.vscode-marketplace.github.copilot-chat
             packages.vscode-extensions.vscode-marketplace.github.vscode-github-actions
             packages.vscode-extensions.vscode-marketplace.graphql.vscode-graphql-syntax
@@ -71,7 +70,6 @@
             "remote.autoForwardPortsSource" = "hybrid";
             "docker.extension.enableComposeLanguageServer" = false;
             "dev.containers.defaultExtensions" = [
-              "anthropic.claude-code"
               "astro-build.astro-vscode"
               "bradlc.vscode-tailwindcss"
               "charliermarsh.ruff"
@@ -79,7 +77,6 @@
               "eamodio.gitlens"
               "editorconfig.editorconfig"
               "esbenp.prettier-vscode"
-              "github.copilot"
               "github.copilot-chat"
               "github.vscode-github-actions"
               "htmlhint.vscode-htmlhint"
