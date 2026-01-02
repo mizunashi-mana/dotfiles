@@ -54,7 +54,7 @@
       nishiyamanomacbook-air = import ./nix/hosts/nishiyamanomacbook-air {
         inherit inputs;
       };
-      opl2401-013 = import ./nix/hosts/opl2401-013 {
+      nishiyamanomacbook-pro = import ./nix/hosts/nishiyamanomacbook-pro {
         inherit inputs;
       };
       devcontainer = import ./nix/hosts/devcontainer {
@@ -72,7 +72,7 @@
         devcontainer.system
         devcontainer-claude.system
         nishiyamanomacbook-air.system
-        opl2401-013.system
+        nishiyamanomacbook-pro.system
         desktop-62r22ok.system
       ];
 
@@ -83,7 +83,7 @@
       flake = {
         darwinConfigurations = {
           ${nishiyamanomacbook-air.hostname} = nishiyamanomacbook-air.darwinConfiguration;
-          ${opl2401-013.hostname} = opl2401-013.darwinConfiguration;
+          ${nishiyamanomacbook-pro.hostname} = nishiyamanomacbook-pro.darwinConfiguration;
         };
 
         homeConfigurations = {

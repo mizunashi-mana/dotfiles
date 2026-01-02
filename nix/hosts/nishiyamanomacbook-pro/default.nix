@@ -4,9 +4,9 @@
 let
   nix-root-dir = ../..;
 
-  hostname = "opl2401-013";
+  hostname = "nishiyamanomacbook-pro";
   system = "aarch64-darwin";
-  username = "nishiyama_shun";
+  username = "nishiyama-shun";
   homedir = "/Users/${username}";
 
   packages = import "${nix-root-dir}/packages" {
@@ -47,6 +47,7 @@ in
             (import "${nix-root-dir}/programs/phpstorm" { inherit packages; })
             (import "${nix-root-dir}/programs/slack" { inherit packages; })
             (import "${nix-root-dir}/programs/figma" { inherit packages; })
+            (import "${nix-root-dir}/programs/docker-desktop" { inherit packages; })
           ];
         };
       in

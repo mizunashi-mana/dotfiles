@@ -1,0 +1,12 @@
+{
+  ...
+}:
+{
+  nixDarwinModules = [
+    {
+      homebrew.casks = [
+        "docker"
+      ];
+    }
+  ];
+}
