@@ -40,6 +40,7 @@ let
     (import ./zotero { inherit packages; })
     (import ./sequel-ace { inherit packages; })
     (import ./postman { inherit packages; })
+    (import ./raycast { inherit packages; })
   ];
 in
 {
