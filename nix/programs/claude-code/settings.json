@@ -75,6 +75,7 @@
       "WebFetch(domain:raw.githubusercontent.com)",
       "WebFetch(domain:stackoverflow.com)",
       "WebFetch(domain:storybook.js.org)",
+      "WebFetch(domain:vitest.dev)",
       "WebSearch",
       "mcp__chrome-devtools__click",
       "mcp__chrome-devtools__close_page",
