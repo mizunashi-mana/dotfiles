@@ -17,6 +17,7 @@
       "Bash(find:*)",
       "Bash(file:*)",
       "Bash(gemini:*)",
+      "Bash(gh pr checks:*)",
       "Bash(gh pr list:*)",
       "Bash(gh run download:*)",
       "Bash(gh run list:*)",
