@@ -30,6 +30,7 @@ let
     (import ./claude-code { inherit packages; })
     (import ./docker-client { inherit packages; })
     (import ./gemini-cli { inherit packages; })
+    (import ./codex { inherit packages; })
   ];
 in
 {
