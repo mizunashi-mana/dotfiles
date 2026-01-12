@@ -1,7 +1,6 @@
 [
   {
     "@anthropic-ai/claude-code": "",
-    "@openai/codex": "",
-    "ccusage": ""
+    "@openai/codex": ""
   }
 ]
