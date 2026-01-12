@@ -115,6 +115,7 @@
       "mcp__playwright__browser_file_upload",
       "mcp__playwright__browser_fill_form",
       "mcp__playwright__browser_handle_dialog",
+      "mcp__playwright__browser_hover",
       "mcp__playwright__browser_install",
       "mcp__playwright__browser_network_requests",
       "mcp__playwright__browser_take_screenshot",
