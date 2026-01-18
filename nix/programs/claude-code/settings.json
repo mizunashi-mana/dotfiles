@@ -6,6 +6,9 @@
     "DISABLE_AUTOUPDATER": "1"
   },
   "permissions": {
+    "additionalDirectories": [
+      "/tmp/"
+    ],
     "allow": [
       "Bash(basename:*)",
       "Bash(cat:*)",
@@ -49,6 +52,7 @@
       "Bash(npm uninstall:*)",
       "Bash(npx eslint:*)",
       "Bash(od:*)",
+      "Bash(ollama pull:*)",
       "Bash(pwd:*)",
       "Bash(pre-commit run:*)",
       "Bash(rg:*)",
