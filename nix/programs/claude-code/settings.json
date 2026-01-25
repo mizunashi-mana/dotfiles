@@ -45,6 +45,7 @@
       "Bash(head:*)",
       "Bash(jq:*)",
       "Bash(ls:*)",
+      "Bash(magick:*)",
       "Bash(make)",
       "Bash(mkdir:*)",
       "Bash(mv:*)",
