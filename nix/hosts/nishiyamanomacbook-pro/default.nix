@@ -38,11 +38,15 @@ in
             {
               app = "/Applications/Figma.app";
             }
+            {
+              app = "/Applications/Linear.app";
+            }
           ];
 
           extra-programs = [
             (import "${nix-root-dir}/programs/slack" { inherit packages; })
             (import "${nix-root-dir}/programs/figma" { inherit packages; })
+            (import "${nix-root-dir}/programs/linear" { inherit packages; })
             (import "${nix-root-dir}/programs/docker-desktop" { inherit packages; })
           ];
         };
