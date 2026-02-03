@@ -55,10 +55,6 @@ in
         nixDarwinModules.modules
         ++ [
           {
-            homebrew.brews = [
-              "git-flow-avh"
-            ];
-
             home-manager.users.${username} = {
               programs.git.settings = {
                 user.name = "Nishiyama Shun";
