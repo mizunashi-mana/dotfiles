@@ -52,6 +52,7 @@
       "Bash(make)",
       "Bash(mkdir:*)",
       "Bash(mv:*)",
+      "Bash(nkf:*)",
       "Bash(npm audit fix)",
       "Bash(npm ci)",
       "Bash(npm info:*)",

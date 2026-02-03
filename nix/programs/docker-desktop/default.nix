@@ -5,7 +5,7 @@
   nixDarwinModules = [
     {
       homebrew.casks = [
-        "docker"
+        "docker-desktop"
       ];
     }
   ];
