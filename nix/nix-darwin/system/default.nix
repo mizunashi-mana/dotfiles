@@ -52,6 +52,9 @@
           {
             app = "${packages.pkgs.zotero}/Applications/Zotero.app";
           }
+          {
+            app = "${packages.pkgs.dbeaver-bin}/Applications/dbeaver.app";
+          }
         ]
         ++ extra-dock-persistent-apps;
       };

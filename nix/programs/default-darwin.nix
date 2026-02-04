@@ -37,8 +37,8 @@ let
     (import ./aquaskk { inherit packages; })
     (import ./ipe { inherit packages; })
     (import ./skimpdf { inherit packages; })
+    (import ./dbeaver { inherit packages; })
     (import ./zotero { inherit packages; })
-    (import ./sequel-ace { inherit packages; })
     (import ./postman { inherit packages; })
     (import ./raycast { inherit packages; })
   ];
