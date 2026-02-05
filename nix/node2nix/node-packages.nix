@@ -17,10 +17,10 @@ in
   "@anthropic-ai/claude-code-" = nodeEnv.buildNodePackage {
     name = "_at_anthropic-ai_slash_claude-code";
     packageName = "@anthropic-ai/claude-code";
-    version = "2.1.19";
+    version = "2.1.31";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-2.1.19.tgz";
-      sha512 = "/bUlQuX/6nKr1Zqfi/9Q6xf7WonUBk72ZfKKENU4WVrIFWqTv/0JJsoW/dHol9QBNHvyfKIeBbYu4avHNRAnuQ==";
+      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-2.1.31.tgz";
+      sha512 = "FlQYgH8p2VRmqJz3GBw3oiHKQcwukDmepLOwSvEk9gdKaeADLUvrgHzzdMKkVKNnt2Pwro53SWT3cwbzTHcoMg==";
     };
     buildInputs = globalBuildInputs;
     meta = {
@@ -35,14 +35,14 @@ in
   "@openai/codex-" = nodeEnv.buildNodePackage {
     name = "_at_openai_slash_codex";
     packageName = "@openai/codex";
-    version = "0.89.0";
+    version = "0.97.0";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@openai/codex/-/codex-0.89.0.tgz";
-      sha512 = "mIX0FLKTT26sWqLcpwb2GvRI89snDNvUbgTxEtrPMP/wXRtYasTLROY0UBL1qLHVrm532mU4RLepNITqBPvAOQ==";
+      url = "https://registry.npmjs.org/@openai/codex/-/codex-0.97.0.tgz";
+      sha512 = "3bG0SFuC5nEQd5CZuIj4qV/6QyAb9mpQPKJKYNAo7NptFNifCI+hcP4a+/zjy+hNndvnvuylkCoj+BWDXq+cIA==";
     };
     buildInputs = globalBuildInputs;
     meta = {
-      description = "<p align=\"center\"><code>npm i -g @openai/codex</code><br />or <code>brew install --cask codex</code></p> <p align=\"center\"><strong>Codex CLI</strong> is a coding agent from OpenAI that runs locally on your computer. <p align=\"center\">   <img src=\"./.githu";
+      description = "<p align=\"center\"><code>npm i -g @openai/codex</code><br />or <code>brew install --cask codex</code></p> <p align=\"center\"><strong>Codex CLI</strong> is a coding agent from OpenAI that runs locally on your computer. <p align=\"center\">   <img src=\"https://";
       homepage = "https://github.com/openai/codex#readme";
       license = "Apache-2.0";
     };
