@@ -14,7 +14,7 @@
   # https://devenv.sh/scripts/
   scripts = {
     lint-all = {
-      exec = "pre-commit run --all-files && nix flake check --all-systems";
+      exec = "prek run --all-files && nix flake check --all-systems";
     };
     update-pkgs = {
       exec = "nix flake update && ./script/node2nix-update.sh";
