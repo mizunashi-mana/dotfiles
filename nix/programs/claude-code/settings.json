@@ -43,6 +43,7 @@
       "Bash(git log:*)",
       "Bash(git mv:*)",
       "Bash(git rev-parse:*)",
+      "Bash(git remote get-url:*)",
       "Bash(git show:*)",
       "Bash(git submodule status:*)",
       "Bash(git status:*)",
