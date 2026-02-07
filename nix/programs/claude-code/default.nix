@@ -13,10 +13,6 @@
         ".claude/settings.json" = {
           text = builtins.readFile ./settings.json;
         };
-        ".claude/commands" = {
-          source = ./commands;
-          recursive = true;
-        };
         ".claude/agents" = {
           source = ./agents;
           recursive = true;
