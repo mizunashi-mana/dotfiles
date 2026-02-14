@@ -41,6 +41,7 @@ let
     (import ./zotero { inherit packages; })
     (import ./postman { inherit packages; })
     (import ./raycast { inherit packages; })
+    (import ./xcode { inherit packages; })
   ];
 in
 {

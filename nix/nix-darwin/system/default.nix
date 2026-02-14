@@ -55,6 +55,9 @@
           {
             app = "${packages.pkgs.dbeaver-bin}/Applications/dbeaver.app";
           }
+          {
+            app = "${packages.pkgs.dbeaver-bin}/Applications/Raycast.app";
+          }
         ]
         ++ extra-dock-persistent-apps;
       };
