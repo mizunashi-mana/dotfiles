@@ -88,6 +88,9 @@
               "tamasfe.even-better-toml"
             ];
             "terminal.integrated.suggest.enabled" = false;
+            "files.exclude" = {
+              "**/.devenv" = true;
+            };
           };
         };
       };

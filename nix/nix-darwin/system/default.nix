@@ -44,6 +44,9 @@
             app = "/Applications/Google Chrome.app";
           }
           {
+            app = "/Applications/Claude.app";
+          }
+          {
             app = "${packages.pkgs.vscode}/Applications/Visual Studio Code.app";
           }
           {
