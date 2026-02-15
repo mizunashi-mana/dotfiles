@@ -55,7 +55,7 @@ git pull
 
 ### 6. compaction の実行
 
-ユーザーに「compaction を実行してよいですか？」と確認し、承認を得てから `/compact` を実行する。
+`/compact` を実行する。
 
 ## 注意事項
 
