@@ -1,6 +1,6 @@
 ---
 description: Switch to the default branch after a PR is merged, pull latest changes, and run compaction. Use after merging or having a PR merged to start fresh.
-allowed-tools: "Bash(git checkout *)", "Bash(git pull *)", "Bash(git pull)", "Bash(git branch *)", "Bash(git rev-parse *)", "Bash(git remote *)", "Bash(git symbolic-ref *)", "Bash(gh pr view *)", "Bash(gh pr merge *)", mcp__github__pull_request_read, mcp__github__merge_pull_request, mcp__github__list_pull_requests
+allowed-tools: "Bash(git checkout *)", "Bash(git pull *)", "Bash(git pull)", "Bash(git branch *)", "Bash(git rev-parse *)", "Bash(git remote *)", "Bash(git symbolic-ref *)", mcp__github__pull_request_read, mcp__github__merge_pull_request, mcp__github__list_pull_requests
 ---
 
 # デフォルトブランチへの切り替え
@@ -13,16 +13,14 @@ PR のマージ後にデフォルトブランチへ切り替え、最新の変�
 
 現在のブランチに関連する PR があるかを確認する。
 
-```bash
-gh pr view --json state,mergedAt,url
-```
+- `git remote get-url origin` でリポジトリの owner/repo を取得する
+- `git branch --show-current` で現在のブランチ名を取得する
+- `mcp__github__list_pull_requests` で現在のブランチの PR を検索する（`head` に `owner:branch` を指定）
+
+結果に応じて分岐:
 
 - **PR がマージ済み**: 次のステップに進む
-- **PR がオープン**: ユーザーに「この PR をマージしますか？」と確認し、承認を得てからマージする
-  ```bash
-  gh pr merge --merge
-  ```
-  マージ方法（merge / squash / rebase）はユーザーに確認する。
+- **PR がオープン**: ユーザーに「この PR をマージしますか？」と確認し、承認を得てから `mcp__github__merge_pull_request` でマージする。マージ方法（merge / squash / rebase）はユーザーに確認する。
 - **PR が存在しない**: そのまま次のステップに進む
 
 ### 2. デフォルトブランチの特定
