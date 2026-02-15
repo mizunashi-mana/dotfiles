@@ -103,17 +103,18 @@ disable-model-invocation: true
 
 #### インストール対象スキル
 
-| スキル                              | テンプレート                                                            | 説明                          |
-| ----------------------------------- | ----------------------------------------------------------------------- | ----------------------------- |
-| `autodev-create-issue`              | [SKILL.md](templates/skills/autodev-create-issue/SKILL.md)              | GitHub Issue の作成           |
-| `autodev-create-pr`                 | [SKILL.md](templates/skills/autodev-create-pr/SKILL.md)                 | プルリクエストの作成          |
-| `autodev-discussion`                | [SKILL.md](templates/skills/autodev-discussion/SKILL.md)                | アイデアや考えの対話的な整理  |
-| `autodev-import-review-suggestions` | [SKILL.md](templates/skills/autodev-import-review-suggestions/SKILL.md) | PR レビューコメントの取り込み |
-| `autodev-review-pr`                 | [SKILL.md](templates/skills/autodev-review-pr/SKILL.md)                 | PR のコードレビュー           |
-| `autodev-start-new-project`         | [SKILL.md](templates/skills/autodev-start-new-project/SKILL.md)         | 長期プロジェクトの開始        |
-| `autodev-start-new-survey`          | [SKILL.md](templates/skills/autodev-start-new-survey/SKILL.md)          | 技術調査の開始                |
-| `autodev-start-new-task`            | [SKILL.md](templates/skills/autodev-start-new-task/SKILL.md)            | 個別タスクの開始              |
-| `autodev-steering`                  | [SKILL.md](templates/skills/autodev-steering/SKILL.md)                  | Steering ドキュメントの更新   |
+| スキル                              | テンプレート                                                            | 説明                           |
+| ----------------------------------- | ----------------------------------------------------------------------- | ------------------------------ |
+| `autodev-create-issue`              | [SKILL.md](templates/skills/autodev-create-issue/SKILL.md)              | GitHub Issue の作成            |
+| `autodev-create-pr`                 | [SKILL.md](templates/skills/autodev-create-pr/SKILL.md)                 | プルリクエストの作成           |
+| `autodev-discussion`                | [SKILL.md](templates/skills/autodev-discussion/SKILL.md)                | アイデアや考えの対話的な整理   |
+| `autodev-import-review-suggestions` | [SKILL.md](templates/skills/autodev-import-review-suggestions/SKILL.md) | PR レビューコメントの取り込み  |
+| `autodev-review-pr`                 | [SKILL.md](templates/skills/autodev-review-pr/SKILL.md)                 | PR のコードレビュー            |
+| `autodev-start-new-project`         | [SKILL.md](templates/skills/autodev-start-new-project/SKILL.md)         | 長期プロジェクトの開始         |
+| `autodev-start-new-survey`          | [SKILL.md](templates/skills/autodev-start-new-survey/SKILL.md)          | 技術調査の開始                 |
+| `autodev-start-new-task`            | [SKILL.md](templates/skills/autodev-start-new-task/SKILL.md)            | 個別タスクの開始               |
+| `autodev-steering`                  | [SKILL.md](templates/skills/autodev-steering/SKILL.md)                  | Steering ドキュメントの更新    |
+| `autodev-switch-to-default`         | [SKILL.md](templates/skills/autodev-switch-to-default/SKILL.md)         | デフォルトブランチへの切り替え |
 
 #### インストール手順
 
@@ -149,12 +150,45 @@ disable-model-invocation: true
 
 リポジトリルートの `CLAUDE.md` を確認し、[templates/claude-md.md](templates/claude-md.md) の内容が含まれるようにする。既存の `CLAUDE.md` がある場合は内容をマージする。
 
-### Step 8: 完了報告
+### Step 8: README.md の生成
+
+リポジトリルートの `README.md` を作成または更新する。既存の `README.md` がある場合は内容をマージ・改善する。
+
+**重要: README.md は英語で記述する。** グローバルなリーチを確保するため。
+
+**構成（推奨順）:**
+
+1. **プロジェクト名とキャッチフレーズ**: 一行でプロジェクトの価値を伝える
+2. **What / Why**: このプロジェクトが何で、なぜ存在するのか。ユーザーにとっての売り・メリットを明確に
+3. **Quick Start / Installation**: インストール手順をすぐ試せる形で提示
+4. **Usage**: 基本的なコマンドや使い方の例
+5. **License**: ライセンス情報への言及
+
+**注意事項:**
+
+- 詳細な技術解説や内部設計の説明は含めない（それは steering ドキュメントの役割）
+- 初めて訪れた人が「何ができるか」「どう始めるか」を30秒で把握できることを目指す
+- バッジ（CI ステータス、ライセンスなど）があれば先頭に配置する
+
+### Step 9: LICENSE の生成
+
+リポジトリルートに `LICENSE` ファイルを作成する。既に存在する場合はスキップする。
+
+**重要: LICENSE は英語で記述する。**
+
+- ユーザーに希望するライセンスを確認する（MIT / Apache-2.0 / GPL-3.0 など）
+- 指定がなければ Apache-2.0 OR MPL-2.0 License を推奨する
+- ライセンス本文は正式なテンプレートをそのまま使用する
+- 著作権表示の年と名前をユーザーに確認する
+
+### Step 10: 完了報告
 
 セットアップ完了後、以下を報告する。
 
 - 作成したファイルの一覧
 - 各 steering ドキュメントの概要
+- README.md の概要
+- 選択したライセンス
 - 利用可能なスキルの一覧
 - 次のステップの提案（最初のタスクの作成など）
 
@@ -163,4 +197,4 @@ disable-model-invocation: true
 - **対話的に進める**: 各ドキュメントの草案を提示し、ユーザーの確認を得てから書き込む。一括で全て生成しない。
 - **事実に基づく**: リポジトリの実際の状態に基づいて記述し、推測を含めない。
 - **既存資産を尊重**: 既にあるドキュメントや設定は上書きせず、マージ・拡張する。
-- **日本語で記述**: 全てのドキュメントは日本語で作成する。
+- **日本語で記述**: ドキュメントは日本語で作成する。ただし `README.md` と `LICENSE` は英語で作成する。

@@ -99,6 +99,8 @@
       "Bash(shellcheck:*)",
       "Bash(sleep:*)",
       "Bash(sort:*)",
+      "Bash(swift build)",
+      "Bash(swift test)",
       "Bash(swift --version:*)",
       "Bash(tail:*)",
       "Bash(tar:*)",
