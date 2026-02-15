@@ -9,12 +9,13 @@ allowed-tools: Read, Write, Edit, MultiEdit, Bash(mkdir *), Glob, Grep, mcp__git
 
 ## 対象ドキュメント
 
-| ファイル                        | 内容                       |
-| ------------------------------- | -------------------------- |
-| `.ai-agent/steering/product.md` | プロダクト概要、対象環境   |
-| `.ai-agent/steering/tech.md`    | 技術スタック、開発コマンド |
-| `.ai-agent/steering/work.md`    | 作業の進め方               |
-| `.ai-agent/structure.md`        | ディレクトリ構成           |
+| ファイル                        | 内容                                             |
+| ------------------------------- | ------------------------------------------------ |
+| `README.md`                     | プロジェクト概要、技術スタック、セットアップ手順 |
+| `.ai-agent/steering/product.md` | プロダクト概要、対象環境                         |
+| `.ai-agent/steering/tech.md`    | 技術スタック、開発コマンド                       |
+| `.ai-agent/steering/work.md`    | 作業の進め方                                     |
+| `.ai-agent/structure.md`        | ディレクトリ構成                                 |
 
 ## 手順
 
@@ -73,7 +74,7 @@ GitHub イシューを確認し、未対応の課題や進行中のタスクを�
 ### 7. コミット
 
 ```bash
-git add .ai-agent/
+git add README.md .ai-agent/
 git commit -m "Update steering documents to reflect current project state"
 ```
 

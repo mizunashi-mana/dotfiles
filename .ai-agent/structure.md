@@ -33,7 +33,8 @@ dotfiles/
 │       ├── autodev-start-new-project/
 │       ├── autodev-start-new-survey/
 │       ├── autodev-start-new-task/
-│       └── autodev-steering/
+│       ├── autodev-steering/
+│       └── autodev-switch-to-default/
 ├── .github/                     # GitHub 設定
 │   ├── PULL_REQUEST_TEMPLATE.md # PR テンプレート
 │   ├── copilot-instructions.md  # Copilot 設定
