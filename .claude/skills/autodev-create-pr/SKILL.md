@@ -52,4 +52,4 @@ allowed-tools: Bash, Read, Glob, mcp__github__create_pull_request
 
 - コミットが済んでいない変更がある場合は、先にコミットするか確認する
 - master ブランチへの直接プッシュは避ける
-- PR タイトルは英語で簡潔に（50文字以内推奨）
+- PR タイトルは日本語で簡潔に（50文字以内推奨）
