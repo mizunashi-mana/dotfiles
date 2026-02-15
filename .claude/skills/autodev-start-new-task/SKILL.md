@@ -46,4 +46,4 @@ allowed-tools: Read, Write, Edit, MultiEdit, Update, WebSearch, WebFetch
 - 完了条件をチェック
 - 作業ログに結果を記載
 - ユーザーに完了報告
-- PR 作成は `/autodev:create-pr` を使用する
+- PR 作成は `/autodev-create-pr` を使用する
