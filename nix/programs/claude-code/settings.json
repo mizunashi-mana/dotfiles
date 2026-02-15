@@ -17,6 +17,7 @@
       "/tmp/"
     ],
     "allow": [
+      "Bash(actionlint:*)",
       "Bash(basename:*)",
       "Bash(brew list:*)",
       "Bash(brew info:*)",
@@ -123,6 +124,7 @@
       "WebFetch(domain:raw.githubusercontent.com)",
       "WebFetch(domain:stackoverflow.com)",
       "WebFetch(domain:storybook.js.org)",
+      "WebFetch(domain:typescript-eslint.io)",
       "WebFetch(domain:vitest.dev)",
       "WebFetch(domain:www.figma.com)",
       "WebFetch(domain:www.notion.so)",
