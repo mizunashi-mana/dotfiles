@@ -14,8 +14,7 @@
   },
   "permissions": {
     "additionalDirectories": [
-      "/tmp/",
-      "~/.claude/skills"
+      "/tmp/"
     ],
     "allow": [
       "Bash(basename:*)",

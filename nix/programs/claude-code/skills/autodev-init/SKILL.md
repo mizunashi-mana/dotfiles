@@ -99,25 +99,25 @@ disable-model-invocation: true
 
 ### Step 5: autodev スキルのインストール
 
-[templates/skills/](templates/skills/) 内のスキルテンプレートをベースに、プロジェクトの `.claude/skills/` にスキルをインストールする。
+以下のスキルテンプレートをベースに、プロジェクトの `.claude/skills/` にスキルをインストールする。
 
 #### インストール対象スキル
 
-| スキル                              | 説明                          |
-| ----------------------------------- | ----------------------------- |
-| `autodev-create-issue`              | GitHub Issue の作成           |
-| `autodev-create-pr`                 | プルリクエストの作成          |
-| `autodev-discussion`                | アイデアや考えの対話的な整理  |
-| `autodev-import-review-suggestions` | PR レビューコメントの取り込み |
-| `autodev-review-pr`                 | PR のコードレビュー           |
-| `autodev-start-new-project`         | 長期プロジェクトの開始        |
-| `autodev-start-new-survey`          | 技術調査の開始                |
-| `autodev-start-new-task`            | 個別タスクの開始              |
-| `autodev-steering`                  | Steering ドキュメントの更新   |
+| スキル                              | テンプレート                                                            | 説明                          |
+| ----------------------------------- | ----------------------------------------------------------------------- | ----------------------------- |
+| `autodev-create-issue`              | [SKILL.md](templates/skills/autodev-create-issue/SKILL.md)              | GitHub Issue の作成           |
+| `autodev-create-pr`                 | [SKILL.md](templates/skills/autodev-create-pr/SKILL.md)                 | プルリクエストの作成          |
+| `autodev-discussion`                | [SKILL.md](templates/skills/autodev-discussion/SKILL.md)                | アイデアや考えの対話的な整理  |
+| `autodev-import-review-suggestions` | [SKILL.md](templates/skills/autodev-import-review-suggestions/SKILL.md) | PR レビューコメントの取り込み |
+| `autodev-review-pr`                 | [SKILL.md](templates/skills/autodev-review-pr/SKILL.md)                 | PR のコードレビュー           |
+| `autodev-start-new-project`         | [SKILL.md](templates/skills/autodev-start-new-project/SKILL.md)         | 長期プロジェクトの開始        |
+| `autodev-start-new-survey`          | [SKILL.md](templates/skills/autodev-start-new-survey/SKILL.md)          | 技術調査の開始                |
+| `autodev-start-new-task`            | [SKILL.md](templates/skills/autodev-start-new-task/SKILL.md)            | 個別タスクの開始              |
+| `autodev-steering`                  | [SKILL.md](templates/skills/autodev-steering/SKILL.md)                  | Steering ドキュメントの更新   |
 
 #### インストール手順
 
-1. 各テンプレートを読み込み、プロジェクトの `.claude/skills/` にコピーする
+1. 上記テーブルの各テンプレートリンクからファイルを読み込み、プロジェクトの `.claude/skills/` にコピーする
 2. **プロジェクトに特化できる部分はカスタマイズする**。Step 1〜5 で把握した情報を活用して、以下のような点を調整する:
    - `autodev-start-new-task`: プロジェクト固有の動作確認手順（lint コマンド、テスト実行方法、ブラウザ確認手順など）を追記
    - `autodev-steering`: プロジェクト構成に応じた現状把握コマンド（`ls packages/`、`cat package.json | jq '.scripts'` など）を具体化
