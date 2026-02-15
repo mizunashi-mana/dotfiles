@@ -1,6 +1,6 @@
 ---
 description: Update steering documents (product.md, tech.md, structure.md, etc.) to reflect current project state. Use when documents have become outdated or after completing significant work.
-allowed-tools: Read, Write, Edit, MultiEdit, Bash(mkdir:*), Glob, Grep, mcp__github__list_issues, mcp__github__search_issues
+allowed-tools: Read, Write, Edit, MultiEdit, Bash(mkdir *), Glob, Grep, mcp__github__list_issues, mcp__github__search_issues
 ---
 
 # Steering ドキュメント更新

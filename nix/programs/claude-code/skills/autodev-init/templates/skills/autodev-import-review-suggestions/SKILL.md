@@ -1,6 +1,6 @@
 ---
 description: Import and apply PR review comments interactively. Use when a pull request has received review feedback and you want to address the suggestions.
-allowed-tools: Read, Write, Edit, MultiEdit, mcp__github__pull_request_read
+allowed-tools: Read, Write, Edit, MultiEdit, "Bash(gh api *)", mcp__github__pull_request_read
 ---
 
 # PR レビュー取り込み
@@ -12,6 +12,7 @@ PR「$ARGUMENTS」のレビューコメントを確認し、対話的に修正�
 1. **レビューコメント取得**:
    - `mcp__github__pull_request_read` で `get_review_comments` を実行
    - 未解決のコメントを一覧化
+   - 各コメントの `id`（返信用）を記録
 
 2. **各コメントの確認**:
    - コメント内容を要約してユーザーに提示
@@ -29,6 +30,16 @@ PR「$ARGUMENTS」のレビューコメントを確認し、対話的に修正�
 5. **コミット・プッシュ**:
    - 修正内容をまとめてコミット
    - PR ブランチにプッシュ
+
+6. **レビューコメントへの返信**:
+   - 各レビューコメントに対応結果を返信する
+   - `gh api` を使い、以下のコマンドで返信:
+     ```
+     gh api repos/{owner}/{repo}/pulls/{pull_number}/comments/{comment_id}/replies -f body="返信内容"
+     ```
+   - 修正した項目: 修正内容を簡潔に説明（例: 「修正しました。○○に変更しています。」）
+   - スキップした項目: スキップの理由を説明（例: 「プロジェクト方針として○○のため、現状維持とします。」）
+   - 返信はレビュワーへの感謝と具体的な対応内容を含める
 
 ## 判断基準
 
@@ -63,3 +74,9 @@ PR「$ARGUMENTS」のレビューコメントを確認し、対話的に修正�
 ```
 
 最後に「まとめ: X件修正、Y件スキップでよいですか？」と確認する。
+
+## 返信の例
+
+- 修正した場合: 「ありがとうございます。ご指摘の通り修正しました。○○を△△に変更しています。」
+- スキップした場合: 「ご提案ありがとうございます。検討しましたが、○○の理由から現状の実装を維持します。」
+- 部分的に対応した場合: 「ありがとうございます。○○の部分は修正しました。△△については□□の理由から現状維持としています。」
