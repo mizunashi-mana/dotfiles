@@ -23,7 +23,7 @@ allowed-tools: Bash, Read, Glob, mcp__github__create_pull_request
 4. **PR を作成**:
    - `mcp__github__create_pull_request` を使用
    - base ブランチ: `master`
-   - タイトル: 変更内容を簡潔に要約（英語）
+   - タイトル: 変更内容を簡潔に要約
    - ボディ: PR テンプレートに沿って記載
      - 目的: 変更の背景・目的
      - 変更概要: 主な変更点を箇条書き
