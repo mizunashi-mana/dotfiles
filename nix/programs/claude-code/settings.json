@@ -29,6 +29,7 @@
       "Bash(diff:*)",
       "Bash(done:*)",
       "Bash(do sed:*)",
+      "Bash(do echo:*)",
       "Bash(echo:*)",
       "Bash(find:*)",
       "Bash(file:*)",
