@@ -11,10 +11,14 @@
 
       home.file = {
         ".claude/settings.json" = {
-          text = builtins.readFile ./settings.json;
+          source = ./settings.json;
         };
-        ".claude/agents" = {
-          source = ./agents;
+        ".claude/statusline.sh" = {
+          source = ./statusline.sh;
+          executable = true;
+        };
+        ".claude/skills" = {
+          source = ./skills;
           recursive = true;
         };
       };
