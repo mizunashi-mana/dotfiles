@@ -43,6 +43,7 @@ let
     (import ./raycast { inherit packages; })
     (import ./claude-desktop { inherit packages; })
     (import ./xcode { inherit packages; })
+    (import ./ollama { inherit packages; })
   ];
 in
 {
