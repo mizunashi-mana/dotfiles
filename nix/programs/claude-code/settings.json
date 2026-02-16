@@ -14,7 +14,8 @@
   },
   "permissions": {
     "additionalDirectories": [
-      "/tmp/"
+      "/tmp/",
+      "~/Library/Caches/ms-playwright/"
     ],
     "allow": [
       "Bash(actionlint:*)",
