@@ -14,7 +14,8 @@
   },
   "permissions": {
     "additionalDirectories": [
-      "/tmp/"
+      "/tmp/",
+      "~/Library/Caches/ms-playwright/"
     ],
     "allow": [
       "Bash(actionlint:*)",
@@ -47,14 +48,16 @@
       "Bash(gh run view:*)",
       "Bash(gh run watch:*)",
       "Bash(git add:*)",
+      "Bash(git check-ignore:*)",
       "Bash(git commit:*)",
       "Bash(git diff:*)",
       "Bash(git fetch:*)",
       "Bash(git ls-files:*)",
       "Bash(git log:*)",
       "Bash(git mv:*)",
-      "Bash(git rev-parse:*)",
+      "Bash(git rebase --continue)",
       "Bash(git remote get-url:*)",
+      "Bash(git rev-parse:*)",
       "Bash(git show:*)",
       "Bash(git submodule status:*)",
       "Bash(git status:*)",
@@ -155,6 +158,9 @@
       "mcp__chrome-devtools__take_screenshot",
       "mcp__chrome-devtools__wait_for",
       "mcp__claude_ai_Linear__get_issue",
+      "mcp__claude_ai_Linear__list_comments",
+      "mcp__claude_ai_Linear__list_issues",
+      "mcp__claude_ai_Slack__slack_read_thread",
       "mcp__eslint__lint-files",
       "mcp__figma__get_figjam",
       "mcp__figma__get_metadata",
@@ -212,7 +218,10 @@
       "mcp__serena__read_memory",
       "mcp__serena__think_about_collected_information",
       "mcp__serena__think_about_task_adherence",
-      "mcp__serena__think_about_whether_you_are_done"
+      "mcp__serena__think_about_whether_you_are_done",
+      "mcp__sentry__analyze_issue_with_seer",
+      "mcp__sentry__get_issue_details",
+      "mcp__sentry__search_issue_events"
     ],
     "defaultMode": "acceptEdits"
   },
