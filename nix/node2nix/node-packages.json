@@ -1,6 +1,7 @@
 [
   {
     "@anthropic-ai/claude-code": "",
-    "@openai/codex": ""
+    "@openai/codex": "",
+    "@playwright/cli": ""
   }
 ]
