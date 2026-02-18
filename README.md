@@ -5,7 +5,7 @@ My dotfiles and construction documentations.
 ## Setup
 
 ```bash
-./setup
+./setup.sh
 ```
 
 ### Docker Image
