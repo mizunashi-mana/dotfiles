@@ -11,7 +11,35 @@
 }:
 
 let
-  sources = { };
+  sources = {
+    "minimist-1.2.8" = {
+      name = "minimist";
+      packageName = "minimist";
+      version = "1.2.8";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/minimist/-/minimist-1.2.8.tgz";
+        sha512 = "2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==";
+      };
+    };
+    "playwright-1.59.0-alpha-1771104257000" = {
+      name = "playwright";
+      packageName = "playwright";
+      version = "1.59.0-alpha-1771104257000";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/playwright/-/playwright-1.59.0-alpha-1771104257000.tgz";
+        sha512 = "6SCMMMJaDRsSqiKVLmb2nhtLES7iTYawTWWrQK6UdIGNzXi8lka4sLKRec3L4DnTWwddAvCuRn8035dhNiHzbg==";
+      };
+    };
+    "playwright-core-1.59.0-alpha-1771104257000" = {
+      name = "playwright-core";
+      packageName = "playwright-core";
+      version = "1.59.0-alpha-1771104257000";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/playwright-core/-/playwright-core-1.59.0-alpha-1771104257000.tgz";
+        sha512 = "YiXup3pnpQUCBMSIW5zx8CErwRx4K6O5Kojkw2BzJui8MazoMUDU6E3xGsb1kzFviEAE09LFQ+y1a0RhIJQ5SA==";
+      };
+    };
+  };
 in
 {
   "@anthropic-ai/claude-code-" = nodeEnv.buildNodePackage {
@@ -44,6 +72,29 @@ in
     meta = {
       description = "<p align=\"center\"><code>npm i -g @openai/codex</code><br />or <code>brew install --cask codex</code></p> <p align=\"center\"><strong>Codex CLI</strong> is a coding agent from OpenAI that runs locally on your computer. <p align=\"center\">   <img src=\"https://";
       homepage = "https://github.com/openai/codex#readme";
+      license = "Apache-2.0";
+    };
+    production = true;
+    bypassCache = true;
+    reconstructLock = true;
+  };
+  "@playwright/cli-" = nodeEnv.buildNodePackage {
+    name = "_at_playwright_slash_cli";
+    packageName = "@playwright/cli";
+    version = "0.1.1";
+    src = fetchurl {
+      url = "https://registry.npmjs.org/@playwright/cli/-/cli-0.1.1.tgz";
+      sha512 = "9k11ZfDwAfMVDDIuEVW1Wvs8SoDNXIY1dNQ+9C9/SS8ZmElkcxesu5eoL7vNa96ntibUGaq1TM2qQoqvdl/I9g==";
+    };
+    dependencies = [
+      sources."minimist-1.2.8"
+      sources."playwright-1.59.0-alpha-1771104257000"
+      sources."playwright-core-1.59.0-alpha-1771104257000"
+    ];
+    buildInputs = globalBuildInputs;
+    meta = {
+      description = "Playwright CLI";
+      homepage = "https://playwright.dev";
       license = "Apache-2.0";
     };
     production = true;

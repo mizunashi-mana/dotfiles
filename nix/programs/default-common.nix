@@ -27,6 +27,7 @@ let
     (import ./emacs { inherit packages; })
     (import ./neovim { inherit packages; })
     (import ./gh { inherit packages; })
+    (import ./playwright-cli { inherit packages; })
     (import ./claude-code { inherit packages; })
     (import ./docker-client { inherit packages; })
     (import ./gemini-cli { inherit packages; })
