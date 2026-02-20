@@ -19,6 +19,7 @@
     ],
     "allow": [
       "Bash(actionlint:*)",
+      "Bash(aws configure get:*)",
       "Bash(basename:*)",
       "Bash(brew list:*)",
       "Bash(brew info:*)",
@@ -91,8 +92,11 @@
       "Bash(npx electron-builder:*)",
       "Bash(npx electron-rebuild:*)",
       "Bash(npx eslint:*)",
+      "Bash(npx jest:*)",
+      "Bash(npx prisma generate:*)",
       "Bash(npx tsc:*)",
       "Bash(npx vite build:*)",
+      "Bash(npx vitest run:*)",
       "Bash(od:*)",
       "Bash(ollama pull:*)",
       "Bash(otool:*)",
@@ -129,6 +133,8 @@
       "Bash(xargs npx eslint:*)",
       "Bash(xargs sed:*)",
       "Bash(xxd:*)",
+      "WebFetch(domain:api.anthropic.com)",
+      "WebFetch(domain:developers.notion.com)",
       "WebFetch(domain:docs.anthropic.com)",
       "WebFetch(domain:docs.slack.dev)",
       "WebFetch(domain:gist.github.com)",
@@ -139,8 +145,10 @@
       "WebFetch(domain:raw.githubusercontent.com)",
       "WebFetch(domain:stackoverflow.com)",
       "WebFetch(domain:storybook.js.org)",
+      "WebFetch(domain:support.anthropic.com)",
       "WebFetch(domain:typescript-eslint.io)",
       "WebFetch(domain:vitest.dev)",
+      "WebFetch(domain:www.anthropic.com)",
       "WebFetch(domain:www.figma.com)",
       "WebFetch(domain:www.notion.so)",
       "WebFetch(domain:www.npmjs.com)",
@@ -226,7 +234,10 @@
       "mcp__sentry__get_issue_details",
       "mcp__sentry__search_issue_events"
     ],
-    "defaultMode": "acceptEdits"
+    "defaultMode": "acceptEdits",
+    "deny": [
+      "Bash(git -C:*)"
+    ]
   },
   "statusLine": {
     "command": "~/.claude/statusline.sh",
