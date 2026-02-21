@@ -135,6 +135,7 @@
       "Bash(xargs sed:*)",
       "Bash(xxd:*)",
       "WebFetch(domain:api.anthropic.com)",
+      "WebFetch(domain:api.github.com)",
       "WebFetch(domain:developers.notion.com)",
       "WebFetch(domain:docs.anthropic.com)",
       "WebFetch(domain:docs.slack.dev)",
