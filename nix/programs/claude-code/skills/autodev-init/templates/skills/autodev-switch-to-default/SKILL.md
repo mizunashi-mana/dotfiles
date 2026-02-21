@@ -1,6 +1,6 @@
 ---
 description: Switch to the default branch after a PR is merged, pull latest changes, and run compaction. Use after merging or having a PR merged to start fresh.
-allowed-tools: "Bash(git checkout *)", "Bash(git pull *)", "Bash(git pull)", "Bash(git branch *)", "Bash(git rev-parse *)", "Bash(git remote *)", "Bash(git symbolic-ref *)", mcp__github__pull_request_read, mcp__github__merge_pull_request, mcp__github__list_pull_requests
+allowed-tools: "Bash(git checkout *)", "Bash(git pull *)", "Bash(git pull)", "Bash(git branch *)", "Bash(git rev-parse *)", "Bash(git remote *)", "Bash(git symbolic-ref *)", "Bash(git status *)", mcp__github__pull_request_read, mcp__github__merge_pull_request, mcp__github__list_pull_requests
 ---
 
 # デフォルトブランチへの切り替え
@@ -20,7 +20,9 @@ PR のマージ後にデフォルトブランチへ切り替え、最新の変�
 結果に応じて分岐:
 
 - **PR がマージ済み**: 次のステップに進む
-- **PR がオープン**: `mcp__github__merge_pull_request` でマージコミット（`merge_method: "merge"`）でマージする。
+- **PR がオープン**: `mcp__github__merge_pull_request` でマージコミット方式（`merge_method: "merge"`）でマージする。ユーザーへの確認は不要
+  - CI がまだ通過してない場合や、レビューコメントが解決できていない場合にマージできない。その場合、レビューコメントが全て解決できるか確認し、CIが通るまで待つ
+  - レビューコメントに未解決の問題がある場合は、ユーザに確認する
 - **PR が存在しない**: そのまま次のステップに進む
 
 ### 2. デフォルトブランチの特定
@@ -53,7 +55,7 @@ git pull
 
 ### 6. compaction の実行
 
-`/compact` を実行する。
+`/compact` の実行をユーザに促す
 
 ## 注意事項
 
