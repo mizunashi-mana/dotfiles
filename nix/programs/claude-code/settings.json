@@ -13,6 +13,16 @@
     "OTEL_METRICS_EXPORTER": "otlp"
   },
   "hooks": {
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "command": "cc-voice-reporter hook-receiver",
+            "type": "command"
+          }
+        ]
+      }
+    ],
     "PermissionRequest": [
       {
         "hooks": [
