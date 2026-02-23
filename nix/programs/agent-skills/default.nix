@@ -1,16 +1,14 @@
 {
   packages,
+  inputs,
   ...
 }:
 {
   homeManagerImports = [
+    inputs.agent-skills.homeManagerModules.default
     {
-      programs.gemini-cli = {
-        enable = true;
-      };
-
       programs.agent-skills = {
-        targets.gemini.enable = true;
+        enable = true;
       };
     }
   ];

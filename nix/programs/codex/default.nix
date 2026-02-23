@@ -5,9 +5,14 @@
 {
   homeManagerImports = [
     {
-      home.packages = [
-        packages.node-packages."@openai/codex"
-      ];
+      programs.codex = {
+        enable = true;
+        package = packages.node-packages."@openai/codex";
+      };
+
+      programs.agent-skills = {
+        targets.codex.enable = true;
+      };
     }
   ];
 }

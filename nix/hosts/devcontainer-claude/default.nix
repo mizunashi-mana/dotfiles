@@ -24,8 +24,6 @@ let
     inherit
       packages
       system
-      username
-      homedir
       inputs
       ;
   };
@@ -37,6 +35,8 @@ let
     (import "${nix-root-dir}/programs/neovim" { inherit packages; })
     (import "${nix-root-dir}/programs/ripgrep" { inherit packages; })
     (import "${nix-root-dir}/programs/docker-client" { inherit packages; })
+    (import "${nix-root-dir}/programs/agent-skills" { inherit packages inputs; })
+    (import "${nix-root-dir}/programs/agent-skills-anthropic" { inherit packages inputs; })
   ];
 in
 {
