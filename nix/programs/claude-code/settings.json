@@ -141,6 +141,8 @@
       "WebFetch(domain:api.github.com)",
       "WebFetch(domain:developers.notion.com)",
       "WebFetch(domain:docs.anthropic.com)",
+      "WebFetch(domain:docs.github.com)",
+      "WebFetch(domain:docs.npmjs.com)",
       "WebFetch(domain:docs.slack.dev)",
       "WebFetch(domain:gist.github.com)",
       "WebFetch(domain:gist.githubusercontent.com)",
