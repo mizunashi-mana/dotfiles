@@ -33,6 +33,8 @@ let
     (import ./docker-client { inherit packages; })
     (import ./gemini-cli { inherit packages; })
     (import ./codex { inherit packages; })
+    (import ./agent-skills { inherit packages inputs; })
+    (import ./agent-skills-anthropic { inherit packages inputs; })
   ];
 in
 {

@@ -47,6 +47,9 @@
             app = "/Applications/Claude.app";
           }
           {
+            app = "/Applications/Antigravity.app";
+          }
+          {
             app = "${packages.pkgs.vscode}/Applications/Visual Studio Code.app";
           }
           {
