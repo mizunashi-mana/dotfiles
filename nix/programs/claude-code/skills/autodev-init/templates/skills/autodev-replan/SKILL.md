@@ -94,12 +94,9 @@ steering plan ドキュメントのロードマップを再策定します。完
 - 新しいロードマップを反映
 - フェーズや優先順位を更新
 
-### 8. コミット
+### 8. PR を作成する
 
-```bash
-git add .ai-agent/steering/plan.md
-git commit -m "Replan steering roadmap"
-```
+- `/autodev-create-pr` を使用する
 
 ## 注意事項
 
