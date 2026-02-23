@@ -113,6 +113,7 @@ disable-model-invocation: true
 | `autodev-start-new-project`         | [SKILL.md](templates/skills/autodev-start-new-project/SKILL.md)                                                                                  | 長期プロジェクトの開始          |
 | `autodev-start-new-survey`          | [SKILL.md](templates/skills/autodev-start-new-survey/SKILL.md)                                                                                   | 技術調査の開始                  |
 | `autodev-start-new-task`            | [SKILL.md](templates/skills/autodev-start-new-task/SKILL.md)                                                                                     | 個別タスクの開始                |
+| `autodev-replan`                    | [SKILL.md](templates/skills/autodev-replan/SKILL.md)                                                                                             | ロードマップの再策定            |
 | `autodev-steering`                  | [SKILL.md](templates/skills/autodev-steering/SKILL.md)                                                                                           | Steering ドキュメントの更新     |
 | `autodev-switch-to-default`         | [SKILL.md](templates/skills/autodev-switch-to-default/SKILL.md)                                                                                  | デフォルトブランチへの切り替え  |
 
