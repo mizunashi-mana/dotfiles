@@ -1,6 +1,6 @@
 ---
 description: Replan the steering plan roadmap by reviewing completed work and open issues. Use when the plan.md roadmap has become outdated or after completing significant milestones.
-allowed-tools: Read, Write, Edit, MultiEdit, Bash(mkdir *), Glob, Grep, AskUserQuestion, mcp__github__list_issues, mcp__github__search_issues
+allowed-tools: Read, Write, Edit, MultiEdit, Bash(mkdir *), Glob, Grep, AskUserQuestion, WebSearch, WebFetch, mcp__github__list_issues, mcp__github__search_issues
 ---
 
 # ロードマップ再策定
@@ -9,9 +9,10 @@ steering plan ドキュメントのロードマップを再策定します。完
 
 ## 対象ドキュメント
 
-| ファイル                     | 役割                                   |
-| ---------------------------- | -------------------------------------- |
-| `.ai-agent/steering/plan.md` | 実装計画・ロードマップ（主な更新対象） |
+| ファイル                       | 役割                                   |
+| ------------------------------ | -------------------------------------- |
+| `.ai-agent/steering/plan.md`   | 実装計画・ロードマップ（主な更新対象） |
+| `.ai-agent/steering/market.md` | 市場分析・競合調査（最新化対象）       |
 
 ## 手順
 
@@ -40,7 +41,16 @@ steering plan ドキュメントのロードマップを再策定します。完
 - 既存のロードマップに含まれていない Issue を特定
 - Issue のラベルや優先度から分類
 
-### 4. 現状報告
+### 4. 市場動向の確認
+
+market.md を読み込み、最新の市場動向を調査・更新する:
+
+- 既存の market.md の内容を確認
+- WebSearch / WebFetch で競合プロダクトや関連技術の最新動向を調査
+- 新たな競合、技術トレンドの変化、ユーザーニーズの変化を把握
+- market.md の陳腐化箇所を特定し、ロードマップ再策定の材料とする
+
+### 5. 現状報告
 
 ユーザーに以下の形式で報告:
 
@@ -66,35 +76,42 @@ steering plan ドキュメントのロードマップを再策定します。完
 | Issue/課題 | 概要 |
 |-----------|------|
 | ...       | ...  |
+
+### 市場動向の変化
+| 項目 | 現状 | market.md 記載 |
+|------|------|---------------|
+| ...  | ...  | ...           |
 ```
 
-### 5. ロードマップ再策定
+### 6. ロードマップ再策定
 
 ユーザーとの対話を通じて、今後のロードマップを策定する:
 
 - **一方的に計画を提示しない**: 方向性・優先順位をユーザーに確認しながら進める
+- 市場動向の変化を踏まえて、戦略的な方向性を検討する
 - 以下の点を対話的に決定:
   - 完了済みタスク・フェーズの plan.md からの削除
   - 既存タスクの優先順位の見直し
   - 新たなタスク・マイルストーンの追加
   - フェーズ構成の見直し（必要に応じて）
 
-### 6. ユーザー確認
+### 7. ユーザー確認
 
 再策定したロードマップの最終確認:
 
-- plan.md の更新内容（差分）を提示
+- plan.md と market.md の更新内容（差分）を提示
 - ユーザーの承認を得てからドキュメントを更新
 
-### 7. 修正実行
+### 8. 修正実行
 
-承認後、plan.md を更新:
+承認後、ドキュメントを更新:
 
-- 完了済みタスクを削除または完了セクションに移動
+- market.md の陳腐化箇所を最新化
+- plan.md の完了済みタスクを削除または完了セクションに移動
 - 新しいロードマップを反映
 - フェーズや優先順位を更新
 
-### 8. PR を作成する
+### 9. PR を作成する
 
 - `/autodev-create-pr` を使用する
 
@@ -104,3 +121,4 @@ steering plan ドキュメントのロードマップを再策定します。完
 - plan.md が存在しない場合は、ユーザーに新規作成するか確認する
 - 推測で計画を追加しない。ユーザーとの対話を通じて決定する
 - 他の steering ドキュメント（product.md、tech.md 等）の更新が必要な場合は、`autodev-steering` スキルの利用を案内する
+- market.md が存在しない場合は、ユーザーに新規作成するか確認する
