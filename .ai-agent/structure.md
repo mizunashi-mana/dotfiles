@@ -87,6 +87,11 @@ dotfiles/
 - `default-common.nix`: 全環境共通のプログラム一覧
 - `default-darwin.nix`: macOS 固有のプログラム一覧
 
+一部のプログラムモジュールはサブディレクトリを持つ。特に `claude-code/` は Nix 管理のグローバルスキルを含む:
+
+- `claude-code/skills/autodev-init/`: autodev スキル群のテンプレートとブートストラップスキル
+- `claude-code/skills/review/`: デフォルト review スキルを無効化するダミースキル
+
 ### `nix/home-manager/`
 
 Home Manager の共通設定モジュール。
