@@ -39,9 +39,9 @@ if [ -n "$model" ] && [ "$model" != "null" ]; then
 	parts="$parts|${model_color}${model}${RESET}"
 fi
 
-if [ "$used_percentage" -ge 80 ]; then
+if [ "$used_percentage" -ge 70 ]; then
 	parts="$parts|${RED}ctx:${used_percentage}%${RESET}"
-elif [ "$used_percentage" -ge 50 ]; then
+elif [ "$used_percentage" -ge 45 ]; then
 	parts="$parts|${YELLOW}ctx:${used_percentage}%${RESET}"
 else
 	parts="$parts|${GREEN}ctx:${used_percentage}%${RESET}"
