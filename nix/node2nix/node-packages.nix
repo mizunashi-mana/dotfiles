@@ -12,6 +12,15 @@
 
 let
   sources = {
+    "chokidar-5.0.0" = {
+      name = "chokidar";
+      packageName = "chokidar";
+      version = "5.0.0";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/chokidar/-/chokidar-5.0.0.tgz";
+        sha512 = "TQMmc3w+5AxjpL8iIiwebF73dRDF4fBIieAqGn9RGCWaEVwQ6Fb2cGe31Yns0RRIzii5goJ1Y7xbMwo1TxMplw==";
+      };
+    };
     "minimist-1.2.8" = {
       name = "minimist";
       packageName = "minimist";
@@ -37,6 +46,24 @@ let
       src = fetchurl {
         url = "https://registry.npmjs.org/playwright-core/-/playwright-core-1.59.0-alpha-1771104257000.tgz";
         sha512 = "YiXup3pnpQUCBMSIW5zx8CErwRx4K6O5Kojkw2BzJui8MazoMUDU6E3xGsb1kzFviEAE09LFQ+y1a0RhIJQ5SA==";
+      };
+    };
+    "readdirp-5.0.0" = {
+      name = "readdirp";
+      packageName = "readdirp";
+      version = "5.0.0";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/readdirp/-/readdirp-5.0.0.tgz";
+        sha512 = "9u/XQ1pvrQtYyMpZe7DXKv2p5CNvyVwzUB6uhLAnQwHMSgKMBR62lc7AHljaeteeHXn11XTAaLLUVZYVZyuRBQ==";
+      };
+    };
+    "zod-4.3.6" = {
+      name = "zod";
+      packageName = "zod";
+      version = "4.3.6";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/zod/-/zod-4.3.6.tgz";
+        sha512 = "rftlrkhHZOcjDwkGlnUtZZkvaPHCsDATp4pGpuOOMDaTdDDXF91wuVDJoWoPsKX/3YPQ5fHuF3STjcYyKr+Qhg==";
       };
     };
   };
@@ -96,6 +123,29 @@ in
       description = "Playwright CLI";
       homepage = "https://playwright.dev";
       license = "Apache-2.0";
+    };
+    production = true;
+    bypassCache = true;
+    reconstructLock = true;
+  };
+  "@mizunashi_mana/cc-voice-reporter-" = nodeEnv.buildNodePackage {
+    name = "_at_mizunashi_mana_slash_cc-voice-reporter";
+    packageName = "@mizunashi_mana/cc-voice-reporter";
+    version = "1.1.0";
+    src = fetchurl {
+      url = "https://registry.npmjs.org/@mizunashi_mana/cc-voice-reporter/-/cc-voice-reporter-1.1.0.tgz";
+      sha512 = "sMAUBSBwhy9+WSlUCTE614pjJuYtpVtvnDckCgFBniBfKSB5J8+pNbgpg3p4Ko5bqsqUTPZa7ePosKaFG7GP0Q==";
+    };
+    dependencies = [
+      sources."chokidar-5.0.0"
+      sources."readdirp-5.0.0"
+      sources."zod-4.3.6"
+    ];
+    buildInputs = globalBuildInputs;
+    meta = {
+      description = "Real-time voice reporting for Claude Code";
+      homepage = "https://github.com/mizunashi-mana/cc-voice-reporter";
+      license = "Apache-2.0 OR MPL-2.0";
     };
     production = true;
     bypassCache = true;
