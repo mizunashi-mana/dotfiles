@@ -44,6 +44,7 @@
       "Bash(gh pr list:*)",
       "Bash(gh pr view:*)",
       "Bash(gh release list:*)",
+      "Bash(gh release view:*)",
       "Bash(gh repo view:*)",
       "Bash(gh run download:*)",
       "Bash(gh run list:*)",

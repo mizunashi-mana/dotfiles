@@ -33,5 +33,6 @@ in
     "@anthropic-ai/claude-code" = node2nix-pkgs."@anthropic-ai/claude-code-";
     "@openai/codex" = node2nix-pkgs."@openai/codex-";
     "@playwright/cli" = node2nix-pkgs."@playwright/cli-";
+    "@mizunashi_mana/cc-voice-reporter" = node2nix-pkgs."@mizunashi_mana/cc-voice-reporter-";
   };
 }
