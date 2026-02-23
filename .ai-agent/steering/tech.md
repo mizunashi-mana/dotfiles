@@ -28,6 +28,8 @@
 - `nix-darwin`
 - `_1password-shell-plugins`
 - `nix-vscode-extensions`
+- `agent-skills`
+- `anthropic-skills`
 
 ## アーキテクチャ概要
 
