@@ -13,7 +13,7 @@
     "OTEL_METRICS_EXPORTER": "otlp"
   },
   "hooks": {
-    "Notification": [
+    "PermissionRequest": [
       {
         "hooks": [
           {
