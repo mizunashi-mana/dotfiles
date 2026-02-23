@@ -35,10 +35,10 @@
             app = "/System/Applications/Utilities/Activity Monitor.app";
           }
           {
-            app = "/System/Applications/Utilities/Terminal.app";
+            app = "/System/Applications/App Store.app";
           }
           {
-            app = "/System/Applications/App Store.app";
+            app = "/System/Applications/Utilities/Terminal.app";
           }
           {
             app = "/Applications/Google Chrome.app";
@@ -50,16 +50,10 @@
             app = "/Applications/Antigravity.app";
           }
           {
-            app = "${packages.pkgs.vscode}/Applications/Visual Studio Code.app";
-          }
-          {
-            app = "${packages.pkgs.skimpdf}/Applications/Skim.app";
+            app = "${packages.pkgs.dbeaver-bin}/Applications/dbeaver.app";
           }
           {
             app = "${packages.pkgs.zotero}/Applications/Zotero.app";
-          }
-          {
-            app = "${packages.pkgs.dbeaver-bin}/Applications/dbeaver.app";
           }
           {
             app = "${packages.pkgs.raycast}/Applications/Raycast.app";

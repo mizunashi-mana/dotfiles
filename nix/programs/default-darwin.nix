@@ -43,6 +43,9 @@ let
     (import ./claude-desktop { inherit packages; })
     (import ./xcode { inherit packages; })
     (import ./ollama { inherit packages; })
+    (import ./keynote { inherit packages; })
+    (import ./numbers { inherit packages; })
+    (import ./pages { inherit packages; })
   ];
 in
 {

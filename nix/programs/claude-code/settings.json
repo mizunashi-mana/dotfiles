@@ -107,6 +107,7 @@
       "Bash(lsof:*)",
       "Bash(magick:*)",
       "Bash(make)",
+      "Bash(mas search:*)",
       "Bash(mkdir:*)",
       "Bash(mv:*)",
       "Bash(nkf:*)",
