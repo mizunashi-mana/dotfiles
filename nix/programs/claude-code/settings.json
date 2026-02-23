@@ -155,6 +155,7 @@
       "WebFetch(domain:gist.githubusercontent.com)",
       "WebFetch(domain:github.com)",
       "WebFetch(domain:localhost)",
+      "WebFetch(domain:mynixos.com)",
       "WebFetch(domain:pypi.org)",
       "WebFetch(domain:raw.githubusercontent.com)",
       "WebFetch(domain:socket.dev)",
