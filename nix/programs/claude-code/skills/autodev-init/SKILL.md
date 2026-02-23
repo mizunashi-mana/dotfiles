@@ -109,6 +109,7 @@ disable-model-invocation: true
 | `autodev-create-pr`                 | [SKILL.md](templates/skills/autodev-create-pr/SKILL.md)                                                                                          | プルリクエストの作成            |
 | `autodev-discussion`                | [SKILL.md](templates/skills/autodev-discussion/SKILL.md)                                                                                         | アイデアや考えの対話的な整理    |
 | `autodev-import-review-suggestions` | [SKILL.md](templates/skills/autodev-import-review-suggestions/SKILL.md)                                                                          | PR レビューコメントの取り込み   |
+| `autodev-replan`                    | [SKILL.md](templates/skills/autodev-replan/SKILL.md)                                                                                             | ロードマップの再策定            |
 | `autodev-review-pr`                 | [SKILL.md](templates/skills/autodev-review-pr/SKILL.md), [reviewer-spawn-prompt.md](templates/skills/autodev-review-pr/reviewer-spawn-prompt.md) | PR のコードレビュー（チーム化） |
 | `autodev-start-new-project`         | [SKILL.md](templates/skills/autodev-start-new-project/SKILL.md)                                                                                  | 長期プロジェクトの開始          |
 | `autodev-start-new-survey`          | [SKILL.md](templates/skills/autodev-start-new-survey/SKILL.md)                                                                                   | 技術調査の開始                  |

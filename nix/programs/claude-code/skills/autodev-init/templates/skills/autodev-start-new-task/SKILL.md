@@ -43,7 +43,8 @@ allowed-tools: Read, Write, Edit, MultiEdit, Update, WebSearch, WebFetch
 
 ## 完了時
 
-- 完了条件をチェック
-- 作業ログに結果を記載
+- タスクの README に、完了条件をチェック
+- タスクの README に、作業ログに結果を記載
+- PR を作成する
+  - `/autodev-create-pr` を使用する
 - ユーザーに完了報告
-- PR 作成は `/autodev-create-pr` を使用する
