@@ -12,7 +12,7 @@
           subdir = "skills";
         };
         skills = {
-          enableAll = [ "anthropic" ];
+          enable = [ "skill-creator" ];
         };
       };
     }

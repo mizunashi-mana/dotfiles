@@ -87,6 +87,29 @@ in
     bypassCache = true;
     reconstructLock = true;
   };
+  "@mizunashi_mana/cc-voice-reporter-" = nodeEnv.buildNodePackage {
+    name = "_at_mizunashi_mana_slash_cc-voice-reporter";
+    packageName = "@mizunashi_mana/cc-voice-reporter";
+    version = "2.0.0";
+    src = fetchurl {
+      url = "https://registry.npmjs.org/@mizunashi_mana/cc-voice-reporter/-/cc-voice-reporter-2.0.0.tgz";
+      sha512 = "xKz2n85t+iN0EFuhw2fFqKZNV/Ww8Vic4wBDk/XX7gfHjb6RAblYi3Lgt9fbIyq9HYIvvSJeidtVaYI2Nro8jA==";
+    };
+    dependencies = [
+      sources."chokidar-5.0.0"
+      sources."readdirp-5.0.0"
+      sources."zod-4.3.6"
+    ];
+    buildInputs = globalBuildInputs;
+    meta = {
+      description = "Real-time voice reporting for Claude Code";
+      homepage = "https://github.com/mizunashi-mana/cc-voice-reporter";
+      license = "Apache-2.0 OR MPL-2.0";
+    };
+    production = true;
+    bypassCache = true;
+    reconstructLock = true;
+  };
   "@openai/codex-" = nodeEnv.buildNodePackage {
     name = "_at_openai_slash_codex";
     packageName = "@openai/codex";
@@ -123,29 +146,6 @@ in
       description = "Playwright CLI";
       homepage = "https://playwright.dev";
       license = "Apache-2.0";
-    };
-    production = true;
-    bypassCache = true;
-    reconstructLock = true;
-  };
-  "@mizunashi_mana/cc-voice-reporter-" = nodeEnv.buildNodePackage {
-    name = "_at_mizunashi_mana_slash_cc-voice-reporter";
-    packageName = "@mizunashi_mana/cc-voice-reporter";
-    version = "1.1.0";
-    src = fetchurl {
-      url = "https://registry.npmjs.org/@mizunashi_mana/cc-voice-reporter/-/cc-voice-reporter-1.1.0.tgz";
-      sha512 = "sMAUBSBwhy9+WSlUCTE614pjJuYtpVtvnDckCgFBniBfKSB5J8+pNbgpg3p4Ko5bqsqUTPZa7ePosKaFG7GP0Q==";
-    };
-    dependencies = [
-      sources."chokidar-5.0.0"
-      sources."readdirp-5.0.0"
-      sources."zod-4.3.6"
-    ];
-    buildInputs = globalBuildInputs;
-    meta = {
-      description = "Real-time voice reporting for Claude Code";
-      homepage = "https://github.com/mizunashi-mana/cc-voice-reporter";
-      license = "Apache-2.0 OR MPL-2.0";
     };
     production = true;
     bypassCache = true;
