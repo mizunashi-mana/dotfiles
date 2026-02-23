@@ -59,6 +59,7 @@
       "Bash(git mv:*)",
       "Bash(git rebase --continue)",
       "Bash(git remote get-url:*)",
+      "Bash(git reset --soft:*)",
       "Bash(git rev-parse:*)",
       "Bash(git show:*)",
       "Bash(git submodule status:*)",
