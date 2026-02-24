@@ -70,6 +70,7 @@
       "Bash(file:*)",
       "Bash(for:*)",
       "Bash(gemini:*)",
+      "Bash(gh issue list:*)",
       "Bash(gh label list:*)",
       "Bash(gh pr checks:*)",
       "Bash(gh pr diff:*)",
