@@ -19,7 +19,7 @@ dotfiles/
 │   │   ├── tech.md              # 技術スタック・開発コマンド
 │   │   └── work.md              # 開発ワークフロー・規約
 │   ├── structure.md             # このファイル
-│   ├── projects/                # 長期プロジェクト管理
+│   ├── projects/                # 長期プロジェクト管理（.gitkeep）
 │   ├── tasks/                   # 個別タスク管理
 │   └── surveys/                 # 技術調査・検討
 ├── .claude/                     # Claude Code 設定
