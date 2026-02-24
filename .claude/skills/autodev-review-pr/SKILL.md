@@ -1,6 +1,6 @@
 ---
 description: Review a GitHub pull request using a dedicated reviewer agent in a clean context. Use when you want an unbiased code review without the current conversation's context influencing the review.
-allowed-tools: Read, Bash, Glob, Grep, AskUserQuestion, TeamCreate, TeamDelete, Task, TaskCreate, TaskUpdate, TaskList, TaskGet, SendMessage, mcp__github__list_pull_requests
+allowed-tools: Read, Bash, Glob, Grep, AskUserQuestion, TeamCreate, TeamDelete, Task, TaskCreate, TaskUpdate, TaskList, TaskGet, SendMessage, WebSearch, mcp__github__list_pull_requests
 ---
 
 # PR レビュー
