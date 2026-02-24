@@ -90,10 +90,10 @@ in
   "@mizunashi_mana/cc-voice-reporter-" = nodeEnv.buildNodePackage {
     name = "_at_mizunashi_mana_slash_cc-voice-reporter";
     packageName = "@mizunashi_mana/cc-voice-reporter";
-    version = "2.1.0";
+    version = "2.2.0";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@mizunashi_mana/cc-voice-reporter/-/cc-voice-reporter-2.1.0.tgz";
-      sha512 = "BLuerZfXjFt5p/GYUukpOr9c9WuE0BayVW73FbrWQtW5RqbuRXO/+3SzhJL+666iaBJkLCvv6+x1Nd+sRR6ceQ==";
+      url = "https://registry.npmjs.org/@mizunashi_mana/cc-voice-reporter/-/cc-voice-reporter-2.2.0.tgz";
+      sha512 = "TkAw5JlEy4bDyHyIrpGLictS45xFkj0wNfcLN9uubFF5XwT73MPUDwY/37DsZLGNRx5rj3bMeZbvjz1yK7qUKw==";
     };
     dependencies = [
       sources."chokidar-5.0.0"
