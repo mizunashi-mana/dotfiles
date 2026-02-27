@@ -1,6 +1,6 @@
 ---
 description: Start a new technical survey or investigation. Use when researching technologies, comparing libraries, evaluating feasibility, or analyzing trends.
-allowed-tools: Read, Write, Edit, MultiEdit, Update, Bash(mkdir:*), Glob, Grep, WebSearch, WebFetch
+allowed-tools: Read, Write, Edit, MultiEdit, Update, Bash(mkdir:*), Glob, Grep, WebSearch, WebFetch, ToolSearch
 ---
 
 # 新規調査開始
@@ -100,6 +100,15 @@ allowed-tools: Read, Write, Edit, MultiEdit, Update, Bash(mkdir:*), Glob, Grep, 
 - 結論と推奨事項を要約して報告
 - 追加調査が必要な点があれば提案
 - 次のアクション（タスク作成、Issue 作成など）を提案
+
+#### 視覚的な整理（任意）
+
+claude-mermaid MCP（`mermaid_preview` ツール）が利用可能な場合、調査結果の提示に Mermaid 図を活用する。
+ToolSearch で `mermaid` を検索し、利用可能か確認する。
+
+- 選択肢間の関係や技術スタックの構造を `graph TD` で表現する
+- 関連する技術や機能領域を `subgraph` でグルーピングする
+- 図はあくまで補助。テキストでの説明も必ず併記する
 
 ## 調査の種類別ガイド
 

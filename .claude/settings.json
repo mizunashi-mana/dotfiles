@@ -2,7 +2,10 @@
   "permissions": {
     "allow": [
       "Skill(autodev-create-pr)",
+      "Skill(autodev-discussion)",
       "Skill(autodev-start-new-survey)",
+      "Skill(autodev-start-new-task)",
+      "Skill(autodev-switch-to-default)",
       "Bash(devenv shell lint-all:*)",
       "Bash(devenv shell nixfmt:*)"
     ]

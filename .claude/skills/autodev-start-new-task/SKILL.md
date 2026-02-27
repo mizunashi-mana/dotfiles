@@ -1,6 +1,6 @@
 ---
 description: Start a new implementation task with branch, README, and structured workflow. Use when beginning a feature, bug fix, or improvement that takes a day to a few days.
-allowed-tools: Read, Write, Edit, MultiEdit, Update, WebSearch, WebFetch
+allowed-tools: Read, Write, Edit, MultiEdit, Update, WebSearch, WebFetch, ToolSearch
 ---
 
 # 新規タスク開始
@@ -57,6 +57,16 @@ allowed-tools: Read, Write, Edit, MultiEdit, Update, WebSearch, WebFetch
 - `.ai-agent/structure.md` でディレクトリ構成を確認
 
 ### 6. ユーザーに方針を提示して確認を取る
+
+#### 視覚的な整理（任意）
+
+claude-mermaid MCP（`mermaid_preview` ツール）が利用可能な場合、方針の提示に Mermaid 図を活用する。
+ToolSearch で `mermaid` を検索し、利用可能か確認する。
+
+- 変更対象のコンポーネント間の関係を `graph TD` のエッジで表現する
+- 関連するモジュールや機能領域を `subgraph` でグルーピングする
+- 処理フローがある場合は `flowchart` や `sequenceDiagram` を活用する
+- 図はあくまで補助。テキストでの説明も必ず併記する
 
 ### 7. ブランチ作成（ユーザー確認後）
 

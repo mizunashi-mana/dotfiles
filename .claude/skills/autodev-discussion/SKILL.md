@@ -1,6 +1,6 @@
 ---
 description: Interactively organize ideas, concerns, or vague thoughts through dialogue. Use when brainstorming, thinking through a problem, or wanting to clarify unclear ideas before taking action.
-allowed-tools: Read, Glob, Grep, WebSearch, WebFetch, AskUserQuestion
+allowed-tools: Read, Glob, Grep, WebSearch, WebFetch, AskUserQuestion, ToolSearch
 ---
 
 # ディスカッション
@@ -48,7 +48,18 @@ allowed-tools: Read, Glob, Grep, WebSearch, WebFetch, AskUserQuestion
 - 「なぜそう感じますか？」
 - 前提や制約を明らかにする
 
-### 4. 議論のまとめ
+### 4. 視覚的な整理（任意）
+
+claude-mermaid MCP（`mermaid_preview` ツール）が利用可能な場合、議論の整理に Mermaid 図を活用する。
+ToolSearch で `mermaid` を検索し、利用可能か確認する。
+
+- 関連する概念・要素の繋がりを `graph TD` のエッジで表現する
+- 関連要素を `subgraph` でグルーピングして全体構造を見せる
+- 論点の整理、選択肢の構造化、依存関係の可視化などに活用する
+- 図はあくまで補助。テキストでの説明も必ず併記する
+- 対話の途中でも、構造が見えてきた段階で積極的に図を生成してよい
+
+### 5. 議論のまとめ
 
 区切りがついたら、対話で整理された内容を要約する:
 

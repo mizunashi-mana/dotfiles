@@ -1,6 +1,6 @@
 ---
 description: Start a new long-term project that spans multiple tasks. Use when planning a large feature, refactoring, or multi-week initiative that needs task decomposition and tracking.
-allowed-tools: Read, Write, Edit, MultiEdit, Update, WebSearch, WebFetch
+allowed-tools: Read, Write, Edit, MultiEdit, Update, WebSearch, WebFetch, ToolSearch
 ---
 
 # 新規プロジェクト開始
@@ -101,6 +101,15 @@ T1 → T2 → T4
 - タスク分解と依存関係の確認
 - 優先順位の確認
 - 最初に着手するタスクの提案
+
+#### 視覚的な整理（任意）
+
+claude-mermaid MCP（`mermaid_preview` ツール）が利用可能な場合、計画の提示に Mermaid 図を活用する。
+ToolSearch で `mermaid` を検索し、利用可能か確認する。
+
+- タスク間の依存関係を `graph TD` のエッジで表現する
+- フェーズや機能領域ごとに `subgraph` でタスクをグルーピングする
+- 図はあくまで補助。テキストでの説明も必ず併記する
 
 ### 7. コンテキストの整理
 
