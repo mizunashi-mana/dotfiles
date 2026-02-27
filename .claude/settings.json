@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Skill(autodev-create-pr)",
+      "Skill(autodev-start-new-survey)",
+      "Bash(devenv shell lint-all:*)",
+      "Bash(devenv shell nixfmt:*)"
+    ]
+  }
+}
