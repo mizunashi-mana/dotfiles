@@ -304,7 +304,6 @@
       "mcp__serena__think_about_whether_you_are_done",
       "mcp__*__create_page",
       "mcp__*__update_page",
-      "mcp__*__destroy_page",
       "mcp__*__add_scripts",
       "mcp__*__add_stylesheets"
     ],

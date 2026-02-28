@@ -1,6 +1,6 @@
 ---
 description: Start a new technical survey or investigation. Use when researching technologies, comparing libraries, evaluating feasibility, or analyzing trends.
-allowed-tools: Read, Write, Edit, MultiEdit, Update, Bash(mkdir:*), Glob, Grep, WebSearch, WebFetch, ToolSearch, mcp__*__create_page, mcp__*__update_page, mcp__*__destroy_page, mcp__*__add_scripts, mcp__*__add_stylesheets
+allowed-tools: Read, Write, Edit, MultiEdit, Update, Bash(mkdir:*), Glob, Grep, WebSearch, WebFetch, ToolSearch, mcp__*__create_page, mcp__*__update_page, mcp__*__add_scripts, mcp__*__add_stylesheets
 ---
 
 # 新規調査開始

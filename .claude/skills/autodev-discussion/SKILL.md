@@ -1,6 +1,6 @@
 ---
 description: Interactively organize ideas, concerns, or vague thoughts through dialogue. Use when brainstorming, thinking through a problem, or wanting to clarify unclear ideas before taking action.
-allowed-tools: Read, Glob, Grep, WebSearch, WebFetch, AskUserQuestion, ToolSearch, mcp__*__create_page, mcp__*__update_page, mcp__*__destroy_page, mcp__*__add_scripts, mcp__*__add_stylesheets
+allowed-tools: Read, Glob, Grep, WebSearch, WebFetch, AskUserQuestion, ToolSearch, mcp__*__create_page, mcp__*__update_page, mcp__*__add_scripts, mcp__*__add_stylesheets
 ---
 
 # ディスカッション

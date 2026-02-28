@@ -1,6 +1,6 @@
 ---
 description: Start a new long-term project that spans multiple tasks. Use when planning a large feature, refactoring, or multi-week initiative that needs task decomposition and tracking.
-allowed-tools: Read, Write, Edit, MultiEdit, Update, WebSearch, WebFetch, ToolSearch, mcp__*__create_page, mcp__*__update_page, mcp__*__destroy_page, mcp__*__add_scripts, mcp__*__add_stylesheets
+allowed-tools: Read, Write, Edit, MultiEdit, Update, WebSearch, WebFetch, ToolSearch, mcp__*__create_page, mcp__*__update_page, mcp__*__add_scripts, mcp__*__add_stylesheets
 ---
 
 # 新規プロジェクト開始

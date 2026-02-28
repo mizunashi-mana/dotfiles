@@ -1,6 +1,6 @@
 ---
 description: Start a new implementation task with branch, README, and structured workflow. Use when beginning a feature, bug fix, or improvement that takes a day to a few days.
-allowed-tools: Read, Write, Edit, MultiEdit, Update, WebSearch, WebFetch, ToolSearch, mcp__*__create_page, mcp__*__update_page, mcp__*__destroy_page, mcp__*__add_scripts, mcp__*__add_stylesheets
+allowed-tools: Read, Write, Edit, MultiEdit, Update, WebSearch, WebFetch, ToolSearch, mcp__*__create_page, mcp__*__update_page, mcp__*__add_scripts, mcp__*__add_stylesheets
 ---
 
 # 新規タスク開始
