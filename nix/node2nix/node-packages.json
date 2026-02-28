@@ -3,6 +3,7 @@
     "@anthropic-ai/claude-code": "",
     "@mizunashi_mana/cc-voice-reporter": "",
     "@openai/codex": "",
-    "@playwright/cli": ""
+    "@playwright/cli": "",
+    "claude-mermaid": ""
   }
 ]

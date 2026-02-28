@@ -2,9 +2,13 @@
   "permissions": {
     "allow": [
       "Skill(autodev-create-pr)",
+      "Skill(autodev-discussion)",
       "Skill(autodev-start-new-survey)",
-      "Bash(devenv shell lint-all:*)",
-      "Bash(devenv shell nixfmt:*)"
+      "Skill(autodev-start-new-task)",
+      "Skill(autodev-switch-to-default)",
+      "Bash(devenv shell lint-all)",
+      "Bash(devenv shell nixfmt:*)",
+      "Bash(node2nix-update)"
     ]
   }
 }
