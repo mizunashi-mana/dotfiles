@@ -45,7 +45,7 @@
     ]
   },
   "mcpServers": {
-    "html-sync": {
+    "html-sync-server": {
       "command": "mcp-html-sync-server",
       "env": {
         "NODE_ENV": "production"
