@@ -6,7 +6,7 @@
   homeManagerImports = [
     {
       home.packages = [
-        packages.node-packages."claude-mermaid"
+        packages.node-packages."mcp-html-sync-server"
       ];
     }
   ];

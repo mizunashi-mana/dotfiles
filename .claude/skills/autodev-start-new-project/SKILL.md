@@ -1,6 +1,6 @@
 ---
 description: Start a new long-term project that spans multiple tasks. Use when planning a large feature, refactoring, or multi-week initiative that needs task decomposition and tracking.
-allowed-tools: Read, Write, Edit, MultiEdit, Update, WebSearch, WebFetch, ToolSearch
+allowed-tools: Read, Write, Edit, MultiEdit, Update, WebSearch, WebFetch, ToolSearch, mcp__*__create_page, mcp__*__update_page, mcp__*__destroy_page, mcp__*__add_scripts, mcp__*__add_stylesheets
 ---
 
 # 新規プロジェクト開始
@@ -104,11 +104,12 @@ T1 → T2 → T4
 
 #### 視覚的な整理（任意）
 
-claude-mermaid MCP（`mermaid_preview` ツール）が利用可能な場合、計画の提示に Mermaid 図を活用する。
-ToolSearch で `mermaid` を検索し、利用可能か確認する。
+html-sync MCP（`create_page` / `update_page` ツール）が利用可能な場合、計画の提示に HTML による可視化を活用する。
 
-- タスク間の依存関係を `graph TD` のエッジで表現する
-- フェーズや機能領域ごとに `subgraph` でタスクをグルーピングする
+- `create_page` で HTML ページを生成し、ブラウザで閲覧できる URL を共有する
+- タスク依存関係図、ガントチャート風のタイムライン、フェーズ構成図など、内容に適した形式を自由に選ぶ
+- SVG、CSS Grid/Flexbox レイアウト、テーブルなど HTML の表現力を活かす
+- Mermaid.js などの CDN ライブラリを `scripts` パラメータで読み込んで活用してもよい
 - 図はあくまで補助。テキストでの説明も必ず併記する
 
 ### 7. コンテキストの整理

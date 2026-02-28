@@ -8,7 +8,12 @@
       "Skill(autodev-switch-to-default)",
       "Bash(devenv shell lint-all)",
       "Bash(devenv shell nixfmt:*)",
-      "Bash(node2nix-update)"
+      "Bash(devenv shell node2nix-update)",
+      "mcp__*__create_page",
+      "mcp__*__update_page",
+      "mcp__*__destroy_page",
+      "mcp__*__add_scripts",
+      "mcp__*__add_stylesheets"
     ]
   }
 }

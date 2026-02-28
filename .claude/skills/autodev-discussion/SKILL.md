@@ -1,6 +1,6 @@
 ---
 description: Interactively organize ideas, concerns, or vague thoughts through dialogue. Use when brainstorming, thinking through a problem, or wanting to clarify unclear ideas before taking action.
-allowed-tools: Read, Glob, Grep, WebSearch, WebFetch, AskUserQuestion, ToolSearch
+allowed-tools: Read, Glob, Grep, WebSearch, WebFetch, AskUserQuestion, ToolSearch, mcp__*__create_page, mcp__*__update_page, mcp__*__destroy_page, mcp__*__add_scripts, mcp__*__add_stylesheets
 ---
 
 # ディスカッション
@@ -50,14 +50,15 @@ allowed-tools: Read, Glob, Grep, WebSearch, WebFetch, AskUserQuestion, ToolSearc
 
 ### 4. 視覚的な整理（任意）
 
-claude-mermaid MCP（`mermaid_preview` ツール）が利用可能な場合、議論の整理に Mermaid 図を活用する。
-ToolSearch で `mermaid` を検索し、利用可能か確認する。
+html-sync MCP（`create_page` / `update_page` ツール）が利用可能な場合、議論の整理に HTML による可視化を活用する。
 
-- 関連する概念・要素の繋がりを `graph TD` のエッジで表現する
-- 関連要素を `subgraph` でグルーピングして全体構造を見せる
-- 論点の整理、選択肢の構造化、依存関係の可視化などに活用する
+- `create_page` で HTML ページを生成し、ブラウザで閲覧できる URL を共有する
+- 論点の構造、選択肢の比較表、フロー図、依存関係の可視化など、内容に適した形式を自由に選ぶ
+- SVG、CSS Grid/Flexbox レイアウト、テーブルなど HTML の表現力を活かす
+- Mermaid.js などの CDN ライブラリを `scripts` パラメータで読み込んで活用してもよい
 - 図はあくまで補助。テキストでの説明も必ず併記する
-- 対話の途中でも、構造が見えてきた段階で積極的に図を生成してよい
+- 対話の途中でも、構造が見えてきた段階で積極的にページを生成してよい
+- 内容が更新された場合は `update_page` で同じページを更新する
 
 ### 5. 議論のまとめ
 

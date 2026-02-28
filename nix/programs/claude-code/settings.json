@@ -44,6 +44,14 @@
       }
     ]
   },
+  "mcpServers": {
+    "html-sync": {
+      "command": "mcp-html-sync-server",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    }
+  },
   "permissions": {
     "additionalDirectories": [
       "/tmp/",
@@ -293,7 +301,12 @@
       "mcp__serena__read_memory",
       "mcp__serena__think_about_collected_information",
       "mcp__serena__think_about_task_adherence",
-      "mcp__serena__think_about_whether_you_are_done"
+      "mcp__serena__think_about_whether_you_are_done",
+      "mcp__*__create_page",
+      "mcp__*__update_page",
+      "mcp__*__destroy_page",
+      "mcp__*__add_scripts",
+      "mcp__*__add_stylesheets"
     ],
     "defaultMode": "acceptEdits",
     "deny": [
