@@ -302,10 +302,11 @@
       "mcp__serena__think_about_collected_information",
       "mcp__serena__think_about_task_adherence",
       "mcp__serena__think_about_whether_you_are_done",
-      "mcp__*__create_page",
-      "mcp__*__update_page",
-      "mcp__*__add_scripts",
-      "mcp__*__add_stylesheets"
+      "mcp__html-sync-server__create_page",
+      "mcp__html-sync-server__update_page",
+      "mcp__html-sync-server__destroy_page",
+      "mcp__html-sync-server__add_scripts",
+      "mcp__html-sync-server__add_stylesheets"
     ],
     "defaultMode": "acceptEdits",
     "deny": [
