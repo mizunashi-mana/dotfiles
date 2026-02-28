@@ -1,6 +1,6 @@
 ---
 description: Import and apply PR review comments interactively. Use when a pull request has received review feedback and you want to address the suggestions.
-allowed-tools: Read, Write, Edit, MultiEdit, "Bash(gh api *)", mcp__github__pull_request_read
+allowed-tools: Read, Write, Edit, MultiEdit, mcp__github__pull_request_read, mcp__github__add_reply_to_pull_request_comment
 ---
 
 # PR レビュー取り込み
@@ -33,10 +33,12 @@ PR「$ARGUMENTS」のレビューコメントを確認し、対話的に修正�
 
 6. **レビューコメントへの返信**:
    - 各レビューコメントに対応結果を返信する
-   - `gh api` を使い、以下のコマンドで返信:
-     ```
-     gh api repos/{owner}/{repo}/pulls/{pull_number}/comments/{comment_id}/replies -f body="返信内容"
-     ```
+   - `mcp__github__add_reply_to_pull_request_comment` を使い、各コメントに返信:
+     - `owner`: リポジトリオーナー
+     - `repo`: リポジトリ名
+     - `pullNumber`: PR 番号
+     - `commentId`: 返信先コメントの ID
+     - `body`: 返信内容
    - 修正した項目: 修正内容を簡潔に説明（例: 「修正しました。○○に変更しています。」）
    - スキップした項目: スキップの理由を説明（例: 「プロジェクト方針として○○のため、現状維持とします。」）
    - 返信はレビュワーへの感謝と具体的な対応内容を含める
