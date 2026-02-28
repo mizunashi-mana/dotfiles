@@ -69,6 +69,7 @@
                 "Bash(brew info:*)"
                 "Bash(cat:*)"
                 "Bash(chmod +x:*)"
+                "Bash(claude --version)"
                 "Bash(convert:*)"
                 "Bash(cp:*)"
                 "Bash(defaults read:*)"
