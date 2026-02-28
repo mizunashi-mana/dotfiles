@@ -4,6 +4,6 @@
     "@mizunashi_mana/cc-voice-reporter": "",
     "@openai/codex": "",
     "@playwright/cli": "",
-    "claude-mermaid": ""
+    "mcp-html-sync-server": ""
   }
 ]

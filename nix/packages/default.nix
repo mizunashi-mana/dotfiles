@@ -34,19 +34,6 @@ in
     "@openai/codex" = node2nix-pkgs."@openai/codex-";
     "@playwright/cli" = node2nix-pkgs."@playwright/cli-";
     "@mizunashi_mana/cc-voice-reporter" = node2nix-pkgs."@mizunashi_mana/cc-voice-reporter-";
-    "claude-mermaid" = node2nix-pkgs."claude-mermaid-".override {
-      buildInputs = [ pkgs.esbuild ];
-      preRebuild = ''
-        # Skip puppeteer browser download in sandbox
-        export PUPPETEER_SKIP_DOWNLOAD=1
-
-        # Provide esbuild binary from Nix instead of platform-specific npm package
-        mkdir -p node_modules/esbuild/bin
-        cp ${pkgs.esbuild}/bin/esbuild node_modules/esbuild/bin/esbuild
-        chmod +x node_modules/esbuild/bin/esbuild
-        # Prevent esbuild install script from running
-        echo '#!/usr/bin/env node' > node_modules/esbuild/install.js
-      '';
-    };
+    "mcp-html-sync-server" = node2nix-pkgs."mcp-html-sync-server-";
   };
 }

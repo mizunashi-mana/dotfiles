@@ -1,6 +1,6 @@
 ---
 description: Start a new technical survey or investigation. Use when researching technologies, comparing libraries, evaluating feasibility, or analyzing trends.
-allowed-tools: Read, Write, Edit, MultiEdit, Update, Bash(mkdir:*), Glob, Grep, WebSearch, WebFetch, ToolSearch
+allowed-tools: Read, Write, Edit, MultiEdit, Update, Bash(mkdir:*), Glob, Grep, WebSearch, WebFetch, ToolSearch, mcp__*__create_page, mcp__*__update_page, mcp__*__add_scripts, mcp__*__add_stylesheets
 ---
 
 # 新規調査開始
@@ -103,11 +103,12 @@ allowed-tools: Read, Write, Edit, MultiEdit, Update, Bash(mkdir:*), Glob, Grep, 
 
 #### 視覚的な整理（任意）
 
-claude-mermaid MCP（`mermaid_preview` ツール）が利用可能な場合、調査結果の提示に Mermaid 図を活用する。
-ToolSearch で `mermaid` を検索し、利用可能か確認する。
+html-sync MCP（`create_page` / `update_page` ツール）が利用可能な場合、調査結果の提示に HTML による可視化を活用する。
 
-- 選択肢間の関係や技術スタックの構造を `graph TD` で表現する
-- 関連する技術や機能領域を `subgraph` でグルーピングする
+- `create_page` で HTML ページを生成し、ブラウザで閲覧できる URL を共有する
+- 選択肢の比較表、技術スタックの関係図、評価レーダーチャートなど、内容に適した形式を自由に選ぶ
+- SVG、CSS Grid/Flexbox レイアウト、テーブルなど HTML の表現力を活かす
+- Chart.js や Mermaid.js などの CDN ライブラリを `scripts` パラメータで読み込んで活用してもよい
 - 図はあくまで補助。テキストでの説明も必ず併記する
 
 ## 調査の種類別ガイド

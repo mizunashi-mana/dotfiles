@@ -8,7 +8,7 @@
       "Skill(autodev-switch-to-default)",
       "Bash(devenv shell lint-all)",
       "Bash(devenv shell nixfmt:*)",
-      "Bash(node2nix-update)"
+      "Bash(devenv shell node2nix-update)"
     ]
   }
 }
