@@ -46,7 +46,7 @@ let
     (import ./keynote { inherit packages; })
     (import ./numbers { inherit packages; })
     (import ./pages { inherit packages; })
-    (import ./mcp-html-sync-server { inherit packages; })
+    (import ./mcp-html-artifacts-preview { inherit packages; })
   ];
 in
 {
