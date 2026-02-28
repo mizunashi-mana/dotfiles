@@ -46,6 +46,7 @@ let
     (import ./keynote { inherit packages; })
     (import ./numbers { inherit packages; })
     (import ./pages { inherit packages; })
+    (import ./claude-mermaid { inherit packages; })
   ];
 in
 {

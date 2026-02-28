@@ -6,8 +6,9 @@
       "Skill(autodev-start-new-survey)",
       "Skill(autodev-start-new-task)",
       "Skill(autodev-switch-to-default)",
-      "Bash(devenv shell lint-all:*)",
-      "Bash(devenv shell nixfmt:*)"
+      "Bash(devenv shell lint-all)",
+      "Bash(devenv shell nixfmt:*)",
+      "Bash(node2nix-update)"
     ]
   }
 }
