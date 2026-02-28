@@ -50,7 +50,7 @@ allowed-tools: Read, Glob, Grep, WebSearch, WebFetch, AskUserQuestion, ToolSearc
 
 ### 4. 視覚的な整理（任意）
 
-html-sync MCP（`create_page` / `update_page` ツール）が利用可能な場合、議論の整理に HTML による可視化を活用する。
+html-artifacts-preview MCP（`create_page` / `update_page` ツール）が利用可能な場合、議論の整理に HTML による可視化を活用する。
 
 - `create_page` で HTML ページを生成し、ブラウザで閲覧できる URL を共有する
 - 論点の構造、選択肢の比較表、フロー図、依存関係の可視化など、内容に適した形式を自由に選ぶ

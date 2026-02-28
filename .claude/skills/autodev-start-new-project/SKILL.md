@@ -104,7 +104,7 @@ T1 → T2 → T4
 
 #### 視覚的な整理（任意）
 
-html-sync MCP（`create_page` / `update_page` ツール）が利用可能な場合、計画の提示に HTML による可視化を活用する。
+html-artifacts-preview MCP（`create_page` / `update_page` ツール）が利用可能な場合、計画の提示に HTML による可視化を活用する。
 
 - `create_page` で HTML ページを生成し、ブラウザで閲覧できる URL を共有する
 - タスク依存関係図、ガントチャート風のタイムライン、フェーズ構成図など、内容に適した形式を自由に選ぶ

@@ -130,6 +130,7 @@
                 "Bash(mkdir:*)"
                 "Bash(mv:*)"
                 "Bash(nix flake check)"
+                "Bash(nix flake metadata:*)"
                 "Bash(nix flake show)"
                 "Bash(nix log:*)"
                 "Bash(nkf:*)"
@@ -310,11 +311,13 @@
                 "mcp__serena__think_about_collected_information"
                 "mcp__serena__think_about_task_adherence"
                 "mcp__serena__think_about_whether_you_are_done"
-                "mcp__html-sync-server__create_page"
-                "mcp__html-sync-server__update_page"
-                "mcp__html-sync-server__destroy_page"
-                "mcp__html-sync-server__add_scripts"
-                "mcp__html-sync-server__add_stylesheets"
+                "mcp__html-artifacts-preview__create_page"
+                "mcp__html-artifacts-preview__update_page"
+                "mcp__html-artifacts-preview__destroy_page"
+                "mcp__html-artifacts-preview__get_pages"
+                "mcp__html-artifacts-preview__get_page"
+                "mcp__html-artifacts-preview__add_scripts"
+                "mcp__html-artifacts-preview__add_stylesheets"
               ];
               defaultMode = "acceptEdits";
               deny = [

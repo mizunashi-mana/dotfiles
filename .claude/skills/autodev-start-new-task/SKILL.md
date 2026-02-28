@@ -60,7 +60,7 @@ allowed-tools: Read, Write, Edit, MultiEdit, Update, WebSearch, WebFetch, ToolSe
 
 #### 視覚的な整理（任意）
 
-html-sync MCP（`create_page` / `update_page` ツール）が利用可能な場合、方針の提示に HTML による可視化を活用する。
+html-artifacts-preview MCP（`create_page` / `update_page` ツール）が利用可能な場合、方針の提示に HTML による可視化を活用する。
 
 - `create_page` で HTML ページを生成し、ブラウザで閲覧できる URL を共有する
 - コンポーネント間の関係図、処理フロー、変更箇所のハイライトなど、内容に適した形式を自由に選ぶ
