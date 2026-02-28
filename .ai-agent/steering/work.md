@@ -25,3 +25,10 @@
 1. 完了条件を満たしているか確認
 2. 作業ログを更新
 3. ユーザーに完了報告
+
+## レビュー形式
+
+ローカルレビューを採用する。GitHub のレビュー機能（コメント・Approve・Request Changes）は使わない。
+
+1. `/autodev-review-pr` で reviewer エージェントがローカルの diff をレビューし、`.ai-agent/tmp/reviews/` に結果を保存
+2. `/autodev-import-review-suggestions` でレビューファイルを読み込み、対話的に修正
