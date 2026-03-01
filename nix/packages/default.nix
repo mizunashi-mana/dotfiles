@@ -29,11 +29,13 @@ in
 {
   inherit pkgs pkgs-stable vscode-extensions;
 
+  claude-code = inputs.claude-code.packages.${system}.default;
+
   node-packages = node2nix-pkgs // {
-    "@anthropic-ai/claude-code" = node2nix-pkgs."@anthropic-ai/claude-code-";
     "@openai/codex" = node2nix-pkgs."@openai/codex-";
     "@playwright/cli" = node2nix-pkgs."@playwright/cli-";
     "@mizunashi_mana/cc-voice-reporter" = node2nix-pkgs."@mizunashi_mana/cc-voice-reporter-";
-    "mcp-html-sync-server" = node2nix-pkgs."mcp-html-sync-server-";
+    "@mizunashi_mana/mcp-html-artifacts-preview" =
+      node2nix-pkgs."@mizunashi_mana/mcp-html-artifacts-preview-";
   };
 }

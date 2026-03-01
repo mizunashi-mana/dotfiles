@@ -6,7 +6,7 @@
   homeManagerImports = [
     {
       home.packages = [
-        packages.node-packages."mcp-html-sync-server"
+        packages.node-packages."@mizunashi_mana/mcp-html-artifacts-preview"
       ];
     }
   ];
