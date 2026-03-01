@@ -104,6 +104,7 @@
                 "Bash(gh run list:*)"
                 "Bash(gh run view:*)"
                 "Bash(gh run watch:*)"
+                "Bash(gh search:*)"
                 "Bash(git add:*)"
                 "Bash(git check-ignore:*)"
                 "Bash(git commit:*)"
