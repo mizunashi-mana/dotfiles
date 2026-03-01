@@ -20,8 +20,9 @@
 
 ### 3. 変更差分の取得
 
-- `git diff $(gh pr view {PR_NUMBER} --json baseRefName -q '.baseRefName')...HEAD` でベースブランチとの差分を取得
-- `git diff $(gh pr view {PR_NUMBER} --json baseRefName -q '.baseRefName')...HEAD --name-only` で変更ファイル一覧を取得
+- まず `gh pr view {PR_NUMBER} --json baseRefName -q '.baseRefName'` でベースブランチ名を取得する
+- `git diff {ベースブランチ}...HEAD` でベースブランチとの差分を取得
+- `git diff {ベースブランチ}...HEAD --name-only` で変更ファイル一覧を取得
 - 変更ファイルの内容を Read ツールで確認する（差分だけでなく周辺コードの文脈も把握する）
 
 ### 4. コードレビュー実施

@@ -1,6 +1,6 @@
 ---
 description: Review the current branch's changes locally using a dedicated reviewer agent in a clean context. Use when you want an unbiased code review without the current conversation's context influencing the review.
-allowed-tools: Read, Write, Bash, Glob, Grep, AskUserQuestion, TeamCreate, TeamDelete, Task, TaskCreate, TaskUpdate, TaskList, TaskGet, SendMessage, WebSearch
+allowed-tools: Read, Write, "Bash(git branch --show-current)", "Bash(gh pr list *)", Glob, Grep, AskUserQuestion, TeamCreate, TeamDelete, Task, TaskCreate, TaskUpdate, TaskList, TaskGet, SendMessage, WebSearch
 ---
 
 # ローカルレビュー
