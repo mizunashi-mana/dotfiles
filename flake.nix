@@ -31,10 +31,12 @@
 
     _1password-shell-plugins = {
       url = "github:1Password/shell-plugins";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nix-vscode-extensions = {
       url = "github:nix-community/nix-vscode-extensions";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     agent-skills = {
@@ -45,6 +47,7 @@
 
     claude-code = {
       url = "github:sadjow/claude-code-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     anthropic-skills = {
