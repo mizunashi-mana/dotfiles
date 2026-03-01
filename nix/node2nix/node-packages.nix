@@ -956,54 +956,13 @@ in
     bypassCache = true;
     reconstructLock = true;
   };
-  "@openai/codex-" = nodeEnv.buildNodePackage {
-    name = "_at_openai_slash_codex";
-    packageName = "@openai/codex";
-    version = "0.106.0";
-    src = fetchurl {
-      url = "https://registry.npmjs.org/@openai/codex/-/codex-0.106.0.tgz";
-      sha512 = "GgzVs+mOaJfAFalI+QqEXcuJuBODhIg217g+B5jg6HMujux3Q4yeSki57x8MD/DJ43hRq9X1DTyZL/345Bo0Ag==";
-    };
-    buildInputs = globalBuildInputs;
-    meta = {
-      description = "<p align=\"center\"><code>npm i -g @openai/codex</code><br />or <code>brew install --cask codex</code></p> <p align=\"center\"><strong>Codex CLI</strong> is a coding agent from OpenAI that runs locally on your computer. <p align=\"center\">   <img src=\"https://";
-      homepage = "https://github.com/openai/codex#readme";
-      license = "Apache-2.0";
-    };
-    production = true;
-    bypassCache = true;
-    reconstructLock = true;
-  };
-  "@playwright/cli-" = nodeEnv.buildNodePackage {
-    name = "_at_playwright_slash_cli";
-    packageName = "@playwright/cli";
-    version = "0.1.1";
-    src = fetchurl {
-      url = "https://registry.npmjs.org/@playwright/cli/-/cli-0.1.1.tgz";
-      sha512 = "9k11ZfDwAfMVDDIuEVW1Wvs8SoDNXIY1dNQ+9C9/SS8ZmElkcxesu5eoL7vNa96ntibUGaq1TM2qQoqvdl/I9g==";
-    };
-    dependencies = [
-      sources."minimist-1.2.8"
-      sources."playwright-1.59.0-alpha-1771104257000"
-      sources."playwright-core-1.59.0-alpha-1771104257000"
-    ];
-    buildInputs = globalBuildInputs;
-    meta = {
-      description = "Playwright CLI";
-      homepage = "https://playwright.dev";
-      license = "Apache-2.0";
-    };
-    production = true;
-    bypassCache = true;
-    reconstructLock = true;
-  };
   "@mizunashi_mana/mcp-html-artifacts-preview-" = nodeEnv.buildNodePackage {
     name = "_at_mizunashi_mana_slash_mcp-html-artifacts-preview";
     packageName = "@mizunashi_mana/mcp-html-artifacts-preview";
-    version = "0.2.0";
+    version = "0.3.0";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@mizunashi_mana/mcp-html-artifacts-preview/-/mcp-html-artifacts-preview-0.2.0.tgz";
-      sha512 = "11GhNNt1v8/K9JdRnniSSDBoGsjdF6LuoAm0m76lFssZdQTYuJTe3ydFJwDvnMB5p1VVIPirxXWF3dZTT7y9Ew==";
+      url = "https://registry.npmjs.org/@mizunashi_mana/mcp-html-artifacts-preview/-/mcp-html-artifacts-preview-0.3.0.tgz";
+      sha512 = "6JMymeLKGOnf15WkRlrn48iHuG0TCVmrZevIILBPqPKz0EW8VNFl58dVAI3U5ElbVpDWBe0S5p42dyyco4D/NA==";
     };
     dependencies = [
       sources."@cfworker/json-schema-4.1.1"
@@ -1107,6 +1066,47 @@ in
       description = "MCP server for previewing AI-generated HTML artifacts in the browser";
       homepage = "https://github.com/mizunashi-mana/mcp-html-artifacts-preview";
       license = "Apache-2.0 OR MPL-2.0";
+    };
+    production = true;
+    bypassCache = true;
+    reconstructLock = true;
+  };
+  "@openai/codex-" = nodeEnv.buildNodePackage {
+    name = "_at_openai_slash_codex";
+    packageName = "@openai/codex";
+    version = "0.106.0";
+    src = fetchurl {
+      url = "https://registry.npmjs.org/@openai/codex/-/codex-0.106.0.tgz";
+      sha512 = "GgzVs+mOaJfAFalI+QqEXcuJuBODhIg217g+B5jg6HMujux3Q4yeSki57x8MD/DJ43hRq9X1DTyZL/345Bo0Ag==";
+    };
+    buildInputs = globalBuildInputs;
+    meta = {
+      description = "<p align=\"center\"><code>npm i -g @openai/codex</code><br />or <code>brew install --cask codex</code></p> <p align=\"center\"><strong>Codex CLI</strong> is a coding agent from OpenAI that runs locally on your computer. <p align=\"center\">   <img src=\"https://";
+      homepage = "https://github.com/openai/codex#readme";
+      license = "Apache-2.0";
+    };
+    production = true;
+    bypassCache = true;
+    reconstructLock = true;
+  };
+  "@playwright/cli-" = nodeEnv.buildNodePackage {
+    name = "_at_playwright_slash_cli";
+    packageName = "@playwright/cli";
+    version = "0.1.1";
+    src = fetchurl {
+      url = "https://registry.npmjs.org/@playwright/cli/-/cli-0.1.1.tgz";
+      sha512 = "9k11ZfDwAfMVDDIuEVW1Wvs8SoDNXIY1dNQ+9C9/SS8ZmElkcxesu5eoL7vNa96ntibUGaq1TM2qQoqvdl/I9g==";
+    };
+    dependencies = [
+      sources."minimist-1.2.8"
+      sources."playwright-1.59.0-alpha-1771104257000"
+      sources."playwright-core-1.59.0-alpha-1771104257000"
+    ];
+    buildInputs = globalBuildInputs;
+    meta = {
+      description = "Playwright CLI";
+      homepage = "https://playwright.dev";
+      license = "Apache-2.0";
     };
     production = true;
     bypassCache = true;
