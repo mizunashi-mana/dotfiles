@@ -9,7 +9,7 @@
       {
         programs.claude-code = {
           enable = true;
-          package = packages.node-packages."@anthropic-ai/claude-code";
+          package = packages.claude-code;
           settings = {
             env = {
               CLAUDE_CODE_DISABLE_TERMINAL_TITLE = "1";

@@ -12,6 +12,7 @@
 | フォーマッタ           | treefmt-nix (fish_indent)  |
 | シェル                 | Fish                       |
 | Node.js パッケージ管理 | node2nix                   |
+| Claude Code パッケージ | claude-code-nix            |
 | エディタ               | VS Code, Neovim, Emacs     |
 | バージョン管理         | Git + GitHub               |
 | CI/CD                  | GitHub Actions             |
@@ -31,6 +32,7 @@
 - `_1password-shell-plugins`
 - `nix-vscode-extensions`
 - `agent-skills`
+- `claude-code` (claude-code-nix)
 - `anthropic-skills`
 
 ## アーキテクチャ概要
