@@ -10,6 +10,12 @@
         programs.claude-code = {
           enable = true;
           package = packages.claude-code;
+          mcpServers = {
+            html-artifacts-preview = {
+              type = "stdio";
+              command = "mcp-html-artifacts-preview";
+            };
+          };
           settings = {
             env = {
               CLAUDE_CODE_DISABLE_TERMINAL_TITLE = "1";
