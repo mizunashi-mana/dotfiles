@@ -228,6 +228,7 @@
                 "WebFetch(domain:www.figma.com)"
                 "WebFetch(domain:www.notion.so)"
                 "WebFetch(domain:www.npmjs.com)"
+                "WebFetch(domain:zod.dev)"
                 "WebSearch"
                 "mcp__chrome-devtools__click"
                 "mcp__chrome-devtools__close_page"
