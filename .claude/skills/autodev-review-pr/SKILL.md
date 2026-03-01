@@ -1,6 +1,6 @@
 ---
 description: Review the current branch's changes locally using a dedicated reviewer agent in a clean context. Use when you want an unbiased code review without the current conversation's context influencing the review.
-allowed-tools: Read, Write, Bash, Glob, Grep, AskUserQuestion, TeamCreate, TeamDelete, Task, TaskCreate, TaskUpdate, TaskList, TaskGet, SendMessage, WebSearch
+allowed-tools: Read, Write, "Bash(git branch --show-current)", mcp__github__list_pull_requests, Glob, Grep, AskUserQuestion, TeamCreate, TeamDelete, Task, TaskCreate, TaskUpdate, TaskList, TaskGet, SendMessage, WebSearch
 ---
 
 # ローカルレビュー
@@ -14,7 +14,7 @@ allowed-tools: Read, Write, Bash, Glob, Grep, AskUserQuestion, TeamCreate, TeamD
 - `$ARGUMENTS` が指定されている場合: その PR 番号を使用
 - `$ARGUMENTS` が空の場合:
   1. `git branch --show-current` で現在のブランチ名を取得
-  2. `gh pr list --head <branch-name> --json number --limit 1` で該当ブランチの PR 番号を検索
+  2. `mcp__github__list_pull_requests` で該当ブランチの PR 番号を検索
   3. PR が見つからない場合はユーザーに PR 番号の指定を求める
 
 ### 2. チーム作成

@@ -1,6 +1,6 @@
 ---
 description: Import and apply local review comments interactively. Use when a local review has been completed and you want to address the suggestions.
-allowed-tools: Read, Write, Edit, MultiEdit, Bash, Glob
+allowed-tools: Read, Write, Edit, MultiEdit, "Bash(git branch --show-current)", "Bash(git add *)", "Bash(git commit *)", "Bash(git push *)", mcp__github__list_pull_requests, Glob
 ---
 
 # ローカルレビュー取り込み
@@ -13,7 +13,7 @@ PR「$ARGUMENTS」のローカルレビュー結果を確認し、対話的に�
    - `$ARGUMENTS` が指定されている場合: その PR 番号を使用
    - `$ARGUMENTS` が空の場合:
      1. `git branch --show-current` で現在のブランチ名を取得
-     2. `gh pr list --head <branch-name> --json number --limit 1` で該当ブランチの PR 番号を検索
+     2. `mcp__github__list_pull_requests` で該当ブランチの PR 番号を検索
    - `.ai-agent/tmp/reviews/` 配下から `*-pr-{PR番号}` に一致するディレクトリを探す
    - そのディレクトリ内の `REVIEW-{連番}.md` のうち、最大の連番のファイルを最新レビューとして読み込む
 
