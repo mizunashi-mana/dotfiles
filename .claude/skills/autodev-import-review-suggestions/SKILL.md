@@ -1,25 +1,22 @@
 ---
-description: Import and apply local review comments interactively. Use when a local review has been completed and you want to address the suggestions.
-allowed-tools: Read, Write, Edit, MultiEdit, "Bash(git branch --show-current)", "Bash(git add *)", "Bash(git commit *)", "Bash(git push *)", mcp__github__list_pull_requests, Glob
+description: Import and apply PR review comments interactively. Use when a pull request has received review feedback and you want to address the suggestions.
+allowed-tools: Read, Write, Edit, MultiEdit, "Bash(git branch --show-current)", "Bash(git add *)", "Bash(git commit *)", "Bash(git push *)", mcp__github__pull_request_read, mcp__github__add_reply_to_pull_request_comment, Glob
 ---
 
-# ローカルレビュー取り込み
+# PR レビュー取り込み
 
-PR「$ARGUMENTS」のローカルレビュー結果を確認し、対話的に修正を行います。
+PR「$ARGUMENTS」のレビューコメントを確認し、対話的に修正を行います。
 
 ## 手順
 
-1. **レビューファイルの特定**:
-   - `$ARGUMENTS` が指定されている場合: その PR 番号を使用
-   - `$ARGUMENTS` が空の場合:
-     1. `git branch --show-current` で現在のブランチ名を取得
-     2. `mcp__github__list_pull_requests` で該当ブランチの PR 番号を検索
-   - `.ai-agent/tmp/reviews/` 配下から `*-pr-{PR番号}` に一致するディレクトリを探す
-   - そのディレクトリ内の `REVIEW-{連番}.md` のうち、最大の連番のファイルを最新レビューとして読み込む
+1. **レビューコメント取得**:
+   - `mcp__github__pull_request_read` で `get_review_comments` を実行
+   - 未解決のコメントを一覧化
+   - 各コメントの `id`（返信用）を記録
 
-2. **各指摘事項の確認**:
-   - レビューファイルの内容をパースし、Critical / Warning / Info の各指摘を一覧化
-   - 各指摘について修正の要否を判断（推奨/不要/要確認）
+2. **各コメントの確認**:
+   - コメント内容を要約してユーザーに提示
+   - 修正の要否を判断（推奨/不要/要確認）
    - 理由を簡潔に説明
 
 3. **ユーザーに確認**:
@@ -71,7 +68,7 @@ PR「$ARGUMENTS」のローカルレビュー結果を確認し、対話的に�
 
 ```
 **1. ファイル名:行番号 - 概要**
-> 指摘内容の要約
+> コメント要約
 
 → **修正推奨/不要/要確認**: 理由
 
@@ -79,3 +76,9 @@ PR「$ARGUMENTS」のローカルレビュー結果を確認し、対話的に�
 ```
 
 最後に「まとめ: X件修正、Y件スキップでよいですか？」と確認する。
+
+## 返信の例
+
+- 修正した場合: 「ありがとうございます。ご指摘の通り修正しました。○○を△△に変更しています。」
+- スキップした場合: 「ご提案ありがとうございます。検討しましたが、○○の理由から現状の実装を維持します。」
+- 部分的に対応した場合: 「ありがとうございます。○○の部分は修正しました。△△については□□の理由から現状維持としています。」
