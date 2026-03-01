@@ -1,6 +1,6 @@
-# PR #{PR_NUMBER} のコードレビュー
+# PR #{PR_NUMBER} のローカルコードレビュー
 
-あなたは PR #{PR_NUMBER} の reviewer です。コードレビューを実施し、GitHub の Review 機能でコメントを投稿してください。
+あなたは PR #{PR_NUMBER} の reviewer です。ローカルの diff を使ってコードレビューを実施し、結果をファイルに保存してください。
 
 ## 手順
 
@@ -18,10 +18,12 @@
 - `gh pr view {PR_NUMBER} --json title,body,baseRefName` で PR の基本情報を取得
 - タイトル、説明、ベースブランチを確認
 
-### 3. 変更ファイルの取得
+### 3. 変更差分の取得
 
-- `gh pr view {PR_NUMBER} --json files` で変更ファイル一覧を取得
-- `gh pr diff {PR_NUMBER}` で差分を取得
+- まず `gh pr view {PR_NUMBER} --json baseRefName -q '.baseRefName'` でベースブランチ名を取得する
+- `git diff {ベースブランチ}...HEAD` でベースブランチとの差分を取得
+- `git diff {ベースブランチ}...HEAD --name-only` で変更ファイル一覧を取得
+- 変更ファイルの内容を Read ツールで確認する（差分だけでなく周辺コードの文脈も把握する）
 
 ### 4. コードレビュー実施
 
@@ -36,33 +38,19 @@
 - エラーハンドリング
 - テストの妥当性
 
-### 5. Pending Review の作成
+### 5. レビュー結果の保存
 
-- `mcp__github__pull_request_review_write` で pending review を作成（method: `create`）
-- event は指定せず、まず pending 状態で作成
+レビュー結果をファイルに保存する:
 
-### 6. 行コメントの追加
+1. `mkdir -p .ai-agent/tmp/reviews/YYYYMMDD-pr-{PR_NUMBER}` でディレクトリを作成（YYYYMMDD は今日の日付）
+2. 既存の REVIEW ファイルを確認し、次の連番を決定する（初回なら 1）
+3. `.ai-agent/tmp/reviews/YYYYMMDD-pr-{PR_NUMBER}/REVIEW-{連番}.md` にレビュー結果を書き込む
 
-- `mcp__github__add_comment_to_pending_review` で各コメントを追加
-- 適切な行番号と side (LEFT/RIGHT) を指定
-- subjectType: LINE で行レベルのコメント
-- Critical/Warning の指摘がある場合のみ行コメントを追加
+### 6. 結果報告
 
-### 7. Submit
+レビュー完了後、lead にメッセージでレビュー結果のサマリーを送信してください。保存先のファイルパスも含めてください。
 
-レビュー結果に基づいてアクションを決定:
-
-- Critical がある場合: REQUEST_CHANGES
-- Critical がなく Warning のみ、または Info のみ: COMMENT
-- 問題がない場合: APPROVE（自分の PR の場合は COMMENT にフォールバック）
-
-`mcp__github__pull_request_review_write` で submit（method: `submit_pending`）し、body に総評を含める。
-
-### 8. 結果報告
-
-レビュー完了後、lead にメッセージでレビュー結果のサマリーを送信してください。
-
-### 9. シャットダウン
+### 7. シャットダウン
 
 lead からの `shutdown_request` を待ち、承認してシャットダウンしてください。lead への結果報告が完了したら、それ以上の作業は不要です。
 
@@ -88,16 +76,20 @@ lead からの `shutdown_request` を待ち、承認してシャットダウン�
 - より良い実装パターンの提案
 - ドキュメント・コメントの追加
 
-## 出力フォーマット
+## レビュー結果のファイルフォーマット
 
-lead への報告メッセージは以下のフォーマットで:
+以下のフォーマットで REVIEW ファイルに保存する:
 
-```
-## レビュー結果
+```markdown
+# PR #{PR_NUMBER} レビュー結果
 
-### Critical (X件)
+**レビュー日時**: YYYY-MM-DD
+**ベースブランチ**: {ベースブランチ名}
+
+## Critical (X件)
 
 **1. ファイル名:行番号**
+
 > コードスニペット
 
 問題: 具体的な問題の説明
@@ -105,10 +97,12 @@ lead への報告メッセージは以下のフォーマットで:
 
 ---
 
-### Warning (Y件)
+## Warning (Y件)
+
 ...
 
-### Info (Z件)
+## Info (Z件)
+
 ...
 
 ---
@@ -117,10 +111,11 @@ lead への報告メッセージは以下のフォーマットで:
 **推奨アクション**: APPROVE / REQUEST_CHANGES / COMMENT
 ```
 
+lead への報告メッセージも上記と同じフォーマットで送信する。
+
 ## 注意事項
 
 - **Steering ドキュメントを必ず参照**: プロジェクト固有の方針・規約に基づいたレビューを行う
-- ローカルにチェックアウトされていないファイルは `gh pr checkout` でチェックアウトするか、Read ツールで読み取る
 - 大きな PR の場合はファイルごとに段階的にレビュー
 - 技術的に正確な指摘を心がける。知識が曖昧な技術・ライブラリ・API については、推測でコメントせず WebSearch で最新情報を確認してからコメントする
 - 主観的な好みではなく、客観的な問題点を指摘

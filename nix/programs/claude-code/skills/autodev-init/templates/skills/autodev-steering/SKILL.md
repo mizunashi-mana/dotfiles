@@ -1,6 +1,6 @@
 ---
 description: Update steering documents (product.md, tech.md, plan.md, structure.md, etc.) to reflect current project state. Use when documents have become outdated or after completing significant work.
-allowed-tools: Read, Write, Edit, MultiEdit, Bash(mkdir *), Glob, Grep, mcp__github__list_issues, mcp__github__search_issues
+allowed-tools: Read, Write, Edit, MultiEdit, "Bash(mkdir *)", "Bash(gh issue list *)", Glob, Grep
 ---
 
 # Steering ドキュメント更新
@@ -29,7 +29,7 @@ allowed-tools: Read, Write, Edit, MultiEdit, Bash(mkdir *), Glob, Grep, mcp__git
 
 GitHub イシューを確認し、未対応の課題や進行中のタスクを把握:
 
-- `mcp__github__list_issues` でオープンイシューを取得
+- `gh issue list --state open --json number,title,labels,url` でオープンイシューを取得
 - 機能追加・バグ修正・改善などのラベルで分類
 - plan.md のフェーズと関連するイシューを特定
 

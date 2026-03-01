@@ -1,6 +1,6 @@
 ---
 description: Create a GitHub pull request from the current branch's changes. Use when changes are ready for review and you want to open a PR.
-allowed-tools: Read, Glob, mcp__github__create_pull_request, mcp__github__pull_request_read, mcp__github__update_pull_request
+allowed-tools: Read, Glob, "Bash(git status *)", "Bash(git log *)", "Bash(git diff *)", "Bash(git push *)", "Bash(git branch --show-current)", "Bash(gh pr view *)", mcp__github__create_pull_request, mcp__github__update_pull_request
 ---
 
 # PR 作成
@@ -29,7 +29,7 @@ allowed-tools: Read, Glob, mcp__github__create_pull_request, mcp__github__pull_r
    - 注意点：改行のエスケープは不要。PR 説明の改行がエスケープされていないか確認する
 
 5. **PR の内容を確認**:
-   - `mcp__github__pull_request_read` の `get` メソッドで作成された PR の本文を取得
+   - `gh pr view {pull_number} --json body` で作成された PR の本文を取得
    - 改行が `\n` のようにエスケープされたまま表示されていないか確認
    - 問題がある場合は `mcp__github__update_pull_request` で修正する
 

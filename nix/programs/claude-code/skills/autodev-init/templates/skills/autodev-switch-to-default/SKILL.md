@@ -1,6 +1,6 @@
 ---
 description: Switch to the default branch after a PR is merged, pull latest changes, and run compaction. Use after merging or having a PR merged to start fresh.
-allowed-tools: "Bash(git checkout *)", "Bash(git pull *)", "Bash(git pull)", "Bash(git branch *)", "Bash(git rev-parse *)", "Bash(git remote *)", "Bash(git symbolic-ref *)", "Bash(git status *)", mcp__github__pull_request_read, mcp__github__merge_pull_request, mcp__github__list_pull_requests
+allowed-tools: "Bash(git checkout *)", "Bash(git pull *)", "Bash(git pull)", "Bash(git branch *)", "Bash(git rev-parse *)", "Bash(git remote *)", "Bash(git symbolic-ref *)", "Bash(git status *)", "Bash(gh pr list *)", mcp__github__merge_pull_request
 ---
 
 # デフォルトブランチへの切り替え
@@ -15,7 +15,7 @@ PR のマージ後にデフォルトブランチへ切り替え、最新の変�
 
 - `git remote get-url origin` でリポジトリの owner/repo を取得する
 - `git branch --show-current` で現在のブランチ名を取得する
-- `mcp__github__list_pull_requests` で現在のブランチの PR を検索する（`head` に `owner:branch` を指定）
+- `gh pr list --head <branch-name> --json number,state,url --limit 1` で現在のブランチの PR を検索する
 
 結果に応じて分岐:
 

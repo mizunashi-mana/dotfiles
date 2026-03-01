@@ -104,31 +104,42 @@ disable-model-invocation: true
 
 以下のスキルテンプレートをベースに、プロジェクトの `.claude/skills/` にスキルをインストールする。
 
+#### レビュー形式の確認
+
+スキルインストールの前に、レビュー形式をユーザーに確認する:
+
+- **GitHub レビュー**: GitHub の Review 機能（コメント・Approve・Request Changes）を使ってレビューする。レビューコメントの取り込みも GitHub 上で行う
+- **ローカルレビュー**: ローカルの diff を使って Claude がレビューし、結果をファイル（`.ai-agent/tmp/reviews/`）に保存する。GitHub のレビュー機能は使わない
+
+選択に応じて、`autodev-review-pr` と `autodev-import-review-suggestions` のテンプレートを切り替える（下記テーブル参照）。
+
+**ローカルレビューが選択された場合**: `.ai-agent/tmp/` を `.gitignore` に追加する（既に記載されていなければ）。
+
 #### インストール対象スキル
 
-| スキル                              | テンプレート                                                                                                                                     | 説明                            |
-| ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------- |
-| `autodev-create-issue`              | [SKILL.md](templates/skills/autodev-create-issue/SKILL.md)                                                                                       | GitHub Issue の作成             |
-| `autodev-create-pr`                 | [SKILL.md](templates/skills/autodev-create-pr/SKILL.md)                                                                                          | プルリクエストの作成            |
-| `autodev-discussion`                | [SKILL.md](templates/skills/autodev-discussion/SKILL.md)                                                                                         | アイデアや考えの対話的な整理    |
-| `autodev-import-review-suggestions` | [SKILL.md](templates/skills/autodev-import-review-suggestions/SKILL.md)                                                                          | PR レビューコメントの取り込み   |
-| `autodev-replan`                    | [SKILL.md](templates/skills/autodev-replan/SKILL.md)                                                                                             | ロードマップの再策定            |
-| `autodev-review-pr`                 | [SKILL.md](templates/skills/autodev-review-pr/SKILL.md), [reviewer-spawn-prompt.md](templates/skills/autodev-review-pr/reviewer-spawn-prompt.md) | PR のコードレビュー（チーム化） |
-| `autodev-start-new-project`         | [SKILL.md](templates/skills/autodev-start-new-project/SKILL.md)                                                                                  | 長期プロジェクトの開始          |
-| `autodev-start-new-survey`          | [SKILL.md](templates/skills/autodev-start-new-survey/SKILL.md)                                                                                   | 技術調査の開始                  |
-| `autodev-start-new-task`            | [SKILL.md](templates/skills/autodev-start-new-task/SKILL.md)                                                                                     | 個別タスクの開始                |
-| `autodev-steering`                  | [SKILL.md](templates/skills/autodev-steering/SKILL.md)                                                                                           | Steering ドキュメントの更新     |
-| `autodev-switch-to-default`         | [SKILL.md](templates/skills/autodev-switch-to-default/SKILL.md)                                                                                  | デフォルトブランチへの切り替え  |
+| スキル                              | テンプレート                                                                                                                                                                                                                                                                                                                                    | 説明                            |
+| ----------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- |
+| `autodev-create-issue`              | [SKILL.md](templates/skills/autodev-create-issue/SKILL.md)                                                                                                                                                                                                                                                                                      | GitHub Issue の作成             |
+| `autodev-create-pr`                 | [SKILL.md](templates/skills/autodev-create-pr/SKILL.md)                                                                                                                                                                                                                                                                                         | プルリクエストの作成            |
+| `autodev-discussion`                | [SKILL.md](templates/skills/autodev-discussion/SKILL.md)                                                                                                                                                                                                                                                                                        | アイデアや考えの対話的な整理    |
+| `autodev-import-review-suggestions` | GitHub: [SKILL.md](templates/skills/autodev-import-review-suggestions/SKILL.md) / ローカル: [SKILL.local.md](templates/skills/autodev-import-review-suggestions/SKILL.local.md)                                                                                                                                                                 | レビュー指摘の取り込み          |
+| `autodev-replan`                    | [SKILL.md](templates/skills/autodev-replan/SKILL.md)                                                                                                                                                                                                                                                                                            | ロードマップの再策定            |
+| `autodev-review-pr`                 | GitHub: [SKILL.md](templates/skills/autodev-review-pr/SKILL.md) + [reviewer-spawn-prompt.md](templates/skills/autodev-review-pr/reviewer-spawn-prompt.md) / ローカル: [SKILL.local.md](templates/skills/autodev-review-pr/SKILL.local.md) + [reviewer-spawn-prompt.local.md](templates/skills/autodev-review-pr/reviewer-spawn-prompt.local.md) | PR のコードレビュー（チーム化） |
+| `autodev-start-new-project`         | [SKILL.md](templates/skills/autodev-start-new-project/SKILL.md)                                                                                                                                                                                                                                                                                 | 長期プロジェクトの開始          |
+| `autodev-start-new-survey`          | [SKILL.md](templates/skills/autodev-start-new-survey/SKILL.md)                                                                                                                                                                                                                                                                                  | 技術調査の開始                  |
+| `autodev-start-new-task`            | [SKILL.md](templates/skills/autodev-start-new-task/SKILL.md)                                                                                                                                                                                                                                                                                    | 個別タスクの開始                |
+| `autodev-steering`                  | [SKILL.md](templates/skills/autodev-steering/SKILL.md)                                                                                                                                                                                                                                                                                          | Steering ドキュメントの更新     |
+| `autodev-switch-to-default`         | [SKILL.md](templates/skills/autodev-switch-to-default/SKILL.md)                                                                                                                                                                                                                                                                                 | デフォルトブランチへの切り替え  |
 
 #### インストール手順
 
-1. 上記テーブルの各テンプレートリンクからファイルを読み込み、プロジェクトの `.claude/skills/` にコピーする
+1. 上記テーブルの各テンプレートリンクからファイルを読み込み、プロジェクトの `.claude/skills/` にコピーする。レビュー形式の選択に応じて、GitHub 版またはローカル版のテンプレートを選ぶ（ローカル版の場合、`SKILL.local.md` を `skill.md` として、`reviewer-spawn-prompt.local.md` を `reviewer-spawn-prompt.md` としてコピーする）
 2. **プロジェクトに特化できる部分はカスタマイズする**。Step 1〜5 で把握した情報を活用して、以下のような点を調整する:
    - `autodev-start-new-task`: プロジェクト固有の動作確認手順（lint コマンド、テスト実行方法、ブラウザ確認手順など）を追記
    - `autodev-steering`: プロジェクト構成に応じた現状把握コマンド（`ls packages/`、`cat package.json | jq '.scripts'` など）を具体化
    - `autodev-review-pr`: プロジェクト固有のアーキテクチャ規約（レイヤー構造、DI パターンなど）をレビュー観点に追記
    - `autodev-create-pr`: プロジェクトの PR テンプレートパスを明記
-3. ユーザーにインストールしたスキルの一覧と、行ったカスタマイズ内容を報告する
+3. ユーザーにインストールしたスキルの一覧と、行ったカスタマイズ内容（選択したレビュー形式を含む）を報告する
 
 ### Step 6: structure.md の生成
 

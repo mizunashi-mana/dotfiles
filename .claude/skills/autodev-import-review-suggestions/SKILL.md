@@ -1,6 +1,6 @@
 ---
 description: Import and apply PR review comments interactively. Use when a pull request has received review feedback and you want to address the suggestions.
-allowed-tools: Read, Write, Edit, MultiEdit, mcp__github__pull_request_read, mcp__github__add_reply_to_pull_request_comment
+allowed-tools: Read, Write, Edit, MultiEdit, "Bash(git branch --show-current)", "Bash(git add *)", "Bash(git commit *)", "Bash(git push *)", "Bash(gh pr view *)", "Bash(gh pr list *)", mcp__github__add_reply_to_pull_request_comment, Glob
 ---
 
 # PR レビュー取り込み
@@ -9,29 +9,35 @@ PR「$ARGUMENTS」のレビューコメントを確認し、対話的に修正�
 
 ## 手順
 
-1. **レビューコメント取得**:
-   - `mcp__github__pull_request_read` で `get_review_comments` を実行
+1. **対象 PR の特定**:
+   - `$ARGUMENTS` が指定されている場合: その PR 番号を使用
+   - `$ARGUMENTS` が空の場合:
+     1. `git branch --show-current` で現在のブランチ名を取得
+     2. `gh pr list --head <branch-name> --json number,url --limit 1` で該当ブランチの PR を検索
+
+2. **レビューコメント取得**:
+   - `gh pr view {pull_number} --json reviewThreads` でレビューコメントのスレッドを取得
    - 未解決のコメントを一覧化
    - 各コメントの `id`（返信用）を記録
 
-2. **各コメントの確認**:
+3. **各コメントの確認**:
    - コメント内容を要約してユーザーに提示
    - 修正の要否を判断（推奨/不要/要確認）
    - 理由を簡潔に説明
 
-3. **ユーザーに確認**:
+4. **ユーザーに確認**:
    - 修正する項目をまとめて提示
    - ユーザーの承認を得る
 
-4. **修正実行**:
+5. **修正実行**:
    - 承認された項目のみ修正
    - 各ファイルを編集
 
-5. **コミット・プッシュ**:
+6. **コミット・プッシュ**:
    - 修正内容をまとめてコミット
    - PR ブランチにプッシュ
 
-6. **レビューコメントへの返信**:
+7. **レビューコメントへの返信**:
    - 各レビューコメントに対応結果を返信する
    - `mcp__github__add_reply_to_pull_request_comment` を使い、各コメントに返信:
      - `owner`: リポジトリオーナー

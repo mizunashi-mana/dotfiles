@@ -1,35 +1,34 @@
 ---
-description: Review a GitHub pull request using a dedicated reviewer agent in a clean context. Use when you want an unbiased code review without the current conversation's context influencing the review.
-allowed-tools: Read, "Bash(git branch --show-current)", "Bash(gh pr list *)", Glob, Grep, AskUserQuestion, TeamCreate, TeamDelete, Task, TaskCreate, TaskUpdate, TaskList, TaskGet, SendMessage, WebSearch
+description: Review the current branch's changes locally using a dedicated reviewer agent in a clean context. Use when you want an unbiased code review without the current conversation's context influencing the review.
+allowed-tools: Read, Write, "Bash(git branch --show-current)", "Bash(gh pr list *)", Glob, Grep, AskUserQuestion, TeamCreate, TeamDelete, Task, TaskCreate, TaskUpdate, TaskList, TaskGet, SendMessage, WebSearch
 ---
 
-# PR レビュー
+# ローカルレビュー
 
-PR「$ARGUMENTS」を、クリーンなコンテキストの reviewer エージェントでレビューします。
+現在のブランチの変更を、クリーンなコンテキストの reviewer エージェントでローカルレビューします。
 
 ## 手順
 
 ### 1. 対象 PR の特定
 
-- `$ARGUMENTS` が指定されている場合: その PR 番号または URL を使用
+- `$ARGUMENTS` が指定されている場合: その PR 番号を使用
 - `$ARGUMENTS` が空の場合:
   1. `git branch --show-current` で現在のブランチ名を取得
-  2. `gh pr list --head <branch-name> --json number,url --limit 1` で該当ブランチの PR を検索
-  3. PR が見つかった場合はその PR をレビュー対象とする
-  4. PR が見つからない場合はユーザーに PR 番号の指定を求める
+  2. `gh pr list --head <branch-name> --json number --limit 1` で該当ブランチの PR 番号を検索
+  3. PR が見つからない場合はユーザーに PR 番号の指定を求める
 
 ### 2. チーム作成
 
 ```
-TeamCreate({ team_name: "review-pr-{PR番号}", description: "PR #{PR番号} のレビュー" })
+TeamCreate({ team_name: "review-pr-{PR番号}", description: "PR #{PR番号} のローカルレビュー" })
 ```
 
 ### 3. タスク作成
 
 ```
 TaskCreate({
-  subject: "PR #{PR番号} をレビュー",
-  description: "PR #{PR番号} のコードレビューを実施し、GitHub の Review 機能でコメントを投稿する",
+  subject: "PR #{PR番号} をローカルレビュー",
+  description: "PR #{PR番号} のコードレビューを実施し、レビュー結果をファイルに保存する",
   activeForm: "PR #{PR番号} をレビュー中"
 })
 ```
@@ -67,10 +66,11 @@ reviewer からのメッセージを待ち、レビュー結果を確認する�
 
 ### 7. 結果報告
 
-reviewer のレビュー結果サマリーをユーザーに報告する。
+reviewer のレビュー結果サマリーをユーザーに報告する。レビューファイルの保存先パスも伝える。
 
 ## 注意事項
 
 - reviewer は clean context で動作するため、現在の会話の文脈に影響されない公正なレビューが可能
 - reviewer は steering docs（tech.md, structure.md 等）を自分で読み込んでレビューする
 - 大きな PR でも reviewer が段階的にレビューする
+- レビュー結果は `.ai-agent/tmp/reviews/YYYYMMDD-pr-{PR番号}/REVIEW-{連番}.md` に保存される

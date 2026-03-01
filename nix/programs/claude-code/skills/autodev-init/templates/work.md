@@ -27,6 +27,24 @@
 4. **レビュー・マージ**: レビューを経てデフォルトブランチにマージ
 5. **ブランチ切り替え**: マージ後、`/autodev-switch-to-default` でデフォルトブランチに戻る
 
+### レビュー形式
+
+プロジェクトのレビュー形式に応じて、以下のいずれかのフローを使用する（`autodev-init` で選択）。
+
+#### GitHub レビュー
+
+GitHub の Review 機能を使ってレビューする。
+
+1. `/autodev-review-pr` で reviewer エージェントが GitHub にレビューコメントを投稿
+2. `/autodev-import-review-suggestions` で GitHub 上のレビューコメントを取り込み、対話的に修正
+
+#### ローカルレビュー
+
+ローカルの diff を使って Claude がレビューし、結果をファイルに保存する。
+
+1. `/autodev-review-pr` で reviewer エージェントがローカルの diff をレビューし、`.ai-agent/tmp/reviews/` に結果を保存
+2. `/autodev-import-review-suggestions` でレビューファイルを読み込み、対話的に修正
+
 ### 注意事項
 
 - デフォルトブランチへの直接プッシュは避ける

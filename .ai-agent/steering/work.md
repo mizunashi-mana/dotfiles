@@ -25,3 +25,10 @@
 1. 完了条件を満たしているか確認
 2. 作業ログを更新
 3. ユーザーに完了報告
+
+## レビュー形式
+
+GitHub の PR レビュー機能（コメント・Approve・Request Changes）を使用する。
+
+1. `/autodev-review-pr` で reviewer エージェントが PR をレビューし、GitHub の Review 機能でコメントを投稿
+2. `/autodev-import-review-suggestions` で PR のレビューコメントを取得し、対話的に修正
