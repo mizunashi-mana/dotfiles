@@ -43,6 +43,9 @@ devenv.local.nix
 # Playwright
 .playwright-mcp
 
+# playwright-cli
+.playwright-cli
+
 # Mac ignores
 
 ## general mac temporary files

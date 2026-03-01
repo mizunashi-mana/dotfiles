@@ -177,6 +177,7 @@
                 "Bash(playwright-cli click:*)"
                 "Bash(playwright-cli close:*)"
                 "Bash(playwright-cli fill:*)"
+                "Bash(playwright-cli hover:*)"
                 "Bash(playwright-cli press:*)"
                 "Bash(playwright-cli press-key:*)"
                 "Bash(playwright-cli reload:*)"

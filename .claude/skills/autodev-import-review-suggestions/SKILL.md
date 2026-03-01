@@ -1,6 +1,6 @@
 ---
 description: Import and apply PR review comments interactively. Use when a pull request has received review feedback and you want to address the suggestions.
-allowed-tools: Read, Write, Edit, MultiEdit, "Bash(git branch --show-current)", "Bash(git add *)", "Bash(git commit *)", "Bash(git push *)", "Bash(gh pr view *)", "Bash(gh pr list *)", mcp__github__add_reply_to_pull_request_comment, Glob
+allowed-tools: Read, Write, Edit, MultiEdit, "Bash(git branch --show-current)", "Bash(git add *)", "Bash(git commit *)", "Bash(git push *)", "Bash(gh pr view *)", "Bash(gh pr list *)", mcp__github__pull_request_read, mcp__github__add_reply_to_pull_request_comment, Glob
 ---
 
 # PR レビュー取り込み
@@ -16,8 +16,8 @@ PR「$ARGUMENTS」のレビューコメントを確認し、対話的に修正�
      2. `gh pr list --head <branch-name> --json number,url --limit 1` で該当ブランチの PR を検索
 
 2. **レビューコメント取得**:
-   - `gh pr view {pull_number} --json reviewThreads` でレビューコメントのスレッドを取得
-   - 未解決のコメントを一覧化
+   - `mcp__github__pull_request_read`（method: `get_review_comments`）でレビューコメントのスレッドを取得
+   - 未解決（`is_resolved: false`）のコメントを一覧化
    - 各コメントの `id`（返信用）を記録
 
 3. **各コメントの確認**:
