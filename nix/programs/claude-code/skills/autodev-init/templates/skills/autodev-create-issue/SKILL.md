@@ -1,6 +1,6 @@
 ---
 description: Create a GitHub issue from an idea, bug report, or feature request. Use when reporting bugs, proposing new features, or documenting problems as issues.
-allowed-tools: Read, mcp__github__issue_write, mcp__github__search_issues, AskUserQuestion
+allowed-tools: Read, "Bash(gh issue list *)", mcp__github__issue_write, AskUserQuestion
 ---
 
 # GitHub Issue 作成
@@ -22,7 +22,7 @@ allowed-tools: Read, mcp__github__issue_write, mcp__github__search_issues, AskUs
    - 種類と優先度を決定
 
 2. **重複確認**:
-   - mcp**github**search_issues で既存 Issue との重複がないか確認
+   - `gh issue list --search "<キーワード>" --json number,title,url` で既存 Issue との重複がないか確認
 
 3. **ラベル決定**:
    - 種類に応じて:

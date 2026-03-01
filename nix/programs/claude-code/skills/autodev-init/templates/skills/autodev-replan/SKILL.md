@@ -1,6 +1,6 @@
 ---
 description: Replan the steering plan roadmap by reviewing completed work and open issues. Use when the plan.md roadmap has become outdated or after completing significant milestones.
-allowed-tools: Read, Write, Edit, MultiEdit, Bash(mkdir *), Glob, Grep, AskUserQuestion, WebSearch, WebFetch, mcp__github__list_issues, mcp__github__search_issues
+allowed-tools: Read, Write, Edit, MultiEdit, "Bash(mkdir *)", "Bash(gh issue list *)", Glob, Grep, AskUserQuestion, WebSearch, WebFetch
 ---
 
 # ロードマップ再策定
@@ -37,7 +37,7 @@ steering plan ドキュメントのロードマップを再策定します。完
 
 オープンな Issue を確認し、未対応の課題を把握:
 
-- `mcp__github__list_issues` でオープンイシューを取得
+- `gh issue list --state open --json number,title,labels,url` でオープンイシューを取得
 - 既存のロードマップに含まれていない Issue を特定
 - Issue のラベルや優先度から分類
 

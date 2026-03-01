@@ -1,38 +1,69 @@
 ---
-description: Import and apply local review comments interactively. Use when a local review has been completed and you want to address the suggestions.
-allowed-tools: Read, Write, Edit, MultiEdit, Bash, Glob
+description: Import and apply review comments interactively. Use when a local review has been completed or a pull request has received review feedback, and you want to address the suggestions.
+allowed-tools: Read, Write, Edit, MultiEdit, Bash, Glob, mcp__github__add_reply_to_pull_request_comment
 ---
 
-# ローカルレビュー取り込み
+# レビュー取り込み
 
-PR「$ARGUMENTS」のローカルレビュー結果を確認し、対話的に修正を行います。
+PR「$ARGUMENTS」のレビュー結果を確認し、対話的に修正を行います。
 
 ## 手順
 
-1. **レビューファイルの特定**:
-   - `$ARGUMENTS` が指定されている場合: その PR 番号を使用
-   - `$ARGUMENTS` が空の場合:
-     1. `git branch --show-current` で現在のブランチ名を取得
-     2. `gh pr list --head <branch-name> --json number --limit 1` で該当ブランチの PR 番号を検索
-   - `.ai-agent/tmp/reviews/` 配下から `*-pr-{PR番号}` に一致するディレクトリを探す
-   - そのディレクトリ内の `REVIEW-{連番}.md` のうち、最大の連番のファイルを最新レビューとして読み込む
+### 1. レビューソースの特定
 
-2. **各指摘事項の確認**:
-   - レビューファイルの内容をパースし、Critical / Warning / Info の各指摘を一覧化
-   - 各指摘について修正の要否を判断（推奨/不要/要確認）
-   - 理由を簡潔に説明
+- `$ARGUMENTS` が指定されている場合: その PR 番号を使用
+- `$ARGUMENTS` が空の場合:
+  1. `git branch --show-current` で現在のブランチ名を取得
+  2. `gh pr list --head <branch-name> --json number --limit 1` で該当ブランチの PR 番号を検索
 
-3. **ユーザーに確認**:
-   - 修正する項目をまとめて提示
-   - ユーザーの承認を得る
+以下の 2 つのソースからレビューコメントを収集する。両方にコメントがある場合は統合して扱う。
 
-4. **修正実行**:
-   - 承認された項目のみ修正
-   - 各ファイルを編集
+#### A. ローカルレビューファイル
 
-5. **コミット・プッシュ**:
-   - 修正内容をまとめてコミット
-   - PR ブランチにプッシュ
+- `.ai-agent/tmp/reviews/` 配下から `*-pr-{PR番号}` に一致するディレクトリを探す
+- そのディレクトリ内の `REVIEW-{連番}.md` のうち、最大の連番のファイルを最新レビューとして読み込む
+- レビューファイルの内容をパースし、Critical / Warning / Info の各指摘を一覧化
+
+#### B. GitHub PR レビューコメント
+
+- `gh pr view {pull_number} --json reviewThreads` でレビューコメントのスレッドを取得
+- 未解決のコメントを一覧化
+- 各コメントの `id`（返信用）を記録
+
+### 2. 各指摘事項の確認
+
+- すべての指摘（ローカル + PR）をまとめて提示
+- 各指摘について修正の要否を判断（推奨/不要/要確認）
+- ソース（ローカル / PR）を明示
+- 理由を簡潔に説明
+
+### 3. ユーザーに確認
+
+- 修正する項目をまとめて提示
+- ユーザーの承認を得る
+
+### 4. 修正実行
+
+- 承認された項目のみ修正
+- 各ファイルを編集
+
+### 5. コミット・プッシュ
+
+- 修正内容をまとめてコミット
+- PR ブランチにプッシュ
+
+### 6. レビューコメントへの返信（PR コメントがある場合のみ）
+
+- GitHub PR のレビューコメントに対応結果を返信する
+- `mcp__github__add_reply_to_pull_request_comment` を使い、各コメントに返信:
+  - `owner`: リポジトリオーナー
+  - `repo`: リポジトリ名
+  - `pullNumber`: PR 番号
+  - `commentId`: 返信先コメントの ID
+  - `body`: 返信内容
+- 修正した項目: 修正内容を簡潔に説明（例: 「修正しました。○○に変更しています。」）
+- スキップした項目: スキップの理由を説明（例: 「プロジェクト方針として○○のため、現状維持とします。」）
+- 返信はレビュワーへの感謝と具体的な対応内容を含める
 
 ## 判断基準
 
@@ -58,7 +89,7 @@ PR「$ARGUMENTS」のローカルレビュー結果を確認し、対話的に�
 ## 出力形式
 
 ```
-**1. ファイル名:行番号 - 概要**
+**1. [ローカル/PR] ファイル名:行番号 - 概要**
 > 指摘内容の要約
 
 → **修正推奨/不要/要確認**: 理由
@@ -67,3 +98,9 @@ PR「$ARGUMENTS」のローカルレビュー結果を確認し、対話的に�
 ```
 
 最後に「まとめ: X件修正、Y件スキップでよいですか？」と確認する。
+
+## 返信の例
+
+- 修正した場合: 「ありがとうございます。ご指摘の通り修正しました。○○を△△に変更しています。」
+- スキップした場合: 「ご提案ありがとうございます。検討しましたが、○○の理由から現状の実装を維持します。」
+- 部分的に対応した場合: 「ありがとうございます。○○の部分は修正しました。△△については□□の理由から現状維持としています。」

@@ -15,13 +15,13 @@
 
 ### 2. PR 情報の取得
 
-- `mcp__github__pull_request_read` で PR の基本情報を取得（method: `get`）
+- `gh pr view {PR_NUMBER} --json title,body,baseRefName` で PR の基本情報を取得
 - タイトル、説明、ベースブランチを確認
 
 ### 3. 変更ファイルの取得
 
-- `mcp__github__pull_request_read` で変更ファイル一覧を取得（method: `get_files`）
-- `mcp__github__pull_request_read` で差分を取得（method: `get_diff`）
+- `gh pr view {PR_NUMBER} --json files` で変更ファイル一覧を取得
+- `gh pr diff {PR_NUMBER}` で差分を取得
 
 ### 4. コードレビュー実施
 
@@ -120,7 +120,7 @@ lead への報告メッセージは以下のフォーマットで:
 ## 注意事項
 
 - **Steering ドキュメントを必ず参照**: プロジェクト固有の方針・規約に基づいたレビューを行う
-- ローカルにチェックアウトされていないファイルは `mcp__github__get_file_contents` で取得
+- ローカルにチェックアウトされていないファイルは `gh pr checkout` でチェックアウトするか、Read ツールで読み取る
 - 大きな PR の場合はファイルごとに段階的にレビュー
 - 技術的に正確な指摘を心がける。知識が曖昧な技術・ライブラリ・API については、推測でコメントせず WebSearch で最新情報を確認してからコメントする
 - 主観的な好みではなく、客観的な問題点を指摘
