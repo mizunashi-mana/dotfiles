@@ -959,10 +959,10 @@ in
   "@mizunashi_mana/mcp-html-artifacts-preview-" = nodeEnv.buildNodePackage {
     name = "_at_mizunashi_mana_slash_mcp-html-artifacts-preview";
     packageName = "@mizunashi_mana/mcp-html-artifacts-preview";
-    version = "0.3.0";
+    version = "0.4.0";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@mizunashi_mana/mcp-html-artifacts-preview/-/mcp-html-artifacts-preview-0.3.0.tgz";
-      sha512 = "6JMymeLKGOnf15WkRlrn48iHuG0TCVmrZevIILBPqPKz0EW8VNFl58dVAI3U5ElbVpDWBe0S5p42dyyco4D/NA==";
+      url = "https://registry.npmjs.org/@mizunashi_mana/mcp-html-artifacts-preview/-/mcp-html-artifacts-preview-0.4.0.tgz";
+      sha512 = "/gpVy7zrNQuHREP6JU0RIN530aEY0QBh/HbWB9/m4OrbtythMfoUZ4XGEIvCevYZ/uXDsNuCqrb508JoDsY2NA==";
     };
     dependencies = [
       sources."@cfworker/json-schema-4.1.1"
