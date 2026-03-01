@@ -44,7 +44,7 @@ autodev スキルのレビュー関連テンプレートに「ローカルレビ
 - [x] ローカルレビュー版 `autodev-import-review-suggestions` テンプレート（SKILL.local.md）が作成されている
 - [x] `autodev-init/SKILL.md` の Step 5 にレビュー形式の聞き取りが追加されている
 - [x] `autodev-init/templates/work.md` にローカルレビュー形式のフロー説明が追加されている
-- [x] このリポジトリ自身のスキル（`.claude/skills/`）もローカルレビュー版に更新されている
+- [x] このリポジトリ自身のスキル（`.claude/skills/`）は PR レビュー形式を維持している
 - [x] `devenv shell lint-all` が通る
 
 ## 作業ログ
@@ -52,7 +52,7 @@ autodev スキルのレビュー関連テンプレートに「ローカルレビ
 - テンプレート新規作成: `SKILL.local.md` と `reviewer-spawn-prompt.local.md` を autodev-review-pr と autodev-import-review-suggestions に追加
 - `autodev-init/SKILL.md` の Step 5 にレビュー形式（GitHub / ローカル）の聞き取りを追加し、テンプレートテーブルを更新
 - `templates/work.md` にレビュー形式セクションを追加（GitHub レビュー / ローカルレビュー）
-- このリポジトリの `.claude/skills/` をローカルレビュー版に更新
-- `.ai-agent/steering/work.md` にローカルレビュー形式の記述を追加
+- このリポジトリの `.claude/skills/` は PR レビュー形式を維持（ローカルレビューは使わない）
+- `.ai-agent/steering/work.md` は PR レビュー形式の記述を維持
 - `.gitignore` に `.ai-agent/tmp/` を追加
 - `devenv shell lint-all` 通過確認済み

@@ -28,7 +28,7 @@
 
 ## レビュー形式
 
-ローカルレビューを採用する。GitHub のレビュー機能（コメント・Approve・Request Changes）は使わない。
+GitHub の PR レビュー機能（コメント・Approve・Request Changes）を使用する。
 
-1. `/autodev-review-pr` で reviewer エージェントがローカルの diff をレビューし、`.ai-agent/tmp/reviews/` に結果を保存
-2. `/autodev-import-review-suggestions` でレビューファイルを読み込み、対話的に修正
+1. `/autodev-review-pr` で reviewer エージェントが PR をレビューし、GitHub の Review 機能でコメントを投稿
+2. `/autodev-import-review-suggestions` で PR のレビューコメントを取得し、対話的に修正
