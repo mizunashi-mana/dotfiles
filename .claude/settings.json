@@ -1,14 +1,17 @@
 {
   "permissions": {
     "allow": [
+      "Bash(bash script/node2nix-update.sh)",
+      "Bash(devenv shell lint-all)",
+      "Bash(devenv shell nixfmt:*)",
+      "Bash(devenv shell node2nix-update)",
+      "Bash(nix build:*)",
+      "Bash(nix flake lock:*)",
       "Skill(autodev-create-pr)",
       "Skill(autodev-discussion)",
       "Skill(autodev-start-new-survey)",
       "Skill(autodev-start-new-task)",
-      "Skill(autodev-switch-to-default)",
-      "Bash(devenv shell lint-all)",
-      "Bash(devenv shell nixfmt:*)",
-      "Bash(devenv shell node2nix-update)"
+      "Skill(autodev-switch-to-default)"
     ]
   }
 }
