@@ -43,6 +43,10 @@
       inputs.home-manager.follows = "home-manager";
     };
 
+    claude-code = {
+      url = "github:sadjow/claude-code-nix";
+    };
+
     anthropic-skills = {
       url = "github:anthropics/skills";
       flake = false;
