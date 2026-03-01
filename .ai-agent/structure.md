@@ -90,6 +90,7 @@ dotfiles/
 一部のプログラムモジュールはサブディレクトリを持つ。特に `claude-code/` は Nix 管理のグローバルスキルを含む:
 
 - `claude-code/skills/autodev-init/`: autodev スキル群のテンプレートとブートストラップスキル
+- `claude-code/skills/merge-dependabot-bump-pr/`: dependabot PR のレビュー＆マージスキル
 - `claude-code/skills/review/`: デフォルト review スキルを無効化するダミースキル
 
 ### `nix/home-manager/`
