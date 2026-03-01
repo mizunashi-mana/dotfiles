@@ -107,6 +107,7 @@
                 "Bash(gh run watch:*)"
                 "Bash(gh search:*)"
                 "Bash(git add:*)"
+                "Bash(git apply:*)"
                 "Bash(git check-ignore:*)"
                 "Bash(git commit:*)"
                 "Bash(git diff:*)"
