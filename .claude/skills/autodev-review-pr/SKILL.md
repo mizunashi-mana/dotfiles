@@ -1,6 +1,6 @@
 ---
 description: Review a GitHub pull request using a dedicated reviewer agent in a clean context. Use when you want an unbiased code review without the current conversation's context influencing the review.
-allowed-tools: Read, "Bash(git branch --show-current)", mcp__github__list_pull_requests, Glob, Grep, AskUserQuestion, TeamCreate, TeamDelete, Task, TaskCreate, TaskUpdate, TaskList, TaskGet, SendMessage, WebSearch
+allowed-tools: Read, "Bash(git branch --show-current)", "Bash(gh pr list *)", Glob, Grep, AskUserQuestion, TeamCreate, TeamDelete, Task, TaskCreate, TaskUpdate, TaskList, TaskGet, SendMessage, WebSearch
 ---
 
 # PR レビュー
@@ -14,7 +14,7 @@ PR「$ARGUMENTS」を、クリーンなコンテキストの reviewer エージ�
 - `$ARGUMENTS` が指定されている場合: その PR 番号または URL を使用
 - `$ARGUMENTS` が空の場合:
   1. `git branch --show-current` で現在のブランチ名を取得
-  2. `mcp__github__list_pull_requests` で該当ブランチの PR を検索
+  2. `gh pr list --head <branch-name> --json number,url --limit 1` で該当ブランチの PR を検索
   3. PR が見つかった場合はその PR をレビュー対象とする
   4. PR が見つからない場合はユーザーに PR 番号の指定を求める
 

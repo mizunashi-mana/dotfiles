@@ -1,6 +1,6 @@
 ---
 description: Create a GitHub pull request from the current branch's changes. Use when changes are ready for review and you want to open a PR.
-allowed-tools: Read, Glob, "Bash(git *)", "Bash(gh pr view *)", mcp__github__create_pull_request, mcp__github__update_pull_request
+allowed-tools: Read, Glob, "Bash(git status *)", "Bash(git log *)", "Bash(git diff *)", "Bash(git push *)", "Bash(git branch --show-current)", "Bash(gh pr view *)", mcp__github__create_pull_request, mcp__github__update_pull_request
 ---
 
 # PR 作成
