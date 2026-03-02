@@ -76,6 +76,7 @@
                 "Bash(cat:*)"
                 "Bash(chmod +x:*)"
                 "Bash(claude --version)"
+                "Bash(comm:*)"
                 "Bash(command:*)"
                 "Bash(convert:*)"
                 "Bash(cp:*)"
