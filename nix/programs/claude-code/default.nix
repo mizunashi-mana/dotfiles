@@ -66,6 +66,7 @@
               additionalDirectories = [
                 "/tmp/"
                 "${config.home.homeDirectory}/Library/Caches/ms-playwright/"
+                "${config.home.homeDirectory}/.claude/skills/"
                 "${config.home.homeDirectory}/.claude/teams/"
                 "${config.home.homeDirectory}/.claude/tasks/"
               ];
@@ -305,6 +306,7 @@
                 "mcp__claude_ai_Sentry__get_issue_details"
                 "mcp__claude_ai_Sentry__search_issue_events"
                 "mcp__claude_ai_Slack__slack_read_thread"
+                "mcp__claude_ai_Slack__slack_search_public_and_private"
                 "mcp__eslint__lint-files"
                 "mcp__github__get_commit"
                 "mcp__github__get_file_contents"
