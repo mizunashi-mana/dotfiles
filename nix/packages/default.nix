@@ -16,7 +16,7 @@ let
 
   node2nix-pkgs = import ../node2nix {
     inherit pkgs;
-    inherit (pkgs) nodejs;
+    inherit (pkgs-stable) nodejs;
   };
 
   vscode-extensions =
