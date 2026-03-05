@@ -21,13 +21,13 @@ let
         sha512 = "gAmrUZSGtKc3AiBL71iNWxDsyUC5uMaKKGdvzYsBoTW/xi42JQHl7eKV2OYzCUqvc+D2RCcf7EXY2iCyFIk6og==";
       };
     };
-    "@hono/node-server-1.19.9" = {
+    "@hono/node-server-1.19.11" = {
       name = "_at_hono_slash_node-server";
       packageName = "@hono/node-server";
-      version = "1.19.9";
+      version = "1.19.11";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@hono/node-server/-/node-server-1.19.9.tgz";
-        sha512 = "vHL6w3ecZsky+8P5MD+eFfaGTyCeOHUIFYMGpQGbrBTSmNNoxv0if69rEZ5giu36weC5saFuznL411gRX7bJDw==";
+        url = "https://registry.npmjs.org/@hono/node-server/-/node-server-1.19.11.tgz";
+        sha512 = "dr8/3zEaB+p0D2n/IUrlPF1HZm586qgJNXK1a9fhg/PzdtkK7Ksd5l312tJX2yBuALqDYBlG20QEbayqPyxn+g==";
       };
     };
     "@modelcontextprotocol/sdk-1.27.1" = {
@@ -417,13 +417,13 @@ let
         sha512 = "0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==";
       };
     };
-    "hono-4.12.3" = {
+    "hono-4.12.5" = {
       name = "hono";
       packageName = "hono";
-      version = "4.12.3";
+      version = "4.12.5";
       src = fetchurl {
-        url = "https://registry.npmjs.org/hono/-/hono-4.12.3.tgz";
-        sha512 = "SFsVSjp8sj5UumXOOFlkZOG6XS9SJDKw0TbwFeV+AJ8xlST8kxK5Z/5EYa111UY8732lK2S/xB653ceuaoGwpg==";
+        url = "https://registry.npmjs.org/hono/-/hono-4.12.5.tgz";
+        sha512 = "3qq+FUBtlTHhtYxbxheZgY8NIFnkkC/MR8u5TTsr7YZ3wixryQ3cCwn3iZbg8p8B88iDBBAYSfZDS75t8MN7Vg==";
       };
     };
     "http-errors-2.0.1" = {
@@ -941,14 +941,14 @@ in
   "@mizunashi_mana/mcp-html-artifacts-preview-" = nodeEnv.buildNodePackage {
     name = "_at_mizunashi_mana_slash_mcp-html-artifacts-preview";
     packageName = "@mizunashi_mana/mcp-html-artifacts-preview";
-    version = "0.5.0";
+    version = "1.0.0";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@mizunashi_mana/mcp-html-artifacts-preview/-/mcp-html-artifacts-preview-0.5.0.tgz";
-      sha512 = "/5meVYlnujJ8wNa+KWKpsJ7ks0H9y7KKgddZRI55U62Sd+T6XOeNuIgj74ha4JJaA9xh0ER2rAiZ7cxSFSlZNw==";
+      url = "https://registry.npmjs.org/@mizunashi_mana/mcp-html-artifacts-preview/-/mcp-html-artifacts-preview-1.0.0.tgz";
+      sha512 = "XNOTaEeXrcrzdr49bcEHeYDRoB+SAov/G7vECZCNJLnen0DPyTDYINV09tWEZBkDVw1J4alRLzPU5X57gEbgAQ==";
     };
     dependencies = [
       sources."@cfworker/json-schema-4.1.1"
-      sources."@hono/node-server-1.19.9"
+      sources."@hono/node-server-1.19.11"
       sources."@modelcontextprotocol/sdk-1.27.1"
       sources."accepts-2.0.0"
       sources."ajv-8.18.0"
@@ -991,7 +991,7 @@ in
       sources."gopd-1.2.0"
       sources."has-symbols-1.1.0"
       sources."hasown-2.0.2"
-      sources."hono-4.12.3"
+      sources."hono-4.12.5"
       sources."http-errors-2.0.1"
       sources."iconv-lite-0.7.2"
       sources."inherits-2.0.4"
@@ -1056,10 +1056,10 @@ in
   "@openai/codex-" = nodeEnv.buildNodePackage {
     name = "_at_openai_slash_codex";
     packageName = "@openai/codex";
-    version = "0.106.0";
+    version = "0.110.0";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@openai/codex/-/codex-0.106.0.tgz";
-      sha512 = "GgzVs+mOaJfAFalI+QqEXcuJuBODhIg217g+B5jg6HMujux3Q4yeSki57x8MD/DJ43hRq9X1DTyZL/345Bo0Ag==";
+      url = "https://registry.npmjs.org/@openai/codex/-/codex-0.110.0.tgz";
+      sha512 = "BhhiFkLAWwFZ4vo2WK7rlV5PoicndbIjONamPsHyp6xz5bvLQC5l2IgB4FgGpkuRywLxc5MnNlrziyhABNblcg==";
     };
     buildInputs = globalBuildInputs;
     meta = {
