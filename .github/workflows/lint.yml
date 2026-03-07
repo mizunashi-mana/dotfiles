@@ -21,7 +21,7 @@ jobs:
           name: devenv
       - name: Install by devenv
         run: |
-          nix profile install nixpkgs#devenv
+          nix profile add nixpkgs#devenv
           devenv shell echo
       - name: Run lint
         run: devenv shell prek run --all-files
