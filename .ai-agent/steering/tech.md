@@ -87,7 +87,7 @@ devenv shell
 ## Git Hooks (pre-commit)
 
 - `actionlint`: GitHub Actions ワークフローの lint
-- `nixfmt-rfc-style`: Nix コードのフォーマット
+- `nixfmt`: Nix コードのフォーマット
 - `prettier`: 汎用フォーマッタ
 - `pretty-format-json`: JSON フォーマット（autofix）
 - `shellcheck`: シェルスクリプトの静的解析
