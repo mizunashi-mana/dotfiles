@@ -48,6 +48,7 @@ in
             (import "${nix-root-dir}/programs/figma" { inherit packages; })
             (import "${nix-root-dir}/programs/linear" { inherit packages; })
             (import "${nix-root-dir}/programs/docker-desktop" { inherit packages; })
+            (import "${nix-root-dir}/programs/zoom" { inherit packages; })
           ];
         };
       in

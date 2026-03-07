@@ -9,6 +9,7 @@ let
 
   programs = [
     (import ./default-common.nix { inherit system inputs packages; })
+    (import ./mas { inherit packages; })
     (import ./z3 { inherit packages; })
     (import ./gcc { inherit packages; })
     (import ./lnav { inherit packages; })
@@ -32,6 +33,7 @@ let
     (import ./vagrant { inherit packages; })
     (import ./aerospace { inherit packages; })
     (import ./vscode { inherit packages; })
+    (import ./google-antigravity { inherit packages; })
     (import ./google-chrome { inherit packages; })
     (import ./aquaskk { inherit packages; })
     (import ./ipe { inherit packages; })

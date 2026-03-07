@@ -1,0 +1,12 @@
+{
+  ...
+}:
+{
+  nixDarwinModules = [
+    {
+      homebrew.brews = [
+        "mas"
+      ];
+    }
+  ];
+}

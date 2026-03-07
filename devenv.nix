@@ -7,9 +7,15 @@
 }:
 {
   # https://devenv.sh/packages/
-  packages = [
-    pkgs.nodePackages.node2nix
-  ];
+  packages =
+    let
+      node2nix = pkgs.nodePackages.node2nix.overrideAttrs (old: {
+        nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [ pkgs.nodejs ];
+      });
+    in
+    [
+      node2nix
+    ];
 
   # https://devenv.sh/scripts/
   scripts.lint-all = {
@@ -28,7 +34,7 @@
 
   # https://devenv.sh/git-hooks/
   git-hooks.hooks.actionlint.enable = true;
-  git-hooks.hooks.nixfmt-rfc-style.enable = true;
+  git-hooks.hooks.nixfmt.enable = true;
   git-hooks.hooks.prettier.enable = true;
   git-hooks.hooks.pretty-format-json = {
     enable = true;
