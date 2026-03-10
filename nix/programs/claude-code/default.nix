@@ -115,6 +115,7 @@
                 "Bash(git diff:*)"
                 "Bash(git fetch:*)"
                 "Bash(git ls-files:*)"
+                "Bash(git ls-remote:*)"
                 "Bash(git ls-tree:*)"
                 "Bash(git log:*)"
                 "Bash(git merge-base:*)"
