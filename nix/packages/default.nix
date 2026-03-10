@@ -34,6 +34,7 @@ in
   node-packages = node2nix-pkgs // {
     "@openai/codex" = node2nix-pkgs."@openai/codex-";
     "@playwright/cli" = node2nix-pkgs."@playwright/cli-";
+    "@playwright/mcp" = node2nix-pkgs."@playwright/mcp-";
     "@mizunashi_mana/cc-voice-reporter" = node2nix-pkgs."@mizunashi_mana/cc-voice-reporter-";
     "@mizunashi_mana/mcp-html-artifacts-preview" =
       node2nix-pkgs."@mizunashi_mana/mcp-html-artifacts-preview-";
