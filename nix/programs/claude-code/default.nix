@@ -10,12 +10,7 @@
         programs.claude-code = {
           enable = true;
           package = packages.claude-code;
-          mcpServers = {
-            html-artifacts-preview = {
-              type = "stdio";
-              command = "mcp-html-artifacts-preview";
-            };
-          };
+          skillsDir = ./skills;
           settings = {
             env = {
               CLAUDE_CODE_DISABLE_TERMINAL_TITLE = "1";
@@ -79,6 +74,8 @@
                 "Bash(cat:*)"
                 "Bash(chmod +x:*)"
                 "Bash(claude --version)"
+                "Bash(claude mcp get:*)"
+                "Bash(claude mcp list:*)"
                 "Bash(comm:*)"
                 "Bash(command:*)"
                 "Bash(convert:*)"
@@ -394,10 +391,6 @@
           ".claude/statusline.sh" = {
             source = ./statusline.sh;
             executable = true;
-          };
-          ".claude/skills" = {
-            source = ./skills;
-            recursive = true;
           };
         };
 

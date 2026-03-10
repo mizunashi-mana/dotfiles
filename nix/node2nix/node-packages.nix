@@ -300,13 +300,13 @@ let
         sha512 = "hIS4idWWai69NezIdRt2xFVofaF4j+6INOpJlVOLDO8zXGpUVEVzIYk12UUi2JzjEzWL3IOAxcTubgz9Po0yXw==";
       };
     };
-    "express-rate-limit-8.2.1" = {
+    "express-rate-limit-8.3.1" = {
       name = "express-rate-limit";
       packageName = "express-rate-limit";
-      version = "8.2.1";
+      version = "8.3.1";
       src = fetchurl {
-        url = "https://registry.npmjs.org/express-rate-limit/-/express-rate-limit-8.2.1.tgz";
-        sha512 = "PCZEIEIxqwhzw4KF0n7QF4QqruVTcF73O5kFKUnGOyjbCCgizBBiFaYpd/fnBLUMPw/BWw9OsiN7GgrNYr7j6g==";
+        url = "https://registry.npmjs.org/express-rate-limit/-/express-rate-limit-8.3.1.tgz";
+        sha512 = "D1dKN+cmyPWuvB+G2SREQDzPY1agpBIcTa9sJxOPMCNeH3gwzhqJRDWCXW3gg0y//+LQ/8j52JbMROWyrKdMdw==";
       };
     };
     "fast-deep-equal-3.1.3" = {
@@ -453,13 +453,13 @@ let
         sha512 = "k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==";
       };
     };
-    "ip-address-10.0.1" = {
+    "ip-address-10.1.0" = {
       name = "ip-address";
       packageName = "ip-address";
-      version = "10.0.1";
+      version = "10.1.0";
       src = fetchurl {
-        url = "https://registry.npmjs.org/ip-address/-/ip-address-10.0.1.tgz";
-        sha512 = "NWv9YLW4PoW2B7xtzaS3NCot75m6nK7Icdv0o3lfMceJVRfSoQwqD4wEH5rLwoKJwUiZ/rfpiVBhnaF0FK4HoA==";
+        url = "https://registry.npmjs.org/ip-address/-/ip-address-10.1.0.tgz";
+        sha512 = "XXADHxXmvT9+CRxhXg56LJovE+bmWnEWB78LB83VZTprKTmaC5QfruXocxzTZ2Kl0DNwKuBdlIhjL8LeY8Sf8Q==";
       };
     };
     "ipaddr.js-1.9.1" = {
@@ -489,13 +489,13 @@ let
         sha512 = "RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==";
       };
     };
-    "jose-6.1.3" = {
+    "jose-6.2.1" = {
       name = "jose";
       packageName = "jose";
-      version = "6.1.3";
+      version = "6.2.1";
       src = fetchurl {
-        url = "https://registry.npmjs.org/jose/-/jose-6.1.3.tgz";
-        sha512 = "0TpaTfihd4QMNwrz/ob2Bp7X04yuxJkjRGi4aKmOqwhov54i6u79oCv7T+C7lo70MKH6BesI3vscD1yb/yzKXQ==";
+        url = "https://registry.npmjs.org/jose/-/jose-6.2.1.tgz";
+        sha512 = "jUaKr1yrbfaImV7R2TN/b3IcZzsw38/chqMpo2XJ7i2F8AfM/lA4G1goC3JVEwg0H7UldTmSt3P68nt31W7/mw==";
       };
     };
     "json-schema-traverse-1.0.0" = {
@@ -978,7 +978,7 @@ in
       sources."eventsource-3.0.7"
       sources."eventsource-parser-3.0.6"
       sources."express-5.2.1"
-      sources."express-rate-limit-8.2.1"
+      sources."express-rate-limit-8.3.1"
       sources."fast-deep-equal-3.1.3"
       sources."fast-uri-3.1.0"
       sources."finalhandler-2.1.1"
@@ -995,11 +995,11 @@ in
       sources."http-errors-2.0.1"
       sources."iconv-lite-0.7.2"
       sources."inherits-2.0.4"
-      sources."ip-address-10.0.1"
+      sources."ip-address-10.1.0"
       sources."ipaddr.js-1.9.1"
       sources."is-promise-4.0.0"
       sources."isexe-2.0.0"
-      sources."jose-6.1.3"
+      sources."jose-6.2.1"
       sources."json-schema-traverse-1.0.0"
       sources."json-schema-typed-8.0.2"
       sources."math-intrinsics-1.1.0"
@@ -1056,10 +1056,10 @@ in
   "@openai/codex-" = nodeEnv.buildNodePackage {
     name = "_at_openai_slash_codex";
     packageName = "@openai/codex";
-    version = "0.110.0";
+    version = "0.112.0";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@openai/codex/-/codex-0.110.0.tgz";
-      sha512 = "BhhiFkLAWwFZ4vo2WK7rlV5PoicndbIjONamPsHyp6xz5bvLQC5l2IgB4FgGpkuRywLxc5MnNlrziyhABNblcg==";
+      url = "https://registry.npmjs.org/@openai/codex/-/codex-0.112.0.tgz";
+      sha512 = "zYSfPydyI4c8oyb/A+p4foEkMcmCH3g5HzhFC2A4ReLEzMUddtGalUi6gbjHyTZh5R5FgvUeN72krDZwn97wPw==";
     };
     buildInputs = globalBuildInputs;
     meta = {
@@ -1087,6 +1087,28 @@ in
     buildInputs = globalBuildInputs;
     meta = {
       description = "Playwright CLI";
+      homepage = "https://playwright.dev";
+      license = "Apache-2.0";
+    };
+    production = true;
+    bypassCache = true;
+    reconstructLock = true;
+  };
+  "@playwright/mcp-" = nodeEnv.buildNodePackage {
+    name = "_at_playwright_slash_mcp";
+    packageName = "@playwright/mcp";
+    version = "0.0.68";
+    src = fetchurl {
+      url = "https://registry.npmjs.org/@playwright/mcp/-/mcp-0.0.68.tgz";
+      sha512 = "oP9I9ghXKuQEBo4xaC7HgsS2gRTxyMzlBm3UEhYj4VqqrqbPQUX2shATPaNA/am9joBzq9v0OXISzeIgP+zmHA==";
+    };
+    dependencies = [
+      sources."playwright-1.59.0-alpha-1771104257000"
+      sources."playwright-core-1.59.0-alpha-1771104257000"
+    ];
+    buildInputs = globalBuildInputs;
+    meta = {
+      description = "Playwright Tools for MCP";
       homepage = "https://playwright.dev";
       license = "Apache-2.0";
     };
