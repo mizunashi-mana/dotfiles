@@ -60,10 +60,10 @@
             permissions = {
               additionalDirectories = [
                 "/tmp/"
-                "${config.home.homeDirectory}/Library/Caches/ms-playwright/"
-                "${config.home.homeDirectory}/.claude/skills/"
-                "${config.home.homeDirectory}/.claude/teams/"
-                "${config.home.homeDirectory}/.claude/tasks/"
+                "${config.home.homeDirectory}/Library/Caches/ms-playwright"
+                "${config.home.homeDirectory}/.claude/skills"
+                "${config.home.homeDirectory}/.claude/teams"
+                "${config.home.homeDirectory}/.claude/tasks"
               ];
               allow = [
                 "Bash(actionlint:*)"
