@@ -68,6 +68,7 @@
               ];
               allow = [
                 "Bash(actionlint:*)"
+                "Bash(aws cloudwatch list-metrics:*)"
                 "Bash(aws configure get:*)"
                 "Bash(aws sts get-caller-identity:*)"
                 "Bash(basename:*)"
