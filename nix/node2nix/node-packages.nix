@@ -417,13 +417,13 @@ let
         sha512 = "0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==";
       };
     };
-    "hono-4.12.5" = {
+    "hono-4.12.7" = {
       name = "hono";
       packageName = "hono";
-      version = "4.12.5";
+      version = "4.12.7";
       src = fetchurl {
-        url = "https://registry.npmjs.org/hono/-/hono-4.12.5.tgz";
-        sha512 = "3qq+FUBtlTHhtYxbxheZgY8NIFnkkC/MR8u5TTsr7YZ3wixryQ3cCwn3iZbg8p8B88iDBBAYSfZDS75t8MN7Vg==";
+        url = "https://registry.npmjs.org/hono/-/hono-4.12.7.tgz";
+        sha512 = "jq9l1DM0zVIvsm3lv9Nw9nlJnMNPOcAtsbsgiUhWcFzPE99Gvo6yRTlszSLLYacMeQ6quHD6hMfId8crVHvexw==";
       };
     };
     "http-errors-2.0.1" = {
@@ -991,7 +991,7 @@ in
       sources."gopd-1.2.0"
       sources."has-symbols-1.1.0"
       sources."hasown-2.0.2"
-      sources."hono-4.12.5"
+      sources."hono-4.12.7"
       sources."http-errors-2.0.1"
       sources."iconv-lite-0.7.2"
       sources."inherits-2.0.4"
@@ -1056,10 +1056,10 @@ in
   "@openai/codex-" = nodeEnv.buildNodePackage {
     name = "_at_openai_slash_codex";
     packageName = "@openai/codex";
-    version = "0.112.0";
+    version = "0.114.0";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@openai/codex/-/codex-0.112.0.tgz";
-      sha512 = "zYSfPydyI4c8oyb/A+p4foEkMcmCH3g5HzhFC2A4ReLEzMUddtGalUi6gbjHyTZh5R5FgvUeN72krDZwn97wPw==";
+      url = "https://registry.npmjs.org/@openai/codex/-/codex-0.114.0.tgz";
+      sha512 = "HMo8LRR6CtfKkaa28xvFK6eOarmBFTDfsrS9GJtEoaspGGemFok494CpafDspiTZaHZZGHfSUe5SWTUxYq7OaA==";
     };
     buildInputs = globalBuildInputs;
     meta = {
