@@ -6,7 +6,7 @@
   homeManagerImports = [
     {
       home.packages = [
-        packages.pkgs.devenv
+        packages.pkgs-stable.devenv
       ];
     }
   ];
