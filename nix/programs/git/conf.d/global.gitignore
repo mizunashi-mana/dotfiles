@@ -9,6 +9,7 @@
 
 # claude-code
 .claude/*.local.json
+CLAUDE.local.md
 
 # direnv
 .envrc
