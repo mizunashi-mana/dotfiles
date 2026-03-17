@@ -267,6 +267,7 @@
                 "Bash(yarn jest:*)"
                 "Bash(yarn prisma generate:*)"
                 "Bash(yarn tsc:*)"
+                "Bash(yarn vitest run:*)"
                 "Bash(yarn --version)"
                 "WebFetch(domain:api.anthropic.com)"
                 "WebFetch(domain:api.github.com)"
