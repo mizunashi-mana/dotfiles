@@ -344,6 +344,7 @@
                 "mcp__claude_ai_Sentry__search_events"
                 "mcp__claude_ai_Sentry__search_issue_events"
                 "mcp__claude_ai_Sentry__search_issues"
+                "mcp__claude_ai_Slack__slack_read_channel"
                 "mcp__claude_ai_Slack__slack_read_thread"
                 "mcp__claude_ai_Slack__slack_search_public_and_private"
                 "mcp__eslint__lint-files"
