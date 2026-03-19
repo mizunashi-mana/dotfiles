@@ -59,7 +59,8 @@
             };
             permissions = {
               additionalDirectories = [
-                "/tmp/"
+                "/tmp"
+                "${config.home.homeDirectory}/Downloads"
                 "${config.home.homeDirectory}/Library/Caches/ms-playwright"
                 "${config.home.homeDirectory}/.claude/projects"
                 "${config.home.homeDirectory}/.claude/skills"
