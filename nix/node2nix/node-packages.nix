@@ -417,13 +417,13 @@ let
         sha512 = "0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==";
       };
     };
-    "hono-4.12.7" = {
+    "hono-4.12.8" = {
       name = "hono";
       packageName = "hono";
-      version = "4.12.7";
+      version = "4.12.8";
       src = fetchurl {
-        url = "https://registry.npmjs.org/hono/-/hono-4.12.7.tgz";
-        sha512 = "jq9l1DM0zVIvsm3lv9Nw9nlJnMNPOcAtsbsgiUhWcFzPE99Gvo6yRTlszSLLYacMeQ6quHD6hMfId8crVHvexw==";
+        url = "https://registry.npmjs.org/hono/-/hono-4.12.8.tgz";
+        sha512 = "VJCEvtrezO1IAR+kqEYnxUOoStaQPGrCmX3j4wDTNOcD1uRPFpGlwQUIW8niPuvHXaTUxeOUl5MMDGrl+tmO9A==";
       };
     };
     "http-errors-2.0.1" = {
@@ -489,13 +489,13 @@ let
         sha512 = "RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==";
       };
     };
-    "jose-6.2.1" = {
+    "jose-6.2.2" = {
       name = "jose";
       packageName = "jose";
-      version = "6.2.1";
+      version = "6.2.2";
       src = fetchurl {
-        url = "https://registry.npmjs.org/jose/-/jose-6.2.1.tgz";
-        sha512 = "jUaKr1yrbfaImV7R2TN/b3IcZzsw38/chqMpo2XJ7i2F8AfM/lA4G1goC3JVEwg0H7UldTmSt3P68nt31W7/mw==";
+        url = "https://registry.npmjs.org/jose/-/jose-6.2.2.tgz";
+        sha512 = "d7kPDd34KO/YnzaDOlikGpOurfF0ByC2sEV4cANCtdqLlTfBlw2p14O/5d/zv40gJPbIQxfES3nSx1/oYNyuZQ==";
       };
     };
     "json-schema-traverse-1.0.0" = {
@@ -991,7 +991,7 @@ in
       sources."gopd-1.2.0"
       sources."has-symbols-1.1.0"
       sources."hasown-2.0.2"
-      sources."hono-4.12.7"
+      sources."hono-4.12.8"
       sources."http-errors-2.0.1"
       sources."iconv-lite-0.7.2"
       sources."inherits-2.0.4"
@@ -999,7 +999,7 @@ in
       sources."ipaddr.js-1.9.1"
       sources."is-promise-4.0.0"
       sources."isexe-2.0.0"
-      sources."jose-6.2.1"
+      sources."jose-6.2.2"
       sources."json-schema-traverse-1.0.0"
       sources."json-schema-typed-8.0.2"
       sources."math-intrinsics-1.1.0"
@@ -1056,10 +1056,10 @@ in
   "@openai/codex-" = nodeEnv.buildNodePackage {
     name = "_at_openai_slash_codex";
     packageName = "@openai/codex";
-    version = "0.114.0";
+    version = "0.116.0";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@openai/codex/-/codex-0.114.0.tgz";
-      sha512 = "HMo8LRR6CtfKkaa28xvFK6eOarmBFTDfsrS9GJtEoaspGGemFok494CpafDspiTZaHZZGHfSUe5SWTUxYq7OaA==";
+      url = "https://registry.npmjs.org/@openai/codex/-/codex-0.116.0.tgz";
+      sha512 = "K6q9P2ZmpnzGmpS6Ybjvsdtvu8AbJx3f/Z4KmjH1u85StSS9TWMSQB8z0PPObKMejbtiIkHwhGyEIHi4iBYjig==";
     };
     buildInputs = globalBuildInputs;
     meta = {
