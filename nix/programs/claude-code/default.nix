@@ -292,6 +292,7 @@
                 "WebFetch(domain:moneyforward-dev.jp)"
                 "WebFetch(domain:mynixos.com)"
                 "WebFetch(domain:note.com)"
+                "WebFetch(domain:nyosegawa.com)"
                 "WebFetch(domain:ollama.com)"
                 "WebFetch(domain:openai.com)"
                 "WebFetch(domain:pypi.org)"
