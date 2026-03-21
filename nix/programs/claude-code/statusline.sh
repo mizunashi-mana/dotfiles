@@ -1,7 +1,7 @@
 #!/bin/bash
 input=$(cat)
 
-dir=$(echo "$input" | jq -r '.workspace.current_dir')
+current_dir=$(echo "$input" | jq -r '.workspace.current_dir')
 model=$(echo "$input" | jq -r '.model.display_name')
 used_percentage=$(echo "$input" | jq -r '.context_window.used_percentage // 0' | cut -d. -f1)
 rate_5h=$(echo "$input" | jq -r '.rate_limits.five_hour.used_percentage // 0' | cut -d. -f1)
@@ -14,22 +14,52 @@ CYAN='\033[36m'
 MAGENTA='\033[35m'
 RESET='\033[0m'
 
-branch=$(git -C "$dir" rev-parse --abbrev-ref HEAD 2>/dev/null)
+display_dir="${current_dir/#$HOME/~}"
 
-display_dir="${dir/#$HOME/~}"
-parts="$display_dir"
+# Branch with truncation
+branch=$(git -C "$current_dir" rev-parse --abbrev-ref HEAD 2>/dev/null)
+branch_part=""
 if [ -n "$branch" ]; then
-	staged=$(git -C "$dir" diff --cached --numstat 2>/dev/null | wc -l | tr -d ' ')
-	modified=$(git -C "$dir" diff --numstat 2>/dev/null | wc -l | tr -d ' ')
+	staged=$(git -C "$current_dir" diff --cached --numstat 2>/dev/null | wc -l | tr -d ' ')
+	modified=$(git -C "$current_dir" diff --numstat 2>/dev/null | wc -l | tr -d ' ')
 
 	if [ "$staged" -gt 0 ]; then
-		parts="$parts|${GREEN}${branch}${RESET}"
+		branch_part="${GREEN}${branch}${RESET}"
 	elif [ "$modified" -gt 0 ]; then
-		parts="$parts|${YELLOW}${branch}${RESET}"
+		branch_part="${YELLOW}${branch}${RESET}"
 	else
-		parts="$parts|${branch}"
+		branch_part="${branch}"
 	fi
 fi
+
+# Context usage
+if [ "$used_percentage" -ge 70 ]; then
+	ctx_part="${RED}ctx:${used_percentage}%${RESET}"
+elif [ "$used_percentage" -ge 45 ]; then
+	ctx_part="${YELLOW}ctx:${used_percentage}%${RESET}"
+else
+	ctx_part="${GREEN}ctx:${used_percentage}%${RESET}"
+fi
+
+# Rate limits
+if [ "$rate_5h" -ge 80 ]; then
+	rate5h_part="${RED}5h:${rate_5h}%${RESET}"
+elif [ "$rate_5h" -ge 50 ]; then
+	rate5h_part="${YELLOW}5h:${rate_5h}%${RESET}"
+else
+	rate5h_part="${GREEN}5h:${rate_5h}%${RESET}"
+fi
+
+if [ "$rate_7d" -ge 80 ]; then
+	rate7d_part="${RED}7d:${rate_7d}%${RESET}"
+elif [ "$rate_7d" -ge 50 ]; then
+	rate7d_part="${YELLOW}7d:${rate_7d}%${RESET}"
+else
+	rate7d_part="${GREEN}7d:${rate_7d}%${RESET}"
+fi
+
+# Model (last)
+model_part=""
 if [ -n "$model" ] && [ "$model" != "null" ]; then
 	model_lower=$(echo "$model" | tr '[:upper:]' '[:lower:]')
 	case "$model_lower" in
@@ -38,31 +68,25 @@ if [ -n "$model" ] && [ "$model" != "null" ]; then
 	*haiku*) model_color="$CYAN" ;;
 	*) model_color="$GREEN" ;;
 	esac
-	parts="$parts|${model_color}${model}${RESET}"
+	model_part="${model_color}${model}${RESET}"
 fi
 
-if [ "$used_percentage" -ge 70 ]; then
-	parts="$parts|${RED}ctx:${used_percentage}%${RESET}"
-elif [ "$used_percentage" -ge 45 ]; then
-	parts="$parts|${YELLOW}ctx:${used_percentage}%${RESET}"
-else
-	parts="$parts|${GREEN}ctx:${used_percentage}%${RESET}"
+# Line 1: dir|branch
+line1="$display_dir"
+if [ -n "$branch_part" ]; then
+	line1="$line1|$branch_part"
 fi
 
-if [ "$rate_5h" -ge 80 ]; then
-	parts="$parts|${RED}5h:${rate_5h}%${RESET}"
-elif [ "$rate_5h" -ge 50 ]; then
-	parts="$parts|${YELLOW}5h:${rate_5h}%${RESET}"
-else
-	parts="$parts|${GREEN}5h:${rate_5h}%${RESET}"
-fi
+# Line 2: ctx|5h|7d|model|style
+line2=""
+for p in "$ctx_part" "$rate5h_part" "$rate7d_part" "$model_part"; do
+	if [ -n "$p" ]; then
+		if [ -n "$line2" ]; then
+			line2="$line2|$p"
+		else
+			line2="$p"
+		fi
+	fi
+done
 
-if [ "$rate_7d" -ge 80 ]; then
-	parts="$parts|${RED}7d:${rate_7d}%${RESET}"
-elif [ "$rate_7d" -ge 50 ]; then
-	parts="$parts|${YELLOW}7d:${rate_7d}%${RESET}"
-else
-	parts="$parts|${GREEN}7d:${rate_7d}%${RESET}"
-fi
-
-printf '%b' "$parts"
+printf '%b\n%b' "$line1" "$line2"
