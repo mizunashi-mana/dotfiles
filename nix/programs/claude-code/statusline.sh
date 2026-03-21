@@ -5,6 +5,7 @@ current_dir=$(echo "$input" | jq -r '.workspace.current_dir')
 model=$(echo "$input" | jq -r '.model.display_name')
 used_percentage=$(echo "$input" | jq -r '.context_window.used_percentage // 0' | cut -d. -f1)
 rate_5h=$(echo "$input" | jq -r '.rate_limits.five_hour.used_percentage // 0' | cut -d. -f1)
+rate_5h_resets=$(echo "$input" | jq -r '.rate_limits.five_hour.resets_at // 0' | cut -d. -f1)
 rate_7d=$(echo "$input" | jq -r '.rate_limits.seven_day.used_percentage // 0' | cut -d. -f1)
 
 GREEN='\033[32m'
@@ -42,12 +43,31 @@ else
 fi
 
 # Rate limits
+rate5h_remaining=""
+if [ "$rate_5h_resets" -gt 0 ]; then
+	now=$(date +%s)
+	diff_sec=$((rate_5h_resets - now))
+	if [ "$diff_sec" -gt 0 ]; then
+		diff_min=$(((diff_sec + 59) / 60))
+		if [ "$diff_min" -ge 60 ]; then
+			rate5h_remaining="$((diff_min / 60))h$((diff_min % 60))m"
+		else
+			rate5h_remaining="${diff_min}m"
+		fi
+	fi
+fi
+
+rate5h_label="5h:${rate_5h}%"
+if [ -n "$rate5h_remaining" ]; then
+	rate5h_label="5h:${rate_5h}%(${rate5h_remaining})"
+fi
+
 if [ "$rate_5h" -ge 80 ]; then
-	rate5h_part="${RED}5h:${rate_5h}%${RESET}"
+	rate5h_part="${RED}${rate5h_label}${RESET}"
 elif [ "$rate_5h" -ge 50 ]; then
-	rate5h_part="${YELLOW}5h:${rate_5h}%${RESET}"
+	rate5h_part="${YELLOW}${rate5h_label}${RESET}"
 else
-	rate5h_part="${GREEN}5h:${rate_5h}%${RESET}"
+	rate5h_part="${GREEN}${rate5h_label}${RESET}"
 fi
 
 if [ "$rate_7d" -ge 80 ]; then
