@@ -13,7 +13,12 @@
 ### ブランチの種類
 
 - **デフォルトブランチ**（`main` / `master`）: 常にデプロイ可能な状態を維持する。直接コミットしない
-- **フィーチャーブランチ**: タスクごとにデフォルトブランチから作成する。命名は内容が分かる kebab-case（例: `add-user-auth`, `fix-login-error`）
+- **作業ブランチ**: タスクごとにデフォルトブランチから作成する。命名規則:
+  - 形式: `<type>/<kebab-case-description>`
+  - 小文字の英数字とハイフンを使用
+  - type の種類:
+    - `feature/` — 新機能・改善・バグ修正（例: `feature/add-user-auth`）
+    - `support/` — メンテナンス・ドキュメント・依存関係更新など（例: `support/update-dependencies`）
 
 ### フロー
 
