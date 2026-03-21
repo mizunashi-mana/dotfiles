@@ -7,6 +7,7 @@ used_percentage=$(echo "$input" | jq -r '.context_window.used_percentage // 0' |
 rate_5h=$(echo "$input" | jq -r '.rate_limits.five_hour.used_percentage // 0' | cut -d. -f1)
 rate_5h_resets=$(echo "$input" | jq -r '.rate_limits.five_hour.resets_at // 0' | cut -d. -f1)
 rate_7d=$(echo "$input" | jq -r '.rate_limits.seven_day.used_percentage // 0' | cut -d. -f1)
+rate_7d_resets=$(echo "$input" | jq -r '.rate_limits.seven_day.resets_at // 0' | cut -d. -f1)
 
 GREEN='\033[32m'
 YELLOW='\033[33m'
@@ -70,12 +71,27 @@ else
 	rate5h_part="${GREEN}${rate5h_label}${RESET}"
 fi
 
+rate7d_remaining=""
+if [ "$rate_7d_resets" -gt 0 ]; then
+	now="${now:-$(date +%s)}"
+	diff_sec=$((rate_7d_resets - now))
+	if [ "$diff_sec" -gt 0 ]; then
+		diff_days=$(((diff_sec + 86399) / 86400))
+		rate7d_remaining="${diff_days}d"
+	fi
+fi
+
+rate7d_label="7d:${rate_7d}%"
+if [ -n "$rate7d_remaining" ]; then
+	rate7d_label="7d:${rate_7d}%(${rate7d_remaining})"
+fi
+
 if [ "$rate_7d" -ge 80 ]; then
-	rate7d_part="${RED}7d:${rate_7d}%${RESET}"
+	rate7d_part="${RED}${rate7d_label}${RESET}"
 elif [ "$rate_7d" -ge 50 ]; then
-	rate7d_part="${YELLOW}7d:${rate_7d}%${RESET}"
+	rate7d_part="${YELLOW}${rate7d_label}${RESET}"
 else
-	rate7d_part="${GREEN}7d:${rate_7d}%${RESET}"
+	rate7d_part="${GREEN}${rate7d_label}${RESET}"
 fi
 
 # Model (last)
