@@ -156,6 +156,7 @@
                 "Bash(nix log:*)"
                 "Bash(nkf:*)"
                 "Bash(node --version)"
+                "Bash(npm audit)"
                 "Bash(npm audit fix)"
                 "Bash(npm ci)"
                 "Bash(npm config get:*)"
