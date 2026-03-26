@@ -1,7 +1,7 @@
 { packages, default-editor, ... }:
 {
   home = {
-    stateVersion = "25.05";
+    stateVersion = "26.05";
 
     sessionPath = [
       "$HOME/.nix-profile/bin"

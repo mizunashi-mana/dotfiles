@@ -417,13 +417,13 @@ let
         sha512 = "0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==";
       };
     };
-    "hono-4.12.8" = {
+    "hono-4.12.9" = {
       name = "hono";
       packageName = "hono";
-      version = "4.12.8";
+      version = "4.12.9";
       src = fetchurl {
-        url = "https://registry.npmjs.org/hono/-/hono-4.12.8.tgz";
-        sha512 = "VJCEvtrezO1IAR+kqEYnxUOoStaQPGrCmX3j4wDTNOcD1uRPFpGlwQUIW8niPuvHXaTUxeOUl5MMDGrl+tmO9A==";
+        url = "https://registry.npmjs.org/hono/-/hono-4.12.9.tgz";
+        sha512 = "wy3T8Zm2bsEvxKZM5w21VdHDDcwVS1yUFFY6i8UobSsKfFceT7TOwhbhfKsDyx7tYQlmRM5FLpIuYvNFyjctiA==";
       };
     };
     "http-errors-2.0.1" = {
@@ -991,7 +991,7 @@ in
       sources."gopd-1.2.0"
       sources."has-symbols-1.1.0"
       sources."hasown-2.0.2"
-      sources."hono-4.12.8"
+      sources."hono-4.12.9"
       sources."http-errors-2.0.1"
       sources."iconv-lite-0.7.2"
       sources."inherits-2.0.4"
