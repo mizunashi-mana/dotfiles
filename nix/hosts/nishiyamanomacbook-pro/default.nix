@@ -55,14 +55,24 @@ in
       (
         nixDarwinModules.modules
         ++ [
-          {
-            home-manager.users.${username} = {
-              programs.git.settings = {
-                user.name = "Nishiyama Shun";
-                user.email = "nishiyama_shun@openlogi.com";
+          (
+            { lib, ... }:
+            {
+              home-manager.users.${username} = {
+                programs.git.settings = {
+                  user.name = "Nishiyama Shun";
+                  user.email = "nishiyama_shun@openlogi.com";
+                };
+
+                programs.claude-code.settings = {
+                  permissions = {
+                    defaultMode = lib.mkForce "auto";
+                  };
+                  model = "opus";
+                };
               };
-            };
-          }
+            }
+          )
         ]
       );
   };

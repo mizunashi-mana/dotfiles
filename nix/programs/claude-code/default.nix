@@ -69,8 +69,11 @@
               ];
               allow = [
                 "Bash(actionlint:*)"
+                "Bash(aws athena get-query-execution:*)"
+                "Bash(aws athena get-query-results:*)"
                 "Bash(aws cloudwatch list-metrics:*)"
                 "Bash(aws configure get:*)"
+                "Bash(aws configure list-profiles:*)"
                 "Bash(aws pi get-resource-metrics:*)"
                 "Bash(aws rds describe-db-instances:*)"
                 "Bash(aws rds describe-db-clusters:*)"
@@ -91,7 +94,9 @@
                 "Bash(cp:*)"
                 "Bash(defaults read:*)"
                 "Bash(devenv test)"
+                "Bash(devenv version:*)"
                 "Bash(diff:*)"
+                "Bash(direnv version:*)"
                 "Bash(done:*)"
                 "Bash(do echo:*)"
                 "Bash(do sed:*)"
