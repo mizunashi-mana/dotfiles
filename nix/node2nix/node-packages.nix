@@ -30,13 +30,13 @@ let
         sha512 = "dr8/3zEaB+p0D2n/IUrlPF1HZm586qgJNXK1a9fhg/PzdtkK7Ksd5l312tJX2yBuALqDYBlG20QEbayqPyxn+g==";
       };
     };
-    "@modelcontextprotocol/sdk-1.27.1" = {
+    "@modelcontextprotocol/sdk-1.28.0" = {
       name = "_at_modelcontextprotocol_slash_sdk";
       packageName = "@modelcontextprotocol/sdk";
-      version = "1.27.1";
+      version = "1.28.0";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@modelcontextprotocol/sdk/-/sdk-1.27.1.tgz";
-        sha512 = "sr6GbP+4edBwFndLbM60gf07z0FQ79gaExpnsjMGePXqFcSSb7t6iscpjk9DhFhwd+mTEQrzNafGP8/iGGFYaA==";
+        url = "https://registry.npmjs.org/@modelcontextprotocol/sdk/-/sdk-1.28.0.tgz";
+        sha512 = "gmloF+i+flI8ouQK7MWW4mOwuMh4RePBuPFAEPC6+pdqyWOUMDOixb6qZ69owLJpz6XmyllCouc4t8YWO+E2Nw==";
       };
     };
     "accepts-2.0.0" = {
@@ -642,13 +642,13 @@ let
         sha512 = "ojmeN0qd+y0jszEtoY48r0Peq5dwMEkIlCOu6Q5f41lfkswXuKtYrhgoTpLnyIcHm24Uhqx+5Tqm2InSwLhE6Q==";
       };
     };
-    "path-to-regexp-8.3.0" = {
+    "path-to-regexp-8.4.0" = {
       name = "path-to-regexp";
       packageName = "path-to-regexp";
-      version = "8.3.0";
+      version = "8.4.0";
       src = fetchurl {
-        url = "https://registry.npmjs.org/path-to-regexp/-/path-to-regexp-8.3.0.tgz";
-        sha512 = "7jdwVIRtsP8MYpdXSwOS0YdD0Du+qOoF/AEPIt88PcCFrZCzx41oxku1jD88hZBwbNUIEfpqvuhjFaMAqMTWnA==";
+        url = "https://registry.npmjs.org/path-to-regexp/-/path-to-regexp-8.4.0.tgz";
+        sha512 = "PuseHIvAnz3bjrM2rGJtSgo1zjgxapTLZ7x2pjhzWwlp4SJQgK3f3iZIQwkpEnBaKz6seKBADpM4B4ySkuYypg==";
       };
     };
     "pkce-challenge-5.0.1" = {
@@ -903,13 +903,13 @@ let
         sha512 = "rftlrkhHZOcjDwkGlnUtZZkvaPHCsDATp4pGpuOOMDaTdDDXF91wuVDJoWoPsKX/3YPQ5fHuF3STjcYyKr+Qhg==";
       };
     };
-    "zod-to-json-schema-3.25.1" = {
+    "zod-to-json-schema-3.25.2" = {
       name = "zod-to-json-schema";
       packageName = "zod-to-json-schema";
-      version = "3.25.1";
+      version = "3.25.2";
       src = fetchurl {
-        url = "https://registry.npmjs.org/zod-to-json-schema/-/zod-to-json-schema-3.25.1.tgz";
-        sha512 = "pM/SU9d3YAggzi6MtR4h7ruuQlqKtad8e9S0fmxcMi+ueAK5Korys/aWcV9LIIHTVbj01NdzxcnXSN+O74ZIVA==";
+        url = "https://registry.npmjs.org/zod-to-json-schema/-/zod-to-json-schema-3.25.2.tgz";
+        sha512 = "O/PgfnpT1xKSDeQYSCfRI5Gy3hPf91mKVDuYLUHZJMiDFptvP41MSnWofm8dnCm0256ZNfZIM7DSzuSMAFnjHA==";
       };
     };
   };
@@ -949,7 +949,7 @@ in
     dependencies = [
       sources."@cfworker/json-schema-4.1.1"
       sources."@hono/node-server-1.19.11"
-      sources."@modelcontextprotocol/sdk-1.27.1"
+      sources."@modelcontextprotocol/sdk-1.28.0"
       sources."accepts-2.0.0"
       sources."ajv-8.18.0"
       sources."ajv-formats-3.0.1"
@@ -1015,7 +1015,7 @@ in
       sources."once-1.4.0"
       sources."parseurl-1.3.3"
       sources."path-key-3.1.1"
-      sources."path-to-regexp-8.3.0"
+      sources."path-to-regexp-8.4.0"
       sources."pkce-challenge-5.0.1"
       sources."proxy-addr-2.0.7"
       sources."qs-6.15.0"
@@ -1041,7 +1041,7 @@ in
       sources."which-2.0.2"
       sources."wrappy-1.0.2"
       sources."zod-4.3.6"
-      sources."zod-to-json-schema-3.25.1"
+      sources."zod-to-json-schema-3.25.2"
     ];
     buildInputs = globalBuildInputs;
     meta = {
@@ -1056,10 +1056,10 @@ in
   "@openai/codex-" = nodeEnv.buildNodePackage {
     name = "_at_openai_slash_codex";
     packageName = "@openai/codex";
-    version = "0.116.0";
+    version = "0.117.0";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@openai/codex/-/codex-0.116.0.tgz";
-      sha512 = "K6q9P2ZmpnzGmpS6Ybjvsdtvu8AbJx3f/Z4KmjH1u85StSS9TWMSQB8z0PPObKMejbtiIkHwhGyEIHi4iBYjig==";
+      url = "https://registry.npmjs.org/@openai/codex/-/codex-0.117.0.tgz";
+      sha512 = "UmWo39UCGqFB2ImWwtI/TOnVQ1M2JIbCeDVBzOtG57WuTIPBNvDyluPNrzNv6eAcTYpyDLC5+nT5k49LrzEwow==";
     };
     buildInputs = globalBuildInputs;
     meta = {

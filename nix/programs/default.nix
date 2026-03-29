@@ -29,7 +29,8 @@ let
     (import ./fish { inherit packages; })
     (import ./dircolors { inherit packages; })
     (import ./less { inherit packages; })
-    (import ./man { inherit packages; })
+    # The man command doesn't work on macOS
+    # (import ./man { inherit packages; })
     (import ./curl { inherit packages; })
     (import ./make { inherit packages; })
     (import ./sed { inherit packages; })
