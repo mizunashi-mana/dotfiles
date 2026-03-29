@@ -36,7 +36,6 @@ let
     (import ./google-antigravity { inherit packages; })
     (import ./google-chrome { inherit packages; })
     (import ./aquaskk { inherit packages; })
-    (import ./ipe { inherit packages; })
     (import ./skimpdf { inherit packages; })
     (import ./dbeaver { inherit packages; })
     (import ./zotero { inherit packages; })

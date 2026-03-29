@@ -68,7 +68,6 @@ in
                   permissions = {
                     defaultMode = lib.mkForce "auto";
                   };
-                  model = "opus";
                 };
               };
             }
