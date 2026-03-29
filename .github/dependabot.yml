@@ -10,4 +10,4 @@ updates:
       - "/"
       - "/.github/actions/*"
     schedule:
-      interval: "weekly"
+      interval: "monthly"

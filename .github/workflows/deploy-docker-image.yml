@@ -9,6 +9,10 @@ on:
 env:
   REGISTRY: ghcr.io
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   define-matrix:
     runs-on: ubuntu-latest
