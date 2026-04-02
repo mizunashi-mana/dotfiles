@@ -148,6 +148,7 @@
                 "Bash(head:*)"
                 "Bash(iconv:*)"
                 "Bash(jq:*)"
+                "Bash(kubectl get:*)"
                 "Bash(ls:*)"
                 "Bash(lsof:*)"
                 "Bash(magick:*)"
