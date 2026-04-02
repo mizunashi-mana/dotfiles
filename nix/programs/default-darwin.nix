@@ -49,6 +49,7 @@ let
     (import ./pages { inherit packages; })
     (import ./mcp-html-artifacts-preview { inherit packages; })
     (import ./playwright-mcp { inherit packages; })
+    (import ./helm { inherit packages; })
   ];
 in
 {
