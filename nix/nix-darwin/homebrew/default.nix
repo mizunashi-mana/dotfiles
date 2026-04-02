@@ -10,5 +10,9 @@
       upgrade = true;
       cleanup = "uninstall";
     };
+
+    brews = [
+      "helm"
+    ];
   };
 }
