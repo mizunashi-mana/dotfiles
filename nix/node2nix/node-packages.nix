@@ -417,13 +417,13 @@ let
         sha512 = "0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==";
       };
     };
-    "hono-4.12.9" = {
+    "hono-4.12.11" = {
       name = "hono";
       packageName = "hono";
-      version = "4.12.9";
+      version = "4.12.11";
       src = fetchurl {
-        url = "https://registry.npmjs.org/hono/-/hono-4.12.9.tgz";
-        sha512 = "wy3T8Zm2bsEvxKZM5w21VdHDDcwVS1yUFFY6i8UobSsKfFceT7TOwhbhfKsDyx7tYQlmRM5FLpIuYvNFyjctiA==";
+        url = "https://registry.npmjs.org/hono/-/hono-4.12.11.tgz";
+        sha512 = "r4xbIa3mGGGoH9nN4A14DOg2wx7y2oQyJEb5O57C/xzETG/qx4c7CVDQ5WMeKHZ7ORk2W0hZ/sQKXTav3cmYBA==";
       };
     };
     "http-errors-2.0.1" = {
@@ -642,13 +642,13 @@ let
         sha512 = "ojmeN0qd+y0jszEtoY48r0Peq5dwMEkIlCOu6Q5f41lfkswXuKtYrhgoTpLnyIcHm24Uhqx+5Tqm2InSwLhE6Q==";
       };
     };
-    "path-to-regexp-8.4.1" = {
+    "path-to-regexp-8.4.2" = {
       name = "path-to-regexp";
       packageName = "path-to-regexp";
-      version = "8.4.1";
+      version = "8.4.2";
       src = fetchurl {
-        url = "https://registry.npmjs.org/path-to-regexp/-/path-to-regexp-8.4.1.tgz";
-        sha512 = "fvU78fIjZ+SBM9YwCknCvKOUKkLVqtWDVctl0s7xIqfmfb38t2TT4ZU2gHm+Z8xGwgW+QWEU3oQSAzIbo89Ggw==";
+        url = "https://registry.npmjs.org/path-to-regexp/-/path-to-regexp-8.4.2.tgz";
+        sha512 = "qRcuIdP69NPm4qbACK+aDogI5CBDMi1jKe0ry5rSQJz8JVLsC7jV8XpiJjGRLLol3N+R5ihGYcrPLTno6pAdBA==";
       };
     };
     "pkce-challenge-5.0.1" = {
@@ -669,6 +669,15 @@ let
         sha512 = "Bd5DkzYKG+2g1jLO6NeTXmGLbBYSFffJIOsR4l4hUBkJvzvGGdLZ7jZb2tOtb0WIoWXQKdQj3Ap6WthV4DBS8w==";
       };
     };
+    "playwright-1.60.0-alpha-1775237291000" = {
+      name = "playwright";
+      packageName = "playwright";
+      version = "1.60.0-alpha-1775237291000";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/playwright/-/playwright-1.60.0-alpha-1775237291000.tgz";
+        sha512 = "WU8VBPknldUr2NePq/AR+4Fh6UjVEwYiEoNngPM3ItpB9Pobqcsn5n7Zk2unVykuBG9FUs3sW18dqFj8fh3FEQ==";
+      };
+    };
     "playwright-core-1.60.0-alpha-1774999321000" = {
       name = "playwright-core";
       packageName = "playwright-core";
@@ -676,6 +685,15 @@ let
       src = fetchurl {
         url = "https://registry.npmjs.org/playwright-core/-/playwright-core-1.60.0-alpha-1774999321000.tgz";
         sha512 = "ams3Zo4VXxeOg5ZTTh16GkE8g48Bmxo/9pg9gXl9SVKlVohCU7Jaog7XntY8yFuzENA6dJc1Fz7Z/NNTm9nGEw==";
+      };
+    };
+    "playwright-core-1.60.0-alpha-1775237291000" = {
+      name = "playwright-core";
+      packageName = "playwright-core";
+      version = "1.60.0-alpha-1775237291000";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/playwright-core/-/playwright-core-1.60.0-alpha-1775237291000.tgz";
+        sha512 = "pH1BxJ0wIAfJSMeDXOW1ExjayMQ37BDXrTL6iX7kPxjIbf4EHkTQyaO9PrLfsf+NenOvQbwK5oPUQ/99xpMcyw==";
       };
     };
     "proxy-addr-2.0.7" = {
@@ -991,7 +1009,7 @@ in
       sources."gopd-1.2.0"
       sources."has-symbols-1.1.0"
       sources."hasown-2.0.2"
-      sources."hono-4.12.9"
+      sources."hono-4.12.11"
       sources."http-errors-2.0.1"
       sources."iconv-lite-0.7.2"
       sources."inherits-2.0.4"
@@ -1015,7 +1033,7 @@ in
       sources."once-1.4.0"
       sources."parseurl-1.3.3"
       sources."path-key-3.1.1"
-      sources."path-to-regexp-8.4.1"
+      sources."path-to-regexp-8.4.2"
       sources."pkce-challenge-5.0.1"
       sources."proxy-addr-2.0.7"
       sources."qs-6.15.0"
@@ -1074,15 +1092,15 @@ in
   "@playwright/cli-" = nodeEnv.buildNodePackage {
     name = "_at_playwright_slash_cli";
     packageName = "@playwright/cli";
-    version = "0.1.3";
+    version = "0.1.5";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@playwright/cli/-/cli-0.1.3.tgz";
-      sha512 = "QNLOyzuCqWdC1eZv9Bx/GbrQ1D9N8N4sd4sdOlGabaZ6P8ZImlVC7Z3oBimB4Lug6TOvgRTQXW605gYLHjso3g==";
+      url = "https://registry.npmjs.org/@playwright/cli/-/cli-0.1.5.tgz";
+      sha512 = "UsvKLL3f3vqDJg/nbmTCXnpj5l92ma75Rl1r8G4Y3qIBMC7kitZV3bc52JtbPe1kaFSU/flJzpdwAVykSRm43w==";
     };
     dependencies = [
       sources."minimist-1.2.8"
-      sources."playwright-1.60.0-alpha-1774999321000"
-      sources."playwright-core-1.60.0-alpha-1774999321000"
+      sources."playwright-1.60.0-alpha-1775237291000"
+      sources."playwright-core-1.60.0-alpha-1775237291000"
     ];
     buildInputs = globalBuildInputs;
     meta = {
