@@ -21,13 +21,13 @@ let
         sha512 = "gAmrUZSGtKc3AiBL71iNWxDsyUC5uMaKKGdvzYsBoTW/xi42JQHl7eKV2OYzCUqvc+D2RCcf7EXY2iCyFIk6og==";
       };
     };
-    "@hono/node-server-1.19.12" = {
+    "@hono/node-server-1.19.13" = {
       name = "_at_hono_slash_node-server";
       packageName = "@hono/node-server";
-      version = "1.19.12";
+      version = "1.19.13";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@hono/node-server/-/node-server-1.19.12.tgz";
-        sha512 = "txsUW4SQ1iilgE0l9/e9VQWmELXifEFvmdA1j6WFh/aFPj99hIntrSsq/if0UWyGVkmrRPKA1wCeP+UCr1B9Uw==";
+        url = "https://registry.npmjs.org/@hono/node-server/-/node-server-1.19.13.tgz";
+        sha512 = "TsQLe4i2gvoTtrHje625ngThGBySOgSK3Xo2XRYOdqGN1teR8+I7vchQC46uLJi8OF62YTYA3AhSpumtkhsaKQ==";
       };
     };
     "@modelcontextprotocol/sdk-1.29.0" = {
@@ -129,13 +129,13 @@ let
         sha512 = "TQMmc3w+5AxjpL8iIiwebF73dRDF4fBIieAqGn9RGCWaEVwQ6Fb2cGe31Yns0RRIzii5goJ1Y7xbMwo1TxMplw==";
       };
     };
-    "content-disposition-1.0.1" = {
+    "content-disposition-1.1.0" = {
       name = "content-disposition";
       packageName = "content-disposition";
-      version = "1.0.1";
+      version = "1.1.0";
       src = fetchurl {
-        url = "https://registry.npmjs.org/content-disposition/-/content-disposition-1.0.1.tgz";
-        sha512 = "oIXISMynqSqm241k6kcQ5UwttDILMK4BiurCfGEREw6+X9jkkpEe5T9FZaApyLGGOnFuyMWZpdolTXMtvEJ08Q==";
+        url = "https://registry.npmjs.org/content-disposition/-/content-disposition-1.1.0.tgz";
+        sha512 = "5jRCH9Z/+DRP7rkvY83B+yGIGX96OYdJmzngqnw2SBSxqCFPd0w2km3s5iawpGX8krnwSGmF0FW5Nhr0Hfai3g==";
       };
     };
     "content-type-1.0.5" = {
@@ -417,13 +417,13 @@ let
         sha512 = "0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==";
       };
     };
-    "hono-4.12.11" = {
+    "hono-4.12.12" = {
       name = "hono";
       packageName = "hono";
-      version = "4.12.11";
+      version = "4.12.12";
       src = fetchurl {
-        url = "https://registry.npmjs.org/hono/-/hono-4.12.11.tgz";
-        sha512 = "r4xbIa3mGGGoH9nN4A14DOg2wx7y2oQyJEb5O57C/xzETG/qx4c7CVDQ5WMeKHZ7ORk2W0hZ/sQKXTav3cmYBA==";
+        url = "https://registry.npmjs.org/hono/-/hono-4.12.12.tgz";
+        sha512 = "p1JfQMKaceuCbpJKAPKVqyqviZdS0eUxH9v82oWo1kb9xjQ5wA6iP3FNVAPDFlz5/p7d45lO+BpSk1tuSZMF4Q==";
       };
     };
     "http-errors-2.0.1" = {
@@ -669,13 +669,13 @@ let
         sha512 = "Bd5DkzYKG+2g1jLO6NeTXmGLbBYSFffJIOsR4l4hUBkJvzvGGdLZ7jZb2tOtb0WIoWXQKdQj3Ap6WthV4DBS8w==";
       };
     };
-    "playwright-1.60.0-alpha-1775237291000" = {
+    "playwright-1.60.0-alpha-1775584683000" = {
       name = "playwright";
       packageName = "playwright";
-      version = "1.60.0-alpha-1775237291000";
+      version = "1.60.0-alpha-1775584683000";
       src = fetchurl {
-        url = "https://registry.npmjs.org/playwright/-/playwright-1.60.0-alpha-1775237291000.tgz";
-        sha512 = "WU8VBPknldUr2NePq/AR+4Fh6UjVEwYiEoNngPM3ItpB9Pobqcsn5n7Zk2unVykuBG9FUs3sW18dqFj8fh3FEQ==";
+        url = "https://registry.npmjs.org/playwright/-/playwright-1.60.0-alpha-1775584683000.tgz";
+        sha512 = "LHCXlaF0ccE+Z/ergBQaW6NbX9Iq4vM8v4Bi8HjLhO7ThmiyALYZfc6yr3iDDQ5XOan5LtDMT7W6H+k3zVqt8A==";
       };
     };
     "playwright-core-1.60.0-alpha-1774999321000" = {
@@ -687,13 +687,13 @@ let
         sha512 = "ams3Zo4VXxeOg5ZTTh16GkE8g48Bmxo/9pg9gXl9SVKlVohCU7Jaog7XntY8yFuzENA6dJc1Fz7Z/NNTm9nGEw==";
       };
     };
-    "playwright-core-1.60.0-alpha-1775237291000" = {
+    "playwright-core-1.60.0-alpha-1775584683000" = {
       name = "playwright-core";
       packageName = "playwright-core";
-      version = "1.60.0-alpha-1775237291000";
+      version = "1.60.0-alpha-1775584683000";
       src = fetchurl {
-        url = "https://registry.npmjs.org/playwright-core/-/playwright-core-1.60.0-alpha-1775237291000.tgz";
-        sha512 = "pH1BxJ0wIAfJSMeDXOW1ExjayMQ37BDXrTL6iX7kPxjIbf4EHkTQyaO9PrLfsf+NenOvQbwK5oPUQ/99xpMcyw==";
+        url = "https://registry.npmjs.org/playwright-core/-/playwright-core-1.60.0-alpha-1775584683000.tgz";
+        sha512 = "ufL1tdjK+2pyt5Jqft71MJmyixa0GMWd6dlHsQKxImD9XrJrFUvOC4jr4ISSYwgl66E37pBM89LxjGEgSaRcjw==";
       };
     };
     "proxy-addr-2.0.7" = {
@@ -705,13 +705,13 @@ let
         sha512 = "llQsMLSUDUPT44jdrU/O37qlnifitDP+ZwrmmZcoSKyLKvtZxpyV0n2/bD/N4tBAAZ/gJEdZU7KMraoK1+XYAg==";
       };
     };
-    "qs-6.15.0" = {
+    "qs-6.15.1" = {
       name = "qs";
       packageName = "qs";
-      version = "6.15.0";
+      version = "6.15.1";
       src = fetchurl {
-        url = "https://registry.npmjs.org/qs/-/qs-6.15.0.tgz";
-        sha512 = "mAZTtNCeetKMH+pSjrb76NAM8V9a05I9aBZOHztWy/UqcJdQYNsf59vrRKWnojAT9Y+GbIvoTBC++CPHqpDBhQ==";
+        url = "https://registry.npmjs.org/qs/-/qs-6.15.1.tgz";
+        sha512 = "6YHEFRL9mfgcAvql/XhwTvf5jKcOiiupt2FiJxHkiX1z4j7WL8J/jRHYLluORvc1XxB5rV20KoeK00gVJamspg==";
       };
     };
     "range-parser-1.2.1" = {
@@ -822,13 +822,13 @@ let
         sha512 = "ZX99e6tRweoUXqR+VBrslhda51Nh5MTQwou5tnUDgbtyM0dBgmhEDtWGP/xbKn6hqfPRHujUNwz5fy/wbbhnpw==";
       };
     };
-    "side-channel-list-1.0.0" = {
+    "side-channel-list-1.0.1" = {
       name = "side-channel-list";
       packageName = "side-channel-list";
-      version = "1.0.0";
+      version = "1.0.1";
       src = fetchurl {
-        url = "https://registry.npmjs.org/side-channel-list/-/side-channel-list-1.0.0.tgz";
-        sha512 = "FCLHtRD/gnpCiCHEiJLOwdmFP+wzCmDEkc9y7NsYxeF4u7Btsn1ZuwgwJGxImImHicJArLP4R0yX4c2KCrMrTA==";
+        url = "https://registry.npmjs.org/side-channel-list/-/side-channel-list-1.0.1.tgz";
+        sha512 = "mjn/0bi/oUURjc5Xl7IaWi/OJJJumuoJFQJfDDyO46+hBWsfaVM65TBHq2eoZBhzl9EchxOijpkbRC8SVBQU0w==";
       };
     };
     "side-channel-map-1.0.1" = {
@@ -966,7 +966,7 @@ in
     };
     dependencies = [
       sources."@cfworker/json-schema-4.1.1"
-      sources."@hono/node-server-1.19.12"
+      sources."@hono/node-server-1.19.13"
       sources."@modelcontextprotocol/sdk-1.29.0"
       sources."accepts-2.0.0"
       sources."ajv-8.18.0"
@@ -977,7 +977,7 @@ in
       sources."bytes-3.1.2"
       sources."call-bind-apply-helpers-1.0.2"
       sources."call-bound-1.0.4"
-      sources."content-disposition-1.0.1"
+      sources."content-disposition-1.1.0"
       sources."content-type-1.0.5"
       sources."cookie-0.7.2"
       sources."cookie-signature-1.2.2"
@@ -1009,7 +1009,7 @@ in
       sources."gopd-1.2.0"
       sources."has-symbols-1.1.0"
       sources."hasown-2.0.2"
-      sources."hono-4.12.11"
+      sources."hono-4.12.12"
       sources."http-errors-2.0.1"
       sources."iconv-lite-0.7.2"
       sources."inherits-2.0.4"
@@ -1036,7 +1036,7 @@ in
       sources."path-to-regexp-8.4.2"
       sources."pkce-challenge-5.0.1"
       sources."proxy-addr-2.0.7"
-      sources."qs-6.15.0"
+      sources."qs-6.15.1"
       sources."range-parser-1.2.1"
       sources."raw-body-3.0.2"
       sources."require-from-string-2.0.2"
@@ -1048,7 +1048,7 @@ in
       sources."shebang-command-2.0.0"
       sources."shebang-regex-3.0.0"
       sources."side-channel-1.1.0"
-      sources."side-channel-list-1.0.0"
+      sources."side-channel-list-1.0.1"
       sources."side-channel-map-1.0.1"
       sources."side-channel-weakmap-1.0.2"
       sources."statuses-2.0.2"
@@ -1092,15 +1092,15 @@ in
   "@playwright/cli-" = nodeEnv.buildNodePackage {
     name = "_at_playwright_slash_cli";
     packageName = "@playwright/cli";
-    version = "0.1.5";
+    version = "0.1.6";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@playwright/cli/-/cli-0.1.5.tgz";
-      sha512 = "UsvKLL3f3vqDJg/nbmTCXnpj5l92ma75Rl1r8G4Y3qIBMC7kitZV3bc52JtbPe1kaFSU/flJzpdwAVykSRm43w==";
+      url = "https://registry.npmjs.org/@playwright/cli/-/cli-0.1.6.tgz";
+      sha512 = "6iY+826o8lvUK/ZPSRvUFDwQo2nSUa5dl9vOqK80ifPwrts3P3qzzc9X134mpO5xaQjaAkQPKoKJBV+eIWL5QQ==";
     };
     dependencies = [
       sources."minimist-1.2.8"
-      sources."playwright-1.60.0-alpha-1775237291000"
-      sources."playwright-core-1.60.0-alpha-1775237291000"
+      sources."playwright-1.60.0-alpha-1775584683000"
+      sources."playwright-core-1.60.0-alpha-1775584683000"
     ];
     buildInputs = globalBuildInputs;
     meta = {
