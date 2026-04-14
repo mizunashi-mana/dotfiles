@@ -50,6 +50,7 @@ let
     (import ./mcp-html-artifacts-preview { inherit packages; })
     (import ./playwright-mcp { inherit packages; })
     (import ./helm { inherit packages; })
+    (import ./github-mcp-server { inherit packages; })
   ];
 in
 {
