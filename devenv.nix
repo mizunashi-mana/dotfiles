@@ -6,26 +6,12 @@
   ...
 }:
 {
-  # https://devenv.sh/packages/
-  packages =
-    let
-      node2nix = pkgs.nodePackages.node2nix.overrideAttrs (old: {
-        nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [ pkgs.nodejs ];
-      });
-    in
-    [
-      node2nix
-    ];
-
   # https://devenv.sh/scripts/
   scripts.lint-all = {
     exec = "prek run --all-files && nix flake check --all-systems";
   };
   scripts.update-pkgs = {
-    exec = "nix flake update && node2nix-update";
-  };
-  scripts.node2nix-update = {
-    exec = "$DEVENV_ROOT/script/node2nix-update.sh";
+    exec = "nix flake update";
   };
 
   # https://devenv.sh/languages/

@@ -3,7 +3,7 @@
   ...
 }:
 let
-  mcp-html-artifacts-preview = packages.node-packages."@mizunashi_mana/mcp-html-artifacts-preview";
+  mcp-html-artifacts-preview = packages.mcp-html-artifacts-preview;
   claude = packages.claude-code;
 in
 {

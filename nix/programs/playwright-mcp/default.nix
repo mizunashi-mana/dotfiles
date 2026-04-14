@@ -3,7 +3,7 @@
   ...
 }:
 let
-  playwright-mcp = packages.node-packages."@playwright/mcp";
+  playwright-mcp = packages.pkgs.playwright-mcp;
   claude = packages.claude-code;
 in
 {
@@ -21,7 +21,7 @@ in
           elif "${claude}/bin/claude" mcp get playwright > /dev/null 2>&1; then
             verboseEcho "MCP server playwright already registered, skipping"
           else
-            run "${claude}/bin/claude" mcp add --scope user -t stdio playwright -- "${playwright-mcp}/bin/playwright-mcp"
+            run "${claude}/bin/claude" mcp add --scope user -t stdio playwright -- "${playwright-mcp}/bin/mcp-server-playwright"
           fi
         '';
       }
