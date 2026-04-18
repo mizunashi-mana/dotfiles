@@ -25,7 +25,10 @@ buildNpmPackage rec {
   meta = {
     description = "Claude Code voice reporter";
     homepage = "https://github.com/mizunashi-mana/cc-voice-reporter";
-    license = lib.licenses.mpl20;
+    license = with lib.licenses; [
+      asl20
+      mpl20
+    ];
     mainProgram = "cc-voice-reporter";
   };
 }

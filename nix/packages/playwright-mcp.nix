@@ -24,6 +24,6 @@ buildNpmPackage rec {
     description = "Playwright MCP server";
     homepage = "https://github.com/Microsoft/playwright-mcp";
     license = lib.licenses.asl20;
-    mainProgram = "mcp-server-playwright";
+    mainProgram = "playwright-mcp";
   };
 }

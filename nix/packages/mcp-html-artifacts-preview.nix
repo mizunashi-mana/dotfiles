@@ -25,7 +25,10 @@ buildNpmPackage rec {
   meta = {
     description = "MCP server for HTML artifacts preview";
     homepage = "https://github.com/mizunashi-mana/mcp-html-artifacts-preview";
-    license = lib.licenses.mpl20;
+    license = with lib.licenses; [
+      asl20
+      mpl20
+    ];
     mainProgram = "mcp-html-artifacts-preview";
   };
 }
