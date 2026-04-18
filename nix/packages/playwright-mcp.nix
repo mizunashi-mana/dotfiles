@@ -16,8 +16,8 @@ buildNpmPackage rec {
     cp ${./playwright-mcp-package-lock.json} package-lock.json
   '';
 
-  npmDepsHash = "sha256-0puS7RQUaqlRMwYo2uM1mhxCiIJWaVmJLsQV++50ewA=";
-
+  npmDepsHash = "sha256-ofMIJHI77upkZxnyEOt/VPhGn6YLcR+Jwjos6Vz6leU=";
+  npmDepsFetcherVersion = 2;
   dontNpmBuild = true;
 
   meta = {

@@ -18,8 +18,8 @@ buildNpmPackage rec {
     ${lib.getExe jq} 'del(.devDependencies) | del(.scripts.prepack)' package.json > package.json.tmp && mv package.json.tmp package.json
   '';
 
-  npmDepsHash = "sha256-RVlJtK3J6ZRCQMGFnwYxeMkxYuyHTFkvI4/KRUKMMmc=";
-
+  npmDepsHash = "sha256-XIr8BFhCp0gNDb9KJpvMOaRlHx88IwScvQUAg2G+Bbo=";
+  npmDepsFetcherVersion = 2;
   dontNpmBuild = true;
 
   meta = {
