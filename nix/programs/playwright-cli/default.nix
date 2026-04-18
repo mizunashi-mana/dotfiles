@@ -6,7 +6,7 @@
   homeManagerImports = [
     {
       home.packages = [
-        packages.pkgs.playwright-test
+        packages.playwright-cli
       ];
     }
   ];

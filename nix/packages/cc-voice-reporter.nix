@@ -1,33 +1,26 @@
 {
   lib,
   buildNpmPackage,
-  fetchFromGitHub,
+  fetchurl,
+  jq,
 }:
 buildNpmPackage rec {
   pname = "cc-voice-reporter";
   version = "2.2.0";
 
-  src = fetchFromGitHub {
-    owner = "mizunashi-mana";
-    repo = "cc-voice-reporter";
-    tag = "v${version}";
-    hash = "sha256-yCsomcak2RsvXDlGdkWCKjoTHiHWXXICqj7dYvXHEGg=";
+  src = fetchurl {
+    url = "https://registry.npmjs.org/@mizunashi_mana/cc-voice-reporter/-/cc-voice-reporter-${version}.tgz";
+    hash = "sha256-nhG1fFWqzWHPOrlTL7r0GML3pfHmIPIV3wDa3YWRtsE=";
   };
 
-  npmDepsHash = "sha256-0QHOtajzCpLlv8VXz0p//654dEaxVSkoRg5rbbLAr2M=";
-
-  npmWorkspace = "packages/cc-voice-reporter";
-
-  postBuild = ''
-    cp LICENSE LICENSE.Apache-2.0.txt LICENSE.MPL-2.0.txt packages/cc-voice-reporter/
+  postPatch = ''
+    cp ${./cc-voice-reporter-package-lock.json} package-lock.json
+    ${lib.getExe jq} 'del(.devDependencies) | del(.scripts.prepack)' package.json > package.json.tmp && mv package.json.tmp package.json
   '';
 
-  dontNpmPrune = true;
+  npmDepsHash = "sha256-RVlJtK3J6ZRCQMGFnwYxeMkxYuyHTFkvI4/KRUKMMmc=";
 
-  postInstall = ''
-    rm -f "$out/lib/node_modules/cc-voice-reporter-root/node_modules/@mizunashi_mana/cc-voice-reporter"
-    rm -f "$out/lib/node_modules/cc-voice-reporter-root/node_modules/@cc-voice-reporter/eslint-config"
-  '';
+  dontNpmBuild = true;
 
   meta = {
     description = "Claude Code voice reporter";

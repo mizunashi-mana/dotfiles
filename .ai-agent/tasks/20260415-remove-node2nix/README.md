@@ -22,17 +22,17 @@ node2nix で管理している全 5 パッケージを nixpkgs または `buildN
 - [x] `script/node2nix-update.sh` が削除されている
 - [x] `devenv.nix` から node2nix 関連が削除されている
 - [x] `devenv shell lint-all` が通る
-- [ ] PR を作成
+- [x] PR を作成 (https://github.com/mizunashi-mana/dotfiles/pull/251)
 
 ## 作業ログ
 
 - `@openai/codex` → nixpkgs の `codex` (Rust版) に移行。`programs.codex` のデフォルトパッケージを使用
-- `@playwright/mcp` → nixpkgs の `playwright-mcp` に移行。バイナリ名 `mcp-server-playwright` に合わせて調整
-- `@playwright/cli` → nixpkgs の `playwright-test` に移行（`playwright` コマンドが含まれる）
-- `@mizunashi_mana/cc-voice-reporter` → `buildNpmPackage` + `fetchFromGitHub` で自前ビルド定義作成
-- `@mizunashi_mana/mcp-html-artifacts-preview` → `buildNpmPackage` + `fetchFromGitHub` で自前ビルド定義作成
+- `@playwright/mcp` → npm registry から `buildNpmPackage` で直接インストール (v0.0.70)
+- `@playwright/cli` → npm registry から `buildNpmPackage` で直接インストール (v0.1.8)
+- `@mizunashi_mana/cc-voice-reporter` → npm registry から `buildNpmPackage` で直接インストール (v2.2.0)
+- `@mizunashi_mana/mcp-html-artifacts-preview` → npm registry から `buildNpmPackage` で直接インストール (v1.0.0)
 - `nix/node2nix/` ディレクトリ削除、`script/node2nix-update.sh` 削除
 - `devenv.nix` から node2nix パッケージ・スクリプトを削除
 - `nix/packages/default.nix` から node2nix 参照を削除し、新パッケージ定義を追加
 - `devenv shell lint-all` 通過確認済み
-- カスタムパッケージ 2 つのビルド・動作確認済み
+- 全 4 パッケージのビルド・動作確認済み

@@ -28,4 +28,6 @@ in
 
   cc-voice-reporter = pkgs.callPackage ./cc-voice-reporter.nix { };
   mcp-html-artifacts-preview = pkgs.callPackage ./mcp-html-artifacts-preview.nix { };
+  playwright-mcp = pkgs.callPackage ./playwright-mcp.nix { };
+  playwright-cli = pkgs.callPackage ./playwright-cli.nix { };
 }

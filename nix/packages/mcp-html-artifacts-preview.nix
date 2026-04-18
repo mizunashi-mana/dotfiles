@@ -1,33 +1,26 @@
 {
   lib,
   buildNpmPackage,
-  fetchFromGitHub,
+  fetchurl,
+  jq,
 }:
 buildNpmPackage rec {
   pname = "mcp-html-artifacts-preview";
   version = "1.0.0";
 
-  src = fetchFromGitHub {
-    owner = "mizunashi-mana";
-    repo = "mcp-html-artifacts-preview";
-    tag = "v${version}";
-    hash = "sha256-h+K6yDZVrUE6Vrkb97W2bgJHFNhcNfgdteyvunmo35s=";
+  src = fetchurl {
+    url = "https://registry.npmjs.org/@mizunashi_mana/mcp-html-artifacts-preview/-/mcp-html-artifacts-preview-${version}.tgz";
+    hash = "sha256-kqVczGrNKheV8R8bqyBCLMUbsldOGqZs3Y7NF9fJvgY=";
   };
 
-  npmDepsHash = "sha256-9Xv/IrLJGRz9WSDCSQa3p/lWUaXhevPfWqhlKsVVSSc=";
-
-  npmWorkspace = "packages/mcp-html-artifacts-preview";
-
-  postBuild = ''
-    cp LICENSE LICENSE-APACHE LICENSE-MPL packages/mcp-html-artifacts-preview/
+  postPatch = ''
+    cp ${./mcp-html-artifacts-preview-package-lock.json} package-lock.json
+    ${lib.getExe jq} 'del(.devDependencies) | del(.scripts.prepack)' package.json > package.json.tmp && mv package.json.tmp package.json
   '';
 
-  dontNpmPrune = true;
+  npmDepsHash = "sha256-IJ/43CkNSp18GUNtZEiIBXenUArAn7D6n1aoJJeyPnM=";
 
-  postInstall = ''
-    rm -f "$out/lib/node_modules/mcp-html-artifacts-preview-root/node_modules/@mizunashi_mana/mcp-html-artifacts-preview"
-    rm -f "$out/lib/node_modules/mcp-html-artifacts-preview-root/node_modules/@mcp-html-artifacts-preview/eslint-config"
-  '';
+  dontNpmBuild = true;
 
   meta = {
     description = "MCP server for HTML artifacts preview";
