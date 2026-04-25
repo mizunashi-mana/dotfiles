@@ -61,13 +61,7 @@ in
               home-manager.users.${username} = {
                 programs.git.settings = {
                   user.name = "Nishiyama Shun";
-                  user.email = "nishiyama_shun@openlogi.com";
-                };
-
-                programs.claude-code.settings = {
-                  permissions = {
-                    defaultMode = lib.mkForce "auto";
-                  };
+                  user.email = "shun.nishiyama@ascendlogi.co.jp";
                 };
               };
             }
