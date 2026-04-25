@@ -159,7 +159,11 @@
                 "Bash(nix flake check)"
                 "Bash(nix flake metadata:*)"
                 "Bash(nix flake show)"
+                "Bash(nix hash:*)"
                 "Bash(nix log:*)"
+                "Bash(nix-prefetch-github:*)"
+                "Bash(nix-prefetch-url:*)"
+                "Bash(nix search:*)"
                 "Bash(nkf:*)"
                 "Bash(node --version)"
                 "Bash(npm audit)"
@@ -303,6 +307,7 @@
                 "WebFetch(domain:gist.githubusercontent.com)"
                 "WebFetch(domain:github.com)"
                 "WebFetch(domain:global.moneyforward-dev.jp)"
+                "WebFetch(domain:graphite.com)"
                 "WebFetch(domain:itunes.apple.com)"
                 "WebFetch(domain:localhost)"
                 "WebFetch(domain:mizunashi-mana.github.io)"
@@ -317,6 +322,7 @@
                 "WebFetch(domain:pypi.org)"
                 "WebFetch(domain:raw.githubusercontent.com)"
                 "WebFetch(domain:research.google)"
+                "WebFetch(domain:registry.npmjs.org)"
                 "WebFetch(domain:signoz.io)"
                 "WebFetch(domain:socket.dev)"
                 "WebFetch(domain:stackoverflow.com)"
@@ -451,7 +457,7 @@
                 "mcp__html-artifacts-preview__add_scripts"
                 "mcp__html-artifacts-preview__add_stylesheets"
               ];
-              defaultMode = "acceptEdits";
+              defaultMode = "auto";
               deny = [
                 "Bash(git -C:*)"
               ];
