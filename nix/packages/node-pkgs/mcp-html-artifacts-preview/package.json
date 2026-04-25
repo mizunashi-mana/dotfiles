@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "@mizunashi_mana/mcp-html-artifacts-preview": "1.0.0"
+    "@mizunashi_mana/mcp-html-artifacts-preview": "^1.0.0"
   },
   "name": "mcp-html-artifacts-preview-pkg",
   "private": true,

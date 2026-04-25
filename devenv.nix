@@ -11,7 +11,10 @@
     exec = "prek run --all-files && nix flake check --all-systems";
   };
   scripts.update-pkgs = {
-    exec = "nix flake update";
+    exec = "nix flake update && update-node-pkgs";
+  };
+  scripts.update-node-pkgs = {
+    exec = "$DEVENV_ROOT/script/update-node-pkgs.sh";
   };
 
   # https://devenv.sh/languages/

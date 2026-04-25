@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "@playwright/mcp": "0.0.70"
+    "@playwright/mcp": "^0.0.70"
   },
   "name": "playwright-mcp-pkg",
   "private": true,
