@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@mizunashi_mana/cc-voice-reporter": "2.2.0"
+  },
+  "name": "cc-voice-reporter-pkg",
+  "private": true,
+  "version": "0.0.0"
+}
