@@ -31,15 +31,15 @@ stdenv.mkDerivation {
   installPhase = ''
     runHook preInstall
 
-    mkdir -p $out/bin $out/lib
-    cp -r ${nodeModules}/node_modules $out/lib/node_modules
+    mkdir -p $out/bin $out/lib/${pname}
+    cp -r ${nodeModules}/node_modules $out/lib/${pname}/node_modules
 
-    for bin in $out/lib/node_modules/.bin/*; do
+    for bin in $out/lib/${pname}/node_modules/.bin/*; do
       if [ -L "$bin" ]; then
         target=$(readlink -f "$bin")
         name=$(basename "$bin")
         makeWrapper "$target" "$out/bin/$name" \
-          --set NODE_PATH "$out/lib/node_modules" \
+          --set NODE_PATH "$out/lib/${pname}/node_modules" \
           --prefix PATH : ${nodejs}/bin
       fi
     done
