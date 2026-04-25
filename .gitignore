@@ -10,3 +10,6 @@ devenv.local.nix
 
 # AI agent temporary files
 .ai-agent/tmp/
+
+# npm
+node_modules/

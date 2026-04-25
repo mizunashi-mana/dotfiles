@@ -6,7 +6,7 @@
   homeManagerImports = [
     {
       home.packages = [
-        packages.pkgs.lha
+        packages.pkgs-stable.lha
       ];
     }
   ];
