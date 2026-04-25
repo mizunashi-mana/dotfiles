@@ -13,8 +13,9 @@
 }:
 let
   packageJson = lib.importJSON (npmRoot + "/package.json");
+  packageLock = lib.importJSON (npmRoot + "/package-lock.json");
   depName = builtins.head (builtins.attrNames packageJson.dependencies);
-  version = packageJson.dependencies.${depName};
+  version = packageLock.packages.${"node_modules/${depName}"}.version;
 
   nodeModules = importNpmLock.buildNodeModules {
     inherit npmRoot nodejs;
