@@ -20,6 +20,8 @@
   # https://devenv.sh/languages/
   languages.nix.enable = true;
   languages.shell.enable = true;
+  languages.javascript.enable = true;
+  languages.javascript.npm.enable = true;
 
   # https://devenv.sh/git-hooks/
   git-hooks.hooks.actionlint.enable = true;
