@@ -35,6 +35,7 @@ let
     (import ./codex { inherit packages; })
     (import ./agent-skills { inherit packages inputs; })
     (import ./agent-skills-anthropic { inherit packages inputs; })
+    (import ./agent-skills-mizunashi-mana { inherit packages inputs; })
   ];
 in
 {
