@@ -6,7 +6,7 @@
   homeManagerImports = [
     {
       home.packages = [
-        packages.node-packages."@playwright/cli"
+        packages.playwright-cli
       ];
     }
   ];

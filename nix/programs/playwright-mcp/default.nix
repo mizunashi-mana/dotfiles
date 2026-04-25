@@ -3,7 +3,7 @@
   ...
 }:
 let
-  playwright-mcp = packages.node-packages."@playwright/mcp";
+  playwright-mcp = packages.playwright-mcp;
   claude = packages.claude-code;
 in
 {

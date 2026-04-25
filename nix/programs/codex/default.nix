@@ -1,5 +1,4 @@
 {
-  packages,
   ...
 }:
 {
@@ -7,7 +6,6 @@
     {
       programs.codex = {
         enable = true;
-        package = packages.node-packages."@openai/codex";
       };
 
       programs.agent-skills = {

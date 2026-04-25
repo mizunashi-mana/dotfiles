@@ -14,11 +14,6 @@ let
     config.allowUnfree = true;
   };
 
-  node2nix-pkgs = import ../node2nix {
-    inherit pkgs;
-    inherit (pkgs-stable) nodejs;
-  };
-
   vscode-extensions =
     (import inputs.nixpkgs {
       inherit system;
@@ -31,12 +26,8 @@ in
 
   claude-code = inputs.claude-code.packages.${system}.default;
 
-  node-packages = node2nix-pkgs // {
-    "@openai/codex" = node2nix-pkgs."@openai/codex-";
-    "@playwright/cli" = node2nix-pkgs."@playwright/cli-";
-    "@playwright/mcp" = node2nix-pkgs."@playwright/mcp-";
-    "@mizunashi_mana/cc-voice-reporter" = node2nix-pkgs."@mizunashi_mana/cc-voice-reporter-";
-    "@mizunashi_mana/mcp-html-artifacts-preview" =
-      node2nix-pkgs."@mizunashi_mana/mcp-html-artifacts-preview-";
-  };
+  cc-voice-reporter = pkgs.callPackage ./cc-voice-reporter.nix { };
+  mcp-html-artifacts-preview = pkgs.callPackage ./mcp-html-artifacts-preview.nix { };
+  playwright-mcp = pkgs.callPackage ./playwright-mcp.nix { };
+  playwright-cli = pkgs.callPackage ./playwright-cli.nix { };
 }

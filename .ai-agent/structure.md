@@ -48,14 +48,13 @@ dotfiles/
 │   ├── programs/                # プログラム別設定モジュール
 │   ├── home-manager/            # Home Manager 共通設定
 │   ├── nix-darwin/              # macOS (nix-darwin) 設定
-│   ├── node2nix/                # Node.js パッケージ管理
-│   └── packages/                # カスタム Nix パッケージ
+│   └── packages/                # カスタム Nix パッケージ（node-pkgs/ 含む）
 ├── devcontainer/                # 開発コンテナ
 │   ├── Dockerfile               # コンテナイメージ定義
 │   ├── Dockerfile.host          # ホスト用コンテナイメージ
 │   └── updateUID.sh             # UID 更新スクリプト
 ├── script/                      # ユーティリティスクリプト
-│   └── node2nix-update.sh       # node2nix パッケージ更新
+│   └── update-node-pkgs.sh     # Node.js パッケージ更新
 └── tasks/                       # セットアップタスクランナー
     ├── base/install.sh          # 基本ツールインストール
     ├── homebrew/install.sh      # Homebrew インストール
@@ -113,15 +112,6 @@ macOS 固有のシステム設定。
 - `nix/`: Nix 設定
 - `system/`: macOS システム設定
 - `users/`: ユーザー設定
-
-### `nix/node2nix/`
-
-Node.js パッケージの Nix 管理。
-
-- `node-packages.json`: パッケージ宣言
-- `node-packages.nix`: 自動生成されたパッケージ定義
-- `node-env.nix`: Node.js 環境設定
-- `default.nix`: エントリポイント
 
 ### `tasks/`
 

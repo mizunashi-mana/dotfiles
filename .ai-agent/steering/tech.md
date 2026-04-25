@@ -11,7 +11,7 @@
 | flake 構成             | flake-parts                |
 | フォーマッタ           | treefmt-nix (fish_indent)  |
 | シェル                 | Fish                       |
-| Node.js パッケージ管理 | node2nix                   |
+| Node.js パッケージ管理 | importNpmLock + npm        |
 | Claude Code パッケージ | claude-code-nix            |
 | エディタ               | VS Code, Neovim, Emacs     |
 | バージョン管理         | Git + GitHub               |
@@ -71,8 +71,8 @@ devenv shell
 | ---------------------------------------- | ----------------------------------- |
 | `devenv shell`                           | 開発シェルに入る                    |
 | `devenv shell lint-all`                  | pre-commit + nix flake check を実行 |
-| `devenv shell update-pkgs`               | flake lock + node2nix を更新        |
-| `./script/node2nix-update.sh`            | Node.js パッケージを更新            |
+| `devenv shell update-pkgs`               | flake lock + node-pkgs を更新       |
+| `devenv shell update-node-pkgs`          | Node.js パッケージを更新            |
 | `darwin-rebuild switch --flake .#<host>` | macOS 設定をビルド・適用            |
 | `home-manager switch --flake .`          | Home Manager 設定を適用             |
 
