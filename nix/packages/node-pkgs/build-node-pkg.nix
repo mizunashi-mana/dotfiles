@@ -9,6 +9,7 @@
 {
   pname,
   npmRoot,
+  bins ? [ ],
   meta ? { },
 }:
 let
@@ -28,22 +29,27 @@ stdenv.mkDerivation {
 
   nativeBuildInputs = [ makeBinaryWrapper ];
 
-  installPhase = ''
-    runHook preInstall
+  installPhase =
+    let
+      exportedBins = if bins != [ ] then bins else [ pname ];
+    in
+    ''
+      runHook preInstall
 
-    mkdir -p $out/bin $out/lib/${pname}
-    cp -r ${nodeModules}/node_modules $out/lib/${pname}/node_modules
+      mkdir -p $out/bin $out/lib/${pname}
+      cp -r ${nodeModules}/node_modules $out/lib/${pname}/node_modules
 
-    for bin in $out/lib/${pname}/node_modules/.bin/*; do
-      if [ -L "$bin" ]; then
-        target=$(readlink -f "$bin")
-        name=$(basename "$bin")
-        makeWrapper "$target" "$out/bin/$name" \
-          --set NODE_PATH "$out/lib/${pname}/node_modules" \
-          --prefix PATH : ${nodejs}/bin
-      fi
-    done
+      ${lib.concatMapStringsSep "\n" (name: ''
+        if [ -L "$out/lib/${pname}/node_modules/.bin/${name}" ]; then
+          target=$(readlink -f "$out/lib/${pname}/node_modules/.bin/${name}")
+          makeWrapper "$target" "$out/bin/${name}" \
+            --set NODE_PATH "$out/lib/${pname}/node_modules" \
+            --prefix PATH : ${nodejs}/bin
+        else
+          echo "WARNING: binary '${name}' not found in .bin/" >&2
+        fi
+      '') exportedBins}
 
-    runHook postInstall
-  '';
+      runHook postInstall
+    '';
 }
