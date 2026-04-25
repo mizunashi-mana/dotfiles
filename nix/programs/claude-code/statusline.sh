@@ -3,6 +3,7 @@ input=$(cat)
 
 current_dir=$(echo "$input" | jq -r '.workspace.current_dir')
 model=$(echo "$input" | jq -r '.model.display_name')
+effort=$(echo "$input" | jq -r '.effort.level // empty')
 used_percentage=$(echo "$input" | jq -r '.context_window.used_percentage // 0' | cut -d. -f1)
 rate_5h=$(echo "$input" | jq -r '.rate_limits.five_hour.used_percentage // 0' | cut -d. -f1)
 rate_5h_resets=$(echo "$input" | jq -r '.rate_limits.five_hour.resets_at // 0' | cut -d. -f1)
@@ -32,6 +33,18 @@ if [ -n "$branch" ]; then
 	else
 		branch_part="${branch}"
 	fi
+fi
+
+# Effort level
+effort_part=""
+if [ -n "$effort" ]; then
+	case "$effort" in
+	low | medium) effort_color="$GREEN" ;;
+	high | xhigh) effort_color="$YELLOW" ;;
+	max) effort_color="$RED" ;;
+	*) effort_color="$GREEN" ;;
+	esac
+	effort_part="${effort_color}${effort}${RESET}"
 fi
 
 # Context usage
@@ -113,9 +126,9 @@ if [ -n "$branch_part" ]; then
 	line1="$line1|$branch_part"
 fi
 
-# Line 2: ctx|5h|7d|model|style
+# Line 2: ctx|5h|7d|model|effort
 line2=""
-for p in "$ctx_part" "$rate5h_part" "$rate7d_part" "$model_part"; do
+for p in "$ctx_part" "$rate5h_part" "$rate7d_part" "$model_part" "$effort_part"; do
 	if [ -n "$p" ]; then
 		if [ -n "$line2" ]; then
 			line2="$line2|$p"
