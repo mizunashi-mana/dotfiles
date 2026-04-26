@@ -6,7 +6,7 @@
   homeManagerImports = [
     {
       home.packages = [
-        packages.pkgs.github-mcp-server
+        packages.pkgs.agent-browser
       ];
     }
   ];
