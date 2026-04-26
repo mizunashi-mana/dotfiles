@@ -137,6 +137,22 @@
         "type": "github"
       }
     },
+    "mizunashi-mana-skills": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1777136572,
+        "narHash": "sha256-tO8AwSnlk0ovA6wYxKzS1xcJ7nDjyYDYYbfu/Zg0ss8=",
+        "owner": "mizunashi-mana",
+        "repo": "agent-skills",
+        "rev": "b6936c944487a402082e47f9abe272a166a41b94",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mizunashi-mana",
+        "repo": "agent-skills",
+        "type": "github"
+      }
+    },
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
@@ -232,6 +248,7 @@
         "claude-code": "claude-code",
         "flake-parts": "flake-parts",
         "home-manager": "home-manager",
+        "mizunashi-mana-skills": "mizunashi-mana-skills",
         "nix-darwin": "nix-darwin",
         "nix-vscode-extensions": "nix-vscode-extensions",
         "nixpkgs": "nixpkgs",

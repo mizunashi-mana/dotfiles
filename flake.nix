@@ -54,6 +54,11 @@
       url = "github:anthropics/skills";
       flake = false;
     };
+
+    mizunashi-mana-skills = {
+      url = "github:mizunashi-mana/agent-skills";
+      flake = false;
+    };
   };
 
   outputs =

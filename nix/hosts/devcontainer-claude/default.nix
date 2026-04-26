@@ -37,6 +37,7 @@ let
     (import "${nix-root-dir}/programs/docker-client" { inherit packages; })
     (import "${nix-root-dir}/programs/agent-skills" { inherit packages inputs; })
     (import "${nix-root-dir}/programs/agent-skills-anthropic" { inherit packages inputs; })
+    (import "${nix-root-dir}/programs/agent-skills-mizunashi-mana" { inherit packages inputs; })
   ];
 in
 {

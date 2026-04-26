@@ -10,7 +10,9 @@
         programs.claude-code = {
           enable = true;
           package = packages.claude-code;
-          skillsDir = ./skills;
+          skills = {
+            review = ./skills/review;
+          };
           settings = {
             env = {
               CLAUDE_CODE_DISABLE_TERMINAL_TITLE = "1";
@@ -458,9 +460,6 @@
                 "mcp__html-artifacts-preview__add_stylesheets"
               ];
               defaultMode = "auto";
-              deny = [
-                "Bash(git -C:*)"
-              ];
             };
             statusLine = {
               command = "~/.claude/statusline.sh";

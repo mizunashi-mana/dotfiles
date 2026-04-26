@@ -88,9 +88,13 @@ dotfiles/
 
 一部のプログラムモジュールはサブディレクトリを持つ。特に `claude-code/` は Nix 管理のグローバルスキルを含む:
 
-- `claude-code/skills/autodev-init/`: autodev スキル群のテンプレートとブートストラップスキル
-- `claude-code/skills/merge-dependabot-bump-pr/`: dependabot PR のレビュー＆マージスキル
 - `claude-code/skills/review/`: デフォルト review スキルを無効化するダミースキル
+
+3rd party の agent skills は `agent-skills-*/` 配下のモジュールで `programs.agent-skills` のソースを宣言する形で導入する:
+
+- `agent-skills/`: agent-skills-nix 本体の有効化
+- `agent-skills-anthropic/`: anthropic の公式スキル群（`skill-creator` など）
+- `agent-skills-mizunashi-mana/`: mizunashi-mana 製スキル群（`autodev-init`、`merge-dependabot-bump-pr`）
 
 ### `nix/home-manager/`
 
