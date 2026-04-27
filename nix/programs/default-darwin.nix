@@ -48,9 +48,8 @@ let
     (import ./numbers { inherit packages; })
     (import ./pages { inherit packages; })
     (import ./mcp-html-artifacts-preview { inherit packages; })
-    (import ./playwright-mcp { inherit packages; })
     (import ./helm { inherit packages; })
-    (import ./github-mcp-server { inherit packages; })
+    (import ./agent-browser { inherit packages; })
   ];
 in
 {
