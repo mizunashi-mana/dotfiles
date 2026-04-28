@@ -18,9 +18,11 @@
               CLAUDE_CODE_AUTO_CONNECT_IDE = "0";
               CLAUDE_CODE_DISABLE_TERMINAL_TITLE = "1";
               CLAUDE_CODE_ENABLE_TELEMETRY = "1";
+              CLAUDE_CODE_ENABLE_AWAY_SUMMARY = "0";
               CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS = "1";
               CLAUDE_CODE_HIDE_ACCOUNT_INFO = "1";
               CLAUDE_CODE_IDE_SKIP_AUTO_INSTALL = "1";
+              CLAUDE_CODE_NO_FLICKER = "1";
               DISABLE_AUTOUPDATER = "1";
               DISABLE_INSTALLATION_CHECKS = "1";
               OTEL_EXPORTER_OTLP_ENDPOINT = "http://localhost:4317";
@@ -28,7 +30,6 @@
               OTEL_LOGS_EXPORTER = "otlp";
               OTEL_METRICS_EXPORTER = "otlp";
             };
-            awaySummaryEnabled = false;
             hooks = {
               Notification = [
                 {
