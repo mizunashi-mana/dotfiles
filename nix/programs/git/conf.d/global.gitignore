@@ -9,6 +9,8 @@
 
 # claude-code
 .claude/*.local.json
+.claude/scheduled_tasks.lock
+.claude/scheduled_tasks.json
 CLAUDE.local.md
 
 # direnv
