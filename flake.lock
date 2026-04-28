@@ -124,11 +124,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1777236726,
-        "narHash": "sha256-ZTYDofOM3/PJhRF1EuBh6uibm+DmkhU7Wor6mMN7YTc=",
+        "lastModified": 1777250669,
+        "narHash": "sha256-lswnQkFAkciQwXO0u23wUVZvq6TABj6Kk/+Po4FJYW4=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "e82d4a4ecd18363aa2054cbaa3e32e4134c3dbf4",
+        "rev": "4883af6edbdf222c66edb545d312f4e40030a2be",
         "type": "github"
       },
       "original": {
@@ -140,11 +140,11 @@
     "mizunashi-mana-skills": {
       "flake": false,
       "locked": {
-        "lastModified": 1777192152,
-        "narHash": "sha256-OGTYeoaJfEUx58LUR/D5w/6iWoCPRIQ8Vas+1pa3fXY=",
+        "lastModified": 1777253388,
+        "narHash": "sha256-peMFPa1h6nkNUV94lWvLjx9mahGuwBB9sy0dPImBsig=",
         "owner": "mizunashi-mana",
         "repo": "agent-skills",
-        "rev": "75e32d179ced4521289b1f23b79904241b6d8101",
+        "rev": "ec133806094c2a306d2fdbc6e96eb228e909b4dc",
         "type": "github"
       },
       "original": {
