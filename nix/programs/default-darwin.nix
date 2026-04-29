@@ -48,6 +48,7 @@ let
     (import ./numbers { inherit packages; })
     (import ./pages { inherit packages; })
     (import ./mcp-html-artifacts-preview { inherit packages; })
+    (import ./mcp-grafana { inherit packages; })
     (import ./helm { inherit packages; })
     (import ./agent-browser { inherit packages; })
   ];
