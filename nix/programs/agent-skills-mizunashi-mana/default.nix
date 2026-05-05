@@ -24,9 +24,13 @@
         };
         skills = {
           enable = [
-            "agent-coach"
             "autodev-init"
+            "detect-context-rot"
+            "detect-missed-skill-triggers"
+            "detect-rework-and-violations"
+            "detect-token-hotspots"
             "merge-dependabot-bump-pr"
+            "recommend-bash-allowlist"
           ];
         };
       };

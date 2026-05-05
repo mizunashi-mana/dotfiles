@@ -140,11 +140,11 @@
     "mizunashi-mana-skills": {
       "flake": false,
       "locked": {
-        "lastModified": 1777253388,
-        "narHash": "sha256-peMFPa1h6nkNUV94lWvLjx9mahGuwBB9sy0dPImBsig=",
+        "lastModified": 1777998931,
+        "narHash": "sha256-QwJmUz8uGccIYwNgj8E/sxz57ZIIDXj7BNOPtckjAak=",
         "owner": "mizunashi-mana",
         "repo": "agent-skills",
-        "rev": "ec133806094c2a306d2fdbc6e96eb228e909b4dc",
+        "rev": "d5d4c1bec93eadc68dcb1615375365d86192458e",
         "type": "github"
       },
       "original": {

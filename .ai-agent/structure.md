@@ -94,7 +94,7 @@ dotfiles/
 
 - `agent-skills/`: agent-skills-nix 本体の有効化
 - `agent-skills-anthropic/`: anthropic の公式スキル群（`skill-creator` など）
-- `agent-skills-mizunashi-mana/`: mizunashi-mana 製スキル群（`autodev-init`、`merge-dependabot-bump-pr`）
+- `agent-skills-mizunashi-mana/`: mizunashi-mana 製スキル群（`autodev-init`、`merge-dependabot-bump-pr`、agent-coach プラグイン由来の `detect-context-rot` / `detect-missed-skill-triggers` / `detect-rework-and-violations` / `detect-token-hotspots` / `recommend-bash-allowlist`）
 
 ### `nix/home-manager/`
 
