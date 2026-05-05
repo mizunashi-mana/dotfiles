@@ -37,7 +37,7 @@ agent-coach umbrella スキル廃止に伴う設定変更に追従する。
       5 つの split skill が enable されている
 - [x] `.ai-agent/structure.md` の記述が新構成と一致
 - [x] lint チェック (prek) が成功 + darwin host build が成功
-- [ ] PR 作成
+- [x] PR 作成: https://github.com/mizunashi-mana/dotfiles/pull/267
 
 ## 作業ログ
 
