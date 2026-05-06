@@ -44,7 +44,7 @@ autodev プラグインのフロー改善（PR 言語オプション、未 push 
 - [x] skill 一覧に変更がないことを確認（あれば追従）
 - [x] `nix flake check --no-build` が成功
 - [x] darwin host build が成功
-- [ ] PR 作成
+- [x] PR 作成: https://github.com/mizunashi-mana/dotfiles/pull/268
 
 ## 作業ログ
 
@@ -61,3 +61,4 @@ autodev プラグインのフロー改善（PR 言語オプション、未 push 
   - 出力 bundle に 7 skill + skill-creator が含まれることを確認
   - autodev-init SKILL.md に PR 言語オプションの追加が反映済み
   - Linux host build は platform mismatch (master 既知) のためスキップ
+- 2026-05-06: PR #268 を作成。
