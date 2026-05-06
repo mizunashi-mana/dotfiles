@@ -1,6 +1,6 @@
 ---
 description: Replan the steering plan roadmap by reviewing completed work and open issues. Use when the plan.md roadmap has become outdated or after completing significant milestones.
-allowed-tools: Read, Write, Edit, MultiEdit, Bash(mkdir *), Glob, Grep, AskUserQuestion, WebSearch, WebFetch, mcp__github__list_issues, mcp__github__search_issues
+allowed-tools: Read, Write, Edit, MultiEdit, "Bash(mkdir *)", "Bash(gh issue list *)", Glob, Grep, AskUserQuestion, WebSearch, WebFetch
 ---
 
 # ロードマップ再策定
@@ -25,20 +25,22 @@ steering plan ドキュメントのロードマップを再策定します。完
 - `ls .claude/skills/` でインストール済みスキルを確認
 - `cat flake.nix` で flake inputs と構成を確認
 - `.ai-agent/tasks/` と `.ai-agent/projects/` の状況を確認
+- 最近のコミット履歴を確認
 
 ### 2. 完了タスクの整理
 
 既存の plan.md を読み込み、完了状態を特定する:
 
 - plan.md の各マイルストーン・タスクについて、コードベースの実態と照合
-- 実装済みの機能・タスクをリストアップ
+- チェックボックス `[x]` 付きの完了済みタスクをリストアップ
+- チェックボックス `[ ]` の未完了タスクについて、実際の実装状態を確認
 - 部分的に完了しているものも把握
 
 ### 3. GitHub Issue 確認
 
 オープンな Issue を確認し、未対応の課題を把握:
 
-- `mcp__github__list_issues` でオープンイシューを取得
+- `gh issue list --state open --json number,title,labels,url` でオープンイシューを取得
 - 既存のロードマップに含まれていない Issue を特定
 - Issue のラベルや優先度から分類
 
@@ -58,10 +60,10 @@ market.md を読み込み、最新の市場動向を調査・更新する:
 ```
 ## ロードマップ現状
 
-### 完了済み
-| タスク/マイルストーン | 根拠 |
-|---------------------|------|
-| ...                 | ...  |
+### 完了済みフェーズ/タスク
+| フェーズ/タスク | 根拠 |
+|---------------|------|
+| ...           | ...  |
 
 ### 進行中
 | タスク/マイルストーン | 状態 |
@@ -91,7 +93,7 @@ market.md を読み込み、最新の市場動向を調査・更新する:
 - **一方的に計画を提示しない**: 方向性・優先順位をユーザーに確認しながら進める
 - 市場動向の変化を踏まえて、戦略的な方向性を検討する
 - 以下の点を対話的に決定:
-  - 完了済みタスクの plan.md からの削除
+  - 完了済みタスク・フェーズの plan.md からの削除
   - 既存タスクの優先順位の見直し
   - 新たなタスク・マイルストーンの追加
   - フェーズ構成の見直し（必要に応じて）

@@ -1,6 +1,6 @@
 ---
 description: Interactively organize ideas, concerns, or vague thoughts through dialogue. Use when brainstorming, thinking through a problem, or wanting to clarify unclear ideas before taking action.
-allowed-tools: Read, Glob, Grep, WebSearch, WebFetch, AskUserQuestion, ToolSearch, mcp__*__create_page, mcp__*__update_page, mcp__*__add_scripts, mcp__*__add_stylesheets
+allowed-tools: Read, Glob, Grep, WebSearch, WebFetch, AskUserQuestion
 ---
 
 # ディスカッション
@@ -48,19 +48,7 @@ allowed-tools: Read, Glob, Grep, WebSearch, WebFetch, AskUserQuestion, ToolSearc
 - 「なぜそう感じますか？」
 - 前提や制約を明らかにする
 
-### 4. 視覚的な整理（任意）
-
-html-artifacts-preview MCP（`create_page` / `update_page` ツール）が利用可能な場合、議論の整理に HTML による可視化を活用する。
-
-- `create_page` で HTML ページを生成し、ブラウザで閲覧できる URL を共有する
-- 論点の構造、選択肢の比較表、フロー図、依存関係の可視化など、内容に適した形式を自由に選ぶ
-- SVG、CSS Grid/Flexbox レイアウト、テーブルなど HTML の表現力を活かす
-- Mermaid.js などの CDN ライブラリを `scripts` パラメータで読み込んで活用してもよい
-- 図はあくまで補助。テキストでの説明も必ず併記する
-- 対話の途中でも、構造が見えてきた段階で積極的にページを生成してよい
-- 内容が更新された場合は `update_page` で同じページを更新する
-
-### 5. 議論のまとめ
+### 4. 議論のまとめ
 
 区切りがついたら、対話で整理された内容を要約する:
 
