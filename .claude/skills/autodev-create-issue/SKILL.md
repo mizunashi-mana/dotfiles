@@ -1,6 +1,6 @@
 ---
 description: Create a GitHub issue from an idea, bug report, or feature request. Use when reporting bugs, proposing new features, or documenting problems as issues.
-allowed-tools: Read, mcp__github__issue_write, mcp__github__search_issues, AskUserQuestion
+allowed-tools: Read, "Bash(gh issue list *)", "Bash(gh issue create *)", AskUserQuestion
 ---
 
 # GitHub Issue 作成
@@ -22,7 +22,7 @@ allowed-tools: Read, mcp__github__issue_write, mcp__github__search_issues, AskUs
    - 種類と優先度を決定
 
 2. **重複確認**:
-   - mcp**github**search_issues で既存 Issue との重複がないか確認
+   - `gh issue list --search "<キーワード>" --json number,title,url` で既存 Issue との重複がないか確認
 
 3. **ラベル決定**:
    - 種類に応じて:
@@ -37,7 +37,13 @@ allowed-tools: Read, mcp__github__issue_write, mcp__github__search_issues, AskUs
    - ユーザーが修正を希望する場合は内容を調整
 
 5. **Issue 作成**:
-   - GitHub MCP を使用して Issue を作成
+   - `gh issue create --title "<タイトル>" --body "<本文>" --label "<l1>,<l2>"` で Issue を作成
+   - 本文に改行や引用符が含まれる場合は、`--body-file <path>` で一時ファイルから渡すか、ヒアドキュメントを使う:
+     ```bash
+     gh issue create --title "<タイトル>" --label "<l1>,<l2>" --body-file - <<'BODY'
+     ...本文...
+     BODY
+     ```
 
 6. **完了報告**:
    - 作成した Issue の URL をユーザーに報告
