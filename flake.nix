@@ -59,6 +59,11 @@
       url = "github:mizunashi-mana/agent-skills";
       flake = false;
     };
+
+    hermes-agent = {
+      url = "github:NousResearch/hermes-agent";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =

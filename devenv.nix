@@ -29,6 +29,7 @@
   git-hooks.hooks.prettier.enable = true;
   git-hooks.hooks.pretty-format-json = {
     enable = true;
+    excludes = [ "/package-lock\\.json$" ];
     settings = {
       autofix = true;
     };
