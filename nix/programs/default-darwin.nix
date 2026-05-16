@@ -51,6 +51,7 @@ let
     (import ./mcp-grafana { inherit packages; })
     (import ./helm { inherit packages; })
     (import ./agent-browser { inherit packages; })
+    (import ./hermes-agent { inherit packages; })
   ];
 in
 {

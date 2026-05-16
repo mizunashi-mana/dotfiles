@@ -25,6 +25,7 @@ in
   inherit pkgs pkgs-stable vscode-extensions;
 
   claude-code = inputs.claude-code.packages.${system}.default;
+  hermes-agent = inputs.hermes-agent.packages.${system}.default;
 
   cc-voice-reporter = pkgs.callPackage ./cc-voice-reporter.nix { };
   mcp-html-artifacts-preview = pkgs.callPackage ./mcp-html-artifacts-preview.nix { };
