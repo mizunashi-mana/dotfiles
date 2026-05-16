@@ -35,7 +35,7 @@
 - [x] `nix flake check` が通る
 - [x] 両 darwin 設定（macbook-pro / macbook-air）の評価成功
 - [x] `nix fmt -- --fail-on-change` で formatter clean
-- [ ] PR を作成（`/autodev-create-pr`）
+- [x] PR を作成（`/autodev-create-pr`） → https://github.com/mizunashi-mana/dotfiles/pull/273
 
 ## 作業ログ
 
@@ -50,3 +50,4 @@
   - `darwinConfigurations.nishiyamanomacbook-pro` 評価成功
   - `nix fmt -- --fail-on-change`: formatted 5 files (0 changed)
 - 補足: hermes-agent ドキュメントの NixOS module（`services.hermes-agent`）は darwin では適用不可なため、CLI パッケージのみを `home.packages` で提供する方針とした。secrets / MCP / container 等の構成は `hermes setup` で対話的に行う運用
+- PR: https://github.com/mizunashi-mana/dotfiles/pull/273
