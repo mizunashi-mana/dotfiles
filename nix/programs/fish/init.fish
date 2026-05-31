@@ -12,3 +12,8 @@ else if test -d $HOME/.linuxbrew
 else if test -d /home/linuxbrew/.linuxbrew
     eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 end
+
+# devenv hook
+if status is-interactive
+    devenv hook fish | source
+end
