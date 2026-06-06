@@ -47,7 +47,7 @@
             app = "/Applications/Claude.app";
           }
           {
-            app = "/Applications/Antigravity.app";
+            app = "/Applications/Antigravity IDE.app";
           }
           {
             app = "${packages.pkgs.dbeaver-bin}/Applications/dbeaver.app";

@@ -5,7 +5,7 @@
   nixDarwinModules = [
     {
       homebrew.casks = [
-        "antigravity"
+        "antigravity-ide"
       ];
     }
   ];

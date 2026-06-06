@@ -31,7 +31,7 @@ let
     (import ./claude-code { inherit packages; })
     (import ./cc-voice-reporter { inherit packages; })
     (import ./docker-client { inherit packages; })
-    (import ./gemini-cli { inherit packages; })
+    (import ./antigravity-cli { inherit packages; })
     (import ./codex { inherit packages; })
     (import ./agent-skills { inherit packages inputs; })
     (import ./agent-skills-anthropic { inherit packages inputs; })
