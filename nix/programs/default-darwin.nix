@@ -33,7 +33,7 @@ let
     (import ./vagrant { inherit packages; })
     (import ./aerospace { inherit packages; })
     (import ./vscode { inherit packages; })
-    (import ./google-antigravity { inherit packages; })
+    (import ./antigravity-ide { inherit packages; })
     (import ./google-chrome { inherit packages; })
     (import ./aquaskk { inherit packages; })
     (import ./skimpdf { inherit packages; })
