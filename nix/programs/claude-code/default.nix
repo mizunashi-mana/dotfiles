@@ -111,7 +111,7 @@
                 "Bash(find:*)"
                 "Bash(file:*)"
                 "Bash(for:*)"
-                "Bash(gemini:*)"
+                "Bash(agy:*)"
                 "Bash(gh cache list:*)"
                 "Bash(gh issue list:*)"
                 "Bash(gh issue view:*)"

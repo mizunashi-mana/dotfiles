@@ -5,12 +5,13 @@
 {
   homeManagerImports = [
     {
-      programs.gemini-cli = {
+      programs.antigravity-cli = {
         enable = true;
+        package = packages.pkgs.antigravity-cli;
       };
 
       programs.agent-skills = {
-        targets.gemini.enable = true;
+        targets.antigravity.enable = true;
       };
     }
   ];
