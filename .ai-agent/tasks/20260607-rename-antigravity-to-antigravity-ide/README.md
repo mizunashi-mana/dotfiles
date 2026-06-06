@@ -25,7 +25,7 @@ Antigravity の Nix モジュール・Homebrew cask・dock アプリ参照を、
 - [x] dock の persistent-apps が `Antigravity IDE.app` を参照している
 - [x] モジュールディレクトリ / import パスがリネームされている
 - [x] `devenv shell lint-all` が通る
-- [ ] PR を作成（`/autodev-create-pr`）
+- [x] PR を作成（`/autodev-create-pr`） → https://github.com/mizunashi-mana/dotfiles/pull/282
 
 ## 作業ログ
 
