@@ -34,7 +34,7 @@ programs.ssh = {
 
 - [x] `nix/programs/ssh/default.nix` を `settings` に移行
 - [x] `devenv shell lint-all`（pre-commit + nix flake check）が通る
-- [ ] PR を作成（`/autodev-create-pr`）
+- [x] PR を作成（`/autodev-create-pr`） → https://github.com/mizunashi-mana/dotfiles/pull/284
 
 ## 作業ログ
 
