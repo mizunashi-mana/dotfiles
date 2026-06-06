@@ -41,7 +41,7 @@ upstream PR #1789 がマージされ flake input を bump した後は、この
 - [x] `nix/nix-darwin/homebrew/default.nix` に `extraFlags = [ "--force-cleanup" ];` を追加
 - [x] 削除可能な暫定対応であることが分かるコメントを残す
 - [x] `devenv shell lint-all` が通る
-- [ ] PR を作成（`/autodev-create-pr`）
+- [x] PR を作成（`/autodev-create-pr`） → https://github.com/mizunashi-mana/dotfiles/pull/283
 
 ## 作業ログ
 
