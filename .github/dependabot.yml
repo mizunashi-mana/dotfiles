@@ -11,13 +11,15 @@ updates:
       - "/.github/actions/*"
     schedule:
       interval: "monthly"
+    cooldown:
+      default-days: 7
+      semver-major-days: 30
   - package-ecosystem: "npm"
     directories:
       - "/"
       - "nix/packages/node-pkgs/*/"
     schedule:
       interval: "weekly"
-
-cooldown:
-  default-days: 7
-  semver-major-days: 30
+    cooldown:
+      default-days: 7
+      semver-major-days: 30
