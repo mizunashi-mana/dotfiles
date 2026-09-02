@@ -51,7 +51,7 @@ nixpkgs 版は upstream の 1 マイナー遅れだが、保守対象のリリ�
 - [x] `nix/programs/default-darwin.nix` に argocd が登録されている
 - [x] macOS 2 ホストで `argocd-3.4.6` が解決される / Linux ホストには入らない
 - [x] `devenv shell lint-all` が通る
-- [ ] PR を作成（`/autodev-create-pr`）
+- [x] PR を作成（`/autodev-create-pr`） → https://github.com/mizunashi-mana/dotfiles/pull/306
 
 ## 作業ログ
 
@@ -64,3 +64,4 @@ nixpkgs 版は upstream の 1 マイナー遅れだが、保守対象のリリ�
 - 2026-09-02: `devenv shell lint-all` pass（pre-commit 全項目 + nix flake check）
   - 補足: 新規ファイルが untracked のままだと flake がモジュールを認識せず
     検証が空振りするため、`git add` 後に再実行して確認した
+- 2026-09-02: PR 作成 → https://github.com/mizunashi-mana/dotfiles/pull/306
