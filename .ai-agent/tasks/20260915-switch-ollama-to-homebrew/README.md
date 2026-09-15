@@ -104,7 +104,7 @@ CLI 用途で現状の使い方に最も近い formula を採用する。
 - [x] home-manager 側から nixpkgs 版 ollama が外れている（macOS 2 ホストで eval 検証）
 - [x] Linux ホストには影響しないことを確認
 - [x] `devenv shell lint-all` が通る
-- [ ] PR を作成（`/autodev-create-pr`）
+- [x] PR を作成（`/autodev-create-pr`） → https://github.com/mizunashi-mana/dotfiles/pull/310
 
 ## 作業ログ
 
@@ -120,3 +120,4 @@ CLI 用途で現状の使い方に最も近い formula を採用する。
     （残りは aerospace / emacs / git-maintenance-{daily,hourly,weekly}）
   - `nix/programs/default-darwin.nix` からのみ import されており Linux ホストは対象外
 - 2026-09-15: `devenv shell lint-all` pass（pre-commit 全項目 + nix flake check）
+- 2026-09-15: PR 作成 → https://github.com/mizunashi-mana/dotfiles/pull/310
