@@ -8,6 +8,13 @@ My dotfiles and construction documentations.
 ./setup.sh
 ```
 
+The devcontainer host image is not built by default. Set `BUILD_DOCKER_IMAGE` to
+build it along with the setup:
+
+```bash
+BUILD_DOCKER_IMAGE=1 ./setup.sh
+```
+
 ### Docker Image
 
 ```bash
