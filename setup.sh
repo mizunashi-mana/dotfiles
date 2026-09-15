@@ -120,6 +120,11 @@ if [ -n "${BUILD_DOCKER_IMAGE:-}" ]; then
 		fi
 	done
 
+	if [[ ! -e /var/run/docker.sock ]] && [[ ! -e ~/.colima/docker.sock ]]; then
+		echo "Error: docker socket is not available after ${WAIT_DOCKER_LIMIT}s." >&2
+		exit 1
+	fi
+
 	docker buildx build \
 		--pull \
 		--file devcontainer/Dockerfile.host \

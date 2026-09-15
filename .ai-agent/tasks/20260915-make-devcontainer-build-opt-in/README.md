@@ -57,3 +57,19 @@
 devcontainer/Dockerfile.host ...` が実行されることを確認
 - 2026-09-15: `devenv shell lint-all` pass（pre-commit 全項目 + nix flake check）
 - 2026-09-15: PR 作成 → https://github.com/mizunashi-mana/dotfiles/pull/311
+- 2026-09-15: `/autodev-review-pr` でレビュー実施 → Critical 0 / Warning 0 / Info 3
+  （<https://github.com/mizunashi-mana/dotfiles/pull/311#pullrequestreview-5210796999>）
+- 2026-09-15: レビュー指摘のうち 2 件を取り込み
+  - docker ソケット待ちがタイムアウトしても `docker buildx build` に進んでしまう既存挙動を修正。
+    ループ後にソケット存在を再判定し、無ければ明示的にエラー終了するようにした
+    （`WAIT_DOCKER_LIMIT` を `--help` に公開した以上、効いたときの失敗が分かりやすいべきという判断）
+  - `README.md` にビルド成果物のイメージタグ名
+    （`mizunashi-mana/dotfiles/devcontainer-claude-host`）を明記し、
+    直下の `### Docker Image` セクションと区別できるようにした
+  - `linux-container` 分岐の `BUILD_DOCKER_IMAGE=''` 強制クリア復活はスキップ。
+    ホスト種別ごとにオプトインの意味がブレるため、本 PR の方針を優先した
+- 2026-09-15: 修正後の動作確認（スタブ化した複製リポジトリで実行）
+  - ソケットあり + `BUILD_DOCKER_IMAGE=1`: ビルド実行、exit 0
+  - ソケットなし + `BUILD_DOCKER_IMAGE=1`: `Error: docker socket is not available after 3s.` で exit 1
+  - ソケットなし + デフォルト: docker 関連の実行 0 件（エラーにもならない）
+- 2026-09-15: `devenv shell lint-all` pass
