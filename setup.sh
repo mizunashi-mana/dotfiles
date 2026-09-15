@@ -15,10 +15,15 @@ Options:
   --hostname SHORT  Set the short hostname (default: derived from the system)
 
 Environment variables:
-  TRACE=1           Set to any value to enable script tracing (set -x)
+  TRACE=1                 Set to any value to enable script tracing (set -x)
+  BUILD_DOCKER_IMAGE=1    Set to any value to build the devcontainer host image
+                          (not built by default)
+  WAIT_DOCKER_LIMIT=60    Seconds to wait for the docker socket when building
+  SKIP_CLEAN=1            Set to any value to skip the store/image cleanup
 
 Examples:
   TRACE=1 $0
+  BUILD_DOCKER_IMAGE=1 $0
 EOF
 }
 
@@ -85,21 +90,18 @@ case "$SETUP_TYPE" in
 	sudo --preserve-env=NIX_CONFIG nix --extra-experimental-features 'flakes nix-command' \
 		run nix-darwin \
 		-- switch --flake ".#$HOSTNAME_SHORT" --show-trace
-	BUILD_DOCKER_IMAGE=true
 	"$TASKS_DIR/post-darwin-setup/setup.sh"
 	;;
 'default')
 	nix --extra-experimental-features 'flakes nix-command' \
 		run home-manager \
 		-- switch --flake ".#$HOSTNAME_SHORT" --show-trace --impure --extra-experimental-features 'flakes nix-command'
-	BUILD_DOCKER_IMAGE=true
 	"$TASKS_DIR/post-linux-setup/setup.sh"
 	;;
 'linux-container')
 	nix --extra-experimental-features 'flakes nix-command' \
 		run home-manager \
 		-- switch --flake ".#$HOSTNAME_SHORT" --show-trace --impure --extra-experimental-features 'flakes nix-command'
-	BUILD_DOCKER_IMAGE=''
 	"$TASKS_DIR/post-linux-setup/setup.sh"
 	;;
 *)
@@ -117,6 +119,11 @@ if [ -n "${BUILD_DOCKER_IMAGE:-}" ]; then
 			break
 		fi
 	done
+
+	if [[ ! -e /var/run/docker.sock ]] && [[ ! -e ~/.colima/docker.sock ]]; then
+		echo "Error: docker socket is not available after ${WAIT_DOCKER_LIMIT}s." >&2
+		exit 1
+	fi
 
 	docker buildx build \
 		--pull \
