@@ -39,7 +39,7 @@
 - [x] `./setup.sh --help` に環境変数の説明が表示される
 - [x] `README.md` にオプトインの記載がある
 - [x] `devenv shell lint-all` が通る
-- [ ] PR を作成（`/autodev-create-pr`）
+- [x] PR を作成（`/autodev-create-pr`） → https://github.com/mizunashi-mana/dotfiles/pull/311
 
 ## 作業ログ
 
@@ -56,3 +56,4 @@
   - `BUILD_DOCKER_IMAGE=1`: `docker buildx build --pull --file
 devcontainer/Dockerfile.host ...` が実行されることを確認
 - 2026-09-15: `devenv shell lint-all` pass（pre-commit 全項目 + nix flake check）
+- 2026-09-15: PR 作成 → https://github.com/mizunashi-mana/dotfiles/pull/311
