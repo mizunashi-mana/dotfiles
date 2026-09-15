@@ -7,7 +7,7 @@
     };
 
     nixpkgs-stable = {
-      url = "github:nixos/nixpkgs?ref=nixos-25.05";
+      url = "github:nixos/nixpkgs?ref=nixos-26.05";
     };
 
     flake-parts = {
@@ -42,7 +42,6 @@
     agent-skills = {
       url = "github:Kyure-A/agent-skills-nix";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
     };
 
     claude-code = {
