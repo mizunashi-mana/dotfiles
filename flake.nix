@@ -7,7 +7,7 @@
     };
 
     nixpkgs-stable = {
-      url = "github:nixos/nixpkgs?ref=nixos-25.05";
+      url = "github:nixos/nixpkgs?ref=nixos-26.05";
     };
 
     flake-parts = {
