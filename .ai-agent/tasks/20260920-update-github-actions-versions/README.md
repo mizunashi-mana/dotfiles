@@ -58,7 +58,7 @@ cachix-action はメジャータグのみ（v17, v16, ...）を発行し、パ�
 - [x] `.github/workflows/deploy-docker-image.yml` の action が最新版になっている
 - [x] 全ての SHA が対応する tag の commit SHA と一致している
 - [x] `devenv shell lint-all` が通る
-- [ ] PR を作成（`/autodev-create-pr`）
+- [x] PR を作成（`/autodev-create-pr`） → https://github.com/mizunashi-mana/dotfiles/pull/314
 
 ## 作業ログ
 
@@ -72,3 +72,4 @@ cachix-action はメジャータグのみ（v17, v16, ...）を発行し、パ�
   一致することを逆引き検証（全て OK）
 - 2026-09-20: `devenv shell lint-all` pass（actionlint 含む pre-commit 全項目 +
   nix flake check）
+- 2026-09-20: PR 作成 → https://github.com/mizunashi-mana/dotfiles/pull/314
