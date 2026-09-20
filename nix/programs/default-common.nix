@@ -29,7 +29,6 @@ let
     (import ./gh { inherit packages; })
     (import ./playwright-cli { inherit packages; })
     (import ./claude-code { inherit packages; })
-    (import ./cc-voice-reporter { inherit packages; })
     (import ./docker-client { inherit packages; })
     (import ./antigravity-cli { inherit packages; })
     (import ./codex { inherit packages; })

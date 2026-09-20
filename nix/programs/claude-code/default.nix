@@ -30,38 +30,6 @@
               OTEL_LOGS_EXPORTER = "otlp";
               OTEL_METRICS_EXPORTER = "otlp";
             };
-            hooks = {
-              Notification = [
-                {
-                  hooks = [
-                    {
-                      command = "cc-voice-reporter hook-receiver";
-                      type = "command";
-                    }
-                  ];
-                }
-              ];
-              PermissionRequest = [
-                {
-                  hooks = [
-                    {
-                      command = "cc-voice-reporter hook-receiver";
-                      type = "command";
-                    }
-                  ];
-                }
-              ];
-              SessionStart = [
-                {
-                  hooks = [
-                    {
-                      command = "cc-voice-reporter hook-receiver";
-                      type = "command";
-                    }
-                  ];
-                }
-              ];
-            };
             permissions = {
               additionalDirectories = [
                 "/tmp"
