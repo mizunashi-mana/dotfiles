@@ -224,6 +224,7 @@
                 "Bash(playwright-cli video-stop:*)"
                 "Bash(playwright-cli --help)"
                 "Bash(playwright-cli --version)"
+                "Bash(pnpm install)"
                 "Bash(prek:*)"
                 "Bash(pre-commit run:*)"
                 "Bash(printf:*)"
