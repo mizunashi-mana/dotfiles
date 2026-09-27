@@ -25,9 +25,10 @@ home-manager 管理のグローバル allow list に追加して確認を不要�
 
 - [x] `nix/programs/claude-code/default.nix` に `"Bash(pnpm install)"` が追加されている
 - [x] `devenv shell lint-all` が通る
-- [ ] PR を作成（`/autodev-create-pr`）
+- [x] PR を作成（`/autodev-create-pr`） → https://github.com/mizunashi-mana/dotfiles/pull/315
 
 ## 作業ログ
 
 - 2026-09-28: `nix/programs/claude-code/default.nix` に `"Bash(pnpm install)"` を追加
-- 2026-09-28: `nix flake check` pass
+- 2026-09-28: `devenv shell lint-all` pass（pre-commit 全項目 + nix flake check）
+- 2026-09-28: PR 作成 → https://github.com/mizunashi-mana/dotfiles/pull/315
