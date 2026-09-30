@@ -58,7 +58,7 @@ Homebrew に逃がす理由がない。
 - [x] `nix/programs/default-darwin.nix` に両モジュールが登録されている
 - [x] macOS 2 ホストで `gws-0.22.5` / `google-cloud-sdk-583.0.0` が解決される / Linux ホストには入らない
 - [x] `devenv shell lint-all` が通る
-- [ ] PR を作成（`/autodev-create-pr`）
+- [x] PR を作成（`/autodev-create-pr`） → https://github.com/mizunashi-mana/dotfiles/pull/317
 
 ## 作業ログ
 
@@ -70,3 +70,4 @@ Homebrew に逃がす理由がない。
   - `nishiyamanomacbook-pro`（user: nishiyama-shun） → `gws-0.22.5`, `google-cloud-sdk-583.0.0`
   - `desktop-62r22ok` → 未導入（darwin 限定の意図どおり）
 - 2026-10-01: `devenv shell lint-all` pass（pre-commit 全項目 + nix flake check）
+- 2026-10-01: PR 作成 → https://github.com/mizunashi-mana/dotfiles/pull/317
