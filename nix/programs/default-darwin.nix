@@ -50,6 +50,8 @@ let
     (import ./mcp-grafana { inherit packages; })
     (import ./helm { inherit packages; })
     (import ./argocd { inherit packages; })
+    (import ./google-cloud-sdk { inherit packages; })
+    (import ./gws { inherit packages; })
     (import ./agent-browser { inherit packages; })
     (import ./hermes-agent { inherit packages; })
   ];
