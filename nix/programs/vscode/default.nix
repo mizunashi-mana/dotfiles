@@ -32,7 +32,7 @@
             packages.vscode-extensions.vscode-marketplace.ms-kubernetes-tools.vscode-kubernetes-tools
             packages.vscode-extensions.vscode-marketplace.ms-playwright.playwright
             packages.vscode-extensions.vscode-marketplace.ms-toolsai.jupyter
-            packages.vscode-extensions.vscode-marketplace.ms-python.python
+            packages.pkgs-stable.vscode-extensions.ms-python.python
             packages.vscode-extensions.vscode-marketplace.ms-vscode-remote.remote-containers
             packages.vscode-extensions.vscode-marketplace.pbkit.vscode-pbkit
             packages.vscode-extensions.vscode-marketplace.prisma.prisma

@@ -55,6 +55,7 @@
           homedir
           extra-dock-persistent-apps
           ;
+        inherit (programs-darwin) program-packages;
       })
       (import ./users {
         inherit packages username homedir;

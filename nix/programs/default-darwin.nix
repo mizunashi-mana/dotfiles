@@ -7,6 +7,10 @@
 let
   default = import ./default.nix { inherit system inputs packages; };
 
+  dbeaver = import ./dbeaver { inherit packages; };
+  zotero = import ./zotero { inherit packages; };
+  raycast = import ./raycast { inherit packages; };
+
   programs = [
     (import ./default-common.nix { inherit system inputs packages; })
     (import ./mas { inherit packages; })
@@ -37,10 +41,10 @@ let
     (import ./google-chrome { inherit packages; })
     (import ./aquaskk { inherit packages; })
     (import ./skimpdf { inherit packages; })
-    (import ./dbeaver { inherit packages; })
-    (import ./zotero { inherit packages; })
+    dbeaver
+    zotero
     (import ./postman { inherit packages; })
-    (import ./raycast { inherit packages; })
+    raycast
     (import ./claude-desktop { inherit packages; })
     (import ./xcode { inherit packages; })
     (import ./ollama { inherit packages; })
@@ -60,4 +64,10 @@ in
   homeManagerImports = default.mkHomeManagerImports { inherit programs; };
   nixDarwinModules = default.mkNixDarwinModules { inherit programs; };
   nixosModules = default.mkNixosModules { inherit programs; };
+
+  program-packages = {
+    dbeaver = dbeaver.package;
+    zotero = zotero.package;
+    raycast = raycast.package;
+  };
 }
