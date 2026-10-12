@@ -14,6 +14,9 @@
             review = ./skills/review;
           };
           settings = {
+            enabledPlugins = {
+              "cc-plugin-you-should-know@builtin" = true;
+            };
             env = {
               CLAUDE_CODE_AUTO_CONNECT_IDE = "0";
               CLAUDE_CODE_DISABLE_TERMINAL_TITLE = "1";
