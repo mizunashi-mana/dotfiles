@@ -37,7 +37,7 @@ YAML / JSON / TOML / XML を jq 風の構文で扱える CLI `yq`（Go 実装、
 - [x] `nix/programs/default-common.nix` に登録されている
 - [x] macOS / Linux ホストで `yq-go-4.54.1` が解決される
 - [x] `devenv shell lint-all` が通る
-- [ ] PR を作成（`/autodev-create-pr`）
+- [x] PR を作成（`/autodev-create-pr`） → https://github.com/mizunashi-mana/dotfiles/pull/320
 
 ## 作業ログ
 
@@ -48,3 +48,4 @@ YAML / JSON / TOML / XML を jq 風の構文で扱える CLI `yq`（Go 実装、
   - `desktop-62r22ok` / `devcontainer` → `yq-go-4.54.1`
   - `devcontainer-claude` → 未導入（`default-common.nix` を使わない最小構成ホストのため。jq と同じ扱い）
 - 2026-10-13: `devenv shell lint-all` pass（pre-commit 全項目 + nix flake check）
+- 2026-10-13: PR 作成 → https://github.com/mizunashi-mana/dotfiles/pull/320
