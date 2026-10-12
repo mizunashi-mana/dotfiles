@@ -12,6 +12,7 @@ let
     (import ./delta { inherit packages; })
     (import ./zoxide { inherit packages; })
     (import ./jq { inherit packages; })
+    (import ./yq-go { inherit packages; })
     (import ./eza { inherit packages; })
     (import ./bat { inherit packages; })
     (import ./fzf { inherit packages; })
