@@ -16,7 +16,7 @@ Claude Code ユーザー設定（`~/.claude/settings.json`）で有効化する�
 - [x] `nix/programs/claude-code/default.nix` に `enabledPlugins` が追加されている
 - [x] 生成される settings に `"cc-plugin-you-should-know@builtin": true` が含まれることを確認
 - [x] `devenv shell lint-all` が通る
-- [ ] PR を作成（`/autodev-create-pr`）
+- [x] PR を作成（`/autodev-create-pr`） → https://github.com/mizunashi-mana/dotfiles/pull/319
 
 ## 作業ログ
 
@@ -26,3 +26,4 @@ Claude Code ユーザー設定（`~/.claude/settings.json`）で有効化する�
   - `nishiyamanomacbook-pro` / `nishiyamanomacbook-air` の `programs.claude-code.settings.enabledPlugins` → `{"cc-plugin-you-should-know@builtin":true}`
   - `nishiyamanomacbook-pro` の生成済み `settings.json` をビルドし、`enabledPlugins` に同値が出力されることを確認
 - 2026-10-13: `devenv shell lint-all` pass（pre-commit 全項目 + nix flake check）
+- 2026-10-13: PR 作成 → https://github.com/mizunashi-mana/dotfiles/pull/319
