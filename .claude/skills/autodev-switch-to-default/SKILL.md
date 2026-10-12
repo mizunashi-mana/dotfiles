@@ -1,63 +1,66 @@
 ---
-description: Switch to the default branch after a PR is merged, pull latest changes, and run compaction. Use after merging or having a PR merged to start fresh.
-allowed-tools: Bash(gh pr merge *), "Bash(git checkout *)", "Bash(git pull *)", "Bash(git pull)", "Bash(git branch *)", "Bash(git rev-parse *)", "Bash(git remote *)", "Bash(git symbolic-ref *)", "Bash(git status *)", "Bash(gh pr list *)"
+description: Merge the current branch's PR once it is pushed, reviewed, and green, then switch back to master and pull. Use when a PR is ready to merge, or already merged, and you want to start the next task from a fresh master.
+disable-model-invocation: true
+allowed-tools: "Bash(git status *)", "Bash(git branch *)", "Bash(git rev-parse *)", "Bash(git switch *)", "Bash(git pull *)", "Bash(git fetch *)", "Bash(gh pr list *)", "Bash(gh pr view *)", "Bash(gh pr checks *)", "Bash(gh pr merge *)", "Bash(gh run view *)", "Bash(gh api graphql *)"
 ---
 
-# デフォルトブランチへの切り替え
+# マージして master に戻る
 
-PR のマージ後にデフォルトブランチへ切り替え、最新の変更を取り込み、compaction を実行して次の作業に備えます。
+ユーザーが `/autodev-switch-to-default` で呼んだことを、今のブランチの PR をマージしてよいという指示とみなし、あらためて聞かない。聞かずにマージするので、モデルが自分では呼ばない(`disable-model-invocation`)。
 
-## 手順
+## 1. 確認
 
-### 1. PR のマージ状況を確認
+- `git status` で未コミットの変更が無いかを確かめる。あればユーザーに伝えて止める。
+- `git branch --show-current` でブランチ名を控える。`master` なら手順 3 へ。
+- `gh pr list --head <ブランチ> --state all --json number,state,url --limit 1` で PR の状態を見る。
+  - `OPEN`: 手順 2 でマージする。
+  - `MERGED`: 手順 3 へ。ローカルのブランチも消す。
+  - `CLOSED`、または PR が無い: マージせず手順 3 へ。ローカルのブランチは消さない。
 
-現在のブランチに関連する PR があるかを確認する。
+## 2. マージ
 
-- `git remote get-url origin` でリポジトリの owner/repo を取得する
-- `git branch --show-current` で現在のブランチ名を取得する
-- `gh pr list --head <branch-name> --json number,state,url --limit 1` で現在のブランチの PR を検索する
+`gh pr view <番号> --json isDraft,mergeable,headRefOid,reviews` とスレッドの一覧で、次をすべて満たすかを確かめる。1 つでも満たさなければ、どれかをユーザーに伝えて止める。
 
-結果に応じて分岐:
+- プッシュ済み: `git rev-parse HEAD` が `headRefOid` と同じ。
+- レビュー済み: `reviews` が 1 件以上あり、最新のレビューに Critical が残っていない(推奨アクションが `REQUEST_CHANGES` でない)。自分の PR には `COMMENT` しか付けられないので、本文の推奨アクションで判断する。
+- スレッドがすべて解決済み。残っていれば `path`・`line`(null なら `originalLine`)・最初のコメントを挙げて止める。返し忘れかもしれないので、自分では解決しない。
 
-- **PR がマージ済み**: 次のステップに進む
-- **PR がオープン**: `gh pr merge <PR番号> --merge` でマージコミット方式でマージする。ユーザーへの確認は不要
-  - CI がまだ通過してない場合や、レビューコメントが解決できていない場合にマージできない。その場合、レビューコメントが全て解決できるか確認し、CIが通るまで待つ
-  - レビューコメントに未解決の問題がある場合は、ユーザーに確認する
-- **PR が存在しない**: そのまま次のステップに進む
+  ```bash
+  gh api graphql -F owner='{owner}' -F repo='{repo}' -F number=<番号> -f query='
+  query($owner: String!, $repo: String!, $number: Int!) {
+    repository(owner: $owner, name: $repo) {
+      pullRequest(number: $number) {
+        reviewThreads(first: 100) {
+          pageInfo { hasNextPage }
+          nodes { isResolved path line originalLine comments(first: 1) { nodes { body } } }
+        }
+      }
+    }
+  }' --jq '.data.repository.pullRequest.reviewThreads | {hasNextPage: .pageInfo.hasNextPage, unresolved: [.nodes[] | select(.isResolved | not)]}'
+  ```
 
-### 2. デフォルトブランチの特定
+- 下書きでない、衝突が無い(`mergeable` が `MERGEABLE`。`UNKNOWN` なら少し置いて取り直す)。
 
-```bash
-git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'
-```
-
-上記でデフォルトブランチ名（例: `main`, `master`）を取得する。
-
-### 3. 現在のブランチを確認
-
-```bash
-git branch --show-current
-```
-
-既にデフォルトブランチにいる場合は、切り替えをスキップして pull に進む。
-
-### 4. デフォルトブランチに切り替え
-
-```bash
-git checkout <デフォルトブランチ>
-```
-
-### 5. 最新の変更を取り込み
+満たしていれば、Bash の `timeout` を `600000` にして CI を待つ。
 
 ```bash
-git pull
+gh pr checks <番号> --watch --interval 30
 ```
 
-### 6. compaction の実行
+- 通ったら `gh pr merge <番号> --merge` でマージする。失敗したらエラーを伝えて止める。
+- 落ちたら、`gh run view <run の id> --log-failed` で見た原因を伝えて止める。ここでは直さない。
 
-`/compact` の実行をユーザーに促す
+## 3. 切り替え
 
-## 注意事項
+```bash
+git switch master
+git pull --ff-only
+git fetch --prune
+```
 
-- 未コミットの変更がある場合は、切り替え前にユーザーに警告する
-- pull に失敗した場合はエラー内容をユーザーに報告する
+PR をマージしたとき、または `MERGED` だったときだけ、`git branch -d <ブランチ>` でローカルのブランチを消す。失敗しても `-D` で強制せず、ユーザーに伝える。
+
+## 4. 次へ
+
+- `.ai-agent/projects/` のタスクだったなら、プロジェクトの README の状態を「完了」にするよう促す。
+- 文脈が長くなっていれば `/clear` か `/compact` を勧める。

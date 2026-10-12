@@ -1,136 +1,59 @@
 ---
-description: Start a new long-term project that spans multiple tasks. Use when planning a large feature, refactoring, or multi-week initiative that needs task decomposition and tracking.
-allowed-tools: Read, Write, Edit, MultiEdit, Update, WebSearch, WebFetch
+description: Break a large goal into PR-sized tasks with dependencies and record it in .ai-agent/projects/. Use when a feature, refactoring, or multi-week initiative spans multiple PRs.
+allowed-tools: Read, Write, Edit, Glob, Grep, WebSearch, WebFetch, AskUserQuestion, "Bash(mkdir *)", Skill(autodev-start-new-task), Skill(autodev-start-new-survey)
 ---
 
-# 新規プロジェクト開始
+# プロジェクトの開始
 
-長期的な目標「$ARGUMENTS」のプロジェクトを開始します。
+「$ARGUMENTS」を 1 PR ずつのタスクに分け、`.ai-agent/projects/` に置く。
 
-## プロジェクトとタスクの違い
+## 1. 下調べ
 
-|          | タスク (start-new-task) | プロジェクト (start-new-project)     |
-| -------- | ----------------------- | ------------------------------------ |
-| スコープ | 単一機能・修正          | 複数タスクからなる大きな目標         |
-| 期間     | 1日〜数日               | 数週間〜数ヶ月                       |
-| 出力先   | `.ai-agent/tasks/`      | `.ai-agent/projects/`                |
-| 進め方   | 1ブランチで実装         | タスクごとに `start-new-task` で実行 |
+- `.ai-agent/steering/` と `.ai-agent/structure.md` のうち、関係するものを読む。
+- 既存のコードで前提を確かめる。
 
-## 手順
+## 2. 分ける
 
-### 1. プロジェクト名の決定
+- 各タスクは `/autodev-start-new-task` で 1 PR に収まる大きさにする。
+- 先に調べないと分けられない部分は、調査タスク(`/autodev-start-new-survey`)として置く。
+- 依存を書き、循環が無いこと、依存なしで着手できるタスクがあることを確かめる。
 
-- `$ARGUMENTS` の内容から適切なプロジェクト名（英語、kebab-case）を考える
+## 3. 書く
 
-### 2. プロジェクトディレクトリ作成
+`.ai-agent/projects/YYYYMMDD-<kebab-case>/README.md` に書く。
 
-- `.ai-agent/projects/YYYYMMDD-{プロジェクト名}/README.md` を作成
-
-### 3. 関連ドキュメント確認
-
-- `.ai-agent/steering/tech.md` で技術スタックを確認
-- `.ai-agent/steering/product.md` でプロダクト概要を確認
-- 既存の実装状況を把握
-
-### 4. README.md を作成
-
-以下の構成で記載:
-
-````markdown
-# プロジェクト名
+```markdown
+# <プロジェクト名>
 
 ## 目標
 
-- 達成したいこと（明確に）
-- 完了条件
+完了条件を含める。
 
-## スコープ
+## やらないこと
 
-### やること
+## タスク
 
-- ...
+| ID  | タスク | 依存 | 状態   | PR  |
+| --- | ------ | ---- | ------ | --- |
+| T1  | ...    | -    | 未着手 |     |
+| T2  | ...    | T1   | 未着手 |     |
 
-### やらないこと
+### T1: <タスク名>
 
-- ...
+- 内容:
+- 完了条件:
 
-## タスク分解
+## 経過
 
-| ID  | タスク   | 依存   | 優先度 | 状態   |
-| --- | -------- | ------ | ------ | ------ |
-| T1  | タスク名 | -      | 高     | 未着手 |
-| T2  | タスク名 | T1     | 高     | 未着手 |
-| T3  | タスク名 | T1     | 中     | 未着手 |
-| T4  | タスク名 | T2, T3 | 中     | 未着手 |
-
-### 依存関係図
-
-```
-T1 → T2 → T4
- ↘ T3 ↗
+- YYYY-MM-DD: 開始
 ```
 
-### 各タスクの詳細
+## 4. 確認
 
-#### T1: タスク名
+目標、やらないこと、分け方、依存、最初に着手するタスクをユーザーに示し、同意を得る。同意を得たら最初のタスクを `/autodev-start-new-task` で始めてよいかも合わせて聞く。
 
-- 概要: ...
-- 完了条件: ...
+## 5. 進め方
 
-## 進捗
-
-- YYYY-MM-DD: プロジェクト開始
-
-## メモ
-
-- 調査結果や方針変更の記録
-````
-
-### 5. 依存関係のチェック
-
-以下を確認:
-
-- [ ] 循環依存がないか
-- [ ] 全てのタスクに到達可能か（孤立したタスクがないか）
-- [ ] 依存先の ID が存在するか
-- [ ] 着手可能なタスク（依存なし）が明確か
-
-### 6. ユーザーに計画を提示して確認
-
-- 目標・スコープの確認
-- タスク分解と依存関係の確認
-- 優先順位の確認
-- 最初に着手するタスクの提案
-
-### 7. コンテキストの整理
-
-- `/compact` を実行してコンテキストを整理
-
-### 8. （任意）最初のタスクを開始
-
-- ユーザーの承認後、`/autodev-start-new-task` で最初のタスクを開始
-- タスク README には、プロジェクト README へのリンクを記載
-
-## タスク実行時の注意
-
-### タスク開始前のチェック
-
-タスクを開始する前に、プロジェクト README で以下を確認:
-
-1. 依存タスクが全て完了しているか
-2. 状態を「進行中」に更新
-
-### タスク完了時の更新
-
-タスク完了後、プロジェクト README を更新:
-
-1. 該当タスクの状態を「完了」に変更
-2. 進捗セクションに記録を追加
-3. 次に着手可能になったタスクを確認
-
-## プロジェクト完了時
-
-- 全タスクの完了を確認
-- 目標・完了条件を満たしているか確認
-- 進捗セクションに完了を記録
-- ユーザーに完了報告
+- タスクは `/autodev-start-new-task T1 <タスク名>` のように ID を添えて始める。タスクの README からこの README へリンクする。
+- タスクを始めたら状態を「進行中」に、PR を作ったら PR の URL を、マージされたら「完了」にし、経過に 1 行足す。
+- 全タスクが終わったら目標を満たしたかを確かめ、経過に完了を書いてユーザーに報告する。

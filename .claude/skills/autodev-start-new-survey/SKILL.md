@@ -1,128 +1,59 @@
 ---
-description: Start a new technical survey or investigation. Use when researching technologies, comparing libraries, evaluating feasibility, or analyzing trends.
-allowed-tools: Read, Write, Edit, MultiEdit, Update, Bash(mkdir:*), Glob, Grep, WebSearch, WebFetch
+description: Start a technical survey and write the findings to .ai-agent/surveys/. Use when comparing tools or approaches, checking feasibility, investigating a problem, or tracking trends before deciding how to implement.
+allowed-tools: Read, Write, Edit, Glob, Grep, WebSearch, WebFetch, AskUserQuestion, "Bash(mkdir *)", Skill(autodev-start-new-task)
 ---
 
-# 新規調査開始
+# 調査の開始
 
-「$ARGUMENTS」について調査を開始します。
+「$ARGUMENTS」を調べ、結論を `.ai-agent/surveys/` に残す。
 
-## 手順
+## 1. 問いを決める
 
-### 1. 調査名の決定
+次を決める。依頼や関係する文書から読み取れないものだけユーザーに聞く。
 
-- `$ARGUMENTS` の内容から適切な調査名（英語、kebab-case）を考える
+- 何を明らかにしたいか(調査の問い)
+- 何を重視して選ぶか(判断基準)
+- 調べないこと
 
-### 2. 調査ディレクトリ作成
+## 2. 下調べ
 
-- `.ai-agent/surveys/YYYYMMDD-{調査名}/README.md` を作成（YYYYMMDD は今日の日付）
+- `.ai-agent/steering/` のうち関係するものを読む。
+- `.ai-agent/surveys/` に関係する過去の調査があれば読む。
 
-### 3. 調査の目的・スコープを明確化
+## 3. 調べる
 
-ユーザーに以下を確認:
+- 公式ドキュメント、リポジトリ、Issue を一次情報として優先する。
+- 必要ならローカルで小さく試し、コードと結果を書き残す。
+- 事実と推測を分けて記録し、出典を残す。
 
-- 何を知りたいのか（調査の問い）
-- 調査の背景・動機
-- 判断基準（何を重視するか）
-- スコープ外（調査しないこと）
+## 4. 書く
 
-### 4. 関連ドキュメント確認
-
-- `.ai-agent/steering/tech.md` で現在の技術スタックを確認
-- `.ai-agent/steering/product.md` でプロダクト要件を確認
-- 既存の調査 `.ai-agent/surveys/` で関連する過去の調査を確認
-
-### 5. 情報収集
-
-以下の方法で情報を収集:
-
-- **WebSearch**: 最新の技術動向、ベンチマーク、比較記事
-- **WebFetch**: 公式ドキュメント、GitHub リポジトリ、ブログ記事
-- **コードベース調査**: 既存の実装状況、依存関係
-- **GitHub**: 関連する Issue やライブラリの活動状況
-
-### 6. README.md に調査結果を記載
-
-以下の構成で記載:
+`.ai-agent/surveys/YYYYMMDD-<kebab-case>/README.md` に書く。長い資料や試したコードは同じディレクトリに置く。
 
 ```markdown
-# 調査名
+# <調査名>
 
-## 調査の問い
+調査日: YYYY-MM-DD
 
-- 何を明らかにしたいか
-
-## 背景
-
-- なぜこの調査が必要か
-- 関連するプロジェクト/タスクがあればリンク
-
-## 調査方法
-
-- どのように情報を収集したか
-- 参照したソース
-
-## 調査結果
-
-### 選択肢/比較対象の概要
-
-| 項目             | 選択肢A | 選択肢B | 選択肢C |
-| ---------------- | ------- | ------- | ------- |
-| 概要             | ...     | ...     | ...     |
-| メリット         | ...     | ...     | ...     |
-| デメリット       | ...     | ...     | ...     |
-| ライセンス       | ...     | ...     | ...     |
-| メンテナンス状況 | ...     | ...     | ...     |
-
-### 詳細分析
-
-#### 選択肢A
-
-- ...
-
-### 本プロジェクトへの適用
-
-- 現在の技術スタックとの相性
-- 既存コードへの影響
+## 問い
 
 ## 結論
 
-- 推奨する選択肢とその理由
-- 注意点・リスク
+推す案と理由。注意点。
 
-## 参考リンク
+## 比較
 
-- [タイトル](URL)
+| 観点 | 案 A | 案 B |
+| ---- | ---- | ---- |
+
+## 詳細
+
+## 出典
 ```
 
-### 7. ユーザーに調査結果を提示
+結論を先に書き、調査日時点の情報であることが分かるようにする。
 
-- 結論と推奨事項を要約して報告
-- 追加調査が必要な点があれば提案
-- 次のアクション（タスク作成、Issue 作成など）を提案
+## 5. 報告
 
-## 調査の種類別ガイド
-
-### 技術選定型
-
-比較表を中心に、各選択肢のメリット・デメリットを明確化。判断基準に基づいてスコアリング。
-
-### 実現可能性調査型
-
-「できるか/できないか」を明確にする。PoC（概念実証）の結果があれば記載。制約や前提条件を整理。
-
-### 問題調査型
-
-問題の原因分析、影響範囲の特定、解決策の提案。既存コードの調査結果を詳細に記載。
-
-### 動向調査型
-
-技術トレンド、エコシステムの状況、コミュニティの活性度を調査。将来性の観点も含める。
-
-## 注意事項
-
-- 事実と推測を明確に区別する
-- 情報源を必ず記載する（参考リンク）
-- 本プロジェクトの文脈に沿った分析を行う
-- 調査結果は中立的に記載し、結論セクションで推奨を述べる
-- 調査日時点の情報であることを意識する
+- 結論と推す案をユーザーに要約して伝える。
+- 次の一手を提案する: `/autodev-start-new-task` で実装に移る、Issue にする、追加で調べる。

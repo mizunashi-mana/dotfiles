@@ -1,94 +1,57 @@
 ---
-description: Import and apply PR review comments interactively. Use when a pull request has received review feedback and you want to address the suggestions.
-allowed-tools: Read, Write, Edit, MultiEdit, "Bash(gh pr view *)", "Bash(gh api *)", "Bash(git add *)", "Bash(git commit *)", "Bash(git push *)"
+description: Address the review comments on a pull request — fix them, reply to each thread, and resolve it. Use when a PR has received review feedback (from /autodev-review-pr or a human reviewer) and you want to address it.
+allowed-tools: Read, Write, Edit, Glob, Grep, AskUserQuestion, "Bash(git branch --show-current)", "Bash(git status *)", "Bash(git add *)", "Bash(git commit *)", "Bash(git push *)", "Bash(devenv shell lint-all)", "Bash(gh pr list *)", "Bash(gh pr view *)", "Bash(gh pr comment *)", "Bash(gh api graphql *)"
 ---
 
-# PR レビュー取り込み
+# レビューの取り込み
 
-PR「$ARGUMENTS」のレビューコメントを確認し、対話的に修正を行います。
+PR「$ARGUMENTS」のレビューを取り込む。
 
-## 手順
+## 1. 指摘を集める
 
-1. **レビューコメント取得**:
-   - `gh api --paginate "repos/{owner}/{repo}/pulls/<PR番号>/comments"` でレビューコメント本体を取得（`{owner}/{repo}` は `gh api` が現在のリモートから自動解決する）
-   - 未解決のスレッドは GraphQL `pullRequest.reviewThreads(...){isResolved}` で判定する:
+- `$ARGUMENTS` に番号か URL が無ければ、`gh pr list --head $(git branch --show-current) --json number --limit 1` で探す。
+- 総評は `gh pr view <番号> --json reviews`、行コメントは次のスレッドの一覧で取る。`isResolved` が `false` のものが対象。`hasNextPage` が `true` なら見落とすので、止めてユーザーに伝える。
 
-     ```bash
-     gh api graphql -f query='query($owner:String!,$repo:String!,$pr:Int!){repository(owner:$owner,name:$repo){pullRequest(number:$pr){reviewThreads(first:100){nodes{isResolved comments(first:50){nodes{id databaseId path line body author{login}}}}}}}}' \
-       -F owner=<owner> -F repo=<repo> -F pr=<PR番号>
-     ```
-
-     - `isResolved: false` のスレッドを未解決として扱う
-
-   - 各コメントの REST `id`（= 返信用 commentId、GraphQL では `databaseId`）を記録
-
-2. **各コメントの確認**:
-   - コメント内容を要約してユーザーに提示
-   - 修正の要否を判断（推奨/不要/要確認）
-   - 理由を簡潔に説明
-
-3. **ユーザーに確認**:
-   - 修正する項目をまとめて提示
-   - ユーザーの承認を得る
-
-4. **修正実行**:
-   - 承認された項目のみ修正
-   - 各ファイルを編集
-
-5. **コミット・プッシュ**:
-   - 修正内容をまとめてコミット
-   - PR ブランチにプッシュ
-
-6. **レビューコメントへの返信**:
-   - 各レビューコメントに対応結果を返信する
-   - `gh api -X POST "repos/{owner}/{repo}/pulls/<PR番号>/comments/<commentId>/replies" -f body="<返信内容>"` で返信:
-     - `<commentId>` は手順 1 で記録したコメントの REST ID
-     - 改行を含む長い本文は `--input -` でヒアドキュメント JSON を渡す:
-       ```bash
-       gh api -X POST "repos/{owner}/{repo}/pulls/<PR番号>/comments/<commentId>/replies" --input - <<'JSON'
-       { "body": "ありがとうございます。ご指摘の通り修正しました。..." }
-       JSON
-       ```
-   - 修正した項目: 修正内容を簡潔に説明（例: 「修正しました。○○に変更しています。」）
-   - スキップした項目: スキップの理由を説明（例: 「プロジェクト方針として○○のため、現状維持とします。」）
-   - 返信はレビュワーへの感謝と具体的な対応内容を含める
-
-## 判断基準
-
-### 修正推奨
-
-- バグ修正
-- セキュリティ改善
-- アクセシビリティ改善
-- 明らかな UX 改善
-- テストカバレッジの拡充
-
-### 修正不要（スキップ）
-
-- ユーザーが明示的に決定した設計
-- プロジェクト方針と異なる提案
-- 過剰な抽象化・将来対応の提案
-
-### 要確認
-
-- トレードオフがある変更
-- 設計判断が必要な変更
-
-## 出力形式
-
-```
-**1. ファイル名:行番号 - 概要**
-> コメント要約
-
-→ **修正推奨/不要/要確認**: 理由
-
----
+```bash
+gh api graphql -F owner='{owner}' -F repo='{repo}' -F number=<番号> -f query='
+query($owner: String!, $repo: String!, $number: Int!) {
+  repository(owner: $owner, name: $repo) {
+    pullRequest(number: $number) {
+      reviewThreads(first: 100) {
+        pageInfo { hasNextPage }
+        nodes { id isResolved isOutdated path line originalLine comments(first: 20) { nodes { author { login } body } } }
+      }
+    }
+  }
+}' --jq '.data.repository.pullRequest.reviewThreads'
 ```
 
-最後に「まとめ: X件修正、Y件スキップでよいですか？」と確認する。
+## 2. 仕分けて直す
 
-## 返信の例
+- 直す: バグ、セキュリティ、規約との食い違い、妥当な改善。Critical と Warning は原則直す。
+- 直さない: ユーザーが明示的に決めた設計、プロジェクトの方針と異なる提案、過剰な抽象化や将来への備え。
+- 迷うもの(トレードオフや方針に関わるもの)だけ、まとめて AskUserQuestion で聞く。それ以外は聞かずに進める。
 
-- 修正した場合: 「ありがとうございます。ご指摘の通り修正しました。○○を△△に変更しています。」
-- スキップした場合: 「ご提案ありがとうございます。検討しましたが、○○の理由から現状の実装を維持します。」
-- 部分的に対応した場合: 「ありがとうございます。○○の部分は修正しました。△△については□□の理由から現状維持としています。」
+直したら `devenv shell lint-all` で確かめ、コミットしてプッシュする。
+
+## 3. 返信して解決する
+
+- 各スレッドに返信する。直したものは内容とコミット、直さないものは理由を書く。本文は標準入力から渡す。
+- 返信したらスレッドを解決する。人間のレビュアーのスレッドで、相手の判断を待つべきもの(直さない判断など)は解決せずに残す。
+- 総評の指摘のうち直さないものは、理由を `gh pr comment` で書く。
+
+```bash
+gh api graphql -F id=<スレッドの id> -F body=@- -f query='
+mutation($id: ID!, $body: String!) {
+  addPullRequestReviewThreadReply(input: { pullRequestReviewThreadId: $id, body: $body }) { comment { url } }
+}' <<'BODY'
+<返信>
+BODY
+
+gh api graphql -F id=<スレッドの id> -f query='
+mutation($id: ID!) { resolveReviewThread(input: { threadId: $id }) { thread { isResolved } } }'
+```
+
+## 4. 報告
+
+直した指摘、直さなかった指摘(理由つき)、残したスレッドをユーザーに伝える。

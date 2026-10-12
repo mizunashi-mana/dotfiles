@@ -1,122 +1,30 @@
 ---
 description: Create a GitHub issue from an idea, bug report, or feature request. Use when reporting bugs, proposing new features, or documenting problems as issues.
-allowed-tools: Read, "Bash(gh issue list *)", "Bash(gh issue create *)", AskUserQuestion
+allowed-tools: Read, AskUserQuestion, "Bash(gh issue list *)", "Bash(gh issue create *)"
 ---
 
-# GitHub Issue 作成
+# Issue の作成
 
-アイデアから GitHub Issue を作成します。
+「$ARGUMENTS」から GitHub Issue を作る。
 
-## 入力
+## 1. 中身を決める
 
-ユーザーから以下の情報を取得します:
+- 種類(Bug / Feature / Problem)と優先度(高 / 中 / 低)を決める。依頼から読み取れないものだけ聞く。
+- `gh issue list --search "<キーワード>" --json number,title,url` で重複を確かめる。あれば伝えて止める。
+- ラベル: Bug は `bug`、Feature は `enhancement`、Problem は `problem`。優先度は `priority: high` / `priority: medium` / `priority: low`。
+- 本文は種類に合わせて次の見出しで書く。
+  - Bug: 概要 / 再現手順 / 期待される動作 / 実際の動作 / 追加情報
+  - Feature: 概要 / 背景・動機 / 提案する解決策 / 代替案
+  - Problem: 課題 / 影響 / 発生状況 / アイデア(任意)
 
-- **概要**: Issue のタイトルと説明
-- **種類**: Bug / Feature / Problem
-- **優先度**: 高 / 中 / 低
+## 2. 確認して作る
 
-## 手順
+タイトル・本文・ラベルをユーザーに示し、確認を取ってから作る。本文はヒアドキュメントで渡す。
 
-1. **情報収集**:
-   - ユーザーから Issue の内容を確認
-   - 種類と優先度を決定
-
-2. **重複確認**:
-   - `gh issue list --search "<キーワード>" --json number,title,url` で既存 Issue との重複がないか確認
-
-3. **ラベル決定**:
-   - 種類に応じて:
-     - Bug（不具合）: `bug`
-     - Feature（機能要望）: `enhancement`
-     - Problem（課題）: `problem`
-   - 優先度に応じて: `priority: high`, `priority: medium`, `priority: low`
-
-4. **本文確認**:
-   - 作成する Issue のタイトルと本文をユーザーに提示
-   - AskUserQuestion で「この内容で作成してよいか？」を確認
-   - ユーザーが修正を希望する場合は内容を調整
-
-5. **Issue 作成**:
-   - `gh issue create --title "<タイトル>" --body "<本文>" --label "<l1>,<l2>"` で Issue を作成
-   - 本文に改行や引用符が含まれる場合は、`--body-file <path>` で一時ファイルから渡すか、ヒアドキュメントを使う:
-     ```bash
-     gh issue create --title "<タイトル>" --label "<l1>,<l2>" --body-file - <<'BODY'
-     ...本文...
-     BODY
-     ```
-
-6. **完了報告**:
-   - 作成した Issue の URL をユーザーに報告
-
-## Issue テンプレート
-
-### Bug Report
-
-```markdown
-## 概要
-
-{不具合の説明}
-
-## 再現手順
-
-1. ...
-2. ...
-
-## 期待される動作
-
-{正常な動作}
-
-## 実際の動作
-
-{現在の問題}
-
-## 追加情報
-
-{環境情報など}
+```bash
+gh issue create --title "<タイトル>" --label "<l1>,<l2>" --body-file - <<'BODY'
+<本文>
+BODY
 ```
 
-### Feature Request
-
-```markdown
-## 概要
-
-{機能の説明}
-
-## 背景・動機
-
-{なぜこの機能が必要か}
-
-## 提案する解決策
-
-{実装のアイデア}
-
-## 代替案
-
-{他に検討した方法}
-```
-
-### Problem
-
-```markdown
-## 課題
-
-{どのような問題・不便さがあるか}
-
-## 影響
-
-{この課題による影響}
-
-## 発生状況
-
-{どのような状況で発生するか}
-
-## アイデア（任意）
-
-{解決のヒントになりそうなアイデア}
-```
-
-## 注意事項
-
-- 引数 `$ARGUMENTS` が提供されている場合は、それを初期情報として使用
-- 情報が不足している場合は AskUserQuestion で確認
-- 本文確認で修正が必要な場合は、ユーザーの指示に従って内容を調整してから再度確認
+作った Issue の URL をユーザーに伝える。

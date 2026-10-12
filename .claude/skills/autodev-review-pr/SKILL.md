@@ -1,86 +1,33 @@
 ---
-description: Review a GitHub pull request using a dedicated reviewer agent in a clean context. Use when you want an unbiased code review without the current conversation's context influencing the review.
-allowed-tools: Read, "Bash(git branch --show-current)", "Bash(gh pr list *)", Glob, Grep, AskUserQuestion, TeamCreate, TeamDelete, Task, TaskCreate, TaskUpdate, TaskList, TaskGet, SendMessage, WebSearch, Skill(autodev-import-review-suggestions)
+description: Review a GitHub pull request with a reviewer subagent in a clean context and post the result as a GitHub review. Use after creating a PR, or when asked for an unbiased review without the current conversation's context influencing it.
+allowed-tools: Read, "Bash(git branch --show-current)", "Bash(gh pr list *)", "Bash(gh pr view *)", Agent, AskUserQuestion, Skill(autodev-import-review-suggestions)
 ---
 
-# PR レビュー
+# PR のレビュー
 
-PR「$ARGUMENTS」を、クリーンなコンテキストの reviewer エージェントでレビューします。
+PR「$ARGUMENTS」を、今の会話の文脈を持たない reviewer に見させる。
 
-## 手順
+## 1. 対象の特定
 
-### 1. 対象 PR の特定
+- `$ARGUMENTS` に番号か URL があればそれを使う。
+- 無ければ `gh pr list --head $(git branch --show-current) --json number,url --limit 1` で探す。見つからなければユーザーに聞く。
 
-- `$ARGUMENTS` が指定されている場合: その PR 番号または URL を使用
-- `$ARGUMENTS` が空の場合:
-  1. `git branch --show-current` で現在のブランチ名を取得
-  2. `gh pr list --head <branch-name> --json number,url --limit 1` で該当ブランチの PR を検索
-  3. PR が見つかった場合はその PR をレビュー対象とする
-  4. PR が見つからない場合はユーザーに PR 番号の指定を求める
+## 2. reviewer の起動
 
-### 2. チーム作成
+同じディレクトリの [reviewer-prompt.md](reviewer-prompt.md) を読み、`{PR_NUMBER}` を置き換えて Agent に渡す。
 
 ```
-TeamCreate({ team_name: "review-pr-{PR番号}", description: "PR #{PR番号} のレビュー" })
-```
-
-### 3. タスク作成
-
-```
-TaskCreate({
-  subject: "PR #{PR番号} をレビュー",
-  description: "PR #{PR番号} のコードレビューを実施し、GitHub の Review 機能でコメントを投稿する",
-  activeForm: "PR #{PR番号} をレビュー中"
-})
-```
-
-### 4. Reviewer エージェントの起動
-
-`.claude/skills/autodev-review-pr/reviewer-spawn-prompt.md` を読み込み、spawn prompt として使用する。
-
-spawn prompt 中の `{PR_NUMBER}` をレビュー対象の PR 番号に置換してから使用する。
-
-```
-Task({
+Agent({
   description: "Review PR #{PR番号}",
-  prompt: "{reviewer-spawn-prompt.md の内容（{PR_NUMBER} を置換済み）}",
   subagent_type: "general-purpose",
-  model: "opus",
-  team_name: "review-pr-{PR番号}",
-  name: "reviewer"
+  prompt: "<reviewer-prompt.md の内容>"
 })
 ```
 
-### 5. レビュー完了の確認
+会話で分かっている意図や事情をプロンプトに足さない。PR の本文とコードだけから読めるかを見るため。
 
-reviewer からのメッセージを待ち、レビュー結果を確認する。
+## 3. 報告
 
-### 6. チームの解散とシャットダウン
-
-1. reviewer に `shutdown_request` を送信
-2. reviewer のシャットダウンを待つ
-3. `TeamDelete` でチームをクリーンアップ
-
-**推奨アクションが APPROVE の場合**: reviewer のシャットダウンとチーム解散まで自動で行い、結果報告に進む。ユーザーの確認は不要。
-
-**推奨アクションが REQUEST_CHANGES または COMMENT の場合**: reviewer をシャットダウンし、結果報告に進む。報告後、続けて手順 8 で `/autodev-import-review-suggestions` を起動する。
-
-### 7. 結果報告
-
-reviewer のレビュー結果サマリーをユーザーに報告する。
-
-### 8. 指摘事項の取り込み（findings がある場合のみ）
-
-推奨アクションが REQUEST_CHANGES または COMMENT の場合、続けて `Skill(autodev-import-review-suggestions)` を起動して指摘事項の取り込みフローへ移る。引数として PR 番号を渡す。
-
-```
-Skill({ skill: "autodev-import-review-suggestions", args: "{PR番号}" })
-```
-
-推奨アクションが APPROVE の場合は、この手順をスキップしてタスク完了。
-
-## 注意事項
-
-- reviewer は clean context で動作するため、現在の会話の文脈に影響されない公正なレビューが可能
-- reviewer は steering docs（tech.md, structure.md 等）を自分で読み込んでレビューする
-- 大きな PR でも reviewer が段階的にレビューする
+- reviewer の結果(指摘の件数と中身、推奨アクション、投稿したレビューの URL)をユーザーに伝える。
+- `/autodev-start-new-task` から呼ばれたときは、指摘の取り込みは `/autodev-start-new-task` が続けて行う。
+- 単独で呼ばれて指摘があれば、`/autodev-import-review-suggestions <PR番号>` で取り込みに進む。

@@ -1,103 +1,36 @@
 ---
-description: Update steering documents (product.md, tech.md, structure.md, etc.) to reflect current project state. Use when documents have become outdated or after completing significant work.
-allowed-tools: Read, Write, Edit, MultiEdit, "Bash(mkdir *)", "Bash(gh issue list *)", Glob, Grep
+description: Update steering documents (README.md, product.md, tech.md, work.md, structure.md) to match the current state of the repository. Use when documents have become outdated or after completing significant work.
+allowed-tools: Read, Write, Edit, Glob, Grep, AskUserQuestion, "Bash(ls *)", "Bash(gh issue list *)", "Bash(git status *)", "Bash(git fetch *)", "Bash(git switch *)", "Bash(git add *)", "Bash(git commit *)", Skill(autodev-create-pr)
 ---
 
-# Steering ドキュメント更新
+# steering 文書の更新
 
-プロジェクトの現状を確認し、steering ドキュメントを最新化します。
-
-## 対象ドキュメント
+steering 文書を、リポジトリの実態に合わせる。事実に基づく修正だけを行い、推測で足さない。
 
 | ファイル                        | 内容                                             |
 | ------------------------------- | ------------------------------------------------ |
 | `README.md`                     | プロジェクト概要、技術スタック、セットアップ手順 |
-| `.ai-agent/steering/product.md` | プロダクト概要、対象環境                         |
-| `.ai-agent/steering/tech.md`    | 技術スタック、開発コマンド                       |
-| `.ai-agent/steering/work.md`    | 作業の進め方                                     |
+| `.ai-agent/steering/product.md` | プロダクト概要、対象環境(ホスト一覧)             |
+| `.ai-agent/steering/tech.md`    | 技術スタック、flake inputs、開発コマンド、hooks  |
+| `.ai-agent/steering/work.md`    | 作業の進め方(変えるときは慎重に)                 |
 | `.ai-agent/structure.md`        | ディレクトリ構成                                 |
 
-## 手順
+## 1. 実態を集める
 
-### 1. 現状把握
+- `ls nix/programs/`、`ls nix/hosts/`、`ls .claude/skills/`
+- `flake.nix` の inputs と構成、`devenv.nix` の設定
+- `gh issue list --state open --json number,title,labels,url`
 
-プロジェクトの実態を確認する:
+## 2. ずれを洗い出す
 
-- `ls nix/programs/` でプログラムモジュール一覧を確認
-- `ls nix/hosts/` でホスト一覧を確認
-- `cat flake.nix` で flake inputs と構成を確認
-- `cat devenv.nix` で開発環境設定を確認
-
-### 2. GitHub イシュー確認
-
-GitHub イシューを確認し、未対応の課題や進行中のタスクを把握:
-
-- `gh issue list --state open --json number,title,labels,url` でオープンイシューを取得
-- 機能追加・バグ修正・改善などのラベルで分類
-
-### 3. ドキュメント読み込み
-
-各ドキュメントを読み込み、現状と比較:
-
-- 未作成と書かれているが作成済みのもの
-- 存在すると書かれているが実際にないもの
-- コマンドが存在しない/変更されているもの
-- ホストやプログラムの追加・削除
-
-### 4. 陳腐化箇所の特定
-
-ユーザーに以下の形式で報告:
+文書を読み、実態と比べる(無いと書いてあるが有るもの、有ると書いてあるが無いもの、変わったコマンド、ホスト・モジュールの増減など)。次の形でユーザーに示し、直す範囲の確認を取る。
 
 ```
-## 陳腐化箇所
-
-| ファイル | 箇所 | 現状 | ドキュメント記載 |
-|---------|------|------|-----------------|
-| tech.md | flake inputs | 追加あり | 記載なし |
-| product.md | 対象環境 | 新ホスト追加 | 記載なし |
+| ファイル | 箇所 | 実態 | 文書の記載 |
+| -------- | ---- | ---- | ---------- |
 ```
 
-### 5. ユーザー確認
+## 3. 直す
 
-修正内容を提示し、承認を得る:
-
-- 修正する項目一覧
-- 修正しない項目があればその理由
-
-### 6. 修正実行
-
-承認後、各ファイルを編集:
-
-- 事実に基づく修正のみ行う
-- 推測で情報を追加しない
-
-### 7. コミット
-
-```bash
-git add README.md .ai-agent/
-git commit -m "Update steering documents to reflect current project state"
-```
-
-## 確認ポイント
-
-### product.md
-
-- 対象環境（ホスト一覧）が最新か
-- 主要機能の記載が正確か
-
-### tech.md
-
-- flake inputs が最新か
-- プログラムモジュール数が正しいか
-- 開発コマンドが動作するか
-- Git hooks の一覧が正しいか
-
-### structure.md
-
-- ディレクトリ構成が実態と一致するか
-- 各ディレクトリの説明が正確か
-
-## 注意事項
-
-- work.md は作業フローなので、変更は慎重に
-- 事実に基づく修正のみ行い、推測で情報を追加しない
+- 確認の取れた箇所を直す。
+- `master` に居るなら `git fetch origin` の後 `git switch --no-track -c update-steering-docs origin/master` でブランチを作り、コミットして `/autodev-create-pr` で PR を作る。

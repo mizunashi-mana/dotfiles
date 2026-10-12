@@ -1,96 +1,116 @@
 ---
-description: Start a new implementation task with branch, README, and structured workflow. Use when beginning a feature, bug fix, or improvement that takes a day to a few days.
-allowed-tools: Read, Write, Edit, MultiEdit, Update, WebSearch, WebFetch, "Bash(git checkout -b *)", "Bash(git status *)", "Bash(git add *)", "Bash(git commit *)", "Bash(git push *)", Skill(autodev-create-pr), Skill(autodev-discussion), Skill(autodev-start-new-survey), Skill(autodev-start-new-project)
+description: Triage a development request and carry it out on a new branch until its PR has been reviewed, the review findings are addressed, and CI passes. Use when starting a feature, bug fix, or improvement; routes to discussion, survey, or project skills when the request is vague, needs investigation first, or spans multiple PRs.
+allowed-tools: Read, Write, Edit, Glob, Grep, WebSearch, WebFetch, AskUserQuestion, "Bash(git status *)", "Bash(git fetch *)", "Bash(git switch *)", "Bash(git add *)", "Bash(git commit *)", "Bash(git diff *)", "Bash(git log *)", "Bash(git push *)", "Bash(git merge *)", "Bash(git rev-parse *)", "Bash(devenv shell lint-all)", "Bash(gh pr comment *)", "Bash(gh pr view *)", "Bash(gh pr checks *)", "Bash(gh run list *)", "Bash(gh run view *)", "Bash(gh api graphql *)", Skill(autodev-create-pr), Skill(autodev-review-pr), Skill(autodev-discussion), Skill(autodev-start-new-survey), Skill(autodev-start-new-project)
 ---
 
-# 新規タスク開始
+# タスクの開始
 
-新しいタスク「$ARGUMENTS」を開始します。
+「$ARGUMENTS」を仕分けし、1 ブランチ・1 PR で進める。
 
-## 手順
+**ゴールは、レビュー結果を取り込んだ PR を作ること。** `/autodev-review-pr` の指摘をすべて直すか直さない理由を PR に書き、レビューのスレッドをすべて解決し、最後のプッシュの CI が通った時点で完了とする。方針の確認(手順 3)の後は、方針に関わる判断が出てこない限りユーザーに聞かずに進める。
 
-### 1. トリアージ
+## 1. 仕分け
 
-`$ARGUMENTS` の内容を分析し、このスキル（start-new-task）で扱うべきタスクかを判断する。
+| 状態                                   | 行き先                       |
+| -------------------------------------- | ---------------------------- |
+| 要件があいまいで、方向性の整理が要る   | `/autodev-discussion`        |
+| やり方が分からない・比べてから決めたい | `/autodev-start-new-survey`  |
+| 複数の PR に分けないと進まない         | `/autodev-start-new-project` |
+| ゴールと完了条件が書け、1 PR で収まる  | このまま続ける               |
 
-**判断基準:**
+別のスキルに回すときは、理由と行き先をユーザーに示し、同意を得てから切り替える。
 
-| 条件                                         | ルーティング先               | 例                                                        |
-| -------------------------------------------- | ---------------------------- | --------------------------------------------------------- |
-| 要件が曖昧・方向性の整理が必要               | `/autodev-discussion`        | 「開発フローを改善したい」「〇〇をどうにかしたい」        |
-| 技術的な不確実性が高い・調査が先に必要       | `/autodev-start-new-survey`  | 「CI を高速化する方法を検討」「○○ライブラリの比較」       |
-| 複数タスクへの分解が必要（数週間以上の規模） | `/autodev-start-new-project` | 「認証システムを全面リニューアル」「新機能Xの設計〜実装」 |
-| 数時間〜半日で完了する具体的な実装タスク     | **そのまま続行**             | 「バリデーション追加」「設定ファイルの修正」              |
+## 2. 下調べ
 
-**そのまま続行する場合の目安:**
+- `.ai-agent/steering/tech.md` と `.ai-agent/structure.md` のうち、関係するところを読む。
+- 触るコードと、その周りの既存の書き方を確かめる。
+- `.ai-agent/projects/` のタスクなら、プロジェクトの README で依存タスクが終わっているかを確かめる。
 
-- ゴールが明確で、完了条件を具体的に書ける
-- 技術的なアプローチが概ね見えている（大きな調査が不要）
-- 1ブランチ・1PR で完結する規模
-- 数時間〜半日で完了する見込み
+## 3. 方針の確認
 
-**ルーティングする場合:**
+目的・方針・完了条件(確かめ方を含む)・ブランチ名(kebab-case)をユーザーに示し、確認を取る。取れたら `.ai-agent/tasks/YYYYMMDD-<ブランチ名>/README.md` に書く。
 
-- ユーザーに判断理由と推奨スキルを提示し、確認を取る
-- タスクディレクトリ（手順 2〜3）が既に作成されている場合は、README の作業ログにトリアージ結果を記録する（例: 「トリアージの結果、`/autodev-discussion` にルーティング。理由: 要件が曖昧で方向性の整理が必要」）
-- ユーザーが承認したら、推奨スキルに切り替える
+```markdown
+# <タスク名>
 
-### 2. タスク名の決定
+プロジェクト: <.ai-agent/projects/ の README へのリンク。無ければ省く>
 
-- `$ARGUMENTS` の内容から適切なタスク名（英語、kebab-case）を考える
-- 簡潔で内容が分かるタスク名にする
+## 目的
 
-### 3. タスクディレクトリ作成
+## 方針
 
-`.ai-agent/tasks/YYYYMMDD-{タスク名}/README.md` を作成（YYYYMMDD は今日の日付）
+## 完了条件
 
-### 4. README.md に以下を記載
+- [ ] ...
+- [ ] レビューを取り込んだ PR → <URL>
 
-- 目的・ゴール
-- 実装方針
-- 完了条件
-- 作業ログ（空欄で開始）
+## 作業ログ
 
-### 5. 関連ドキュメント確認
+- YYYY-MM-DD: 開始
+```
 
-- `.ai-agent/steering/tech.md` で技術スタックを確認
-- `.ai-agent/structure.md` でディレクトリ構成を確認
+途中で方針が変わったら README を直し、作業ログに理由を残す。文脈が切れても README から再開できるようにする。
 
-### 6. ユーザーに方針を提示して確認を取る
+## 4. 実装
 
-### 7. ブランチ作成（ユーザー確認後）
+1. `git fetch origin` の後、`git switch --no-track -c <ブランチ名> origin/master` でブランチを作る。前のタスクのマージ前のコミットが入らないよう、必ず `origin/master` を起点にする。
+2. TodoWrite で作業を分け、1 つずつ進める。
+3. 区切りごとに `devenv shell lint-all` で確かめる。Nix の変更は、関係するホストの設定がビルドできるかも確かめる。
+4. 意味のまとまりでコミットする。
 
-- `git checkout -b {タスク名}` でブランチを作成
-- そのままブランチ作成することで、タスク内容を引き継ぐ。master の pull は後で良い
+## 5. 完了
 
-### 8. TodoWrite でタスクを細分化
+1. 完了条件を満たしているか確かめる。満たせなかったものは隠さずに挙げる。
+2. README の完了条件と作業ログを更新し、実装とまとめてコミットする。
+3. `/autodev-create-pr` で PR を作る。
+4. `/autodev-review-pr` でレビューする。
+5. 指摘を取り込む。
+   - Critical と Warning は直す。Info は妥当なものを直す。方針に関わるものだけユーザーに聞く。
+   - 直したら確かめ直し、コミットしてプッシュする。PR の本文とずれたら `/autodev-create-pr` で本文を更新する。
+   - 行コメントには、そのスレッドに返信する(直したものは内容とコミット、直さないものは理由)。返信したらスレッドを解決する。ユーザーに聞いている指摘のスレッドは、答えが出るまで解決しない。
+   - 総評にまとめられた Info のうち直さないものは、理由を `gh pr comment` で書く。
 
-### 9. 実装開始
+   スレッドの一覧・返信・解決は次で行う。`hasNextPage` が `true` なら見落とすので、止めてユーザーに伝える。直してコードが変わったスレッドは `line` が null になるので、`originalLine` で場所を見る。返信の本文は標準入力から渡す。
 
-## 実装中の注意
+   ```bash
+   gh api graphql -F owner='{owner}' -F repo='{repo}' -F number=<番号> -f query='
+   query($owner: String!, $repo: String!, $number: Int!) {
+     repository(owner: $owner, name: $repo) {
+       pullRequest(number: $number) {
+         reviewThreads(first: 100) {
+           pageInfo { hasNextPage }
+           nodes { id isResolved isOutdated path line originalLine comments(first: 1) { nodes { body } } }
+         }
+       }
+     }
+   }' --jq '.data.repository.pullRequest.reviewThreads'
 
-- 各ステップで動作確認を行う
-- `devenv shell lint-all` で pre-commit + nix flake check を実行して品質を維持
-- 必要に応じてユーザーにフィードバックをもらう
+   gh api graphql -F id=<スレッドの id> -F body=@- -f query='
+   mutation($id: ID!, $body: String!) {
+     addPullRequestReviewThreadReply(input: { pullRequestReviewThreadId: $id, body: $body }) { comment { url } }
+   }' <<'BODY'
+   <返信>
+   BODY
 
-## 完了時
+   gh api graphql -F id=<スレッドの id> -f query='
+   mutation($id: ID!) { resolveReviewThread(input: { threadId: $id }) { thread { isResolved } } }'
+   ```
 
-完了処理は次の順序で行う。**PR URL を反映するための追加コミット + push を必ず最後に実行すること**（省略するとブランチ上に未 push の変更が残り、レビュー時の差分とローカルが乖離する）。
+6. Critical を直したときは `/autodev-review-pr` をもう一度走らせる。2 回目でも Critical が残るときは、止めてユーザーに相談する。
+7. スレッドの一覧を取り直し、未解決のものが無いことを確かめる。残っていれば 5 に戻る。
+8. README の最後の完了条件に PR の URL を書いてチェックし、作業ログに取り込んだ指摘と取り込まなかった指摘(理由つき)を残す。コミットしてプッシュし、`git status` でブランチがきれいなことを確かめる。
+9. 下の「CI を待つ」で、最後のプッシュの CI が通るまで待つ。
+10. PR の URL、確かめた結果(CI を含む)、取り込んだ指摘と取り込まなかった指摘をユーザーに報告する。
 
-1. **README に完了条件・作業ログを記載してコミット**:
-   - 完了条件のうち、PR 作成項目はこの時点ではまだチェックしない（PR URL が未確定のため）
-   - それ以外の完了条件をチェックし、作業ログに結果を記載
-   - 実装変更とまとめて `git add` + `git commit` する（`/autodev-create-pr` は未コミット変更があると先にコミットを促す挙動なので、ここで commit を済ませておく）
-2. **PR を作成**:
-   - `/autodev-create-pr` を使用する（push + PR 作成を行い、PR URL を返す）
-3. **PR URL を README に反映**:
-   - 完了条件の「PR を作成」項目をチェックし、PR URL を併記する
-     - 例: `- [x] PR を作成（\`/autodev-create-pr\`） → https://github.com/<owner>/<repo>/pull/<番号>`
-   - 必要なら作業ログにも PR URL を記載
-4. **追加コミット + push**:
-   - `git add` + `git commit` + `git push` で PR ブランチに反映する
-   - このステップは省略しない
-5. **ブランチがクリーンか確認**:
-   - `git status` で未コミット・未 push の変更がないことを確認
-6. **ユーザーに完了報告**:
-   - PR URL を含めて報告する
+## CI を待つ
+
+CI が終わる前に報告しない。Bash の `timeout` を `600000` にして走らせる。
+
+```bash
+gh pr checks <番号> --watch --interval 30
+```
+
+- 終了コードが 0 なら通っている。
+- `no checks reported` で終わったら、run がまだ登録されていない。少し置いて走らせ直す。何度か繰り返しても登録されなければ、`gh pr view <番号> --json mergeable,headRefOid` で衝突(`CONFLICTING`)やプッシュ漏れを確かめる。衝突なら `git merge origin/master` で解いて確かめ直し、プッシュして待ち直す。
+- `fail` があれば、チェックの URL の run について `gh run view <run の id> --log-failed` でログを見て、ローカルで再現させて直す。作業ログに理由と直し方を足してコミット・プッシュし、待ち直す。ローカルで再現しない、または直し方が方針に関わるときはユーザーに聞く。
+- 2 回走らせても終わらなければ、`gh run view <run の id> --json jobs` で止まっているジョブとステップを調べ、見立てをユーザーに伝えて止める。run の再実行や取り消しはユーザーに確かめてから行う。

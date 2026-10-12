@@ -1,127 +1,35 @@
 ---
-description: Replan the steering plan roadmap by reviewing completed work and open issues. Use when the plan.md roadmap has become outdated or after completing significant milestones.
-allowed-tools: Read, Write, Edit, MultiEdit, "Bash(mkdir *)", "Bash(gh issue list *)", Glob, Grep, AskUserQuestion, WebSearch, WebFetch
+description: Replan the roadmap in .ai-agent/steering/plan.md by reviewing completed work, open issues, and market trends. Use when the roadmap has become outdated or after completing significant milestones.
+allowed-tools: Read, Write, Edit, Glob, Grep, WebSearch, WebFetch, AskUserQuestion, "Bash(ls *)", "Bash(mkdir *)", "Bash(git log *)", "Bash(gh issue list *)", "Bash(git status *)", "Bash(git fetch *)", "Bash(git switch *)", "Bash(git add *)", "Bash(git commit *)", Skill(autodev-create-pr), Skill(autodev-steering)
 ---
 
-# ロードマップ再策定
+# ロードマップの見直し
 
-steering plan ドキュメントのロードマップを再策定します。完了済みタスクの整理・今後の計画立案を、ユーザーとの対話を通じて行います。
+`.ai-agent/steering/plan.md`(ロードマップ)と `.ai-agent/steering/market.md`(市場・関連ツールの動向)を、ユーザーとの対話で見直す。事実関係の更新だけなら `/autodev-steering` を使う。どちらかのファイルが無ければ、作るかをユーザーに聞く。
 
-## 対象ドキュメント
+## 1. 現状をつかむ
 
-| ファイル                       | 役割                                   |
-| ------------------------------ | -------------------------------------- |
-| `.ai-agent/steering/plan.md`   | 実装計画・ロードマップ（主な更新対象） |
-| `.ai-agent/steering/market.md` | 市場分析・競合調査（最新化対象）       |
+- 実装: `ls nix/programs/`、`ls nix/hosts/`、`ls .claude/skills/`、`flake.nix`、`.ai-agent/tasks/` と `.ai-agent/projects/`、`git log --oneline -30`
+- plan.md の各項目を実装と照らし、完了・進行中・未着手・一部完了に分ける。
+- `gh issue list --state open --json number,title,labels,url` で、ロードマップに無い課題を拾う。
+- market.md を読み、WebSearch / WebFetch で関連ツール・技術の最新の動向を調べ、古くなった箇所を挙げる。
 
-## 手順
+## 2. 報告する
 
-### 1. 現状把握
+完了・進行中・未着手・新たな課題(Issue など)・動向の変化を表にまとめてユーザーに示す。
 
-プロジェクトの実装状態を確認する:
+## 3. 対話で決める
 
-- `ls nix/programs/` でプログラムモジュール一覧を確認
-- `ls nix/hosts/` でホスト一覧を確認
-- `ls .claude/skills/` でインストール済みスキルを確認
-- `cat flake.nix` で flake inputs と構成を確認
-- `.ai-agent/tasks/` と `.ai-agent/projects/` の状況を確認
-- 最近のコミット履歴を確認
+一方的に計画を出さず、方向性と優先順位をユーザーに確かめながら決める。
 
-### 2. 完了タスクの整理
+- 完了した項目を plan.md から消すか
+- 既存の項目の優先順位
+- 足す項目・マイルストーン、フェーズの組み直し
 
-既存の plan.md を読み込み、完了状態を特定する:
+推測で計画を足さない。
 
-- plan.md の各マイルストーン・タスクについて、コードベースの実態と照合
-- チェックボックス `[x]` 付きの完了済みタスクをリストアップ
-- チェックボックス `[ ]` の未完了タスクについて、実際の実装状態を確認
-- 部分的に完了しているものも把握
+## 4. 反映する
 
-### 3. GitHub Issue 確認
-
-オープンな Issue を確認し、未対応の課題を把握:
-
-- `gh issue list --state open --json number,title,labels,url` でオープンイシューを取得
-- 既存のロードマップに含まれていない Issue を特定
-- Issue のラベルや優先度から分類
-
-### 4. 市場動向の確認
-
-market.md を読み込み、最新の市場動向を調査・更新する:
-
-- 既存の market.md の内容を確認
-- WebSearch / WebFetch で競合プロダクトや関連技術の最新動向を調査
-- 新たな競合、技術トレンドの変化、ユーザーニーズの変化を把握
-- market.md の陳腐化箇所を特定し、ロードマップ再策定の材料とする
-
-### 5. 現状報告
-
-ユーザーに以下の形式で報告:
-
-```
-## ロードマップ現状
-
-### 完了済みフェーズ/タスク
-| フェーズ/タスク | 根拠 |
-|---------------|------|
-| ...           | ...  |
-
-### 進行中
-| タスク/マイルストーン | 状態 |
-|---------------------|------|
-| ...                 | ...  |
-
-### 未着手（plan.md 記載）
-| タスク/マイルストーン | 備考 |
-|---------------------|------|
-| ...                 | ...  |
-
-### 新たに浮上した課題（GitHub Issue 等）
-| Issue/課題 | 概要 |
-|-----------|------|
-| ...       | ...  |
-
-### 市場動向の変化
-| 項目 | 現状 | market.md 記載 |
-|------|------|---------------|
-| ...  | ...  | ...           |
-```
-
-### 6. ロードマップ再策定
-
-ユーザーとの対話を通じて、今後のロードマップを策定する:
-
-- **一方的に計画を提示しない**: 方向性・優先順位をユーザーに確認しながら進める
-- 市場動向の変化を踏まえて、戦略的な方向性を検討する
-- 以下の点を対話的に決定:
-  - 完了済みタスク・フェーズの plan.md からの削除
-  - 既存タスクの優先順位の見直し
-  - 新たなタスク・マイルストーンの追加
-  - フェーズ構成の見直し（必要に応じて）
-
-### 7. ユーザー確認
-
-再策定したロードマップの最終確認:
-
-- plan.md と market.md の更新内容（差分）を提示
-- ユーザーの承認を得てからドキュメントを更新
-
-### 8. 修正実行
-
-承認後、ドキュメントを更新:
-
-- market.md の陳腐化箇所を最新化
-- plan.md の完了済みタスクを削除または完了セクションに移動
-- 新しいロードマップを反映
-- フェーズや優先順位を更新
-
-### 9. PR を作成する
-
-- `/autodev-create-pr` を使用する
-
-## 注意事項
-
-- `autodev-steering` との違い: steering は事実関係の最新化、replan はロードマップの戦略的見直し
-- plan.md が存在しない場合は、ユーザーに新規作成するか確認する
-- 推測で計画を追加しない。ユーザーとの対話を通じて決定する
-- 他の steering ドキュメント（product.md、tech.md 等）の更新が必要な場合は、`autodev-steering` スキルの利用を案内する
-- market.md が存在しない場合は、ユーザーに新規作成するか確認する
+- plan.md と market.md の変更内容を示し、承認を得てから書き換える。
+- `master` に居るなら `git fetch origin` の後 `git switch --no-track -c replan-roadmap origin/master` でブランチを作り、コミットして `/autodev-create-pr` で PR を作る。
+- product.md・tech.md など他の steering 文書の更新が要るなら `/autodev-steering` を案内する。
