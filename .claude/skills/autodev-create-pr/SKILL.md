@@ -11,7 +11,7 @@ allowed-tools: Read, "Bash(git status *)", "Bash(git log *)", "Bash(git diff *)"
 
 - `git branch --show-current` が `master` なら止めて、ユーザーに伝える。
 - `git status` で未コミットの変更が無いかを確かめる。あればコミットするかを聞く。
-- `gh pr list --head <ブランチ> --json number,url` で既に PR があるかを確かめる。あれば本文の更新(`gh pr edit <番号> --body-file -`)だけにする。
+- `gh pr list --head <ブランチ> --json number,url` で既に PR があるかを確かめる。あれば手順 2 でプッシュした後、作成の代わりに本文を更新する(`gh pr edit <番号> --body-file -`)。
 - `git log origin/master..HEAD --oneline` と `git diff origin/master...HEAD --stat` で、入る変更をつかむ。
 
 ## 2. プッシュ

@@ -1,6 +1,6 @@
 ---
 description: Triage a development request and carry it out on a new branch until its PR has been reviewed, the review findings are addressed, and CI passes. Use when starting a feature, bug fix, or improvement; routes to discussion, survey, or project skills when the request is vague, needs investigation first, or spans multiple PRs.
-allowed-tools: Read, Write, Edit, Glob, Grep, WebSearch, WebFetch, AskUserQuestion, "Bash(git status *)", "Bash(git fetch *)", "Bash(git switch *)", "Bash(git add *)", "Bash(git commit *)", "Bash(git diff *)", "Bash(git log *)", "Bash(git push *)", "Bash(git merge *)", "Bash(git rev-parse *)", "Bash(devenv shell lint-all)", "Bash(gh pr comment *)", "Bash(gh pr view *)", "Bash(gh pr checks *)", "Bash(gh run list *)", "Bash(gh run view *)", "Bash(gh api graphql *)", Skill(autodev-create-pr), Skill(autodev-review-pr), Skill(autodev-discussion), Skill(autodev-start-new-survey), Skill(autodev-start-new-project)
+allowed-tools: Read, Write, Edit, Glob, Grep, WebSearch, WebFetch, AskUserQuestion, "Bash(git status *)", "Bash(git fetch *)", "Bash(git switch *)", "Bash(git add *)", "Bash(git commit *)", "Bash(git diff *)", "Bash(git log *)", "Bash(git push *)", "Bash(git merge *)", "Bash(git rev-parse *)", "Bash(devenv shell lint-all)", "Bash(gh pr view *)", "Bash(gh pr checks *)", "Bash(gh run list *)", "Bash(gh run view *)", "Bash(gh api graphql *)", Skill(autodev-create-pr), Skill(autodev-review-pr), Skill(autodev-import-review-suggestions), Skill(autodev-discussion), Skill(autodev-start-new-survey), Skill(autodev-start-new-project)
 ---
 
 # タスクの開始
@@ -53,10 +53,11 @@ allowed-tools: Read, Write, Edit, Glob, Grep, WebSearch, WebFetch, AskUserQuesti
 
 ## 4. 実装
 
-1. `git fetch origin` の後、`git switch --no-track -c <ブランチ名> origin/master` でブランチを作る。前のタスクのマージ前のコミットが入らないよう、必ず `origin/master` を起点にする。
-2. TodoWrite で作業を分け、1 つずつ進める。
-3. 区切りごとに `devenv shell lint-all` で確かめる。Nix の変更は、関係するホストの設定がビルドできるかも確かめる。
-4. 意味のまとまりでコミットする。
+1. `git status` で未コミットの変更が無いことを確かめる。あれば前のタスクのものかもしれないので、ユーザーに伝えて止める。
+2. `git fetch origin` の後、`git switch --no-track -c <ブランチ名> origin/master` でブランチを作る。前のタスクのマージ前のコミットが入らないよう、必ず `origin/master` を起点にする。
+3. TodoWrite で作業を分け、1 つずつ進める。
+4. 区切りごとに `devenv shell lint-all` で確かめる。Nix の変更は、関係するホストの設定がビルドできるかも確かめる。
+5. 意味のまとまりでコミットする。
 
 ## 5. 完了
 
@@ -64,40 +65,11 @@ allowed-tools: Read, Write, Edit, Glob, Grep, WebSearch, WebFetch, AskUserQuesti
 2. README の完了条件と作業ログを更新し、実装とまとめてコミットする。
 3. `/autodev-create-pr` で PR を作る。
 4. `/autodev-review-pr` でレビューする。
-5. 指摘を取り込む。
+5. `/autodev-import-review-suggestions <番号>` で指摘を取り込む(直す・スレッドに返信する・解決する)。このスキルから呼ぶときは次に従う。
    - Critical と Warning は直す。Info は妥当なものを直す。方針に関わるものだけユーザーに聞く。
-   - 直したら確かめ直し、コミットしてプッシュする。PR の本文とずれたら `/autodev-create-pr` で本文を更新する。
-   - 行コメントには、そのスレッドに返信する(直したものは内容とコミット、直さないものは理由)。返信したらスレッドを解決する。ユーザーに聞いている指摘のスレッドは、答えが出るまで解決しない。
-   - 総評にまとめられた Info のうち直さないものは、理由を `gh pr comment` で書く。
-
-   スレッドの一覧・返信・解決は次で行う。`hasNextPage` が `true` なら見落とすので、止めてユーザーに伝える。直してコードが変わったスレッドは `line` が null になるので、`originalLine` で場所を見る。返信の本文は標準入力から渡す。
-
-   ```bash
-   gh api graphql -F owner='{owner}' -F repo='{repo}' -F number=<番号> -f query='
-   query($owner: String!, $repo: String!, $number: Int!) {
-     repository(owner: $owner, name: $repo) {
-       pullRequest(number: $number) {
-         reviewThreads(first: 100) {
-           pageInfo { hasNextPage }
-           nodes { id isResolved isOutdated path line originalLine comments(first: 1) { nodes { body } } }
-         }
-       }
-     }
-   }' --jq '.data.repository.pullRequest.reviewThreads'
-
-   gh api graphql -F id=<スレッドの id> -F body=@- -f query='
-   mutation($id: ID!, $body: String!) {
-     addPullRequestReviewThreadReply(input: { pullRequestReviewThreadId: $id, body: $body }) { comment { url } }
-   }' <<'BODY'
-   <返信>
-   BODY
-
-   gh api graphql -F id=<スレッドの id> -f query='
-   mutation($id: ID!) { resolveReviewThread(input: { threadId: $id }) { thread { isResolved } } }'
-   ```
-
+   - PR の本文とずれたら `/autodev-create-pr` で本文を更新する。
 6. Critical を直したときは `/autodev-review-pr` をもう一度走らせる。2 回目でも Critical が残るときは、止めてユーザーに相談する。
-7. スレッドの一覧を取り直し、未解決のものが無いことを確かめる。残っていれば 5 に戻る。
+7. `/autodev-import-review-suggestions` のスレッドの一覧を取り直し、未解決のスレッドが無いことを確かめる。返し忘れなら 5 に戻る。人間のレビュアーの判断を待っているスレッドは残してよく、報告で挙げる。
 8. README の最後の完了条件に PR の URL を書いてチェックし、作業ログに取り込んだ指摘と取り込まなかった指摘(理由つき)を残す。コミットしてプッシュし、`git status` でブランチがきれいなことを確かめる。
 9. 下の「CI を待つ」で、最後のプッシュの CI が通るまで待つ。
 10. PR の URL、確かめた結果(CI を含む)、取り込んだ指摘と取り込まなかった指摘をユーザーに報告する。

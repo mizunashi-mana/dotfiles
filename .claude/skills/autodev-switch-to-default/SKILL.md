@@ -22,7 +22,7 @@ allowed-tools: "Bash(git status *)", "Bash(git branch *)", "Bash(git rev-parse *
 `gh pr view <番号> --json isDraft,mergeable,headRefOid,reviews` とスレッドの一覧で、次をすべて満たすかを確かめる。1 つでも満たさなければ、どれかをユーザーに伝えて止める。
 
 - プッシュ済み: `git rev-parse HEAD` が `headRefOid` と同じ。
-- レビュー済み: `reviews` が 1 件以上あり、最新のレビューに Critical が残っていない(推奨アクションが `REQUEST_CHANGES` でない)。自分の PR には `COMMENT` しか付けられないので、本文の推奨アクションで判断する。
+- レビュー済み: `reviews` が 1 件以上あり、最新のレビューに Critical が残っていない(推奨アクションが `REQUEST_CHANGES` でない)。自分の PR には `COMMENT` しか付けられないので、本文の推奨アクションで判断する。Critical を直さないとユーザーが決め、その理由が PR のコメントに書かれていれば満たしたとみなす。
 - スレッドがすべて解決済み。残っていれば `path`・`line`(null なら `originalLine`)・最初のコメントを挙げて止める。返し忘れかもしれないので、自分では解決しない。
 
   ```bash
@@ -49,6 +49,8 @@ gh pr checks <番号> --watch --interval 30
 
 - 通ったら `gh pr merge <番号> --merge` でマージする。失敗したらエラーを伝えて止める。
 - 落ちたら、`gh run view <run の id> --log-failed` で見た原因を伝えて止める。ここでは直さない。
+- `no checks reported` で終わったら、run がまだ登録されていない。少し置いて走らせ直す。何度か繰り返しても登録されなければ、伝えて止める。
+- 2 回走らせても終わらなければ、伝えて止める。
 
 ## 3. 切り替え
 
