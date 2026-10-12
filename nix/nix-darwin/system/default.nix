@@ -1,5 +1,5 @@
 {
-  packages,
+  program-packages,
   username,
   homedir,
   extra-dock-persistent-apps,
@@ -50,13 +50,13 @@
             app = "/Applications/Antigravity IDE.app";
           }
           {
-            app = "${packages.pkgs.dbeaver-bin}/Applications/dbeaver.app";
+            app = "${program-packages.dbeaver}/Applications/dbeaver.app";
           }
           {
-            app = "${packages.pkgs.zotero}/Applications/Zotero.app";
+            app = "${program-packages.zotero}/Applications/Zotero.app";
           }
           {
-            app = "${packages.pkgs.raycast}/Applications/Raycast.app";
+            app = "${program-packages.raycast}/Applications/Raycast.app";
           }
         ]
         ++ extra-dock-persistent-apps;
