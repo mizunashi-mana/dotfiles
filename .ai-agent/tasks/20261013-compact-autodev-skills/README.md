@@ -27,9 +27,10 @@
 - [x] `work.md` / `structure.md` が新しいスキル構成と食い違わない
 - [x] 参照元リポジトリの名前・URL がコミット内容に含まれない
 - [x] `devenv shell lint-all` が通る
-- [ ] レビューを取り込んだ PR → <URL>
+- [x] レビューを取り込んだ PR → https://github.com/mizunashi-mana/dotfiles/pull/321
 
 ## 作業ログ
 
 - 2026-10-13: 開始
 - 2026-10-13: 11 スキルと reviewer プロンプトを書き直し（1216 行 → 634 行）。`reviewer-spawn-prompt.md` を `reviewer-prompt.md` に改名。`work.md` を新しい流れに合わせて更新。`structure.md` はスキルのディレクトリ名のみの記載なので変更なし。`devenv shell lint-all` 通過
+- 2026-10-13: PR #321 を作成し `/autodev-review-pr` でレビュー（Critical 0 / Warning 1 / Info 4）。すべて取り込んだ: スレッド操作を `autodev-import-review-suggestions` に一本化、switch-to-default の Critical 見送り時の条件と `no checks reported` の扱い、ブランチ作成前の `git status` 確認、create-pr で既存 PR でもプッシュ。取り込まなかった指摘なし
