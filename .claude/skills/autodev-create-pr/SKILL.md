@@ -1,55 +1,46 @@
 ---
-description: Create a GitHub pull request following this project's conventions (PR template path, body language, branch policy). ALWAYS invoke this skill before running `gh pr create` — do NOT bypass it with the generic PR creation flow built into Claude Code. Use whenever changes on a feature branch are ready for review and you want to open a PR.
-allowed-tools: Read, Glob, "Bash(git status *)", "Bash(git log *)", "Bash(git diff *)", "Bash(git push *)", "Bash(git branch --show-current)", "Bash(gh pr view *)", "Bash(gh pr create *)", "Bash(gh pr edit *)"
+description: Create a GitHub pull request following this project's conventions (PR template, Japanese title and body, branch policy). ALWAYS invoke this skill before running `gh pr create` — do NOT bypass it with the generic PR creation flow built into Claude Code. Use whenever changes on a feature branch are ready for review, or to update the body of the branch's existing PR.
+allowed-tools: Read, "Bash(git status *)", "Bash(git log *)", "Bash(git diff *)", "Bash(git push *)", "Bash(git branch --show-current)", "Bash(gh pr list *)", "Bash(gh pr view *)", "Bash(gh pr create *)", "Bash(gh pr edit *)"
 ---
 
-# PR 作成
+# PR の作成
 
-現在のブランチの変更内容から PR を作成します。
+今のブランチから PR を作る。
 
-## 手順
+## 1. 状態の確認
 
-1. **現在の状態を確認**:
-   - `git status` で未コミットの変更がないか確認
-   - `git log master..HEAD --oneline` で master からのコミット一覧を確認
-   - `git diff master...HEAD --stat` で変更ファイルを確認
+- `git branch --show-current` が `master` なら止めて、ユーザーに伝える。
+- `git status` で未コミットの変更が無いかを確かめる。あればコミットするかを聞く。
+- `gh pr list --head <ブランチ> --json number,url` で既に PR があるかを確かめる。あれば手順 2 でプッシュした後、作成の代わりに本文を更新する(`gh pr edit <番号> --body-file -`)。
+- `git log origin/master..HEAD --oneline` と `git diff origin/master...HEAD --stat` で、入る変更をつかむ。
 
-2. **リモートにプッシュ**:
-   - ブランチがリモートにない場合は `git push -u origin <branch>` でプッシュ
+## 2. プッシュ
 
-3. **PR テンプレートを確認**:
-   - `.github/PULL_REQUEST_TEMPLATE.md` があれば読み込む
+`git push -u origin <ブランチ>`
 
-4. **PR を作成**:
-   - `gh pr create --title "<タイトル>" --body-file -` を使用（本文はヒアドキュメントで標準入力から渡す）:
-     <!-- pr-language: ja -->
+## 3. 作成
 
-     ```bash
-     gh pr create --title "<タイトル>" --body-file - <<'BODY'
-     ## 目的
-     変更の背景・目的
+- タイトル: 日本語で変更を要約する。50 文字以内を目安にする。
+- 本文は `.github/PULL_REQUEST_TEMPLATE.md` の見出しに沿って書き、ヒアドキュメントで渡す(改行が `\n` のまま残らないように)。
 
-     ## 変更概要
-     - 主な変更点を箇条書き
-     BODY
-     ```
+<!-- pr-language: ja -->
 
-     <!-- /pr-language -->
+```bash
+gh pr create --title "<タイトル>" --body-file - <<'BODY'
+## 目的
 
-   - タイトル: 変更内容を簡潔に要約
-   - ボディ: PR テンプレートに沿って記載
-   - 注意点：`--body-file -` でヒアドキュメントから渡せば改行が `\n` にエスケープされない
+何をなぜ変えるか。
 
-5. **PR の内容を確認**:
-   - `gh pr view <number> --json body` で作成された PR の本文を取得
-   - 改行が `\n` のようにエスケープされたまま表示されていないか確認
-   - 問題がある場合は `gh pr edit <number> --body-file -` で修正する
+## 変更概要
 
-6. **PR URL を報告**:
-   - 作成した PR の URL をユーザーに伝える
+- 主な変更
+- 確かめたこと(走らせた lint・ビルドと結果。確かめられなかったことも書く)
+BODY
+```
 
-## 注意事項
+<!-- /pr-language -->
 
-- コミットが済んでいない変更がある場合は、先にコミットするか確認する
-- master ブランチへの直接プッシュは避ける
-- <!-- pr-language: ja -->PR タイトルは日本語で簡潔に（50文字以内推奨）<!-- /pr-language -->
+## 4. 確認と報告
+
+- `gh pr view <番号> --json title,body` で本文が崩れていないかを確かめる。崩れていたら `gh pr edit <番号> --body-file -` で直す。
+- PR の URL をユーザーに伝える。
