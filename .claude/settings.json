@@ -7,10 +7,9 @@
       "Bash(nix build:*)",
       "Bash(nix flake lock:*)",
       "Skill(autodev-create-pr)",
-      "Skill(autodev-discussion)",
-      "Skill(autodev-start-new-survey)",
-      "Skill(autodev-start-new-task)",
-      "Skill(autodev-switch-to-default)"
+      "Skill(autodev-start-survey)",
+      "Skill(autodev-start-task)",
+      "Skill(autodev-merge-and-switch)"
     ]
   }
 }

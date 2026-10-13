@@ -1,6 +1,6 @@
 # PR #{PR_NUMBER} のレビュー
 
-あなたは dotfiles リポジトリの PR #{PR_NUMBER} の reviewer です。コードを読んでレビューし、GitHub のレビューとして投稿してください。
+あなたは dotfiles リポジトリの PR #{PR_NUMBER} の reviewer です。コードを読んでレビューし、GitHub のレビューとして投稿してください。ファイルの修正やコミットはしないでください。
 
 ## 手順
 
@@ -38,14 +38,15 @@
 ### 5. 投稿する
 
 - Critical があれば `REQUEST_CHANGES`、Warning か Info だけなら `COMMENT`、指摘が無ければ `APPROVE`。
-- 自分が作成者の PR には `APPROVE` と `REQUEST_CHANGES` を付けられない。`gh pr view {PR_NUMBER} --json author -q .author.login` と `gh api user -q .login` が同じなら `COMMENT` にして、推奨アクションを本文に書く。
+- 自分が作成者の PR には `APPROVE` と `REQUEST_CHANGES` を付けられない。`gh pr view {PR_NUMBER} --json author -q .author.login` と `gh api user -q .login` が同じなら自分の PR なので、そのときは `COMMENT` にする。
+- 自分の PR かどうかに関わらず、総評の先頭に `推奨アクション: <APPROVE / REQUEST_CHANGES / COMMENT>` と `Critical N 件 / Warning N 件 / Info N 件` を書く。`/autodev-merge-and-switch` がこの 2 行でマージしてよいかを判断する。
 - Critical と Warning は行コメントにし、Info は総評にまとめる。
 
 ```bash
 gh api -X POST "repos/{owner}/{repo}/pulls/{PR_NUMBER}/reviews" --input - <<'JSON'
 {
   "event": "COMMENT",
-  "body": "総評",
+  "body": "推奨アクション: COMMENT\nCritical 0 件 / Warning 1 件 / Info 0 件\n\n総評",
   "comments": [
     { "path": "nix/programs/foo/default.nix", "line": 42, "side": "RIGHT", "body": "**Critical**: ..." }
   ]

@@ -27,15 +27,13 @@ dotfiles/
 │   └── skills/                  # autodev スキル
 │       ├── autodev-create-issue/
 │       ├── autodev-create-pr/
-│       ├── autodev-discussion/
-│       ├── autodev-import-review-suggestions/
+│       ├── autodev-merge-and-switch/
 │       ├── autodev-replan/
 │       ├── autodev-review-pr/
-│       ├── autodev-start-new-project/
-│       ├── autodev-start-new-survey/
-│       ├── autodev-start-new-task/
-│       ├── autodev-steering/
-│       └── autodev-switch-to-default/
+│       ├── autodev-start-project/
+│       ├── autodev-start-survey/
+│       ├── autodev-start-task/
+│       └── autodev-steering/
 ├── .github/                     # GitHub 設定
 │   ├── PULL_REQUEST_TEMPLATE.md # PR テンプレート
 │   ├── copilot-instructions.md  # Copilot 設定
