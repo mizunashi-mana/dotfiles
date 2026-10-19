@@ -54,3 +54,4 @@ Codex でも Claude Code と同じように、ステータスラインにリミ�
 - 2026-10-19: ユーザーの依頼で、Codex を最新版で入れる変更をこの PR に足した。`github:sadjow/codex-cli-nix` を flake の入力に足し、`programs.codex.package` に渡した
   - macOS（pro）と Linux（desktop-62r22ok）で `programs.codex.package` が `codex-0.163.0` になり、ビルドした `codex --version` は `codex-cli 0.163.0`
   - 一時的な `CODEX_HOME` に生成した `config.toml` を置き、0.163.0 で読み込めることを確認した（`approvals_reviewer` を不正な値にすると `unknown variant` で弾かれるので、値は検証されている）。`tui.status_line` の 6 項目も、0.163.0 のソースに残っている
+- 2026-10-19: 5 回目のレビューは Critical 0 / Warning 0 / Info 1。Info（`.ai-agent/steering/tech.md` の flake inputs の一覧に `codex` が無い）は直さない。一覧はもともと古く（`hermes-agent` などが抜けている）、`/autodev-steering` でまとめて更新するため
