@@ -49,6 +49,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    codex = {
+      url = "github:sadjow/codex-cli-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     anthropic-skills = {
       url = "github:anthropics/skills";
       flake = false;
