@@ -22,13 +22,14 @@ Codex でも Claude Code と同じように、ステータスラインにリミ�
   - 作業ディレクトリに置いた設定を読む。入れ子のリポジトリの `.git/config` や `.npmrc` は sandbox の中から書けるので、そこに仕込んだコマンドが sandbox の外で走る
   - 送り先を変えられる（`aws --endpoint-url`・`gh -R <host>/...`・`npm --registry`）
 - 経緯: 最初は Claude の許可リストから生成した。次に危険な前方一致を除外リストで除き、さらに Codex 側でネットワークを使う読み取り系だけを明示した。それでもレビューのたびに上の抜け道が見つかった。読み取りは rules が無くても sandbox の中で走るので、rules を置いて得られるのは、ネットワークを使うものの auto_review の待ち時間を省くことだけになる。この利点は小さいと判断し、ユーザーと相談のうえ rules を置かないことにした
+- この設定は `default-common.nix` 経由で Linux ホスト（`devcontainer` / `desktop-62r22ok`）にも入る。Linux の Codex sandbox は bubblewrap と user namespace に頼るので、コンテナの中では sandbox が使えず、コマンドが毎回 auto_review に回るか、実行に失敗するおそれがある。確かめたのは macOS だけなので、devcontainer で Codex を使うときに挙動を確かめ、問題があればホストごとに設定を分ける
 - `danger-full-access` にすると sandbox が無くなり、auto_review の出番もほとんど無くなる。Claude より緩くなるので採らない
 
 ## 完了条件
 
 - [x] `devenv shell lint-all` が通る
 - [x] macOS ホストの home-manager 設定がビルドでき、生成された `config.toml` に上の値が入る
-- [ ] レビューを取り込み CI が通った PR → <URL>
+- [x] レビューを取り込み CI が通った PR → https://github.com/mizunashi-mana/dotfiles/pull/322
 
 ## 作業ログ
 
@@ -44,3 +45,7 @@ Codex でも Claude Code と同じように、ステータスラインにリミ�
   - `codex execpolicy check` で、`gh pr view 1` / `aws sts get-caller-identity` は allow になることを確認した。`gh pr merge 1` / `aws s3 cp` / `git fetch origin` / `npm view x` / `kubectl get po` はマッチしない
   - Info の `aws configure get`（鍵を出力できる）は直さない。`~/.aws/credentials` は sandbox の中でも読めるので、新しい穴ではないため。`gh run watch` のタイムアウトも直さない。タイムアウトしても実害は無く、Claude 側でも許可しているため
 - 2026-10-19: ユーザーから「任意の通信ができるコマンドは除外したい」と指示があった。gh（`-R`）と aws（`--endpoint-url`）も、後ろのオプションで送り先を変えられる。prefix_rule ではオプションを判定できないので、rules をやめて auto_review に任せることにした（`network-read.rules` を削除）
+- 2026-10-19: 4 回目のレビューは Critical 0 / Warning 0 / Info 1。Info（Linux のコンテナで sandbox が使えないおそれ）は、確かめる手段が手元に無いので、判断メモに書き残した
+- レビューの取り込みのまとめ
+  - 取り込んだもの: 1 回目〜3 回目の Critical / Warning はすべて対応した。最終的には rules をやめた。1 回目の Info 2 件（`mutableSettings` の注意のコメント、空のトークンの除去）、4 回目の Info（判断メモに追記）も取り込んだ
+  - 取り込まなかったもの: 2 回目の Info 2 件（claude-code への依存、`claude mcp list`）と 3 回目の Info 2 件（`aws configure get`、`gh run watch` のタイムアウト）は、rules をやめたことで対象が無くなった
