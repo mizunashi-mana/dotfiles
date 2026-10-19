@@ -46,6 +46,7 @@ let
     (import ./postman { inherit packages; })
     raycast
     (import ./claude-desktop { inherit packages; })
+    (import ./chatgpt { inherit packages; })
     (import ./xcode { inherit packages; })
     (import ./ollama { inherit packages; })
     (import ./keynote { inherit packages; })
