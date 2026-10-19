@@ -1,0 +1,42 @@
+# allow に一致したコマンドは sandbox の外で実行される。
+# 読み取りや作業ディレクトリ内への書き込みは rules が無くても sandbox の中で承認なしに走るので、
+# ここにはネットワークを使う読み取り系だけを置く。引数で設定ファイルやプラグイン、
+# 実行するコマンドを指定できるもの（kubectl の --kubeconfig、nix の --option など）は置かない。
+
+# GitHub
+prefix_rule(
+    pattern = ["gh", "pr", ["checks", "diff", "list", "view"]],
+    match = ["gh pr view 1"],
+    not_match = ["gh pr merge 1"],
+)
+prefix_rule(pattern = ["gh", "issue", ["list", "view"]])
+prefix_rule(pattern = ["gh", "run", ["list", "view", "watch"]])
+prefix_rule(pattern = ["gh", "release", ["list", "view"]])
+prefix_rule(pattern = ["gh", "repo", "view"])
+prefix_rule(pattern = ["gh", "label", "list"])
+prefix_rule(pattern = ["gh", "cache", "list"])
+prefix_rule(pattern = ["gh", "search"])
+
+# git: リモートを origin に限る。--upload-pack はリモートがローカルのパスのときに
+# 手元で実行されるが、origin の URL は sandbox の中から書き換えられない .git/config にある
+prefix_rule(
+    pattern = ["git", ["fetch", "ls-remote"], "origin"],
+    match = ["git fetch origin", "git ls-remote origin"],
+    not_match = ["git fetch /tmp/repo", "git push origin"],
+)
+
+# npm registry
+prefix_rule(
+    pattern = ["npm", ["info", "outdated", "search", "show", "view"]],
+    not_match = ["npm install lodash"],
+)
+
+# AWS
+prefix_rule(pattern = ["aws", "athena", ["get-query-execution", "get-query-results"]])
+prefix_rule(pattern = ["aws", "cloudwatch", "list-metrics"])
+prefix_rule(pattern = ["aws", "configure", ["get", "list-profiles"]])
+prefix_rule(pattern = ["aws", "pi", "get-resource-metrics"])
+prefix_rule(pattern = ["aws", "rds", ["describe-db-clusters", "describe-db-instances"]])
+prefix_rule(pattern = ["aws", "s3", "ls"])
+prefix_rule(pattern = ["aws", "s3api", "head-bucket"])
+prefix_rule(pattern = ["aws", "sts", "get-caller-identity"])
