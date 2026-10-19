@@ -2,17 +2,18 @@
 
 ## 目的
 
-Codex でも Claude Code と同じように、ステータスラインにリミット（5h / 週）を常に表示し、コマンドを自動で承認できるようにする。
+Codex でも Claude Code と同じように、ステータスラインにリミット（5h / 週）を常に表示し、コマンドを自動で承認できるようにする。あわせて、Codex を最新版で入れられるようにする。
 
 ## 方針
 
-`nix/programs/codex/default.nix` だけを変更する。
+`nix/programs/codex/default.nix` を中心に変更する。
 
 1. `programs.codex.mutableSettings = true` にする。Codex が `config.toml` に書き込む project の trust や MCP の設定はそのまま残し、Nix で宣言したキーだけを上書きする
 2. `programs.codex.settings` に次を書く
    - `tui.status_line = [model-with-reasoning, current-dir, git-branch, context-used, five-hour-limit, weekly-limit]`（Claude の `statusline.sh` と同じ並び）
    - `approval_policy = "on-request"`、`sandbox_mode = "workspace-write"`、`approvals_reviewer = "auto_review"`（Claude の `defaultMode = "auto"` に当たる）
 3. 許可リスト（`programs.codex.rules`）は置かない。Codex が自分で書く `default.rules` にも触らない
+4. Codex を `github:sadjow/codex-cli-nix`（1 時間ごとに自動で更新される）の flake から入れる。claude-code が `github:sadjow/claude-code-nix` から入れているのと同じ形で、`flake.nix` の入力に `codex` を足し、`nix/packages/default.nix` の `packages.codex` を `programs.codex.package` に渡す。nixpkgs の codex は 0.161.0 で、最新の 0.163.0 より遅れている
 
 ### 判断メモ
 
@@ -29,6 +30,7 @@ Codex でも Claude Code と同じように、ステータスラインにリミ�
 
 - [x] `devenv shell lint-all` が通る
 - [x] macOS ホストの home-manager 設定がビルドでき、生成された `config.toml` に上の値が入る
+- [x] 入る Codex が最新（0.163.0）で、その版でも上の設定が読み込める
 - [x] レビューを取り込み CI が通った PR → https://github.com/mizunashi-mana/dotfiles/pull/322
 
 ## 作業ログ
@@ -49,3 +51,6 @@ Codex でも Claude Code と同じように、ステータスラインにリミ�
 - レビューの取り込みのまとめ
   - 取り込んだもの: 1 回目〜3 回目の Critical / Warning はすべて対応した。最終的には rules をやめた。1 回目の Info 2 件（`mutableSettings` の注意のコメント、空のトークンの除去）、4 回目の Info（判断メモに追記）も取り込んだ
   - 取り込まなかったもの: 2 回目の Info 2 件（claude-code への依存、`claude mcp list`）と 3 回目の Info 2 件（`aws configure get`、`gh run watch` のタイムアウト）は、rules をやめたことで対象が無くなった
+- 2026-10-19: ユーザーの依頼で、Codex を最新版で入れる変更をこの PR に足した。`github:sadjow/codex-cli-nix` を flake の入力に足し、`programs.codex.package` に渡した
+  - macOS（pro）と Linux（desktop-62r22ok）で `programs.codex.package` が `codex-0.163.0` になり、ビルドした `codex --version` は `codex-cli 0.163.0`
+  - 一時的な `CODEX_HOME` に生成した `config.toml` を置き、0.163.0 で読み込めることを確認した（`approvals_reviewer` を不正な値にすると `unknown variant` で弾かれるので、値は検証されている）。`tui.status_line` の 6 項目も、0.163.0 のソースに残っている

@@ -1,4 +1,5 @@
 {
+  packages,
   ...
 }:
 {
@@ -6,6 +7,7 @@
     {
       programs.codex = {
         enable = true;
+        package = packages.codex;
         # Codex が config.toml に書き込む project の trust や MCP の設定を残す。
         # 宣言した値は上書きでマージされるだけなので、ここから消したキーは実ファイルに残る
         mutableSettings = true;
