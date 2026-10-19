@@ -22,9 +22,6 @@
             "weekly-limit"
           ];
         };
-        rules = {
-          network-read = ./network-read.rules;
-        };
       };
 
       programs.agent-skills = {

@@ -6,32 +6,28 @@ Codex でも Claude Code と同じように、ステータスラインにリミ�
 
 ## 方針
 
-`nix/programs/codex/` だけを変更する。
+`nix/programs/codex/default.nix` だけを変更する。
 
 1. `programs.codex.mutableSettings = true` にする。Codex が `config.toml` に書き込む project の trust や MCP の設定はそのまま残し、Nix で宣言したキーだけを上書きする
 2. `programs.codex.settings` に次を書く
    - `tui.status_line = [model-with-reasoning, current-dir, git-branch, context-used, five-hour-limit, weekly-limit]`（Claude の `statusline.sh` と同じ並び）
    - `approval_policy = "on-request"`、`sandbox_mode = "workspace-write"`、`approvals_reviewer = "auto_review"`（Claude の `defaultMode = "auto"` に当たる）
-3. `programs.codex.rules.network-read` に `nix/programs/codex/network-read.rules` を置き、ネットワークを使う読み取り系（`gh` の閲覧系、`aws` の読み取り系）だけを `allow` にする
-   - Codex が自分で書く `default.rules` には触らない
+3. 許可リスト（`programs.codex.rules`）は置かない。Codex が自分で書く `default.rules` にも触らない
 
 ### 判断メモ
 
-- sandbox は `workspace-write` のままにする。rules の `allow` にマッチしたコマンドは sandbox の外で実行される（Codex の `core/src/exec_policy.rs` の `bypass_sandbox`）。リストに無くて sandbox の外に出るもの（ネットワーク・作業ディレクトリ外への書き込みなど）は auto_review に回る
-- 読み取りや作業ディレクトリ内への書き込みは、rules が無くても sandbox の中で承認なしに走る。rules が効くのはネットワークを使う読み取りだけなので、それだけを置く
-- 当初は Claude の許可リストから生成し、危険な前方一致を除外リストで除く方式にした。しかしレビューで 2 回続けて漏れが見つかった（`command` / `find` / `sed` など、続いて `actionlint -shellcheck=` / `kubectl --kubeconfig` / `uv pip --python` など）。CLI の多くは引数で設定ファイルやプラグイン、実行するコマンドを指定できるので、除外リストでは漏れが出続ける。そこで Codex 側で許可を明示する方式に切り替えた（ユーザーと相談のうえ）
-- git（`git fetch` / `git ls-remote`）は置かない。当初は `origin` に限れば安全と考えたが、読み取り専用になるのは作業ディレクトリ直下の `.git` だけだった。入れ子のリポジトリや `/tmp` のリポジトリの `.git/config` には sandbox の中から書けるので、`uploadpack`・`core.sshCommand`・`core.hooksPath` に仕込んだコマンドが sandbox の外で走る（3 回目のレビューで reviewer が確かめた）
-- npm も置かない。プロジェクトの `.npmrc` は sandbox の中から書けるので、`git=` に仕込んだコマンドを `npm view <git の spec>` が起動しうる。作業ディレクトリに置いた設定を読む CLI は、同じ理由で置かない
-- gh と aws は、設定（`~/.config/gh`・`~/.aws`）が作業ディレクトリの外にあり、sandbox の中からは書けないので置く
-- 前方一致なので後ろの引数は自由に付けられ、`-R` や `--endpoint-url` で任意のホストへ通信できる（作業ディレクトリの内容を外に送れる）。Claude の許可リストと同じ水準として、これは許容する（ユーザーと相談のうえ）
-- kubectl（`--kubeconfig` で exec credential plugin を起動できる）と nix（`--option` で評価の設定を変えられる）は置かない
+- sandbox は `workspace-write` のままにする。読み取りや作業ディレクトリ内への書き込み（`cat` / `rg` / `git status` / `git diff` / ファイル編集 / ローカルのテストなど）は、sandbox の中で承認なしに走る。sandbox の外に出るもの（ネットワーク・作業ディレクトリ外への書き込みなど）は auto_review が判断する
+- rules の `allow` にマッチしたコマンドは sandbox の外で実行される（Codex の `core/src/exec_policy.rs` の `bypass_sandbox`）。prefix_rule はサブコマンドまでは判定できるが、その後ろに付くオプションは判定できない。そのため、読み取り専用のサブコマンドに絞っても次のことが起きうる
+  - 引数で設定ファイルやプラグイン、実行するコマンドを指定できる（`actionlint -shellcheck=`・`kubectl --kubeconfig`・`uv pip list --python`・`nix --option` など）
+  - 作業ディレクトリに置いた設定を読む。入れ子のリポジトリの `.git/config` や `.npmrc` は sandbox の中から書けるので、そこに仕込んだコマンドが sandbox の外で走る
+  - 送り先を変えられる（`aws --endpoint-url`・`gh -R <host>/...`・`npm --registry`）
+- 経緯: 最初は Claude の許可リストから生成した。次に危険な前方一致を除外リストで除き、さらに Codex 側でネットワークを使う読み取り系だけを明示した。それでもレビューのたびに上の抜け道が見つかった。読み取りは rules が無くても sandbox の中で走るので、rules を置いて得られるのは、ネットワークを使うものの auto_review の待ち時間を省くことだけになる。この利点は小さいと判断し、ユーザーと相談のうえ rules を置かないことにした
 - `danger-full-access` にすると sandbox が無くなり、auto_review の出番もほとんど無くなる。Claude より緩くなるので採らない
 
 ## 完了条件
 
 - [x] `devenv shell lint-all` が通る
 - [x] macOS ホストの home-manager 設定がビルドでき、生成された `config.toml` に上の値が入る
-- [x] rules を `codex execpolicy check` にかけ、gh・aws の読み取り系は allow、git・npm・`kubectl`・任意の実行や書き込みにつながるものはマッチしない
 - [ ] レビューを取り込み CI が通った PR → <URL>
 
 ## 作業ログ
@@ -47,3 +43,4 @@ Codex でも Claude Code と同じように、ステータスラインにリミ�
 - 2026-10-19: 3 回目のレビューで Critical（入れ子のリポジトリの `.git/config` を書き換えると、`git fetch origin` で sandbox を抜けられる）と Warning（`--registry` / `--endpoint-url` で任意のホストへ送れる）が出た。ユーザーと相談し、git の rule を外し、任意のホストへの通信は許容してコメントに残すことにした。作業ディレクトリの `.npmrc` に `git=` を仕込める問題があるので、npm も外した
   - `codex execpolicy check` で、`gh pr view 1` / `aws sts get-caller-identity` は allow になることを確認した。`gh pr merge 1` / `aws s3 cp` / `git fetch origin` / `npm view x` / `kubectl get po` はマッチしない
   - Info の `aws configure get`（鍵を出力できる）は直さない。`~/.aws/credentials` は sandbox の中でも読めるので、新しい穴ではないため。`gh run watch` のタイムアウトも直さない。タイムアウトしても実害は無く、Claude 側でも許可しているため
+- 2026-10-19: ユーザーから「任意の通信ができるコマンドは除外したい」と指示があった。gh（`-R`）と aws（`--endpoint-url`）も、後ろのオプションで送り先を変えられる。prefix_rule ではオプションを判定できないので、rules をやめて auto_review に任せることにした（`network-read.rules` を削除）
