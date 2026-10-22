@@ -10,7 +10,7 @@
       };
 
       home.packages = [
-        packages.pkgs.aws-sam-cli
+        packages.pkgs-stable.aws-sam-cli
         packages.pkgs.ssm-session-manager-plugin
       ];
     }
