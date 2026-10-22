@@ -9,7 +9,7 @@ allowed-tools: Read, Write, Edit, Glob, Grep, WebSearch, WebFetch, AskUserQuesti
 
 ## 1. 現状をつかむ
 
-- 実装: `ls nix/programs/`、`ls nix/hosts/`、`ls .claude/skills/`、`flake.nix`、`.ai-agent/tasks/` と `.ai-agent/projects/`、`git log --oneline -30`
+- 実装: `ls nix/programs/`、`ls nix/hosts/`、`ls .agents/skills/`、`flake.nix`、`.ai-agent/tasks/` と `.ai-agent/projects/`、`git log --oneline -30`
 - plan.md の各項目を実装と照らし、完了・進行中・未着手・一部完了に分ける。
 - `gh issue list --state open --json number,title,labels,url` で、ロードマップに無い課題を拾う。
 - market.md を読み、WebSearch / WebFetch で関連ツール・技術の最新の動向を調べ、古くなった箇所を挙げる。

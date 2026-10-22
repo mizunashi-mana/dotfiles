@@ -17,7 +17,7 @@ steering 文書を、リポジトリの実態に合わせる。事実に基づ�
 
 ## 1. 実態を集める
 
-- `ls nix/programs/`、`ls nix/hosts/`、`ls .claude/skills/`
+- `ls nix/programs/`、`ls nix/hosts/`、`ls .agents/skills/`
 - `flake.nix` の inputs と構成、`devenv.nix` の設定
 - `gh issue list --state open --json number,title,labels,url`
 

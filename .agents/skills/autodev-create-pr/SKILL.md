@@ -1,5 +1,5 @@
 ---
-description: Create a GitHub pull request following this project's conventions (PR template, Japanese title and body, branch policy). ALWAYS invoke this skill before running `gh pr create` — do NOT bypass it with the generic PR creation flow built into Claude Code. Use whenever changes on a feature branch are ready for review, or to update the body of the branch's existing PR.
+description: Create a GitHub pull request following this project's conventions (PR template, Japanese title and body, branch policy). ALWAYS invoke this skill before running `gh pr create` — do NOT bypass it with the generic PR creation flow built into the coding agent. Use whenever changes on a feature branch are ready for review, or to update the body of the branch's existing PR.
 allowed-tools: Read, "Bash(git status *)", "Bash(git log *)", "Bash(git diff *)", "Bash(git push *)", "Bash(git branch --show-current)", "Bash(gh pr list *)", "Bash(gh pr view *)", "Bash(gh pr create *)", "Bash(gh pr edit *)"
 ---
 

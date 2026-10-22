@@ -10,7 +10,7 @@ dotfiles/
 ├── devenv.yaml                  # devenv 設定
 ├── devenv.lock                  # devenv ロックファイル
 ├── setup.sh                     # 新規マシンセットアップスクリプト
-├── CLAUDE.md                    # Claude Code 向けプロジェクト説明
+├── AGENTS.md                    # AI エージェント向けプロジェクト説明
 ├── README.md                    # プロジェクト README
 ├── LICENSE                      # ライセンス情報
 ├── .ai-agent/                   # AI エージェント向けドキュメント
@@ -22,9 +22,8 @@ dotfiles/
 │   ├── projects/                # 長期プロジェクト管理（.gitkeep）
 │   ├── tasks/                   # 個別タスク管理
 │   └── surveys/                 # 技術調査・検討
-├── .claude/                     # Claude Code 設定
-│   ├── settings.local.json      # ローカル設定
-│   └── skills/                  # autodev スキル
+├── .agents/                     # AI エージェント共通設定
+│   └── skills/                  # autodev スキル（正本）
 │       ├── autodev-create-issue/
 │       ├── autodev-create-pr/
 │       ├── autodev-merge-and-switch/
@@ -34,6 +33,10 @@ dotfiles/
 │       ├── autodev-start-survey/
 │       ├── autodev-start-task/
 │       └── autodev-steering/
+├── .claude/                     # Claude Code 設定
+│   ├── settings.json            # 共有設定
+│   ├── settings.local.json      # ローカル設定
+│   └── skills -> ../.agents/skills  # .agents/skills へのシンボリックリンク
 ├── .github/                     # GitHub 設定
 │   ├── PULL_REQUEST_TEMPLATE.md # PR テンプレート
 │   ├── copilot-instructions.md  # Copilot 設定
