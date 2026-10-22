@@ -15,6 +15,7 @@
           approval_policy = "on-request";
           approvals_reviewer = "auto_review";
           sandbox_mode = "workspace-write";
+          sandbox_workspace_write.network_access = true;
           tui.status_line = [
             "model-with-reasoning"
             "current-dir"
