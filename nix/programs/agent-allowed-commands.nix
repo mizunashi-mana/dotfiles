@@ -8,7 +8,7 @@
 # 手元の任意のコマンドが 1 回で走るため。origin を手元のパスに向けるには回りくどい手順が要る。
 # Codex では allow に当たると review なしで sandbox の外で走る。引数で送り先を変えられること
 # （gh -R・URL・git fetch <URL>）、入れ子のリポジトリの .git/config で git から任意の実行ができること、
-# git diff --output で任意の場所に書けることは、そこに至る回りくどい手順の途中で auto_review が止める見込みで受け入れている。
+# git diff / log / show の --output で任意の場所に書けることは、そこに至る回りくどい手順の途中で auto_review が止める見込みで受け入れている。
 # 名前で許可するので、PATH や絶対パスで作業ディレクトリに置いた偽物を呼ばれうるが、
 # 人が実行するときも気付けない穴なので受け入れる。
 # 判断の経緯: .ai-agent/tasks/20261022-shared-agent-allowlist/README.md

