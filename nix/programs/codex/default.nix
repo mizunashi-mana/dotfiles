@@ -12,7 +12,10 @@
         # 宣言した値は上書きでマージされるだけなので、ここから消したキーは実ファイルに残る
         mutableSettings = true;
         settings = {
-          approval_policy = "on-request";
+          # sandbox の中でも通信とキーチェーンが使えるので、sandbox に頼らず全コマンドを auto_review に通す。
+          # on-request だと sandbox の中のコマンドは review されない。
+          # 判断の経緯: .ai-agent/surveys/20261022-codex-sandbox-gh-access/README.md
+          approval_policy = "untrusted";
           approvals_reviewer = "auto_review";
           sandbox_mode = "workspace-write";
           sandbox_workspace_write.network_access = true;
