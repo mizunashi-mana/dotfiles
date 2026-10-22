@@ -38,9 +38,8 @@
             )
           )}
 
-          # 送り先のホストを変える引数は review に回す。決まった位置の、= を使わない形にしか当たらない
+          # gh の送り先のホストを変える引数は review に回す。決まった位置の、= を使わない形にしか当たらない
           prefix_rule(pattern = ["gh", ["cache", "issue", "label", "pr", "release", "repo", "run"], ["checks", "diff", "list", "view", "watch"], ["-R", "--repo"]], decision = "prompt")
-          prefix_rule(pattern = ["git", ["fetch", "ls-remote"], "--upload-pack"], decision = "prompt")
 
           # 終わらずにセッションが止まるので、追いかける tail は review に回す。
           # -f が最初の引数のときだけ当たる（tail -n 5 -f や --follow=name には当たらない）

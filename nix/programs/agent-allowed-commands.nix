@@ -3,7 +3,9 @@
 # - 消したり上書きしたりしない
 # - 外へ公開しない（push・PR やコメントの作成・マージなどをしない）
 # - 書き込みは手元のメタデータとキャッシュ（refs/remotes など）だけ
-# - 終わらずにセッションが止まらない
+# - 止めない限り終わらないもの（tail -f など）ではない
+# git fetch などは相手を origin に固定する。相手がローカルパスだと --upload-pack（省略形や = つきも効く）で
+# 手元の任意のコマンドが 1 回で走るため。origin を手元のパスに向けるには回りくどい手順が要る。
 # Codex では allow に当たると review なしで sandbox の外で走る。引数で送り先を変えられること
 # （gh -R・URL・git fetch <URL>）、入れ子のリポジトリの .git/config で git から任意の実行ができること、
 # git diff --output で任意の場所に書けることは、そこに至る回りくどい手順の途中で auto_review が止める見込みで受け入れている。
@@ -106,6 +108,7 @@
   [
     "git"
     "fetch"
+    "origin"
   ]
   [
     "git"
@@ -118,6 +121,7 @@
   [
     "git"
     "ls-remote"
+    "origin"
   ]
   [
     "git"
@@ -136,6 +140,7 @@
     "git"
     "remote"
     "prune"
+    "origin"
   ]
   [
     "git"
