@@ -5,12 +5,14 @@
 {
   homeManagerImports = [
     (
-      { config, lib, ... }:
+      { lib, ... }:
       let
         # auto_review の負担を減らすため、引数や作業ディレクトリの設定で任意の実行・書き込み・通信ができない
         # 読み取り系だけを許可する。allow にマッチしたコマンドは review なしで sandbox の外で走るため、
         # git（入れ子のリポジトリの .git/config のフック）・gh（-R や URL で任意のホストへ送れる）・rg（--pre）・
-        # file（-C で書き込み）・sort（-o）・tree（-o）・xxd（-r）などは入れない
+        # file（-C で書き込み）・sort（-o）・tree（-o）・xxd（-r）などは入れない。
+        # 名前で許可するので、PATH や絶対パスで作業ディレクトリに置いた偽物を呼ばれうるが、
+        # 人が実行するときも気付けない穴なので受け入れる
         readOnlyCommands = [
           "basename"
           "cat"
@@ -29,17 +31,6 @@
           "tail"
           "wc"
           "which"
-        ];
-        # /path/to/cat のような絶対パスは、host_executable が無いと basename の rule に当たる。
-        # 作業ディレクトリに置いた偽物が sandbox の外で走らないよう、sandbox から書けない場所に絞る。
-        # 名前だけの呼び出しは PATH で解決されるので、PATH に作業ディレクトリの中（devenv の node_modules/.bin など）が
-        # あると偽物に化けうるが、人が実行するときも気付けない穴なので受け入れる
-        executableDirs = [
-          "/bin"
-          "/usr/bin"
-          "/run/current-system/sw/bin"
-          "/etc/profiles/per-user/${config.home.username}/bin"
-          "${config.home.homeDirectory}/.nix-profile/bin"
         ];
       in
       {
@@ -70,9 +61,6 @@
           rules.read-only =
             lib.concatMapStrings (cmd: ''
               prefix_rule(pattern = ["${cmd}"], decision = "allow")
-              host_executable(name = "${cmd}", paths = [${
-                lib.concatMapStringsSep ", " (dir: ''"${dir}/${cmd}"'') executableDirs
-              }])
             '') readOnlyCommands
             # 終わらずにセッションが止まるので、追いかける tail は review に回す。
             # -f が最初の引数のときだけ当たる（tail -n 5 -f や --follow=name には当たらない）
