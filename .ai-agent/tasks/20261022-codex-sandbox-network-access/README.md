@@ -30,7 +30,7 @@ Codex の `workspace-write` サンドボックスの中からネットワーク�
 - [x] `devenv shell lint-all` が通る
 - [x] `nishiyamanomacbook-pro` と `nishiyamanomacbook-air` の darwin 設定がビルドでき、生成された `codex-config.toml` に `approval_policy = "untrusted"`、`[sandbox_workspace_write]`、`network_access = true` が入っている
 - [x] `codex sandbox` で、`network_access = true` のとき sandbox の中から `gh auth status` / `gh api user` が通る
-- [ ] レビューを取り込み CI が通った PR → <URL>
+- [x] レビューを取り込み CI が通った PR → https://github.com/mizunashi-mana/dotfiles/pull/325
 
 ## 作業ログ
 
