@@ -14,9 +14,15 @@ Codex の `workspace-write` sandbox の中で gh が「トークンが無効」�
 
 対象は macOS だけ。Linux ホスト（bubblewrap / landlock）は調べていない。
 
-## 結論
+## 調査時点の推奨
 
-> **その後の判断（2026-10-22）**: ユーザーと相談し、案 B は採らなかった。ツールごとに指示が増え続けるためである。代わりに案 A（`network_access = true`）を採り、`approval_policy` を `untrusted` にして、すべてのコマンドを auto_review に通すことにした（PR #325）。`untrusted` では、rules の allow にマッチしないコマンドはすべて承認に回る（`core/src/exec_policy.rs` の `AskForApproval::UnlessTrusted`）。以下は調査した時点の推奨。
+> **その後の判断（2026-10-22）**: ユーザーと相談し、案 B は採らなかった。ツールごとに指示が増え続けるためである。代わりに案 A（`network_access = true`）を採り、`trust_level = "untrusted"` のプロジェクトで、rules に無いコマンドをすべて auto_review に通すことにした（PR #325）。
+>
+> - Codex 0.163.0 では、`approval_policy = "untrusted"` を config に書くと起動しない。`untrusted` になるのは、`approval_policy` を書かずに、プロジェクトの `trust_level` が `"untrusted"` のときだけ（`core/src/config/mod.rs`）
+> - どのプロジェクトにも当たらない場所は `on-request` になり、そこでは review なしで持ち出せる。このリスクは受け入れた
+> - 経緯は `.ai-agent/tasks/20261022-codex-sandbox-network-access/README.md` を参照
+>
+> 以下の節は調査した時点の推奨。
 
 **sandbox はそのままにし、案 B（指示で `require_escalated` を求め直させる）を `programs.codex.context` で全体に入れる。案 A（`network_access = true`、PR #325）は採らない。**
 
