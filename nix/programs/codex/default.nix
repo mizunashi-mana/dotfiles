@@ -29,30 +29,18 @@
           ];
         };
 
-        # auto_review の負担を減らすため、引数や作業ディレクトリの設定で任意の実行・書き込み・通信ができない
-        # 読み取り系だけを許可する。allow にマッチしたコマンドは review なしで sandbox の外で走るため、
-        # git（入れ子のリポジトリの .git/config のフック）・gh（-R や URL で任意のホストへ送れる）・rg（--pre）・
-        # file（-C で書き込み）・sort（-o）・tree（-o）・xxd（-r）などは入れない。
-        # 名前で許可するので、PATH や絶対パスで作業ディレクトリに置いた偽物を呼ばれうるが、
-        # 人が実行するときも気付けない穴なので受け入れる
-        rules.read-only = ''
-          prefix_rule(pattern = ["basename"], decision = "allow")
-          prefix_rule(pattern = ["cat"], decision = "allow")
-          prefix_rule(pattern = ["comm"], decision = "allow")
-          prefix_rule(pattern = ["diff"], decision = "allow")
-          prefix_rule(pattern = ["echo"], decision = "allow")
-          prefix_rule(pattern = ["grep"], decision = "allow")
-          prefix_rule(pattern = ["head"], decision = "allow")
-          prefix_rule(pattern = ["jq"], decision = "allow")
-          prefix_rule(pattern = ["ls"], decision = "allow")
-          prefix_rule(pattern = ["od"], decision = "allow")
-          prefix_rule(pattern = ["printf"], decision = "allow")
-          prefix_rule(pattern = ["pwd"], decision = "allow")
-          prefix_rule(pattern = ["readlink"], decision = "allow")
-          prefix_rule(pattern = ["strings"], decision = "allow")
-          prefix_rule(pattern = ["tail"], decision = "allow")
-          prefix_rule(pattern = ["wc"], decision = "allow")
-          prefix_rule(pattern = ["which"], decision = "allow")
+        # auto_review の負担を減らすため、Claude と共通の許可リストを allow にする。
+        # allow にマッチしたコマンドは review なしで sandbox の外で走る。何を入れるかは agent-allowed-commands.nix に書いた
+        rules.allowed = ''
+          ${builtins.concatStringsSep "\n" (
+            map (words: ''prefix_rule(pattern = ${builtins.toJSON words}, decision = "allow")'') (
+              import ../agent-allowed-commands.nix
+            )
+          )}
+
+          # 送り先のホストを変える引数は review に回す。決まった位置の、= を使わない形にしか当たらない
+          prefix_rule(pattern = ["gh", ["cache", "issue", "label", "pr", "release", "repo", "run"], ["checks", "diff", "list", "view", "watch"], ["-R", "--repo"]], decision = "prompt")
+          prefix_rule(pattern = ["git", ["fetch", "ls-remote"], "--upload-pack"], decision = "prompt")
 
           # 終わらずにセッションが止まるので、追いかける tail は review に回す。
           # -f が最初の引数のときだけ当たる（tail -n 5 -f や --follow=name には当たらない）
