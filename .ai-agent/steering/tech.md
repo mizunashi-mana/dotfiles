@@ -2,24 +2,24 @@
 
 ## 技術スタック
 
-| カテゴリ               | 技術                       |
-| ---------------------- | -------------------------- |
-| パッケージ管理         | Nix flakes                 |
-| ユーザー環境管理       | Home Manager               |
-| macOS システム管理     | nix-darwin                 |
-| 開発環境               | devenv                     |
-| flake 構成             | flake-parts                |
-| フォーマッタ           | treefmt-nix (fish_indent)  |
-| シェル                 | Fish                       |
-| Node.js パッケージ管理 | importNpmLock + npm        |
-| Claude Code パッケージ | claude-code-nix            |
-| エディタ               | VS Code, Neovim, Emacs     |
-| バージョン管理         | Git + GitHub               |
-| CI/CD                  | GitHub Actions             |
-| コンテナ               | Docker (Colima)            |
-| シークレット管理       | 1Password (shell-plugins)  |
-| AI エージェントスキル  | Claude Code autodev skills |
-| スキル管理             | agent-skills-nix           |
+| カテゴリ               | 技術                            |
+| ---------------------- | ------------------------------- |
+| パッケージ管理         | Nix flakes                      |
+| ユーザー環境管理       | Home Manager                    |
+| macOS システム管理     | nix-darwin                      |
+| 開発環境               | devenv                          |
+| flake 構成             | flake-parts                     |
+| フォーマッタ           | treefmt-nix (fish_indent)       |
+| シェル                 | Fish                            |
+| Node.js パッケージ管理 | importNpmLock + npm             |
+| Claude Code パッケージ | claude-code-nix                 |
+| エディタ               | VS Code, Neovim, Emacs          |
+| バージョン管理         | Git + GitHub                    |
+| CI/CD                  | GitHub Actions                  |
+| コンテナ               | Docker (Colima)                 |
+| シークレット管理       | 1Password (shell-plugins)       |
+| AI エージェントスキル  | autodev skills (.agents/skills) |
+| スキル管理             | agent-skills-nix                |
 
 ## Nix flake inputs
 
