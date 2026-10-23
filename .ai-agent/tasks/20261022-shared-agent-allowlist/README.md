@@ -1,4 +1,4 @@
-# Claude と Codex の許可リストを共通にする
+# Claude と Codex の許可リストをそろえる
 
 ## 目的
 
@@ -6,8 +6,9 @@ Codex の auto_review と Claude の確認で止まる回数を減らすため�
 
 ## 方針
 
-- 共通の許可リスト `nix/programs/agent-allowed-commands.nix`（単語の並びのリスト）を置き、Claude の `Bash(<words>:*)` と Codex の `prefix_rule(..., decision = "allow")` をそこから作る
-- 共通リストに入れる基本チェック
+- 基本チェックを通るコマンドを、Codex の `rules.allowed`（`read-only.rules` から名前を変えた）に `prefix_rule` で直接書く。Claude の許可リストには、もともとすべて入っている（`git fetch:*` など広い形で）ので変えない
+- 共通のファイルから両方を作る形は採らない。二重に書くことになるが、それぞれの設定をそのまま読めるほうを取る
+- 基本チェック
   - 消したり上書きしたりしない
   - 外へ公開しない（push・PR やコメントの作成・マージなどをしない）
   - 書き込みは手元のメタデータとキャッシュ（`refs/remotes` など）だけ
@@ -30,7 +31,7 @@ Codex の auto_review と Claude の確認で止まる回数を減らすため�
 ## 完了条件
 
 - [x] `devenv shell lint-all` が通る
-- [x] Pro・Air の darwin 設定がビルドでき、生成された Claude の `settings.json` と Codex の rules に共通リストが入っている
+- [x] Pro・Air の darwin 設定がビルドでき、生成された Codex の `allowed.rules` に基本チェックを通るコマンドが入っている
 - [x] `codex execpolicy check` で、`git fetch origin` / `gh pr list` は allow、`gh pr list -R x/y` は prompt、`git fetch --upload-pa=x .` / `git push` / `gh pr create` はマッチしない
 - [x] レビューを取り込み CI が通った PR → https://github.com/mizunashi-mana/dotfiles/pull/326
 
@@ -48,3 +49,4 @@ Codex の auto_review と Claude の確認で止まる回数を減らすため�
 - 2026-10-23: 2 回目のレビューは Critical 0 / Warning 0 / Info 2
   - Info 1（`--output` は `git log` / `git show` でも効く）: 共通リストのコメントと README に書いた
   - Info 2（`git rebase --continue` の並び順）: 直した
+- 2026-10-23: ユーザーの指示で、共通リスト（`agent-allowed-commands.nix`）から作る形をやめた。Codex の rules はベタ書きにし、Claude の設定は master のままに戻した（共通リストのコマンドはもともとすべて入っていた）

@@ -86,7 +86,6 @@ dotfiles/
 - `default.nix`: 全プログラムをまとめるエントリポイント
 - `default-common.nix`: 全環境共通のプログラム一覧
 - `default-darwin.nix`: macOS 固有のプログラム一覧
-- `agent-allowed-commands.nix`: Claude Code と Codex の双方で確認なしに走らせるコマンドの一覧（`claude-code/` と `codex/` が読む）
 
 一部のプログラムモジュールはサブディレクトリを持つ。特に `claude-code/` は Nix 管理のグローバルスキルを含む:
 
