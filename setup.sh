@@ -20,6 +20,8 @@ Environment variables:
                           (not built by default)
   WAIT_DOCKER_LIMIT=60    Seconds to wait for the docker socket when building
   SKIP_CLEAN=1            Set to any value to skip the store/image cleanup
+  CLEAN_OLDER_THAN=40d    Delete Nix profile generations older than this
+                          during the cleanup
 
 Examples:
   TRACE=1 $0
@@ -135,7 +137,15 @@ if [ -n "${BUILD_DOCKER_IMAGE:-}" ]; then
 fi
 
 if [ -z "${SKIP_CLEAN:-}" ]; then
+	CLEAN_OLDER_THAN="${CLEAN_OLDER_THAN:-40d}"
+	# nix-darwin's system profile is owned by root
+	if [ "$SETUP_TYPE" = 'darwin' ]; then
+		sudo nix-collect-garbage --delete-older-than "$CLEAN_OLDER_THAN"
+	else
+		nix-collect-garbage --delete-older-than "$CLEAN_OLDER_THAN"
+	fi
 	nix store gc
+	nix store optimise
 	if [ -n "${BUILD_DOCKER_IMAGE:-}" ]; then
 		docker system prune -f
 	fi
