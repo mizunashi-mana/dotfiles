@@ -1,11 +1,12 @@
 {
+  packages,
   ...
 }:
 {
-  nixDarwinModules = [
+  homeManagerImports = [
     {
-      homebrew.brews = [
-        "helm"
+      home.packages = [
+        packages.pkgs.kubernetes-helm
       ];
     }
   ];
