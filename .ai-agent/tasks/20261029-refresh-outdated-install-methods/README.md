@@ -19,9 +19,13 @@
 - [x] 上の変更が入っている
 - [x] `devenv shell lint-all` が通る
 - [x] macOS ホスト（nishiyamanomacbook-pro）の darwin 設定がビルドできる
-- [ ] レビューを取り込み CI が通った PR → <URL>
+- [x] レビューを取り込み CI が通った PR → https://github.com/mizunashi-mana/dotfiles/pull/329
 
 ## 作業ログ
 
 - 2026-10-29: 開始。nixpkgs unstable / stable / Homebrew のバージョンとバイナリキャッシュの有無を調べて対象を決めた
 - 2026-10-29: 実装。lint-all が通り、nishiyamanomacbook-pro の darwin 設定がビルドできた（helm 4.3.1・direnv 2.38.2 が入り、`--force-cleanup` は nix-darwin が 1 回だけ付ける）
+- 2026-10-29: PR #329 を作成
+- 2026-10-29: レビュー（Critical 0 / Warning 0 / Info 2）を取り込んだ
+  - Info 1（direnv は共通モジュールなので Linux ホストにも効く）: unstable の direnv 2.38.2 が x86_64-linux・aarch64-linux とも cache.nixos.org にあることを reviewer が確かめた。ここに記録して対応とする
+  - Info 2（`package = packages.pkgs.direnv;` は home-manager の既定値と同じ）: 行を消し、stable 固定前の形に戻した
