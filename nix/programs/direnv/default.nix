@@ -7,7 +7,7 @@
     {
       programs.direnv = {
         enable = true;
-        package = packages.pkgs-stable.direnv;
+        package = packages.pkgs.direnv;
         nix-direnv.enable = true;
       };
     }
