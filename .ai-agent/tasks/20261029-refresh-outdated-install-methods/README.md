@@ -11,7 +11,7 @@
 - Homebrew の `extraFlags = [ "--force-cleanup" ]`: ロック中の nix-darwin が `cleanup = "uninstall"` で自分で付けるようになったので削除する。
 - direnv: stable（2.37.1）固定をやめ unstable（2.38.2）に戻す。
 - VSCode の `ms-python.python`: unstable の debugpy がビルドに通る（キャッシュ済み）ので unstable に戻す。
-- `tech.md` の nixpkgs-stable のバージョン表記（25.05 → 26.05）を直す。
+- `tech.md` の nixpkgs-stable のバージョン表記を外す（25.05 のまま古くなっていたため。版は flake.nix を見れば分かり、書くとまた古くなる）。
 - 残すもの: zotero（unstable 版は insecure な firefox-esr に依存）、ollama（MLX のため Homebrew）、texlive、mas。
 
 ## 完了条件
@@ -29,3 +29,4 @@
 - 2026-10-29: レビュー（Critical 0 / Warning 0 / Info 2）を取り込んだ
   - Info 1（direnv は共通モジュールなので Linux ホストにも効く）: unstable の direnv 2.38.2 が x86_64-linux・aarch64-linux とも cache.nixos.org にあることを reviewer が確かめた。ここに記録して対応とする
   - Info 2（`package = packages.pkgs.direnv;` は home-manager の既定値と同じ）: 行を消し、stable 固定前の形に戻した
+- 2026-10-29: PR へのコメント「version 表記なくていいです」を受け、tech.md の nixpkgs-stable の版表記を 26.05 に直すのをやめて外した

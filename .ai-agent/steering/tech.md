@@ -24,7 +24,7 @@
 ## Nix flake inputs
 
 - `nixpkgs` (unstable)
-- `nixpkgs-stable` (nixos-26.05)
+- `nixpkgs-stable`
 - `flake-parts`
 - `treefmt-nix`
 - `home-manager`
