@@ -13,6 +13,9 @@
 .claude/scheduled_tasks.json
 CLAUDE.local.md
 
+# codex
+.codex/config.toml
+
 # direnv
 .envrc
 .direnv/

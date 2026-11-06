@@ -435,13 +435,6 @@
                 "mcp__serena__think_about_collected_information"
                 "mcp__serena__think_about_task_adherence"
                 "mcp__serena__think_about_whether_you_are_done"
-                "mcp__html-artifacts-preview__create_page"
-                "mcp__html-artifacts-preview__update_page"
-                "mcp__html-artifacts-preview__destroy_page"
-                "mcp__html-artifacts-preview__get_pages"
-                "mcp__html-artifacts-preview__get_page"
-                "mcp__html-artifacts-preview__add_scripts"
-                "mcp__html-artifacts-preview__add_stylesheets"
               ];
               defaultMode = "auto";
             };
