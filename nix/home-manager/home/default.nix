@@ -1,4 +1,8 @@
 { packages, default-editor, ... }:
+{ config, lib, ... }:
+let
+  tfPluginCacheDir = "${config.xdg.cacheHome}/terraform/plugin-cache";
+in
 {
   home = {
     stateVersion = "26.05";
@@ -10,6 +14,8 @@
 
     sessionVariables = {
       EDITOR = default-editor;
+      # Terraform / OpenTofu のプロバイダをプロジェクトをまたいで使い回す
+      TF_PLUGIN_CACHE_DIR = tfPluginCacheDir;
     };
 
     shellAliases = {
@@ -23,5 +29,10 @@
     packages = [
       packages.pkgs.cacert
     ];
+
+    # Terraform はキャッシュのディレクトリを自分では作らないので先に作っておく
+    activation.createTfPluginCacheDir = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+      run mkdir -p ${lib.escapeShellArg tfPluginCacheDir}
+    '';
   };
 }
