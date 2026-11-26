@@ -39,11 +39,9 @@ let
     (import ./vscode { inherit packages; })
     (import ./antigravity-ide { inherit packages; })
     (import ./google-chrome { inherit packages; })
-    (import ./aquaskk { inherit packages; })
     (import ./skimpdf { inherit packages; })
     dbeaver
     zotero
-    (import ./postman { inherit packages; })
     raycast
     (import ./claude-desktop { inherit packages; })
     (import ./chatgpt { inherit packages; })
