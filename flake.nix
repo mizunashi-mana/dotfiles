@@ -64,6 +64,9 @@
       flake = false;
     };
 
+    # NOTE: 最近のリビジョンは pnpm deps の固定ハッシュが darwin で一致せずビルドが失敗するため、
+    # flake.lock で c314285 に据え置いている。lock を更新するときは hermes-agent を除外し、
+    # upstream で直ったら据え置きを外す。
     hermes-agent = {
       url = "github:NousResearch/hermes-agent";
       inputs.nixpkgs.follows = "nixpkgs";
